@@ -7,7 +7,7 @@
 <meta name="description" content="Сучасна STEM-лабораторія Ліцею №12: робототехніка, 3D-прототипування, програмування Python, IoT. Записуйтесь на безкоштовне пробне заняття!">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
 tailwind.config = {
@@ -32,7 +32,7 @@ tailwind.config = {
         navy: { DEFAULT: '#14142B', light: '#1E1E38', lighter: '#2A2A44' },
       },
       fontFamily: {
-        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+        serif: ['Rubik', 'system-ui', 'sans-serif'],
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
     },
@@ -44,7 +44,7 @@ tailwind.config = {
 html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; scroll-padding-top: 100px; }
 body { margin: 0; font-family: 'Inter', system-ui, sans-serif; background: #fff; color: #2D2D3A; }
 
-h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; text-wrap: balance; }
+h1, h2, h3 { font-family: 'Rubik', system-ui, sans-serif; text-wrap: balance; }
 p, li { text-wrap: pretty; }
 
 .highlight { position: relative; display: inline; }
@@ -96,7 +96,7 @@ p, li { text-wrap: pretty; }
   border-color: rgba(255,255,255,0.06) !important;
 }
 [data-theme="dark"] .card-surface:hover { border-color: rgba(255,255,255,0.12) !important; }
-[data-theme="dark"] .card-highlight { background: #1C1D34 !important; border-color: #7B2D42 !important; }
+[data-theme="dark"] .card-highlight { background: #16172A !important; border-color: rgba(255,255,255,0.06) !important; border-top-color: #7B2D42 !important; }
 [data-theme="dark"] .text-neutral-800 { color: #E0E0EE !important; }
 [data-theme="dark"] .text-neutral-700 { color: #C8C8DA !important; }
 [data-theme="dark"] .text-neutral-600 { color: #A0A0B8 !important; }
@@ -145,9 +145,7 @@ p, li { text-wrap: pretty; }
 <header class="header-glass sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-neutral-100 transition-shadow" id="header">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-[72px]">
     <a href="#" class="flex items-center gap-3 group">
-      <div class="w-10 h-10 bg-brand rounded-xl flex items-center justify-center shadow-sm">
-        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 3v2m6-2v2M9 3h6M10 5v5.172a2 2 0 01-.586 1.414l-3.828 3.828A2 2 0 005 16.828V17a2 2 0 002 2h10a2 2 0 002-2v-.172a2 2 0 00-.586-1.414l-3.828-3.828A2 2 0 0114 10.172V5"/><circle cx="12" cy="15" r="1"/></svg>
-      </div>
+      <svg class="w-8 h-8 text-brand" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 3v2m6-2v2M9 3h6M10 5v5.172a2 2 0 01-.586 1.414l-3.828 3.828A2 2 0 005 16.828V17a2 2 0 002 2h10a2 2 0 002-2v-.172a2 2 0 00-.586-1.414l-3.828-3.828A2 2 0 0114 10.172V5"/><circle cx="12" cy="15" r="1"/></svg>
       <div class="leading-tight">
         <span class="font-serif text-lg font-bold text-brand group-hover:text-brand-600 transition-colors">STEM Lab</span>
         <span class="block text-[11px] text-neutral-500 tracking-wide">Ліцей №12</span>
@@ -246,9 +244,7 @@ p, li { text-wrap: pretty; }
           <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop&auto=format" alt="Учні працюють у STEM-лабораторії" class="w-full h-full object-cover" loading="eager" onerror="this.style.display='none'">
         </div>
         <div class="absolute -bottom-4 -left-4 sm:bottom-4 sm:left-auto sm:-right-4 bg-white rounded-xl shadow-lg px-5 py-3 flex items-center gap-3 z-10">
-          <div class="w-10 h-10 bg-brand-50 rounded-lg flex items-center justify-center">
-            <svg class="w-5 h-5 text-brand" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-          </div>
+          <svg class="w-8 h-8 text-brand" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
           <div>
             <span class="block text-lg font-bold text-neutral-800 font-serif">2020</span>
             <span class="text-xs text-neutral-500">Рік заснування</span>
@@ -294,33 +290,25 @@ p, li { text-wrap: pretty; }
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
       <!-- Card 1 -->
       <div class="card-surface bg-white rounded-2xl p-7 border border-neutral-100 card-hover" data-reveal style="transition-delay:0.05s">
-        <div class="w-14 h-14 bg-brand-50 rounded-xl flex items-center justify-center mb-5">
-          <svg class="w-7 h-7 text-brand" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l.402 1.607a1.5 1.5 0 01-1.113 1.843l-1.597.4a9.06 9.06 0 01-4.492 0l-1.597-.4a1.5 1.5 0 01-1.113-1.843L5 14.5"/></svg>
-        </div>
+        <svg class="w-8 h-8 text-brand mb-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l.402 1.607a1.5 1.5 0 01-1.113 1.843l-1.597.4a9.06 9.06 0 01-4.492 0l-1.597-.4a1.5 1.5 0 01-1.113-1.843L5 14.5"/></svg>
         <h3 class="font-serif text-lg font-bold text-neutral-800 mb-2">Сучасне обладнання</h3>
         <p class="text-sm text-neutral-600 leading-relaxed">3D&#8209;принтери, Arduino, Raspberry&nbsp;Pi, набори LEGO Mindstorms та професійні інструменти для розробки.</p>
       </div>
       <!-- Card 2 — highlighted -->
-      <div class="card-highlight card-surface bg-brand rounded-2xl p-7 border-2 border-brand text-white card-hover" data-reveal style="transition-delay:0.1s">
-        <div class="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mb-5">
-          <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/></svg>
-        </div>
-        <h3 class="font-serif text-lg font-bold mb-2">Досвідчені викладачі</h3>
-        <p class="text-sm text-white/80 leading-relaxed">Практикуючі інженери та IT-спеціалісти з досвідом роботи в провідних технологічних компаніях.</p>
+      <div class="card-highlight card-surface bg-white rounded-2xl p-7 border border-neutral-100 border-t-[3px] border-t-brand card-hover" data-reveal style="transition-delay:0.1s">
+        <svg class="w-8 h-8 text-brand mb-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/></svg>
+        <h3 class="font-serif text-lg font-bold text-neutral-800 mb-2">Досвідчені викладачі</h3>
+        <p class="text-sm text-neutral-600 leading-relaxed">Практикуючі інженери та IT-спеціалісти з досвідом роботи в провідних технологічних компаніях.</p>
       </div>
       <!-- Card 3 -->
       <div class="card-surface bg-white rounded-2xl p-7 border border-neutral-100 card-hover" data-reveal style="transition-delay:0.15s">
-        <div class="w-14 h-14 bg-brand-50 rounded-xl flex items-center justify-center mb-5">
-          <svg class="w-7 h-7 text-brand" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M11.42 15.17l-5.385-5.384a.5.5 0 010-.707l.707-.707a.5.5 0 01.707 0L11.42 12.35l6.127-6.127a.5.5 0 01.707 0l.707.707a.5.5 0 010 .707L11.42 15.17zM21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
-        </div>
+        <svg class="w-8 h-8 text-brand mb-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M11.42 15.17l-5.385-5.384a.5.5 0 010-.707l.707-.707a.5.5 0 01.707 0L11.42 12.35l6.127-6.127a.5.5 0 01.707 0l.707.707a.5.5 0 010 .707L11.42 15.17zM21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
         <h3 class="font-serif text-lg font-bold text-neutral-800 mb-2">Практичний підхід</h3>
         <p class="text-sm text-neutral-600 leading-relaxed">80% навчання — це практика. Учні працюють над реальними проєктами від ідеї до готового прототипу.</p>
       </div>
       <!-- Card 4 -->
       <div class="card-surface bg-white rounded-2xl p-7 border border-neutral-100 card-hover" data-reveal style="transition-delay:0.2s">
-        <div class="w-14 h-14 bg-brand-50 rounded-xl flex items-center justify-center mb-5">
-          <svg class="w-7 h-7 text-brand" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-4.5A3.375 3.375 0 0019.875 10.875h0A3.375 3.375 0 0016.5 7.5V3.75m-9 15v-4.5A3.375 3.375 0 004.125 10.875h0A3.375 3.375 0 007.5 7.5V3.75m0 0h9m-9 0A1.5 1.5 0 006 2.25h0A1.5 1.5 0 007.5 3.75m9 0A1.5 1.5 0 0018 2.25h0A1.5 1.5 0 0016.5 3.75"/></svg>
-        </div>
+        <svg class="w-8 h-8 text-brand mb-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-4.5A3.375 3.375 0 0019.875 10.875h0A3.375 3.375 0 0016.5 7.5V3.75m-9 15v-4.5A3.375 3.375 0 004.125 10.875h0A3.375 3.375 0 007.5 7.5V3.75m0 0h9m-9 0A1.5 1.5 0 006 2.25h0A1.5 1.5 0 007.5 3.75m9 0A1.5 1.5 0 0018 2.25h0A1.5 1.5 0 0016.5 3.75"/></svg>
         <h3 class="font-serif text-lg font-bold text-neutral-800 mb-2">Визнані сертифікати</h3>
         <p class="text-sm text-neutral-600 leading-relaxed">Випускники отримують сертифікати, визнані провідними технічними університетами України.</p>
       </div>
@@ -530,36 +518,28 @@ p, li { text-wrap: pretty; }
 
       <div class="space-y-0">
         <div class="flex gap-5 py-6 border-b border-neutral-100 card-hover rounded-xl px-2" data-reveal style="transition-delay:0.05s">
-          <div class="flex-shrink-0 w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center">
-            <span class="text-brand font-bold font-serif text-lg">01</span>
-          </div>
+          <span class="flex-shrink-0 text-3xl font-bold text-brand/30 font-serif leading-none mt-1">01</span>
           <div>
             <h4 class="font-bold text-neutral-800 mb-1">Реєстрація на зимовий семестр 2025</h4>
             <p class="text-sm text-neutral-500">Листопад 2024 — Грудень 2024</p>
           </div>
         </div>
         <div class="flex gap-5 py-6 border-b border-neutral-100 card-hover rounded-xl px-2" data-reveal style="transition-delay:0.1s">
-          <div class="flex-shrink-0 w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center">
-            <span class="text-brand font-bold font-serif text-lg">02</span>
-          </div>
+          <span class="flex-shrink-0 text-3xl font-bold text-brand/30 font-serif leading-none mt-1">02</span>
           <div>
             <h4 class="font-bold text-neutral-800 mb-1">Хакатон «Розумне місто»</h4>
             <p class="text-sm text-neutral-500">15 грудня 2024</p>
           </div>
         </div>
         <div class="flex gap-5 py-6 border-b border-neutral-100 card-hover rounded-xl px-2" data-reveal style="transition-delay:0.15s">
-          <div class="flex-shrink-0 w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center">
-            <span class="text-brand font-bold font-serif text-lg">03</span>
-          </div>
+          <span class="flex-shrink-0 text-3xl font-bold text-brand/30 font-serif leading-none mt-1">03</span>
           <div>
             <h4 class="font-bold text-neutral-800 mb-1">Обласна олімпіада з робототехніки</h4>
             <p class="text-sm text-neutral-500">Січень 2025</p>
           </div>
         </div>
         <div class="flex gap-5 py-6 card-hover rounded-xl px-2" data-reveal style="transition-delay:0.2s">
-          <div class="flex-shrink-0 w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center">
-            <span class="text-brand font-bold font-serif text-lg">04</span>
-          </div>
+          <span class="flex-shrink-0 text-3xl font-bold text-brand/30 font-serif leading-none mt-1">04</span>
           <div>
             <h4 class="font-bold text-neutral-800 mb-1">День відкритих дверей STEM Lab</h4>
             <p class="text-sm text-neutral-500">Лютий 2025</p>
@@ -593,9 +573,7 @@ p, li { text-wrap: pretty; }
       <!-- Col 1: About -->
       <div>
         <div class="flex items-center gap-3 mb-5">
-          <div class="w-9 h-9 bg-brand rounded-lg flex items-center justify-center">
-            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 3v2m6-2v2M9 3h6M10 5v5.172a2 2 0 01-.586 1.414l-3.828 3.828A2 2 0 005 16.828V17a2 2 0 002 2h10a2 2 0 002-2v-.172a2 2 0 00-.586-1.414l-3.828-3.828A2 2 0 0114 10.172V5"/></svg>
-          </div>
+          <svg class="w-7 h-7 text-brand-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 3v2m6-2v2M9 3h6M10 5v5.172a2 2 0 01-.586 1.414l-3.828 3.828A2 2 0 005 16.828V17a2 2 0 002 2h10a2 2 0 002-2v-.172a2 2 0 00-.586-1.414l-3.828-3.828A2 2 0 0114 10.172V5"/></svg>
           <span class="font-serif text-white font-bold text-lg">STEM Lab</span>
         </div>
         <p class="text-white/50 text-sm leading-relaxed">
