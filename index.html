@@ -7,488 +7,600 @@
 <script src="https://cdn.tailwindcss.com/3.4.4"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script>
 tailwind.config = {
   darkMode: ['selector', '[data-theme="dark"]'],
   theme: {
     extend: {
-      fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
-      colors: {
-        surface: {
-          DEFAULT: '#ffffff',
-          dark: '#0a0a0b',
-        },
-        muted: {
-          DEFAULT: '#f4f4f5',
-          dark: '#141416',
-        },
-        border: {
-          DEFAULT: '#e4e4e7',
-          dark: '#27272a',
-        },
-        text: {
-          DEFAULT: '#09090b',
-          secondary: '#71717a',
-          dark: '#fafafa',
-          'dark-secondary': '#a1a1aa',
-        },
-        accent: {
-          DEFAULT: '#2563eb',
-          hover: '#1d4ed8',
-          soft: '#dbeafe',
-          'dark-soft': '#1e3a5f',
-        },
-      },
+      fontFamily: { sans: ['"Space Grotesk"', 'system-ui', 'sans-serif'] },
     },
   },
 }
 </script>
 <style>
-  :root {
-    --bg: #ffffff;
-    --bg-muted: #f4f4f5;
-    --fg: #09090b;
-    --fg-secondary: #71717a;
-    --border: #e4e4e7;
-    --accent: #2563eb;
-    --accent-hover: #1d4ed8;
-    --accent-soft: #dbeafe;
-    --card-bg: #ffffff;
-    --card-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02);
-    --header-bg: rgba(255,255,255,0.8);
-    --modal-overlay: rgba(0,0,0,0.4);
-    --success: #16a34a;
-    --success-soft: #dcfce7;
-  }
+:root {
+  --bg: #FAFBFD;
+  --bg-raised: #FFFFFF;
+  --bg-muted: #F1F3F8;
+  --fg: #151929;
+  --fg-muted: #616B84;
+  --fg-subtle: #9AA0B4;
+  --accent: #4338CA;
+  --accent-hover: #3730A3;
+  --accent-soft: #E8E6F9;
+  --signal: #B45309;
+  --signal-soft: #FEF3C7;
+  --success: #059669;
+  --success-soft: #D1FAE5;
+  --error: #DC2626;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --shadow-surface:
+    0 0 0 1px rgba(21,25,41,0.05),
+    0 1px 3px -1px rgba(21,25,41,0.06),
+    0 3px 8px -2px rgba(21,25,41,0.04);
+  --shadow-surface-hover:
+    0 0 0 1px rgba(67,56,202,0.15),
+    0 2px 6px -1px rgba(21,25,41,0.08),
+    0 8px 20px -4px rgba(21,25,41,0.06);
+  --shadow-modal:
+    0 0 0 1px rgba(21,25,41,0.06),
+    0 16px 40px -8px rgba(21,25,41,0.16),
+    0 4px 12px -2px rgba(21,25,41,0.08);
+  --shadow-header: 0 0 0 1px rgba(21,25,41,0.05);
+  --overlay: rgba(21,25,41,0.4);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-icon: cubic-bezier(0.2, 0, 0, 1);
+  --dur-fast: 150ms;
+  --dur-normal: 200ms;
+  --dur-slow: 300ms;
+  --dur-exit: 150ms;
+}
+[data-theme="dark"] {
+  --bg: #0C0E16;
+  --bg-raised: #151829;
+  --bg-muted: #1A1D30;
+  --fg: #EDEEF3;
+  --fg-muted: #8B91A8;
+  --fg-subtle: #5A6078;
+  --accent: #6366F1;
+  --accent-hover: #818CF8;
+  --accent-soft: #1E1B4B;
+  --signal: #D97706;
+  --signal-soft: #451A03;
+  --success: #34D399;
+  --success-soft: #064E3B;
+  --error: #F87171;
+  --shadow-surface: 0 0 0 1px rgba(255,255,255,0.06);
+  --shadow-surface-hover: 0 0 0 1px rgba(99,102,241,0.3);
+  --shadow-modal:
+    0 0 0 1px rgba(255,255,255,0.08),
+    0 16px 40px -8px rgba(0,0,0,0.5);
+  --shadow-header: 0 0 0 1px rgba(255,255,255,0.06);
+  --overlay: rgba(0,0,0,0.6);
+}
 
-  [data-theme="dark"] {
-    --bg: #0a0a0b;
-    --bg-muted: #141416;
-    --fg: #fafafa;
-    --fg-secondary: #a1a1aa;
-    --border: #27272a;
-    --accent: #3b82f6;
-    --accent-hover: #60a5fa;
-    --accent-soft: #1e3a5f;
-    --card-bg: #141416;
-    --card-shadow: 0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
-    --header-bg: rgba(10,10,11,0.8);
-    --modal-overlay: rgba(0,0,0,0.6);
-    --success: #22c55e;
-    --success-soft: #14532d;
-  }
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
 
-  body {
-    font-family: 'Inter', system-ui, sans-serif;
-    background: var(--bg);
-    color: var(--fg);
-    transition: background 0.3s ease, color 0.3s ease;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+body {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  font-size: 16px;
+  line-height: 1.6;
+  transition-property: background-color, color;
+  transition-duration: var(--dur-slow);
+  transition-timing-function: var(--ease-default);
+}
 
-  .header-blur {
-    background: var(--header-bg);
-    backdrop-filter: blur(12px) saturate(180%);
-    -webkit-backdrop-filter: blur(12px) saturate(180%);
-    border-bottom: 1px solid var(--border);
-    transition: background 0.3s ease, border-color 0.3s ease;
-  }
+/* --- Skip link --- */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  z-index: 100;
+  padding: 8px 16px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.skip-link:focus { top: 8px; }
 
-  .card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    box-shadow: var(--card-shadow);
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04);
-    border-color: var(--accent);
-  }
-  [data-theme="dark"] .card:hover {
-    box-shadow: 0 8px 25px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.2);
-  }
+/* --- Header --- */
+.header {
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  box-shadow: var(--shadow-header);
+  transition-property: background-color, box-shadow;
+  transition-duration: var(--dur-slow);
+}
 
-  .btn-primary {
-    background: var(--accent);
-    color: #fff;
-    transition: all 0.2s ease;
-  }
-  .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
-  .btn-primary:active { transform: translateY(0); }
+/* --- Nav links --- */
+.nav-link {
+  color: var(--fg-muted);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition-property: color;
+  transition-duration: var(--dur-fast);
+}
+.nav-link:hover { color: var(--fg); }
 
-  .btn-secondary {
-    background: transparent;
-    color: var(--fg);
-    border: 1px solid var(--border);
-    transition: all 0.2s ease;
-  }
-  .btn-secondary:hover { border-color: var(--fg-secondary); background: var(--bg-muted); }
+/* --- Buttons --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: var(--radius-md);
+  padding: 12px 24px;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  transition-property: background-color, box-shadow, transform;
+  transition-duration: var(--dur-normal);
+  transition-timing-function: var(--ease-default);
+}
+.btn:active { transform: scale(0.97); transition-duration: 100ms; }
+.btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  opacity: 1;
+}
 
-  .badge {
-    background: var(--bg-muted);
-    border: 1px solid var(--border);
-    color: var(--fg);
-    transition: all 0.2s ease;
-  }
-  .badge:hover { border-color: var(--accent); color: var(--accent); }
-  .badge-count {
-    background: var(--accent);
-    color: #fff;
-    min-width: 20px;
-    height: 20px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 999px;
-    font-size: 11px;
-    font-weight: 600;
-    padding: 0 6px;
-    transition: transform 0.2s ease;
-  }
-  .badge-count.pulse { animation: badgePulse 0.3s ease; }
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+.btn-primary:hover { background: var(--accent-hover); }
 
-  .tag-enrolled {
-    background: var(--success-soft);
-    color: var(--success);
-  }
+.btn-ghost {
+  background: var(--bg-raised);
+  color: var(--fg);
+  box-shadow: var(--shadow-surface);
+}
+.btn-ghost:hover { box-shadow: var(--shadow-surface-hover); }
 
-  .modal-overlay {
-    background: var(--modal-overlay);
-    opacity: 0;
-    transition: opacity 0.25s ease;
-    pointer-events: none;
+/* --- Cards --- */
+.surface {
+  background: var(--bg-raised);
+  box-shadow: var(--shadow-surface);
+  border-radius: var(--radius-lg);
+  transition-property: box-shadow, transform;
+  transition-duration: var(--dur-normal);
+  transition-timing-function: var(--ease-default);
+}
+.surface-interactive { cursor: pointer; }
+.surface-interactive:hover {
+  box-shadow: var(--shadow-surface-hover);
+  transform: translateY(-1px);
+}
+.surface-interactive:active {
+  transform: scale(0.985);
+  transition-duration: 100ms;
+}
+
+/* --- Icon box --- */
+.icon-box {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  background: var(--accent-soft);
+  flex-shrink: 0;
+  transition-property: background-color;
+  transition-duration: var(--dur-slow);
+}
+
+/* --- Tag --- */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-muted);
+  color: var(--fg-muted);
+  transition-property: background-color, color;
+  transition-duration: var(--dur-slow);
+}
+.tag-status {
+  background: var(--success-soft);
+  color: var(--success);
+  padding: 4px 12px;
+  border-radius: 9999px;
+}
+
+/* --- Badge --- */
+.cabinet-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--fg);
+  background: var(--bg-raised);
+  box-shadow: var(--shadow-surface);
+  cursor: pointer;
+  border: none;
+  transition-property: box-shadow, color;
+  transition-duration: var(--dur-normal);
+}
+.cabinet-badge:hover {
+  box-shadow: var(--shadow-surface-hover);
+  color: var(--accent);
+}
+.cabinet-badge:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.badge-count {
+  background: var(--accent);
+  color: #fff;
+  min-width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 0 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Theme toggle (cross-fade per motion skill) --- */
+.theme-toggle {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: transparent;
+  color: var(--fg-muted);
+  cursor: pointer;
+  transition-property: color;
+  transition-duration: var(--dur-fast);
+}
+.theme-toggle:hover { color: var(--fg); }
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.theme-toggle__icon {
+  grid-area: 1 / 1;
+  transition-property: opacity, transform, filter;
+  transition-duration: var(--dur-slow);
+  transition-timing-function: var(--ease-icon);
+}
+.theme-toggle__icon--hidden {
+  opacity: 0;
+  transform: scale(0.25);
+  filter: blur(4px);
+}
+.theme-toggle__icon--visible {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+}
+
+/* --- Form fields --- */
+.field {
+  width: 100%;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--fg);
+  background: var(--bg-muted);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  transition-property: border-color, box-shadow;
+  transition-duration: var(--dur-normal);
+  outline: none;
+}
+.field::placeholder { color: var(--fg-subtle); }
+.field:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+select.field {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%239AA0B4' viewBox='0 0 16 16'%3E%3Cpath d='M4.427 6.427l3.396 3.396a.25.25 0 00.354 0l3.396-3.396A.25.25 0 0011.396 6H4.604a.25.25 0 00-.177.427z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+
+/* --- Modal --- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: var(--overlay);
+  opacity: 0;
+  pointer-events: none;
+  transition-property: opacity;
+  transition-duration: var(--dur-normal);
+}
+.modal-overlay.active { opacity: 1; pointer-events: all; }
+.modal-panel {
+  width: 100%;
+  max-width: 440px;
+  background: var(--bg-raised);
+  box-shadow: var(--shadow-modal);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  transform: translateY(16px);
+  opacity: 0;
+  transition-property: opacity, transform;
+  transition-duration: 250ms;
+  transition-timing-function: var(--ease-out);
+}
+.modal-overlay.active .modal-panel {
+  transform: translateY(0);
+  opacity: 1;
+}
+.modal-close {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: transparent;
+  color: var(--fg-subtle);
+  cursor: pointer;
+  transition-property: color;
+  transition-duration: var(--dur-fast);
+}
+.modal-close:hover { color: var(--fg); }
+.modal-close:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* --- Hero entrance (one-time staggered) --- */
+.hero-item {
+  opacity: 0;
+  transform: translateY(12px);
+  filter: blur(4px);
+  animation: heroEnter var(--dur-slow) var(--ease-out) forwards;
+}
+.hero-item:nth-child(1) { animation-delay: 0ms; }
+.hero-item:nth-child(2) { animation-delay: 100ms; }
+.hero-item:nth-child(3) { animation-delay: 200ms; }
+.hero-item:nth-child(4) { animation-delay: 300ms; }
+@keyframes heroEnter {
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+/* --- Success check animation --- */
+@keyframes checkPop {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.success-check { animation: checkPop 400ms var(--ease-out) forwards; }
+
+/* --- Badge pulse --- */
+@keyframes badgePulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+.pulse { animation: badgePulse var(--dur-normal) var(--ease-default); }
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--fg-subtle); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--fg-muted); }
+
+/* --- Reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
-  .modal-overlay.active { opacity: 1; pointer-events: all; }
-  .modal-content {
-    transform: translateY(12px) scale(0.98);
-    opacity: 0;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .modal-overlay.active .modal-content {
-    transform: translateY(0) scale(1);
+  .hero-item {
     opacity: 1;
+    transform: none;
+    filter: none;
   }
+}
 
-  .input-field {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    color: var(--fg);
-    transition: all 0.2s ease;
-  }
-  .input-field:focus {
-    outline: none;
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px var(--accent-soft);
-  }
-
-  .select-field {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    color: var(--fg);
-    transition: all 0.2s ease;
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2371717a' viewBox='0 0 16 16'%3E%3Cpath d='M4.427 6.427l3.396 3.396a.25.25 0 00.354 0l3.396-3.396A.25.25 0 0011.396 6H4.604a.25.25 0 00-.177.427z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    padding-right: 36px;
-  }
-  .select-field:focus {
-    outline: none;
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px var(--accent-soft);
-  }
-
-  .icon-label {
-    color: var(--fg-secondary);
-    transition: color 0.3s ease;
-  }
-
-  .divider {
-    border-color: var(--border);
-    transition: border-color 0.3s ease;
-  }
-
-  .theme-toggle {
-    color: var(--fg-secondary);
-    transition: color 0.2s ease;
-    cursor: pointer;
-  }
-  .theme-toggle:hover { color: var(--fg); }
-
-  @keyframes badgePulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.3); }
-    100% { transform: scale(1); }
-  }
-
-  @keyframes successPop {
-    0% { transform: scale(0); opacity: 0; }
-    50% { transform: scale(1.15); }
-    100% { transform: scale(1); opacity: 1; }
-  }
-  .success-anim { animation: successPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .fade-up {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  .fade-up.visible {
-    animation: fadeUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  }
-
-  @keyframes gradientShift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-  }
-
-  .hero-gradient {
-    background: linear-gradient(135deg, var(--accent-soft) 0%, transparent 50%);
-    transition: background 0.3s ease;
-  }
-
-  .nav-link {
-    color: var(--fg-secondary);
-    transition: color 0.2s ease;
-    position: relative;
-  }
-  .nav-link:hover { color: var(--fg); }
-  .nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 1.5px;
-    background: var(--accent);
-    transition: width 0.2s ease;
-  }
-  .nav-link:hover::after { width: 100%; }
-
-  .icon-box {
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    background: var(--accent-soft);
-    transition: all 0.3s ease;
-  }
-
-  .empty-state {
-    color: var(--fg-secondary);
-  }
-
-  .scroll-smooth { scroll-behavior: smooth; }
-
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-  ::-webkit-scrollbar-thumb:hover { background: var(--fg-secondary); }
+/* --- Typography helpers --- */
+h1, h2, h3 { text-wrap: balance; }
+p, li, label, figcaption { text-wrap: pretty; }
 </style>
 </head>
 
-<body class="scroll-smooth">
+<body>
 
-<!-- Header -->
-<header class="header-blur fixed top-0 left-0 right-0 z-50">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-    <!-- Logo -->
-    <a href="#" class="flex items-center gap-2.5 group" onclick="scrollToTop(event)">
-      <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: var(--accent);">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+<a href="#main" class="skip-link">Перейти до вмісту</a>
+
+<!-- ─── Header ─── -->
+<header class="header fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-[1120px] mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+    <a href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'})" class="flex items-center gap-2.5">
+      <div class="w-7 h-7 rounded-[6px] flex items-center justify-center" style="background:var(--accent)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <polygon points="12 2 2 7 12 12 22 7 12 2"/>
           <polyline points="2 17 12 22 22 17"/>
           <polyline points="2 12 12 17 22 12"/>
         </svg>
       </div>
-      <span class="font-bold text-base tracking-tight" style="color: var(--fg);">STEM Lab</span>
+      <span style="font-weight:600;font-size:15px;color:var(--fg);letter-spacing:-0.01em">STEM Lab</span>
     </a>
 
-    <!-- Nav Desktop -->
-    <nav class="hidden md:flex items-center gap-8">
-      <a href="#courses" class="nav-link text-sm font-medium">Напрямки</a>
-      <a href="#about" class="nav-link text-sm font-medium">Про лабораторію</a>
-      <a href="#contacts" class="nav-link text-sm font-medium">Контакти</a>
+    <nav class="hidden md:flex items-center gap-8" aria-label="Основна навігація">
+      <a href="#courses" class="nav-link">Напрямки</a>
+      <a href="#about" class="nav-link">Про лабораторію</a>
+      <a href="#contacts" class="nav-link">Контакти</a>
     </nav>
 
-    <!-- Right controls -->
-    <div class="flex items-center gap-3">
-      <!-- Theme toggle -->
-      <button class="theme-toggle p-2 rounded-lg" onclick="toggleTheme()" aria-label="Перемикач теми" title="Змінити тему">
-        <svg id="themeIconLight" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="5"/>
-          <line x1="12" y1="1" x2="12" y2="3"/>
-          <line x1="12" y1="21" x2="12" y2="23"/>
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-          <line x1="1" y1="12" x2="3" y2="12"/>
-          <line x1="21" y1="12" x2="23" y2="12"/>
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+    <div class="flex items-center gap-2">
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Змінити тему">
+        <svg class="theme-toggle__icon" id="iconSun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
         </svg>
-        <svg id="themeIconDark" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+        <svg class="theme-toggle__icon" id="iconMoon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
         </svg>
       </button>
 
-      <!-- Cabinet badge -->
-      <button class="badge px-3 py-1.5 rounded-full text-sm font-medium flex items-center gap-2" onclick="openCabinet()">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-          <circle cx="12" cy="7" r="4"/>
-        </svg>
+      <button class="cabinet-badge" onclick="openCabinet()" aria-label="Мій кабінет">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         <span class="hidden sm:inline">Мій кабінет</span>
         <span class="badge-count" id="cabinetCount">0</span>
       </button>
 
-      <!-- Mobile menu toggle -->
-      <button class="md:hidden theme-toggle p-2 rounded-lg" onclick="toggleMobileMenu()" aria-label="Меню">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="3" y1="6" x2="21" y2="6"/>
-          <line x1="3" y1="12" x2="21" y2="12"/>
-          <line x1="3" y1="18" x2="21" y2="18"/>
-        </svg>
+      <button class="theme-toggle md:hidden" onclick="toggleMobileMenu()" aria-label="Меню">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
     </div>
   </div>
-
-  <!-- Mobile menu -->
-  <div id="mobileMenu" class="md:hidden overflow-hidden transition-all duration-300" style="max-height:0;opacity:0;">
-    <nav class="px-4 pb-4 flex flex-col gap-3">
-      <a href="#courses" class="nav-link text-sm font-medium py-2" onclick="closeMobileMenu()">Напрямки</a>
-      <a href="#about" class="nav-link text-sm font-medium py-2" onclick="closeMobileMenu()">Про лабораторію</a>
-      <a href="#contacts" class="nav-link text-sm font-medium py-2" onclick="closeMobileMenu()">Контакти</a>
+  <div id="mobileMenu" class="md:hidden overflow-hidden" style="max-height:0;opacity:0;transition:max-height 250ms var(--ease-out),opacity 250ms var(--ease-out)">
+    <nav class="px-4 pb-4 flex flex-col gap-1" aria-label="Мобільна навігація">
+      <a href="#courses" class="nav-link py-2" onclick="closeMobileMenu()">Напрямки</a>
+      <a href="#about" class="nav-link py-2" onclick="closeMobileMenu()">Про лабораторію</a>
+      <a href="#contacts" class="nav-link py-2" onclick="closeMobileMenu()">Контакти</a>
     </nav>
   </div>
 </header>
 
-<!-- Hero -->
-<section class="hero-gradient pt-32 pb-20 sm:pt-40 sm:pb-28 px-4 sm:px-6">
-  <div class="max-w-6xl mx-auto">
-    <div class="max-w-2xl">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-6" style="background: var(--accent-soft); color: var(--accent);">
-        <span class="w-1.5 h-1.5 rounded-full" style="background: var(--accent);"></span>
-        Набір 2026/2027
+<!-- ─── Main ─── -->
+<main id="main">
+
+<!-- ─── Hero ─── -->
+<section style="padding:128px 0 96px;background:radial-gradient(ellipse 60% 50% at 10% 20%,var(--accent-soft),transparent 70%);transition:background var(--dur-slow) var(--ease-default)">
+  <div class="max-w-[1120px] mx-auto px-4 sm:px-6">
+    <div style="max-width:560px">
+      <div class="hero-item" style="margin-bottom:24px">
+        <span style="display:inline-flex;align-items:center;gap:8px;padding:4px 14px;border-radius:9999px;font-size:13px;font-weight:500;background:var(--accent-soft);color:var(--accent)">
+          <span style="width:6px;height:6px;border-radius:50%;background:var(--accent)"></span>
+          Набір 2026–2027
+        </span>
       </div>
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] mb-6" style="color: var(--fg);">
-        Технології, що<br>формують майбутнє
+      <h1 class="hero-item" style="font-size:clamp(36px,5vw,56px);font-weight:700;line-height:1.05;letter-spacing:-0.03em;color:var(--fg);margin-bottom:24px">
+        Технології, що формують майбутнє
       </h1>
-      <p class="text-lg sm:text-xl leading-relaxed mb-8 max-w-lg" style="color: var(--fg-secondary);">
+      <p class="hero-item" style="font-size:18px;line-height:1.6;color:var(--fg-muted);max-width:480px;margin-bottom:32px">
         Шкільна STEM-лабораторія — простір, де ідеї стають прототипами, а код перетворюється на реальні рішення.
       </p>
-      <div class="flex flex-wrap gap-3">
-        <a href="#courses" class="btn-primary px-6 py-3 rounded-xl text-sm font-semibold inline-flex items-center gap-2">
-          Обрати напрямок
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"/>
-            <polyline points="12 5 19 12 12 19"/>
-          </svg>
-        </a>
-        <a href="#about" class="btn-secondary px-6 py-3 rounded-xl text-sm font-semibold">
-          Дізнатися більше
-        </a>
+      <div class="hero-item" style="display:flex;flex-wrap:wrap;gap:12px">
+        <a href="#courses" class="btn btn-primary">Обрати напрямок</a>
+        <a href="#about" class="btn btn-ghost">Дізнатися більше</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Courses -->
-<section id="courses" class="py-20 sm:py-28 px-4 sm:px-6">
-  <div class="max-w-6xl mx-auto">
-    <div class="mb-12 fade-up">
-      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mb-4" style="color: var(--fg);">Напрямки</h2>
-      <p class="text-base max-w-md" style="color: var(--fg-secondary);">Оберіть напрямок, який відповідає вашим інтересам та амбіціям.</p>
+<!-- ─── Courses ─── -->
+<section id="courses" style="padding:96px 0">
+  <div class="max-w-[1120px] mx-auto px-4 sm:px-6">
+    <div style="margin-bottom:48px">
+      <h2 style="font-size:clamp(28px,4vw,36px);font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:var(--fg);margin-bottom:12px">Напрямки</h2>
+      <p style="font-size:16px;color:var(--fg-muted);max-width:480px">Оберіть напрямок, який відповідає вашим інтересам.</p>
     </div>
-    <div class="grid sm:grid-cols-2 gap-5" id="coursesGrid">
-      <!-- Cards rendered by JS -->
-    </div>
+    <div class="grid sm:grid-cols-2 gap-5" id="coursesGrid"></div>
   </div>
 </section>
 
-<!-- About -->
-<section id="about" class="py-20 sm:py-28 px-4 sm:px-6" style="background: var(--bg-muted); transition: background 0.3s ease;">
-  <div class="max-w-6xl mx-auto">
-    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-      <div class="fade-up">
-        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mb-6" style="color: var(--fg);">Про лабораторію</h2>
-        <p class="text-base leading-relaxed mb-4" style="color: var(--fg-secondary);">
-          STEM Lab — це сучасний освітній простір, створений для учнів, які прагнуть вийти за межі шкільної програми. Тут поєднуються наука, технології, інженерія та математика в реальних проєктах.
+<!-- ─── About ─── -->
+<section id="about" style="padding:96px 0;background:var(--bg-muted);transition:background-color var(--dur-slow) var(--ease-default)">
+  <div class="max-w-[1120px] mx-auto px-4 sm:px-6">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+      <div>
+        <h2 style="font-size:clamp(28px,4vw,36px);font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:var(--fg);margin-bottom:24px">Про лабораторію</h2>
+        <p style="font-size:16px;line-height:1.6;color:var(--fg-muted);margin-bottom:16px;max-width:60ch">
+          STEM Lab — сучасний освітній простір для учнів, які прагнуть вийти за межі шкільної програми. Тут наука, технології, інженерія та математика поєднуються в реальних проєктах.
         </p>
-        <p class="text-base leading-relaxed" style="color: var(--fg-secondary);">
-          Наші програми розроблені спільно з практикуючими інженерами та науковцями, щоб забезпечити релевантні знання та навички для подальшого навчання та кар'єри.
+        <p style="font-size:16px;line-height:1.6;color:var(--fg-muted);max-width:60ch">
+          Програми розроблені спільно з практикуючими інженерами та науковцями — релевантні знання для подальшого навчання та кар'єри.
         </p>
       </div>
-      <div class="grid grid-cols-2 gap-4 fade-up">
-        <div class="card rounded-2xl p-6">
-          <div class="text-3xl font-bold mb-1" style="color: var(--accent);">4</div>
-          <div class="text-sm" style="color: var(--fg-secondary);">Напрямки навчання</div>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="surface" style="padding:24px">
+          <div style="font-size:32px;font-weight:700;color:var(--accent);line-height:1;margin-bottom:4px;font-variant-numeric:tabular-nums">4</div>
+          <div style="font-size:14px;color:var(--fg-muted)">Напрямки навчання</div>
         </div>
-        <div class="card rounded-2xl p-6">
-          <div class="text-3xl font-bold mb-1" style="color: var(--accent);">12+</div>
-          <div class="text-sm" style="color: var(--fg-secondary);">Реальних проєктів</div>
+        <div class="surface" style="padding:24px">
+          <div style="font-size:32px;font-weight:700;color:var(--accent);line-height:1;margin-bottom:4px;font-variant-numeric:tabular-nums">12+</div>
+          <div style="font-size:14px;color:var(--fg-muted)">Реальних проєктів</div>
         </div>
-        <div class="card rounded-2xl p-6">
-          <div class="text-3xl font-bold mb-1" style="color: var(--accent);">96%</div>
-          <div class="text-sm" style="color: var(--fg-secondary);">Задоволених учнів</div>
+        <div class="surface" style="padding:24px">
+          <div style="font-size:32px;font-weight:700;color:var(--accent);line-height:1;margin-bottom:4px;font-variant-numeric:tabular-nums">96%</div>
+          <div style="font-size:14px;color:var(--fg-muted)">Задоволених учнів</div>
         </div>
-        <div class="card rounded-2xl p-6">
-          <div class="text-3xl font-bold mb-1" style="color: var(--accent);">5</div>
-          <div class="text-sm" style="color: var(--fg-secondary);">Менторів-практиків</div>
+        <div class="surface" style="padding:24px">
+          <div style="font-size:32px;font-weight:700;color:var(--accent);line-height:1;margin-bottom:4px;font-variant-numeric:tabular-nums">5</div>
+          <div style="font-size:14px;color:var(--fg-muted)">Менторів-практиків</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Contacts -->
-<section id="contacts" class="py-20 sm:py-28 px-4 sm:px-6">
-  <div class="max-w-6xl mx-auto">
-    <div class="max-w-lg fade-up">
-      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mb-6" style="color: var(--fg);">Контакти</h2>
-      <div class="space-y-4">
-        <div class="flex items-start gap-4">
-          <div class="icon-box flex-shrink-0">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-              <circle cx="12" cy="10" r="3"/>
-            </svg>
+<!-- ─── Contacts ─── -->
+<section id="contacts" style="padding:96px 0">
+  <div class="max-w-[1120px] mx-auto px-4 sm:px-6">
+    <div style="max-width:480px">
+      <h2 style="font-size:clamp(28px,4vw,36px);font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:var(--fg);margin-bottom:32px">Контакти</h2>
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div style="display:flex;align-items:flex-start;gap:16px">
+          <div class="icon-box">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
           <div>
-            <div class="font-semibold text-sm mb-0.5" style="color: var(--fg);">Адреса</div>
-            <div class="text-sm" style="color: var(--fg-secondary);">м. Київ, вул. Науки 12, каб. 301</div>
+            <div style="font-size:14px;font-weight:600;color:var(--fg);margin-bottom:2px">Адреса</div>
+            <div style="font-size:14px;color:var(--fg-muted)">м. Київ, вул. Науки 12, каб. 301</div>
           </div>
         </div>
-        <div class="flex items-start gap-4">
-          <div class="icon-box flex-shrink-0">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-              <polyline points="22,6 12,13 2,6"/>
-            </svg>
+        <div style="display:flex;align-items:flex-start;gap:16px">
+          <div class="icon-box">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           </div>
           <div>
-            <div class="font-semibold text-sm mb-0.5" style="color: var(--fg);">Email</div>
-            <div class="text-sm" style="color: var(--fg-secondary);">stemlab@liceum12.edu.ua</div>
+            <div style="font-size:14px;font-weight:600;color:var(--fg);margin-bottom:2px">Email</div>
+            <div style="font-size:14px;color:var(--fg-muted)">stemlab@liceum12.edu.ua</div>
           </div>
         </div>
-        <div class="flex items-start gap-4">
-          <div class="icon-box flex-shrink-0">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-            </svg>
+        <div style="display:flex;align-items:flex-start;gap:16px">
+          <div class="icon-box">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.18.91.45 1.8.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c1.01.25 1.9.52 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           </div>
           <div>
-            <div class="font-semibold text-sm mb-0.5" style="color: var(--fg);">Телефон</div>
-            <div class="text-sm" style="color: var(--fg-secondary);">+380 (44) 123-45-67</div>
+            <div style="font-size:14px;font-weight:600;color:var(--fg);margin-bottom:2px">Телефон</div>
+            <div style="font-size:14px;color:var(--fg-muted)">+380 (44) 123-45-67</div>
           </div>
         </div>
       </div>
@@ -496,48 +608,42 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- Footer -->
-<footer class="py-8 px-4 sm:px-6" style="border-top: 1px solid var(--border); transition: border-color 0.3s ease;">
-  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+</main>
+
+<!-- ─── Footer ─── -->
+<footer style="padding:32px 0;box-shadow:inset 0 1px 0 0 color-mix(in srgb,var(--fg) 8%,transparent);transition:box-shadow var(--dur-slow)">
+  <div class="max-w-[1120px] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
     <div class="flex items-center gap-2">
-      <div class="w-6 h-6 rounded-md flex items-center justify-center" style="background: var(--accent);">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-          <polyline points="2 17 12 22 22 17"/>
-          <polyline points="2 12 12 17 22 12"/>
-        </svg>
+      <div style="width:20px;height:20px;border-radius:4px;display:flex;align-items:center;justify-content:center;background:var(--accent)">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
       </div>
-      <span class="font-semibold text-sm" style="color: var(--fg);">STEM Lab</span>
+      <span style="font-weight:600;font-size:13px;color:var(--fg)">STEM Lab</span>
     </div>
-    <p class="text-xs" style="color: var(--fg-secondary);">© 2026 STEM Lab · Ліцей №12. Усі права захищені.</p>
+    <p style="font-size:12px;color:var(--fg-subtle)">© 2026 STEM Lab · Ліцей №12</p>
   </div>
 </footer>
 
-<!-- Registration Modal -->
-<div id="regModal" class="modal-overlay fixed inset-0 z-[60] flex items-center justify-center p-4">
-  <div class="modal-content w-full max-w-md rounded-2xl p-6 sm:p-8" style="background: var(--card-bg); border: 1px solid var(--border); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.2);">
-    <!-- Form state -->
-    <div id="regForm">
-      <div class="flex items-center justify-between mb-6">
+<!-- ─── Registration Modal ─── -->
+<div id="regModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="regTitle">
+  <div class="modal-panel">
+    <div id="regFormView">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:24px">
         <div>
-          <h3 class="text-lg font-bold" style="color: var(--fg);">Реєстрація</h3>
-          <p class="text-sm mt-0.5" style="color: var(--fg-secondary);" id="regCourseName"></p>
+          <h3 id="regTitle" style="font-size:20px;font-weight:600;color:var(--fg);line-height:1.3">Реєстрація</h3>
+          <p style="font-size:14px;color:var(--fg-muted);margin-top:4px" id="regCourseName"></p>
         </div>
-        <button onclick="closeRegModal()" class="theme-toggle p-2 rounded-lg" aria-label="Закрити">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18"/>
-            <line x1="6" y1="6" x2="18" y2="18"/>
-          </svg>
+        <button class="modal-close" onclick="closeRegModal()" aria-label="Закрити">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </button>
       </div>
-      <div class="space-y-4">
+      <div style="display:flex;flex-direction:column;gap:12px">
         <div>
-          <label class="block text-xs font-medium mb-1.5" style="color: var(--fg-secondary);">Прізвище, ім'я, по батькові</label>
-          <input type="text" id="regName" class="input-field w-full px-4 py-2.5 rounded-xl text-sm" placeholder="Шевченко Тарас Григорович">
+          <label style="display:block;font-size:12px;font-weight:500;color:var(--fg-muted);margin-bottom:6px">Прізвище, ім'я, по батькові</label>
+          <input type="text" id="regName" class="field" placeholder="Шевченко Тарас Григорович">
         </div>
         <div>
-          <label class="block text-xs font-medium mb-1.5" style="color: var(--fg-secondary);">Клас</label>
-          <select id="regClass" class="select-field w-full px-4 py-2.5 rounded-xl text-sm">
+          <label style="display:block;font-size:12px;font-weight:500;color:var(--fg-muted);margin-bottom:6px">Клас</label>
+          <select id="regClass" class="field">
             <option value="" disabled selected>Оберіть клас</option>
             <option value="7">7 клас</option>
             <option value="8">8 клас</option>
@@ -547,39 +653,31 @@ tailwind.config = {
           </select>
         </div>
         <div>
-          <label class="block text-xs font-medium mb-1.5" style="color: var(--fg-secondary);">Telegram або телефон</label>
-          <input type="text" id="regContact" class="input-field w-full px-4 py-2.5 rounded-xl text-sm" placeholder="@username або +380...">
+          <label style="display:block;font-size:12px;font-weight:500;color:var(--fg-muted);margin-bottom:6px">Telegram або телефон</label>
+          <input type="text" id="regContact" class="field" placeholder="@username або +380...">
         </div>
-        <p id="regError" class="text-xs font-medium hidden" style="color: #ef4444;"></p>
-        <button onclick="submitRegistration()" class="btn-primary w-full py-3 rounded-xl text-sm font-semibold mt-2">
-          Зареєструватися
-        </button>
+        <p id="regError" style="font-size:12px;font-weight:500;color:var(--error);display:none"></p>
+        <button onclick="submitRegistration()" class="btn btn-primary" style="width:100%;margin-top:4px">Зареєструватися</button>
       </div>
     </div>
-    <!-- Success state -->
-    <div id="regSuccess" class="hidden text-center py-6">
-      <div class="success-anim inline-flex items-center justify-center w-16 h-16 rounded-full mb-4" style="background: var(--success-soft);">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="20 6 9 17 4 12"/>
-        </svg>
+    <div id="regSuccessView" style="display:none;text-align:center;padding:24px 0">
+      <div class="success-check" style="display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;background:var(--success-soft);margin-bottom:16px">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
       </div>
-      <h3 class="text-lg font-bold mb-1" style="color: var(--fg);">Успішно!</h3>
-      <p class="text-sm mb-6" style="color: var(--fg-secondary);">Вас зареєстровано. Очікуйте на підтвердження.</p>
-      <button onclick="closeRegModal()" class="btn-secondary px-6 py-2.5 rounded-xl text-sm font-semibold">Закрити</button>
+      <h3 style="font-size:20px;font-weight:600;color:var(--fg);margin-bottom:4px">Готово</h3>
+      <p style="font-size:14px;color:var(--fg-muted);margin-bottom:24px">Вас зареєстровано. Очікуйте на підтвердження.</p>
+      <button onclick="closeRegModal()" class="btn btn-ghost">Закрити</button>
     </div>
   </div>
 </div>
 
-<!-- Cabinet Modal -->
-<div id="cabinetModal" class="modal-overlay fixed inset-0 z-[60] flex items-center justify-center p-4">
-  <div class="modal-content w-full max-w-md rounded-2xl p-6 sm:p-8" style="background: var(--card-bg); border: 1px solid var(--border); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.2);">
-    <div class="flex items-center justify-between mb-6">
-      <h3 class="text-lg font-bold" style="color: var(--fg);">Мій кабінет</h3>
-      <button onclick="closeCabinet()" class="theme-toggle p-2 rounded-lg" aria-label="Закрити">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18"/>
-          <line x1="6" y1="6" x2="18" y2="18"/>
-        </svg>
+<!-- ─── Cabinet Modal ─── -->
+<div id="cabinetModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="cabinetTitle">
+  <div class="modal-panel">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px">
+      <h3 id="cabinetTitle" style="font-size:20px;font-weight:600;color:var(--fg)">Мій кабінет</h3>
+      <button class="modal-close" onclick="closeCabinet()" aria-label="Закрити">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
     <div id="cabinetContent"></div>
@@ -592,55 +690,50 @@ const COURSES = [
     id: 'robotics',
     title: 'Робототехніка та мехатроніка',
     desc: 'Проєктування, збірка та програмування роботів. Arduino, сервоприводи, датчики та змагання.',
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="3"/><line x1="12" y1="8" x2="12" y2="11"/><line x1="8" y1="16" x2="8" y2="16.01"/><line x1="16" y1="16" x2="16" y2="16.01"/></svg>`,
+    icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="3"/><line x1="12" y1="8" x2="12" y2="11"/><line x1="8" y1="16" x2="8" y2="16.01"/><line x1="16" y1="16" x2="16" y2="16.01"/></svg>',
     tags: ['Arduino', 'C++', 'Механіка']
   },
   {
     id: '3d',
     title: '3D-прототипування та моделювання',
     desc: 'Від ескізу до фізичного об\'єкта: CAD-моделювання, слайсинг, 3D-друк та постобробка.',
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>`,
+    icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>',
     tags: ['CAD', 'FDM', 'Дизайн']
   },
   {
     id: 'python',
-    title: 'Прикладний Python & Алгоритми',
+    title: 'Прикладний Python та алгоритми',
     desc: 'Основи програмування, алгоритмічне мислення, робота з даними та створення реальних застосунків.',
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>`,
+    icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>',
     tags: ['Python', 'Алгоритми', 'Дані']
   },
   {
     id: 'iot',
     title: 'IoT та розумні системи',
-    desc: 'Інтернет речей: підключені пристрої, збір даних, хмарні сервіси та автоматизація.',
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5.12 19a7 7 0 0 1 0-14"/><path d="M18.88 5a7 7 0 0 1 0 14"/><path d="M8.46 16.54a4 4 0 0 1 0-9.08"/><path d="M15.54 7.46a4 4 0 0 1 0 9.08"/><circle cx="12" cy="12" r="1"/></svg>`,
+    desc: 'Інтернет речей: підключені пристрої, збір даних, хмарні сервіси та автоматизація процесів.',
+    icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5.12 19a7 7 0 0 1 0-14"/><path d="M18.88 5a7 7 0 0 1 0 14"/><path d="M8.46 16.54a4 4 0 0 1 0-9.08"/><path d="M15.54 7.46a4 4 0 0 1 0 9.08"/><circle cx="12" cy="12" r="1"/></svg>',
     tags: ['ESP32', 'MQTT', 'Хмара']
   }
 ];
 
 const STORAGE_KEY = 'stemlab_registrations';
 const THEME_KEY = 'stemlab_theme';
-
 let currentCourseId = null;
 
 function getRegistrations() {
-  try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-  } catch { return []; }
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
+  catch { return []; }
 }
-
-function saveRegistrations(regs) {
-  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(regs)); } catch {}
+function saveRegistrations(r) {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(r)); } catch {}
 }
-
-function isEnrolled(courseId) {
-  return getRegistrations().some(r => r.courseId === courseId);
+function isEnrolled(id) {
+  return getRegistrations().some(r => r.courseId === id);
 }
 
 function updateBadgeCount() {
-  const count = getRegistrations().length;
   const el = document.getElementById('cabinetCount');
-  el.textContent = count;
+  el.textContent = getRegistrations().length;
   el.classList.remove('pulse');
   void el.offsetWidth;
   el.classList.add('pulse');
@@ -648,32 +741,25 @@ function updateBadgeCount() {
 
 function renderCourses() {
   const grid = document.getElementById('coursesGrid');
-  grid.innerHTML = COURSES.map((c, i) => {
+  grid.innerHTML = COURSES.map(c => {
     const enrolled = isEnrolled(c.id);
     return `
-      <div class="card rounded-2xl p-6 cursor-pointer fade-up" style="animation-delay:${i * 80}ms" onclick="${enrolled ? '' : `openRegModal('${c.id}')`}">
-        <div class="flex items-start justify-between mb-4">
+      <div class="surface surface-interactive" style="padding:24px" ${enrolled ? '' : `onclick="openRegModal('${c.id}')"`} ${enrolled ? 'style="padding:24px;cursor:default"' : ''}>
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px">
           <div class="icon-box">${c.icon}</div>
-          ${enrolled ? `<span class="tag-enrolled text-xs font-medium px-2.5 py-1 rounded-full">Записано</span>` : ''}
+          ${enrolled ? '<span class="tag-status">Записано</span>' : ''}
         </div>
-        <h3 class="font-bold text-base mb-2" style="color: var(--fg);">${c.title}</h3>
-        <p class="text-sm leading-relaxed mb-4" style="color: var(--fg-secondary);">${c.desc}</p>
-        <div class="flex flex-wrap gap-1.5">
-          ${c.tags.map(t => `<span class="text-xs px-2 py-0.5 rounded-md font-medium" style="background: var(--bg-muted); color: var(--fg-secondary); border: 1px solid var(--border);">${t}</span>`).join('')}
+        <h3 style="font-size:18px;font-weight:600;color:var(--fg);line-height:1.3;margin-bottom:8px;letter-spacing:-0.01em">${c.title}</h3>
+        <p style="font-size:14px;line-height:1.55;color:var(--fg-muted);margin-bottom:16px">${c.desc}</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          ${c.tags.map(t => `<span class="tag">${t}</span>`).join('')}
         </div>
-        ${!enrolled ? `<div class="mt-4 pt-4" style="border-top: 1px solid var(--border);">
-          <span class="text-sm font-medium flex items-center gap-1.5" style="color: var(--accent);">
-            Записатися
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </span>
+        ${!enrolled ? `
+        <div style="margin-top:16px;padding-top:16px;box-shadow:inset 0 1px 0 0 color-mix(in srgb,var(--fg) 6%,transparent)">
+          <span style="font-size:14px;font-weight:500;color:var(--accent)">Записатися</span>
         </div>` : ''}
-      </div>
-    `;
+      </div>`;
   }).join('');
-
-  requestAnimationFrame(() => {
-    grid.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
-  });
 }
 
 function openRegModal(courseId) {
@@ -681,14 +767,17 @@ function openRegModal(courseId) {
   currentCourseId = courseId;
   const course = COURSES.find(c => c.id === courseId);
   document.getElementById('regCourseName').textContent = course.title;
-  document.getElementById('regForm').classList.remove('hidden');
-  document.getElementById('regSuccess').classList.add('hidden');
+  document.getElementById('regFormView').style.display = '';
+  document.getElementById('regSuccessView').style.display = 'none';
   document.getElementById('regName').value = '';
   document.getElementById('regClass').value = '';
   document.getElementById('regContact').value = '';
-  document.getElementById('regError').classList.add('hidden');
+  const err = document.getElementById('regError');
+  err.style.display = 'none';
+  err.textContent = '';
   document.getElementById('regModal').classList.add('active');
   document.body.style.overflow = 'hidden';
+  setTimeout(() => document.getElementById('regName').focus(), 260);
 }
 
 function closeRegModal() {
@@ -701,78 +790,59 @@ function submitRegistration() {
   const name = document.getElementById('regName').value.trim();
   const cls = document.getElementById('regClass').value;
   const contact = document.getElementById('regContact').value.trim();
-  const errEl = document.getElementById('regError');
+  const err = document.getElementById('regError');
 
   if (!name || !cls || !contact) {
-    errEl.textContent = 'Будь ласка, заповніть усі поля.';
-    errEl.classList.remove('hidden');
+    err.textContent = 'Заповніть усі поля.';
+    err.style.display = '';
     return;
   }
-
   if (isEnrolled(currentCourseId)) {
-    errEl.textContent = 'Ви вже зареєстровані на цей напрямок.';
-    errEl.classList.remove('hidden');
+    err.textContent = 'Ви вже записані на цей напрямок.';
+    err.style.display = '';
     return;
   }
 
   const regs = getRegistrations();
-  regs.push({
-    courseId: currentCourseId,
-    name,
-    class: cls,
-    contact,
-    timestamp: Date.now()
-  });
+  regs.push({ courseId: currentCourseId, name, class: cls, contact, timestamp: Date.now() });
   saveRegistrations(regs);
 
-  document.getElementById('regForm').classList.add('hidden');
-  document.getElementById('regSuccess').classList.remove('hidden');
-
+  document.getElementById('regFormView').style.display = 'none';
+  document.getElementById('regSuccessView').style.display = '';
   updateBadgeCount();
   renderCourses();
 }
 
 function openCabinet() {
   const regs = getRegistrations();
-  const content = document.getElementById('cabinetContent');
+  const el = document.getElementById('cabinetContent');
 
-  if (regs.length === 0) {
-    content.innerHTML = `
-      <div class="empty-state text-center py-8">
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--border)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4">
-          <rect x="2" y="3" width="20" height="18" rx="2"/>
-          <line x1="8" y1="10" x2="16" y2="10"/>
-          <line x1="8" y1="14" x2="12" y2="14"/>
-        </svg>
-        <p class="font-semibold text-sm mb-1" style="color: var(--fg);">Поки що пусто</p>
-        <p class="text-sm" style="color: var(--fg-secondary);">Оберіть напрямок, щоб розпочати навчання.</p>
-      </div>
-    `;
+  if (!regs.length) {
+    el.innerHTML = `
+      <div style="text-align:center;padding:32px 0">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--fg-subtle)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 16px"><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
+        <p style="font-size:14px;font-weight:600;color:var(--fg);margin-bottom:4px">Поки що пусто</p>
+        <p style="font-size:14px;color:var(--fg-muted)">Оберіть напрямок, щоб розпочати.</p>
+      </div>`;
   } else {
-    content.innerHTML = `
-      <div class="space-y-3">
+    el.innerHTML = `
+      <div style="display:flex;flex-direction:column;gap:8px">
         ${regs.map(r => {
-          const course = COURSES.find(c => c.id === r.courseId);
+          const c = COURSES.find(x => x.id === r.courseId);
           return `
-            <div class="flex items-center justify-between p-4 rounded-xl" style="background: var(--bg-muted); border: 1px solid var(--border);">
-              <div class="flex-1 min-w-0 mr-3">
-                <div class="font-semibold text-sm truncate" style="color: var(--fg);">${course ? course.title : r.courseId}</div>
-                <div class="text-xs mt-0.5" style="color: var(--fg-secondary);">${r.name} · ${r.class} клас</div>
-              </div>
-              <button onclick="cancelRegistration('${r.courseId}')" class="flex-shrink-0 p-2 rounded-lg transition-colors" style="color: var(--fg-secondary);" onmouseenter="this.style.color='#ef4444'" onmouseleave="this.style.color='var(--fg-secondary)'" aria-label="Скасувати">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="3 6 5 6 21 6"/>
-                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
-                </svg>
-              </button>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:16px;border-radius:var(--radius-md);background:var(--bg-muted)">
+            <div style="flex:1;min-width:0;margin-right:12px">
+              <div style="font-size:14px;font-weight:600;color:var(--fg);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${c ? c.title : r.courseId}</div>
+              <div style="font-size:12px;color:var(--fg-muted);margin-top:2px">${r.name}, ${r.class} клас</div>
             </div>
-          `;
+            <button onclick="cancelRegistration('${r.courseId}')" class="modal-close" style="flex-shrink:0;color:var(--fg-subtle)" onmouseenter="this.style.color='var(--error)'" onmouseleave="this.style.color='var(--fg-subtle)'" aria-label="Скасувати запис">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+            </button>
+          </div>`;
         }).join('')}
       </div>
-      <p class="text-xs mt-4 text-center" style="color: var(--fg-secondary);">Записів: ${regs.length}</p>
-    `;
+      <p style="font-size:12px;color:var(--fg-subtle);text-align:center;margin-top:16px;font-variant-numeric:tabular-nums">Записів: ${regs.length}</p>`;
   }
-
   document.getElementById('cabinetModal').classList.add('active');
   document.body.style.overflow = 'hidden';
 }
@@ -783,88 +853,69 @@ function closeCabinet() {
 }
 
 function cancelRegistration(courseId) {
-  let regs = getRegistrations();
-  regs = regs.filter(r => r.courseId !== courseId);
-  saveRegistrations(regs);
+  saveRegistrations(getRegistrations().filter(r => r.courseId !== courseId));
   updateBadgeCount();
   renderCourses();
   openCabinet();
 }
 
-// Theme
+// ── Theme: cross-fade toggle ──
 function applyTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
-  document.getElementById('themeIconLight').style.display = theme === 'light' ? 'block' : 'none';
-  document.getElementById('themeIconDark').style.display = theme === 'dark' ? 'block' : 'none';
+  const sun = document.getElementById('iconSun');
+  const moon = document.getElementById('iconMoon');
+  if (theme === 'dark') {
+    sun.classList.replace('theme-toggle__icon--visible', 'theme-toggle__icon--hidden');
+    moon.classList.replace('theme-toggle__icon--hidden', 'theme-toggle__icon--visible');
+  } else {
+    sun.classList.replace('theme-toggle__icon--hidden', 'theme-toggle__icon--visible');
+    moon.classList.replace('theme-toggle__icon--visible', 'theme-toggle__icon--hidden');
+  }
 }
-
 function toggleTheme() {
-  const current = document.documentElement.getAttribute('data-theme');
-  const next = current === 'dark' ? 'light' : 'dark';
+  const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
   applyTheme(next);
   try { localStorage.setItem(THEME_KEY, next); } catch {}
 }
-
 function initTheme() {
   let theme = 'light';
-  try { theme = localStorage.getItem(THEME_KEY) || 'light'; } catch {}
-  applyTheme(theme);
+  try {
+    const stored = localStorage.getItem(THEME_KEY);
+    if (stored) { theme = stored; }
+    else if (window.matchMedia('(prefers-color-scheme:dark)').matches) { theme = 'dark'; }
+  } catch {}
+  // Set initial classes without transition
+  const sun = document.getElementById('iconSun');
+  const moon = document.getElementById('iconMoon');
+  sun.classList.add(theme === 'light' ? 'theme-toggle__icon--visible' : 'theme-toggle__icon--hidden');
+  moon.classList.add(theme === 'dark' ? 'theme-toggle__icon--visible' : 'theme-toggle__icon--hidden');
+  document.documentElement.setAttribute('data-theme', theme);
 }
 
-// Mobile menu
+// ── Mobile menu ──
 function toggleMobileMenu() {
-  const menu = document.getElementById('mobileMenu');
-  if (menu.style.maxHeight === '0px' || !menu.style.maxHeight) {
-    menu.style.maxHeight = '200px';
-    menu.style.opacity = '1';
-  } else {
-    closeMobileMenu();
-  }
+  const m = document.getElementById('mobileMenu');
+  const open = m.style.maxHeight === '0px' || !m.style.maxHeight;
+  m.style.maxHeight = open ? '200px' : '0px';
+  m.style.opacity = open ? '1' : '0';
 }
-
 function closeMobileMenu() {
-  const menu = document.getElementById('mobileMenu');
-  menu.style.maxHeight = '0px';
-  menu.style.opacity = '0';
+  const m = document.getElementById('mobileMenu');
+  m.style.maxHeight = '0px';
+  m.style.opacity = '0';
 }
 
-function scrollToTop(e) {
-  e.preventDefault();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-// Close modals on overlay click
-document.getElementById('regModal').addEventListener('click', function(e) {
-  if (e.target === this) closeRegModal();
-});
-document.getElementById('cabinetModal').addEventListener('click', function(e) {
-  if (e.target === this) closeCabinet();
+// ── Modal close handlers ──
+document.getElementById('regModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeRegModal(); });
+document.getElementById('cabinetModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeCabinet(); });
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeRegModal(); closeCabinet(); }
 });
 
-// Close modals on Escape
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    closeRegModal();
-    closeCabinet();
-  }
-});
-
-// Scroll animations
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-// Init
+// ── Init ──
 initTheme();
 renderCourses();
 updateBadgeCount();
 </script>
-
 </body>
 </html>
