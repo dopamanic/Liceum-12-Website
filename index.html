@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STEM-лабораторія — Ліцей №12, Житомир</title>
+<title>STEM-лабораторія – Ліцей №12, Житомир</title>
 <meta name="description" content="STEM-лабораторія Ліцею №12 м. Житомир: робототехніка, 3D-прототипування, програмування Python та IoT для учнів 7–11 класів. Безкоштовне навчання, власне обладнання.">
 <meta name="theme-color" content="#0A1413">
-<meta property="og:title" content="STEM-лабораторія — Ліцей №12, Житомир">
+<meta property="og:title" content="STEM-лабораторія – Ліцей №12, Житомир">
 <meta property="og:description" content="Робототехніка, 3D-друк, програмування та IoT для учнів 7–11 класів.">
 <meta property="og:type" content="website">
 
@@ -15,448 +15,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
 <script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = {
-  darkMode: 'class',
-  theme: {
-    extend: {
-      fontFamily: {
-        display: ['Manrope', 'system-ui', 'sans-serif'],
-        sans: ['"IBM Plex Sans"', 'system-ui', '-apple-system', 'sans-serif'],
-      },
-      colors: {
-        ink:    { DEFAULT: '#0A1413', 800: '#10201E', 700: '#16302C' },
-        night:  { DEFAULT: '#070F0E', 900: '#0C1716', 800: '#11201E' },
-        paper:  '#F3F6F0',
-        brand:  { DEFAULT: '#0F5F55', 700: '#0B4A42', 400: '#2F9183', 300: '#5FB8A8', 200: '#9ED9CE' },
-        signal: '#C6F24E',
-        fg:     { DEFAULT: '#101817', muted: '#4F605D' },
-        fgd:    { DEFAULT: '#F2F5F4', muted: '#9DADAA' },
-        line:   { DEFAULT: '#E4E2DC', dark: '#1C2B28' },
-      },
-      maxWidth: { shell: '1180px', prose: '64ch' },
-    },
-  },
-}
-</script>
-<script>
-// Set theme before first paint to avoid a flash.
-(function () {
-  try {
-    if (localStorage.getItem('stemlab_theme') === 'dark') document.documentElement.classList.add('dark');
-  } catch (e) {}
-})();
-</script>
+<script src="config.js"></script>
 
-<style>
-  *, *::before, *::after { box-sizing: border-box; }
-
-  html {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    scroll-behavior: smooth;
-    scroll-padding-top: 104px;
-  }
-
-  /* `html body` outranks Tailwind preflight, which sets body { line-height: inherit } */
-  html body {
-    margin: 0;
-    font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
-    font-size: 17px;
-    line-height: 1.65;
-    -webkit-text-size-adjust: 100%;
-  }
-
-  /* let native controls (select, scrollbars, date pickers) follow the theme */
-  .dark { color-scheme: dark; }
-
-  a { color: inherit; text-decoration: none; }
-  img, iframe { display: block; max-width: 100%; }
-  table { border-collapse: collapse; }
-
-  :focus-visible {
-    outline: 2px solid #0F5F55;
-    outline-offset: 3px;
-    border-radius: 4px;
-  }
-  .dark :focus-visible { outline-color: #5FB8A8; }
-
-  /* ---------- Type scale ---------- */
-  .t-hero {
-    font-family: 'Manrope', sans-serif;
-    font-weight: 800;
-    font-size: clamp(2.15rem, 5.2vw, 4.15rem);
-    line-height: 1;
-    letter-spacing: -0.038em;
-    text-wrap: balance;
-  }
-  .t-hero-sub {
-    font-family: 'Manrope', sans-serif;
-    font-weight: 500;
-    font-size: clamp(1.6rem, 3.2vw, 2.5rem);
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-  }
-  .t-h2 {
-    font-family: 'Manrope', sans-serif;
-    font-weight: 700;
-    font-size: clamp(1.75rem, 3.2vw, 2.6rem);
-    line-height: 1.1;
-    letter-spacing: -0.028em;
-    text-wrap: balance;
-  }
-  .t-h3 {
-    font-family: 'Manrope', sans-serif;
-    font-weight: 700;
-    font-size: 1.1875rem;
-    line-height: 1.3;
-    letter-spacing: -0.015em;
-  }
-  .t-num {
-    font-family: 'Manrope', sans-serif;
-    font-weight: 800;
-    font-size: clamp(1.85rem, 3vw, 2.35rem);
-    line-height: 1;
-    letter-spacing: -0.03em;
-    font-variant-numeric: tabular-nums;
-  }
-  .t-body { text-wrap: pretty; }
-  .nums { font-variant-numeric: tabular-nums; }
-
-  /* ---------- Header ---------- */
-  /* Solid at every scroll position; only the bottom rule appears once you move. */
-  .hdr {
-    background: #fff;
-    border-bottom: 1px solid transparent;
-    transition: border-color .25s ease, box-shadow .25s ease;
-  }
-  .hdr.solid {
-    border-bottom-color: #E4E2DC;
-    box-shadow: 0 1px 3px -1px rgba(16,24,23,.05);
-  }
-  .dark .hdr { background: #070F0E; }
-  .dark .hdr.solid { border-bottom-color: #1C2B28; box-shadow: none; }
-
-  .h-mark { color: #101817; }
-  .h-sub  { color: #4F605D; }
-  .h-link { color: #27332F; }
-  .h-link:hover { color: #0F5F55; }
-  .h-icon { color: #4F605D; }
-  .h-icon:hover { color: #101817; }
-
-  .dark .h-mark { color: #F2F5F4; }
-  .dark .h-sub  { color: #9DADAA; }
-  .dark .h-link { color: #D3DEDB; }
-  .dark .h-link:hover { color: #5FB8A8; }
-  .dark .h-icon { color: #9DADAA; }
-  .dark .h-icon:hover { color: #F2F5F4; }
-
-  /* current section */
-  .h-link[data-active="true"] { color: #0F5F55; }
-  .dark .h-link[data-active="true"] { color: #5FB8A8; }
-
-  /* ---------- Nav dropdown ---------- */
-  .menu-wrap { position: relative; }
-  .menu-pop {
-    position: absolute;
-    top: 100%;
-    left: -14px;
-    padding-top: 12px;              /* bridges the gap so the pointer can travel */
-    opacity: 0;
-    transform: translateY(-6px);
-    pointer-events: none;
-    transition: opacity .15s ease, transform .2s cubic-bezier(.2,0,0,1);
-  }
-  .menu-wrap.open .menu-pop { opacity: 1; transform: none; pointer-events: auto; }
-  /* hover-open lives in CSS so it can't fight the JS click toggle */
-  @media (hover: hover) and (pointer: fine) {
-    .menu-wrap:hover .menu-pop { opacity: 1; transform: none; pointer-events: auto; }
-    .menu-wrap:hover .chev { rotate: 180deg; }
-  }
-  .menu-card {
-    min-width: 272px;
-    padding: 7px;
-    background: #fff;
-    border: 1px solid #E4E2DC;
-    border-radius: 16px;
-    box-shadow: 0 16px 36px -14px rgba(16,24,23,.22), 0 2px 6px -2px rgba(16,24,23,.06);
-  }
-  .dark .menu-card { background: #0C1716; border-color: #1C2B28; box-shadow: 0 16px 36px -14px rgba(0,0,0,.6); }
-  .menu-item {
-    display: block;
-    padding: .5rem .7rem;
-    border-radius: 10px;
-    transition: background-color .15s ease;
-  }
-  .menu-item:hover { background: #F8F7F4; }
-  .dark .menu-item:hover { background: #11201E; }
-  .chev { transition: rotate .2s cubic-bezier(.2,0,0,1); }
-  .menu-wrap.open .chev { rotate: 180deg; }
-
-  /* ---------- Hero backdrop ---------- */
-  .hero-wash {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
-  }
-  .hero-wash::before {
-    content: '';
-    position: absolute;
-    left: -10%;
-    bottom: -40%;
-    width: 80%;
-    height: 110%;
-    background: radial-gradient(closest-side, rgba(15,95,85,.55), transparent 72%);
-  }
-  .hero-wash::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(to right, rgba(255,255,255,.028) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255,255,255,.028) 1px, transparent 1px);
-    background-size: 72px 72px;
-    mask-image: radial-gradient(ellipse 85% 70% at 60% 35%, #000 20%, transparent 80%);
-    -webkit-mask-image: radial-gradient(ellipse 85% 70% at 60% 35%, #000 20%, transparent 80%);
-  }
-
-  /* ---------- Photo frames + graceful fallback ---------- */
-  .ph {
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(142deg, #0B4A42, #12776A);
-  }
-  .ph > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .ph::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,.14);
-    border-radius: inherit;
-  }
-  /* harmonise stock photography with the palette */
-  .ph-tone > img {
-    filter: saturate(.82) contrast(1.04);
-  }
-  .ph-tone::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    background: linear-gradient(195deg, rgba(10,20,19,.08) 0%, rgba(15,95,85,.3) 100%);
-    mix-blend-mode: multiply;
-  }
-  .ph-fail {
-    background:
-      radial-gradient(circle at 1px 1px, rgba(255,255,255,.1) 1px, transparent 0) 0 0 / 18px 18px,
-      linear-gradient(142deg, #0B4A42, #12776A);
-  }
-  /* reads as a deliberate caption, not a broken image */
-  .ph-fail::before {
-    content: attr(data-label);
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-start;
-    padding: 1.25rem 1.375rem;
-    text-align: left;
-    font-size: .8125rem;
-    line-height: 1.45;
-    color: rgba(255,255,255,.7);
-    background: none;
-    mix-blend-mode: normal;
-  }
-  .ph-av.ph-fail::before {
-    font-family: 'Manrope', sans-serif;
-    font-weight: 800;
-    font-size: 1.125rem;
-    letter-spacing: .02em;
-    color: rgba(255,255,255,.9);
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-  }
-
-  /* ---------- Buttons ---------- */
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: .5rem;
-    font-family: 'Manrope', sans-serif;
-    font-weight: 700;
-    font-size: .9375rem;
-    letter-spacing: -.01em;
-    border-radius: 999px;
-    padding: .75rem 1.5rem;
-    transition-property: background-color, color, border-color, box-shadow, scale;
-    transition-duration: 180ms;
-    transition-timing-function: cubic-bezier(.2,0,0,1);
-    cursor: pointer;
-    border: 1px solid transparent;
-  }
-  .btn:active { scale: .97; }
-  /* lime is the call-to-action colour everywhere; deep green stays structural */
-  .btn-primary { background: #C6F24E; color: #0A1413; }
-  .btn-primary:hover { background: #D4F76F; }
-  .btn-dark { background: #0F5F55; color: #fff; }
-  .btn-dark:hover { background: #0B4A42; }
-  .btn-ghost-dark { color: #F2F5F4; border-color: rgba(255,255,255,.22); }
-  .btn-ghost-dark:hover { border-color: rgba(255,255,255,.5); background: rgba(255,255,255,.05); }
-  .btn-outline { color: #101817; border-color: #DCD9D2; }
-  .btn-outline:hover { border-color: #0F5F55; color: #0F5F55; }
-  .dark .btn-outline { color: #F2F5F4; border-color: #263935; }
-  .dark .btn-outline:hover { border-color: #5FB8A8; color: #5FB8A8; }
-  .btn-sm { padding: .5rem 1.1rem; font-size: .875rem; }
-
-  /* Inline text link with a real underline */
-  .lnk {
-    color: #0F5F55;
-    font-weight: 500;
-    text-decoration: underline;
-    text-decoration-color: rgba(15,95,85,.3);
-    text-underline-offset: 3px;
-    transition: text-decoration-color .15s, color .15s;
-  }
-  .lnk:hover { text-decoration-color: #0F5F55; }
-  .dark .lnk { color: #5FB8A8; text-decoration-color: rgba(95,184,168,.35); }
-  .dark .lnk:hover { text-decoration-color: #5FB8A8; }
-
-  /* ---------- FAQ accordion (native <details>) ---------- */
-  .faq > summary {
-    list-style: none;
-    cursor: pointer;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 1.5rem;
-    padding: 1.25rem 0;
-  }
-  .faq > summary::-webkit-details-marker { display: none; }
-  .faq > summary:focus-visible { outline-offset: -2px; }
-
-  .faq-sign { position: relative; width: 18px; height: 18px; flex-shrink: 0; margin-top: 6px; }
-  .faq-sign::before,
-  .faq-sign::after {
-    content: '';
-    position: absolute;
-    background: currentColor;
-    border-radius: 2px;
-    transition: rotate .22s cubic-bezier(.2,0,0,1), opacity .18s ease;
-  }
-  .faq-sign::before { left: 0; top: 8px; width: 18px; height: 2px; }
-  .faq-sign::after  { top: 0; left: 8px; width: 2px; height: 18px; }
-  .faq[open] .faq-sign::after { rotate: 90deg; opacity: 0; }
-
-  .faq[open] .faq-body { animation: faqIn .24s cubic-bezier(.2,0,0,1); }
-  @keyframes faqIn { from { opacity: 0; transform: translateY(-5px); } }
-
-  /* ---------- Card ---------- */
-  .card {
-    border-radius: 24px;
-    transition-property: border-color, box-shadow, transform;
-    transition-duration: 200ms;
-    transition-timing-function: cubic-bezier(.2,0,0,1);
-    box-shadow:
-      0 0 0 1px rgba(16,24,23,.055),
-      0 1px 2px -1px rgba(16,24,23,.06),
-      0 3px 8px -2px rgba(16,24,23,.04);
-  }
-  .card:hover {
-    box-shadow:
-      0 0 0 1px rgba(15,95,85,.22),
-      0 2px 4px -1px rgba(16,24,23,.07),
-      0 8px 20px -6px rgba(16,24,23,.08);
-  }
-  .dark .card { box-shadow: 0 0 0 1px rgba(255,255,255,.075); }
-  .dark .card:hover { box-shadow: 0 0 0 1px rgba(95,184,168,.32); }
-
-  /* ---------- Form fields ---------- */
-  .field {
-    width: 100%;
-    padding: .625rem .875rem;
-    font-size: .9375rem;
-    font-family: inherit;
-    background: #fff;
-    border: 1px solid #DCD9D2;
-    border-radius: 10px;
-    color: #101817;
-    transition: border-color .15s, box-shadow .15s;
-  }
-  .field:focus {
-    outline: none;
-    border-color: #0F5F55;
-    box-shadow: 0 0 0 3px rgba(15,95,85,.14);
-  }
-  .field::placeholder { color: #9AA6A3; }
-  .dark .field { background: #0C1716; border-color: #263935; color: #F2F5F4; }
-  .dark .field:focus { border-color: #5FB8A8; box-shadow: 0 0 0 3px rgba(95,184,168,.16); }
-
-  /* custom chevron so the select matches the field in both themes */
-  select.field {
-    appearance: none;
-    -webkit-appearance: none;
-    padding-right: 2.5rem;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234F605D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M6 9.5l6 6 6-6'/></svg>");
-    background-repeat: no-repeat;
-    background-position: right .85rem center;
-    background-size: 15px 15px;
-  }
-  .dark select.field {
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239DADAA' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M6 9.5l6 6 6-6'/></svg>");
-  }
-
-  /* ---------- Modals ---------- */
-  .modal {
-    background: rgba(10,20,19,.55);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity .16s ease;
-  }
-  .modal.open { opacity: 1; pointer-events: auto; }
-  .modal-card {
-    transform: translateY(10px) scale(.99);
-    opacity: 0;
-    transition: transform .22s cubic-bezier(.2,0,0,1), opacity .16s ease;
-  }
-  .modal.open .modal-card { transform: none; opacity: 1; }
-
-  /* ---------- Hero entrance: one orchestrated moment ---------- */
-  .rise {
-    opacity: 0;
-    transform: translateY(16px);
-    filter: blur(6px);
-    animation: rise .62s cubic-bezier(.2,0,0,1) forwards;
-  }
-  .rise-1 { animation-delay: .04s; }
-  .rise-2 { animation-delay: .13s; }
-  .rise-3 { animation-delay: .22s; }
-  .rise-4 { animation-delay: .32s; }
-  @keyframes rise {
-    to { opacity: 1; transform: none; filter: blur(0); }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    *, *::before, *::after {
-      animation-duration: .01ms !important;
-      animation-delay: 0ms !important;
-      transition-duration: .01ms !important;
-    }
-    .rise { opacity: 1; transform: none; filter: none; }
-  }
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="bg-white text-fg dark:bg-night dark:text-fgd">
@@ -465,16 +26,21 @@ tailwind.config = {
 
 <!-- ══ Header ══ -->
 <header id="hdr" class="hdr fixed top-0 left-0 right-0 z-50">
-  <div class="mx-auto max-w-[1380px] px-5 sm:px-8 h-[74px] xl:h-[92px] flex items-center gap-5">
+  <!-- three tracks: logo | nav | actions. The nav centres itself in the middle
+       track instead of hugging the logo, which keeps the bar balanced. -->
+  <div class="mx-auto max-w-[1380px] px-5 sm:px-8 h-[74px] xl:h-[92px] grid grid-cols-[auto_1fr_auto] items-center gap-4">
 
     <!-- logo lockup -->
-    <a href="#" class="shrink-0 leading-none" aria-label="STEM-лабораторія, Ліцей №12, Житомир">
-      <span class="h-mark block font-display font-extrabold text-[17px] sm:text-[18px] xl:text-[20px] tracking-[-.03em]">STEM-лабораторія</span>
-      <span class="h-sub block text-[12px] sm:text-[12.5px] xl:text-[13.5px] mt-[6px]">Ліцей №12, Житомир</span>
+    <a href="#" class="flex items-center gap-3 shrink-0" aria-label="STEM-лабораторія, Ліцей №12, Житомир">
+      <img src="logo.png" alt="" width="191" height="190" class="w-9 h-9 xl:w-10 xl:h-10 shrink-0" aria-hidden="true">
+      <span class="leading-none whitespace-nowrap">
+        <span class="h-mark block font-display font-extrabold text-[17px] sm:text-[18px] tracking-[-.03em]">STEM-лабораторія</span>
+        <span class="h-sub block text-[12px] sm:text-[12.5px] mt-[6px]">Ліцей №12, Житомир</span>
+      </span>
     </a>
 
     <!-- primary navigation -->
-    <nav id="nav" class="hidden xl:flex items-center gap-[22px] 2xl:gap-6 text-[15.5px] whitespace-nowrap ml-5" aria-label="Основна навігація">
+    <nav id="nav" class="hidden xl:flex items-center justify-center gap-5 2xl:gap-[22px] text-[15px] whitespace-nowrap" aria-label="Основна навігація">
       <a href="#about" class="h-link transition-colors">Про нас</a>
 
       <div class="menu-wrap" data-menu>
@@ -512,15 +78,11 @@ tailwind.config = {
     </nav>
 
     <!-- contact + actions -->
-    <div class="flex items-center gap-1 xl:gap-2 ml-auto shrink-0">
+    <div class="flex items-center justify-end gap-1 xl:gap-2 shrink-0">
       <span class="hidden min-[1400px]:block w-px h-6 bg-line dark:bg-line-dark mx-3" aria-hidden="true"></span>
 
-      <a href="tel:+380412471230" class="h-link hidden min-[1400px]:block text-[15.5px] nums font-semibold px-2 transition-colors">+38 (0412) 47-12-30</a>
+      <a href="tel:+380412471230" class="h-link hidden min-[1400px]:block text-[15px] nums font-semibold px-2 whitespace-nowrap transition-colors">+38 (0412) 47-12-30</a>
 
-      <a href="#contacts" class="h-link hidden xl:inline-flex items-center gap-1.5 text-[15px] px-2 transition-colors">
-        <svg class="w-4 h-4 opacity-70" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10.5c0 5.4-8 12-8 12s-8-6.6-8-12a8 8 0 1116 0z"/><circle cx="12" cy="10.3" r="2.8"/></svg>
-        Житомир
-      </a>
 
       <button id="theme-btn" class="h-icon relative w-10 h-10 grid place-items-center rounded-full transition-colors" aria-label="Перемкнути тему">
         <svg class="i-sun w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.2m0 15.6V22M3.5 12H5.7m12.6 0h2.2M5.9 5.9l1.6 1.6m9 9l1.6 1.6m0-12.2l-1.6 1.6m-9 9l-1.6 1.6"/></svg>
@@ -566,7 +128,6 @@ tailwind.config = {
     </nav>
     <div class="mt-auto p-5 border-t border-line dark:border-line-dark flex flex-col gap-2.5">
       <a href="tel:+380412471230" class="text-[16px] nums font-semibold">+38 (0412) 47-12-30</a>
-      <p class="text-[14px] text-fg-muted dark:text-fgd-muted -mt-1 mb-1">вул. Велика Бердичівська, 55, Житомир</p>
       <button class="cab-trig btn btn-outline w-full">Кабінет</button>
       <button class="reg-trig btn btn-primary w-full">Записатися</button>
     </div>
@@ -607,7 +168,7 @@ tailwind.config = {
 
           <p class="rise rise-4 text-[14.5px] text-white/65">
             <span class="inline-block w-1.5 h-1.5 rounded-full bg-signal align-middle mr-2.5"></span>Набір
-            на 2026/2027 відкрито — залишилось
+            на 2026/2027 відкрито – залишилось
             <span class="nums font-semibold text-signal whitespace-nowrap">14 місць</span>
           </p>
         </div>
@@ -619,19 +180,24 @@ tailwind.config = {
   <section id="about" class="bg-white dark:bg-night pt-16 lg:pt-24 pb-20 lg:pb-28">
     <div class="mx-auto max-w-shell px-5 sm:px-8">
 
-      <!-- quiet fact row -->
-      <dl class="grid grid-cols-1 sm:grid-cols-3 gap-y-7 sm:gap-x-10 pb-14 lg:pb-20 mb-14 lg:mb-20 border-b border-line dark:border-line-dark">
+      <!-- lab in figures: one panel, so the numbers read as a set -->
+      <dl class="bg-paper dark:bg-night-900 rounded-[24px] sm:rounded-[32px] p-7 sm:p-10 lg:p-12
+                 grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-9 mb-16 lg:mb-24">
         <div>
-          <dt class="t-num text-brand dark:text-brand-300">6&nbsp;років</dt>
-          <dd class="text-[14.5px] text-fg-muted dark:text-fgd-muted mt-1.5">працює на базі ліцею з 2020&nbsp;року</dd>
+          <dt class="t-num text-brand dark:text-brand-300 nums">2020</dt>
+          <dd class="text-[14.5px] text-fg-muted dark:text-fgd-muted mt-2 leading-[1.5]">рік, коли лабораторія почала працювати</dd>
         </div>
-        <div class="sm:border-l sm:border-line sm:dark:border-line-dark sm:pl-6">
-          <dt class="t-num text-brand dark:text-brand-300">500+</dt>
-          <dd class="text-[14.5px] text-fg-muted dark:text-fgd-muted mt-1.5">учнів пройшли повний курс навчання</dd>
+        <div>
+          <dt class="t-num text-brand dark:text-brand-300 nums">500+</dt>
+          <dd class="text-[14.5px] text-fg-muted dark:text-fgd-muted mt-2 leading-[1.5]">учнів пройшли повний курс</dd>
         </div>
-        <div class="sm:border-l sm:border-line sm:dark:border-line-dark sm:pl-6">
-          <dt class="t-num text-brand dark:text-brand-300">52</dt>
-          <dd class="text-[14.5px] text-fg-muted dark:text-fgd-muted mt-1.5">призери міських та обласних олімпіад</dd>
+        <div>
+          <dt class="t-num text-brand dark:text-brand-300 nums">52</dt>
+          <dd class="text-[14.5px] text-fg-muted dark:text-fgd-muted mt-2 leading-[1.5]">призери міських та обласних олімпіад</dd>
+        </div>
+        <div>
+          <dt class="t-num text-brand dark:text-brand-300 nums">12</dt>
+          <dd class="text-[14.5px] text-fg-muted dark:text-fgd-muted mt-2 leading-[1.5]">учнів у групі, не більше</dd>
         </div>
       </dl>
 
@@ -646,13 +212,13 @@ tailwind.config = {
               ідеї до робочого прототипу й захищає її перед комісією в кінці курсу.
             </p>
             <p>
-              Вісімдесят відсотків часу занять — це робота руками: збирання схем, друк деталей,
+              Вісімдесят відсотків часу занять – це робота руками: збирання схем, друк деталей,
               написання та відлагодження коду. Теорію даємо тоді, коли вона потрібна для
               наступного кроку в проєкті, а не окремим блоком наперед.
             </p>
             <p>
-              Викладають практикуючі інженери та розробники, які поєднують роботу в галузі
-              з викладанням. У групі — до 12&nbsp;учнів, щоб кожен мав доступ до обладнання
+              Заняття веде інженер, який поєднує роботу в галузі з викладанням.
+              У групі – до 12&nbsp;учнів, щоб кожен мав доступ до обладнання
               на кожному занятті.
             </p>
           </div>
@@ -712,13 +278,7 @@ tailwind.config = {
     <div class="mx-auto max-w-shell px-5 sm:px-8">
 
       <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-12">
-        <div>
-          <h2 class="t-h2 mb-3">Чотири напрямки навчання</h2>
-          <p class="t-body text-fg-muted dark:text-fgd-muted max-w-[52ch]">
-            Кожен напрямок веде окремий викладач. Можна поєднувати два напрямки,
-            якщо розклад дозволяє.
-          </p>
-        </div>
+        <h2 class="t-h2">Чотири напрямки навчання</h2>
         <button class="reg-trig btn btn-primary shrink-0 self-start md:self-auto">Обрати напрямок</button>
       </div>
 
@@ -733,11 +293,10 @@ tailwind.config = {
             Електроніка, механіка та керування: від зчитування датчика до автономного руху.
             Програмування Arduino, збирання приводів, підготовка до олімпіад з робототехніки.
           </p>
-          <ul class="text-[14.5px] space-y-2 mb-6 border-t border-line dark:border-line-dark pt-5">
-            <li class="flex gap-3"><span class="text-fg-muted dark:text-fgd-muted w-[108px] shrink-0">Тривалість</span><span class="nums">9 місяців</span></li>
-            <li class="flex gap-3"><span class="text-fg-muted dark:text-fgd-muted w-[108px] shrink-0">Викладач</span><span>Коваленко О.&nbsp;М.</span></li>
-            <li class="flex gap-3"><span class="text-fg-muted dark:text-fgd-muted w-[108px] shrink-0">Фінал курсу</span><span>робот-сортувальник</span></li>
-          </ul>
+          <dl class="text-[14.5px] grid grid-cols-[104px_1fr] gap-x-4 gap-y-2.5 mb-6 border-t border-line dark:border-line-dark pt-5">
+            <dt class="text-fg-muted dark:text-fgd-muted">Тривалість</dt><dd class="nums">9 місяців</dd>
+            <dt class="text-fg-muted dark:text-fgd-muted">Фінал курсу</dt><dd>робот-сортувальник</dd>
+          </dl>
           <button class="reg-trig lnk text-[15px]" data-course="Робототехніка та мехатроніка">Записатися на напрямок</button>
         </article>
 
@@ -750,11 +309,10 @@ tailwind.config = {
             Параметричне моделювання у Fusion&nbsp;360, підготовка моделі до друку, робота
             з FDM та фотополімерними принтерами. Допуски, посадки, постобробка деталей.
           </p>
-          <ul class="text-[14.5px] space-y-2 mb-6 border-t border-line dark:border-line-dark pt-5">
-            <li class="flex gap-3"><span class="text-fg-muted dark:text-fgd-muted w-[108px] shrink-0">Тривалість</span><span class="nums">6 місяців</span></li>
-            <li class="flex gap-3"><span class="text-fg-muted dark:text-fgd-muted w-[108px] shrink-0">Викладач</span><span>Мельник І.&nbsp;В.</span></li>
-            <li class="flex gap-3"><span class="text-fg-muted dark:text-fgd-muted w-[108px] shrink-0">Фінал курсу</span><span>власний механізм у зборі</span></li>
-          </ul>
+          <dl class="text-[14.5px] grid grid-cols-[104px_1fr] gap-x-4 gap-y-2.5 mb-6 border-t border-line dark:border-line-dark pt-5">
+            <dt class="text-fg-muted dark:text-fgd-muted">Тривалість</dt><dd class="nums">6 місяців</dd>
+            <dt class="text-fg-muted dark:text-fgd-muted">Фінал курсу</dt><dd>власний механізм у зборі</dd>
+          </dl>
           <button class="reg-trig lnk text-[15px]" data-course="3D-моделювання та друк">Записатися на напрямок</button>
         </article>
 
@@ -767,11 +325,10 @@ tailwind.config = {
             Від синтаксису до прикладних задач: ігри, телеграм-боти, обробка даних, перші
             моделі машинного навчання. Окремий трек підготовки до олімпіад з інформатики.
           </p>
-          <ul class="text-[14.5px] space-y-2 mb-6 border-t border-line dark:border-line-dark pt-5">
-            <li class="flex gap-3"><span class="text-fg-muted dark:text-fgd-muted w-[108px] shrink-0">Тривалість</span><span class="nums">9 місяців</span></li>
-            <li class="flex gap-3"><span class="text-fg-muted dark:text-fgd-muted w-[108px] shrink-0">Викладач</span><span>Бондаренко Т.&nbsp;С.</span></li>
-            <li class="flex gap-3"><span class="text-fg-muted dark:text-fgd-muted w-[108px] shrink-0">Фінал курсу</span><span>застосунок із базою даних</span></li>
-          </ul>
+          <dl class="text-[14.5px] grid grid-cols-[104px_1fr] gap-x-4 gap-y-2.5 mb-6 border-t border-line dark:border-line-dark pt-5">
+            <dt class="text-fg-muted dark:text-fgd-muted">Тривалість</dt><dd class="nums">9 місяців</dd>
+            <dt class="text-fg-muted dark:text-fgd-muted">Фінал курсу</dt><dd>застосунок із базою даних</dd>
+          </dl>
           <button class="reg-trig lnk text-[15px]" data-course="Програмування Python">Записатися на напрямок</button>
         </article>
 
@@ -784,11 +341,10 @@ tailwind.config = {
             Пристрої, що передають дані: метеостанція, облік енергії, автоматика теплиці.
             ESP32 та Raspberry&nbsp;Pi, протокол MQTT, збір показників у хмарі та дашборди.
           </p>
-          <ul class="text-[14.5px] space-y-2 mb-6 border-t border-line dark:border-line-dark pt-5">
-            <li class="flex gap-3"><span class="text-fg-muted dark:text-fgd-muted w-[108px] shrink-0">Тривалість</span><span class="nums">6 місяців</span></li>
-            <li class="flex gap-3"><span class="text-fg-muted dark:text-fgd-muted w-[108px] shrink-0">Викладач</span><span>Шевченко Д.&nbsp;О.</span></li>
-            <li class="flex gap-3"><span class="text-fg-muted dark:text-fgd-muted w-[108px] shrink-0">Фінал курсу</span><span>станція з віддаленим доступом</span></li>
-          </ul>
+          <dl class="text-[14.5px] grid grid-cols-[104px_1fr] gap-x-4 gap-y-2.5 mb-6 border-t border-line dark:border-line-dark pt-5">
+            <dt class="text-fg-muted dark:text-fgd-muted">Тривалість</dt><dd class="nums">6 місяців</dd>
+            <dt class="text-fg-muted dark:text-fgd-muted">Фінал курсу</dt><dd>станція з віддаленим доступом</dd>
+          </dl>
           <button class="reg-trig lnk text-[15px]" data-course="Інтернет речей">Записатися на напрямок</button>
         </article>
 
@@ -805,27 +361,27 @@ tailwind.config = {
         закривши попередній.
       </p>
 
-      <ol class="grid md:grid-cols-3 gap-x-10 gap-y-10">
-        <li class="border-t-2 border-brand dark:border-brand-300 pt-6">
-          <span class="t-num text-brand dark:text-brand-300 block mb-4">01</span>
+      <ol class="grid md:grid-cols-3 gap-x-10 gap-y-12">
+        <li class="proc-step">
+          <p class="proc-when nums">1 заняття</p>
           <h3 class="t-h3 mb-3">Знайомство</h3>
           <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6]">
             Безкоштовне пробне заняття: учень працює на реальному обладнанні й обирає
             напрямок. Батьки бачать лабораторію та знайомляться з викладачем.
-            Одне заняття, без зобов'язань.
+            Без жодних зобов'язань.
           </p>
         </li>
-        <li class="border-t-2 border-line dark:border-line-dark pt-6">
-          <span class="t-num text-fg dark:text-fgd block mb-4">02</span>
+        <li class="proc-step">
+          <p class="proc-when nums">10 тижнів</p>
           <h3 class="t-h3 mb-3">Базовий модуль</h3>
           <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6]">
-            Десять тижнів, двічі на тиждень. Кожне заняття закінчується робочим
-            результатом — схемою, деталью або працюючим скриптом. У кінці модуля —
-            невелика контрольна збірка.
+            Двічі на тиждень. Кожне заняття закінчується робочим результатом –
+            схемою, деталлю або працюючим скриптом. У кінці модуля невелика
+            контрольна збірка.
           </p>
         </li>
-        <li class="border-t-2 border-line dark:border-line-dark pt-6">
-          <span class="t-num text-fg dark:text-fgd block mb-4">03</span>
+        <li class="proc-step">
+          <p class="proc-when nums">до кінця курсу</p>
           <h3 class="t-h3 mb-3">Проєкт і захист</h3>
           <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6]">
             Учень веде власну розробку під наглядом викладача та захищає її перед
@@ -839,10 +395,7 @@ tailwind.config = {
   <!-- ══ Student projects: what actually comes out of the process ══ -->
   <section id="projects" class="bg-paper dark:bg-night-900 py-20 lg:py-28">
     <div class="mx-auto max-w-shell px-5 sm:px-8">
-      <h2 class="t-h2 mb-3">Що учні зробили цього року</h2>
-      <p class="t-body text-fg-muted dark:text-fgd-muted max-w-[56ch] mb-12">
-        Це захищені випускні проєкти. Два з них досі працюють у будівлі ліцею.
-      </p>
+      <h2 class="t-h2 mb-12">Що учні зробили цього року</h2>
 
       <div class="grid lg:grid-cols-12 gap-5">
 
@@ -861,7 +414,7 @@ tailwind.config = {
             <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6]">
               ESP32, датчики вологості ґрунту в шести вазонах і помпа. Поливає, коли
               ґрунт пересихає, і пише в Telegram, якщо в баку закінчилась вода.
-              Працює в кабінеті 214 з березня — за цей час не загинула жодна рослина,
+              Працює в кабінеті 214 з березня – за цей час не загинула жодна рослина,
               включно з тими, що раніше не переживали канікул.
             </p>
           </div>
@@ -872,7 +425,7 @@ tailwind.config = {
           <article class="card bg-white dark:bg-night-800 rounded-[24px] p-7 flex flex-col">
             <h3 class="t-h3 mb-2">Облік води по корпусах</h3>
             <p class="text-[14px] text-fg-muted dark:text-fgd-muted mb-4 nums">
-              Команда «SmartCity12» · 2025
+              Назар Гриценко, 11 клас · Інтернет речей · 2025
             </p>
             <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6]">
               Імпульсні лічильники на два корпуси, дані йдуть у просту таблицю.
@@ -888,7 +441,7 @@ tailwind.config = {
             </p>
             <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6]">
               Сорок дві надруковані деталі й п'ять сервоприводів. Пальці згинаються
-              окремо, рухи повторюють жест із рукавички-контролера. Друга версія —
+              окремо, рухи повторюють жест із рукавички-контролера. Друга версія –
               перша не витримала ваги приводів.
             </p>
           </article>
@@ -901,69 +454,50 @@ tailwind.config = {
   <!-- ══ Teachers ══ -->
   <section id="teachers" class="bg-white dark:bg-night py-20 lg:py-28">
     <div class="mx-auto max-w-shell px-5 sm:px-8">
-      <h2 class="t-h2 mb-3">Викладачі</h2>
-      <p class="t-body text-fg-muted dark:text-fgd-muted max-w-[52ch] mb-12">
-        Усі четверо поєднують викладання з роботою в галузі.
-      </p>
+      <h2 class="t-h2 mb-12">Хто веде заняття</h2>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
+      <div class="grid md:grid-cols-12 gap-x-12 gap-y-8 items-start">
 
-        <article>
-          <figure class="ph ph-av ph-tone rounded-[20px] aspect-square w-full mb-5" data-label="КО">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&h=400&q=80"
-                 alt="Коваленко Олександр Миколайович" width="400" height="400" loading="lazy"
+        <figure class="md:col-span-4 lg:col-span-3">
+          <div class="ph ph-av ph-tone rounded-[24px] aspect-square w-full" data-label="АЛ">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&h=500&q=80"
+                 alt="Андрій Луженький, керівник STEM-лабораторії"
+                 width="500" height="500" loading="lazy"
                  onerror="this.parentNode.classList.add('ph-fail');this.remove();">
-          </figure>
-          <h3 class="font-display font-bold text-[16.5px] tracking-[-.015em] mb-1">Коваленко Олександр</h3>
-          <p class="text-[14px] text-brand dark:text-brand-300 font-medium mb-2.5">Робототехніка та мехатроніка</p>
-          <p class="t-body text-[14.5px] text-fg-muted dark:text-fgd-muted leading-[1.6]">
-            Інженер-механік, 12&nbsp;років у промисловій автоматизації. Готує команду ліцею
-            до олімпіад з робототехніки.
-          </p>
-        </article>
+          </div>
+        </figure>
 
-        <article>
-          <figure class="ph ph-av ph-tone rounded-[20px] aspect-square w-full mb-5" data-label="МІ">
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&h=400&q=80"
-                 alt="Мельник Ірина Василівна" width="400" height="400" loading="lazy"
-                 onerror="this.parentNode.classList.add('ph-fail');this.remove();">
-          </figure>
-          <h3 class="font-display font-bold text-[16.5px] tracking-[-.015em] mb-1">Мельник Ірина</h3>
-          <p class="text-[14px] text-brand dark:text-brand-300 font-medium mb-2.5">3D-моделювання та друк</p>
-          <p class="t-body text-[14.5px] text-fg-muted dark:text-fgd-muted leading-[1.6]">
-            Конструктор, сертифікована спеціалістка Autodesk Fusion&nbsp;360. Відповідає
-            за парк принтерів лабораторії.
-          </p>
-        </article>
+        <div class="md:col-span-8 lg:col-span-7">
+          <h3 class="font-display font-extrabold text-[24px] lg:text-[28px] tracking-[-.025em] mb-1.5">Андрій Луженький</h3>
+          <p class="text-[15px] text-brand dark:text-brand-300 font-medium mb-6">Керівник лабораторії</p>
 
-        <article>
-          <figure class="ph ph-av ph-tone rounded-[20px] aspect-square w-full mb-5" data-label="БТ">
-            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&h=400&q=80"
-                 alt="Бондаренко Тетяна Сергіївна" width="400" height="400" loading="lazy"
-                 onerror="this.parentNode.classList.add('ph-fail');this.remove();">
-          </figure>
-          <h3 class="font-display font-bold text-[16.5px] tracking-[-.015em] mb-1">Бондаренко Тетяна</h3>
-          <p class="text-[14px] text-brand dark:text-brand-300 font-medium mb-2.5">Програмування Python</p>
-          <p class="t-body text-[14.5px] text-fg-muted dark:text-fgd-muted leading-[1.6]">
-            Backend-розробниця, тренерка шкільної команди з інформатики. Веде
-            олімпіадний трек.
-          </p>
-        </article>
+          <div class="t-body text-fg-muted dark:text-fgd-muted space-y-4 max-w-prose mb-8">
+            <p>
+              Інженер за освітою, працює з мікроконтролерами та тривимірним друком.
+              Веде всі чотири напрямки й відповідає за обладнання лабораторії.
+            </p>
+            <p>
+              Побудував лабораторію з нуля у 2020 році – від закупівлі першого
+              принтера до програми курсу. Готує учнів до міських та обласних
+              олімпіад з робототехніки й інформатики.
+            </p>
+          </div>
 
-        <article>
-          <figure class="ph ph-av ph-tone rounded-[20px] aspect-square w-full mb-5" data-label="ШД">
-            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&h=400&q=80"
-                 alt="Шевченко Дмитро Олегович" width="400" height="400" loading="lazy"
-                 onerror="this.parentNode.classList.add('ph-fail');this.remove();">
-          </figure>
-          <h3 class="font-display font-bold text-[16.5px] tracking-[-.015em] mb-1">Шевченко Дмитро</h3>
-          <p class="text-[14px] text-brand dark:text-brand-300 font-medium mb-2.5">Інтернет речей</p>
-          <p class="t-body text-[14.5px] text-fg-muted dark:text-fgd-muted leading-[1.6]">
-            Embedded-інженер, працював над промисловими системами збору даних.
-            Курує проєкти на ESP32.
-          </p>
-        </article>
-
+          <dl class="grid sm:grid-cols-3 gap-x-8 gap-y-5 border-t border-line dark:border-line-dark pt-6">
+            <div>
+              <dt class="font-display font-bold text-[13px] text-fg-muted dark:text-fgd-muted mb-1">У лабораторії</dt>
+              <dd class="text-[15.5px] nums">з 2020 року</dd>
+            </div>
+            <div>
+              <dt class="font-display font-bold text-[13px] text-fg-muted dark:text-fgd-muted mb-1">Напрямків веде</dt>
+              <dd class="text-[15.5px] nums">4</dd>
+            </div>
+            <div>
+              <dt class="font-display font-bold text-[13px] text-fg-muted dark:text-fgd-muted mb-1">Учнів у групі</dt>
+              <dd class="text-[15.5px] nums">до 12</dd>
+            </div>
+          </dl>
+        </div>
       </div>
     </div>
   </section>
@@ -974,20 +508,19 @@ tailwind.config = {
       <div class="max-w-[62ch] mb-10">
         <h2 class="t-h2 mb-3">Розклад занять</h2>
         <p class="t-body text-fg-muted dark:text-fgd-muted">
-          I семестр 2026/2027&nbsp;н.&nbsp;р. Заняття проходять у кабінеті 301
+          I семестр 2026/2027&nbsp;н.&nbsp;р. Усі заняття проходять у кабінеті 301
           на третьому поверсі.
         </p>
       </div>
 
       <div class="overflow-x-auto -mx-5 px-5 sm:mx-0 sm:px-0">
-        <table class="w-full min-w-[620px] text-[15.5px]">
+        <table class="w-full min-w-[480px] text-[15.5px]">
           <caption class="sr-only">Розклад занять STEM-лабораторії за напрямками</caption>
           <thead>
             <tr class="border-b-2 border-fg dark:border-fgd">
               <th scope="col" class="text-left font-display font-bold text-[14px] tracking-[-.01em] py-3 pr-5">Напрямок</th>
               <th scope="col" class="text-left font-display font-bold text-[14px] tracking-[-.01em] py-3 pr-5">Дні</th>
               <th scope="col" class="text-left font-display font-bold text-[14px] tracking-[-.01em] py-3 pr-5">Час</th>
-              <th scope="col" class="text-left font-display font-bold text-[14px] tracking-[-.01em] py-3 pr-5">Викладач</th>
               <th scope="col" class="text-left font-display font-bold text-[14px] tracking-[-.01em] py-3">Місць</th>
             </tr>
           </thead>
@@ -996,28 +529,24 @@ tailwind.config = {
               <td class="py-4 pr-5 font-medium">Робототехніка</td>
               <td class="py-4 pr-5 text-fg-muted dark:text-fgd-muted">понеділок, середа</td>
               <td class="py-4 pr-5 text-fg-muted dark:text-fgd-muted nums whitespace-nowrap">15:30&ndash;17:00</td>
-              <td class="py-4 pr-5 text-fg-muted dark:text-fgd-muted">Коваленко О.&nbsp;М.</td>
               <td class="py-4 nums text-brand dark:text-brand-300 font-semibold">4</td>
             </tr>
             <tr>
               <td class="py-4 pr-5 font-medium">3D-моделювання</td>
               <td class="py-4 pr-5 text-fg-muted dark:text-fgd-muted">вівторок, четвер</td>
               <td class="py-4 pr-5 text-fg-muted dark:text-fgd-muted nums whitespace-nowrap">15:30&ndash;17:00</td>
-              <td class="py-4 pr-5 text-fg-muted dark:text-fgd-muted">Мельник І.&nbsp;В.</td>
               <td class="py-4 nums text-brand dark:text-brand-300 font-semibold">3</td>
             </tr>
             <tr>
               <td class="py-4 pr-5 font-medium">Python</td>
               <td class="py-4 pr-5 text-fg-muted dark:text-fgd-muted">вівторок, п'ятниця</td>
               <td class="py-4 pr-5 text-fg-muted dark:text-fgd-muted nums whitespace-nowrap">16:00&ndash;17:30</td>
-              <td class="py-4 pr-5 text-fg-muted dark:text-fgd-muted">Бондаренко Т.&nbsp;С.</td>
               <td class="py-4 nums text-brand dark:text-brand-300 font-semibold">5</td>
             </tr>
             <tr>
               <td class="py-4 pr-5 font-medium">Інтернет речей</td>
               <td class="py-4 pr-5 text-fg-muted dark:text-fgd-muted">середа, п'ятниця</td>
               <td class="py-4 pr-5 text-fg-muted dark:text-fgd-muted nums whitespace-nowrap">16:00&ndash;17:30</td>
-              <td class="py-4 pr-5 text-fg-muted dark:text-fgd-muted">Шевченко Д.&nbsp;О.</td>
               <td class="py-4 nums text-brand dark:text-brand-300 font-semibold">2</td>
             </tr>
           </tbody>
@@ -1025,7 +554,7 @@ tailwind.config = {
       </div>
 
       <p class="text-[14px] text-fg-muted dark:text-fgd-muted mt-5">
-        Розклад може змінюватися під час сесій та олімпіад. Актуальні дані —
+        Розклад може змінюватися під час сесій та олімпіад. Актуальні дані –
         за телефоном <a href="tel:+380412471230" class="lnk nums">+38 (0412) 47-12-30</a>.
       </p>
     </div>
@@ -1039,7 +568,7 @@ tailwind.config = {
         <div class="lg:col-span-4">
           <h2 class="t-h2 mb-4">Що зазвичай питають батьки</h2>
           <p class="t-body text-fg-muted dark:text-fgd-muted max-w-[38ch]">
-            Не знайшли свого питання — напишіть у
+            Не знайшли свого питання – напишіть у
             <a href="https://t.me/stemlab12" class="lnk">Telegram</a> або зателефонуйте.
             Відповідаємо того ж дня.
           </p>
@@ -1051,67 +580,68 @@ tailwind.config = {
             <details name="faq" class="faq border-b border-line dark:border-line-dark">
               <summary><span class="t-h3 pr-4">Скільки коштує навчання?</span><span class="faq-sign text-brand dark:text-brand-300" aria-hidden="true"></span></summary>
               <div class="faq-body t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] pb-6 max-w-[62ch]">
-                Нічого. Лабораторія працює за бюджетом ліцею, навчання безкоштовне —
-                і для учнів ліцею, і для тих, хто прийшов з іншої школи. Ми не беремо
-                грошей ні за матеріали, ні за «вступний внесок», ні на ремонт.
-                Якщо хтось просить — скажіть нам.
+                Навчання безкоштовне. Лабораторія утримується за кошти ліцею, тому
+                ми не збираємо внесків ні за заняття, ні за витратні матеріали,
+                ні на обладнання. Це стосується і ліцеїстів, і учнів інших шкіл.
               </div>
             </details>
 
             <details name="faq" class="faq border-b border-line dark:border-line-dark">
               <summary><span class="t-h3 pr-4">Дитина вчиться в іншій школі. Візьмете?</span><span class="faq-sign text-brand dark:text-brand-300" aria-hidden="true"></span></summary>
               <div class="faq-body t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] pb-6 max-w-[62ch]">
-                Візьмемо, якщо лишились місця. Спершу записуємо ліцеїстів — до
-                15 вересня, далі відкриваємо решту місць для всіх. Торік із 48 учнів
-                одинадцятеро були з інших шкіл Житомира.
+                Так, за наявності вільних місць. До 15 вересня триває запис учнів
+                ліцею, після цієї дати решта місць відкривається для всіх охочих.
+                Торік з 48 учнів лабораторії одинадцять навчалися в інших школах
+                Житомира.
               </div>
             </details>
 
             <details name="faq" class="faq border-b border-line dark:border-line-dark">
               <summary><span class="t-h3 pr-4">Що треба купити до першого заняття?</span><span class="faq-sign text-brand dark:text-brand-300" aria-hidden="true"></span></summary>
               <div class="faq-body t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] pb-6 max-w-[62ch]">
-                Зошит і ручку. Все інше — плати, інструмент, пластик для друку,
-                компоненти — лабораторії. Деталі, які учень надрукував або спаяв
-                для свого проєкту, після захисту забирає собі.
+                Лише зошит і ручку. Плати, інструмент, пластик для друку та
+                електронні компоненти надає лабораторія. Деталі, виготовлені
+                для власного проєкту, після захисту залишаються в учня.
               </div>
             </details>
 
             <details name="faq" class="faq border-b border-line dark:border-line-dark">
-              <summary><span class="t-h3 pr-4">Паяльник, інструменти — це безпечно?</span><span class="faq-sign text-brand dark:text-brand-300" aria-hidden="true"></span></summary>
+              <summary><span class="t-h3 pr-4">Паяльник, інструменти – це безпечно?</span><span class="faq-sign text-brand dark:text-brand-300" aria-hidden="true"></span></summary>
               <div class="faq-body t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] pb-6 max-w-[62ch]">
-                До пайки допускаємо з 9 класу, перші три заняття — тільки разом
-                з викладачем. Станції з регулюванням температури й димовідсосом,
-                припій безсвинцевий. Молодші класи працюють на роз'ємних платах,
-                де паяти не треба взагалі. За шість років — жодної травми,
-                окрім двох опечених пальців, обидва в перший рік.
+                До паяльних робіт учні допускаються з 9 класу та перші три заняття
+                працюють лише під наглядом викладача. Станції обладнані
+                регулюванням температури й димовідсосом, припій безсвинцевий.
+                Учні молодших класів збирають схеми на роз'ємних платах, де пайка
+                не потрібна. За шість років роботи лабораторії травм не було.
               </div>
             </details>
 
             <details name="faq" class="faq border-b border-line dark:border-line-dark">
               <summary><span class="t-h3 pr-4">А якщо дитина обрала не той напрямок?</span><span class="faq-sign text-brand dark:text-brand-300" aria-hidden="true"></span></summary>
               <div class="faq-body t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] pb-6 max-w-[62ch]">
-                Перейти можна протягом першого місяця, без пояснень — просто скажіть
-                викладачу. Далі вже складніше: група йде за програмою, і наздоганяти
-                посеред модуля важко. Тому й радимо почати з пробного заняття.
+                Перейти на інший напрямок можна протягом першого місяця – достатньо
+                повідомити викладача. Пізніше це складніше: група працює за
+                програмою, і наздогнати матеріал посеред модуля важко. Саме тому
+                радимо почати з пробного заняття.
               </div>
             </details>
 
             <details name="faq" class="faq border-b border-line dark:border-line-dark">
-              <summary><span class="t-h3 pr-4">Пропустив заняття — що робити?</span><span class="faq-sign text-brand dark:text-brand-300" aria-hidden="true"></span></summary>
+              <summary><span class="t-h3 pr-4">Пропустив заняття – що робити?</span><span class="faq-sign text-brand dark:text-brand-300" aria-hidden="true"></span></summary>
               <div class="faq-body t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] pb-6 max-w-[62ch]">
-                Конспект і завдання викладач кидає в групу напрямку в Telegram.
-                У п'ятницю з 15:00 лабораторія відкрита на відпрацювання — можна
-                прийти й доробити пропущене. Попереджати не обов'язково.
+                Конспект і завдання викладач публікує в Telegram-групі напрямку.
+                Щоп'ятниці з 15:00 лабораторія відкрита для відпрацювань: можна
+                прийти й завершити пропущене. Попереджати заздалегідь не потрібно.
               </div>
             </details>
 
             <details name="faq" class="faq border-b border-line dark:border-line-dark">
               <summary><span class="t-h3 pr-4">Скільки дітей у групі?</span><span class="faq-sign text-brand dark:text-brand-300" aria-hidden="true"></span></summary>
               <div class="faq-body t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] pb-6 max-w-[62ch]">
-                До дванадцяти. Це не методика, а арифметика: у лабораторії
-                дванадцять робочих місць з обладнанням. Якщо набереться більше
-                охочих, відкриваємо другу групу — але тільки коли є вільний
-                викладач, а не «підсаджуємо» тринадцятого.
+                Не більше дванадцяти – саме стільки в лабораторії обладнаних
+                робочих місць. Це дозволяє кожному учневі працювати з технікою
+                на кожному занятті. За більшої кількості охочих відкриваємо
+                другу групу, а не збільшуємо наявну.
               </div>
             </details>
 
@@ -1134,7 +664,7 @@ tailwind.config = {
             <h3 class="t-h3 mb-2">Набір на 2026/2027 навчальний рік відкрито</h3>
             <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6] max-w-prose">
               Відкрито набір на всі чотири напрямки. Цього року лабораторія отримала
-              два нові FDM-принтери та комплект осцилографів. Перше заняття —
+              два нові FDM-принтери та комплект осцилографів. Перше заняття –
               безкоштовне для всіх охочих.
             </p>
           </div>
@@ -1157,7 +687,7 @@ tailwind.config = {
           <div>
             <h3 class="t-h3 mb-2">День відкритих дверей для батьків і учнів</h3>
             <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6] max-w-prose">
-              Запрошуємо учнів 6–10&nbsp;класів та їхніх батьків. У програмі —
+              Запрошуємо учнів 6–10&nbsp;класів та їхніх батьків. У програмі –
               демонстрація обладнання, захист проєктів цього року та розмова
               з викладачами без формальностей.
             </p>
@@ -1188,7 +718,7 @@ tailwind.config = {
           <h2 class="t-h2 text-white mb-5">Почніть з одного пробного заняття</h2>
           <p class="t-body text-white/75 mb-9 text-[17px] sm:text-[18.5px] leading-[1.6]">
             Приходьте подивитися, як працює лабораторія. Пробне заняття безкоштовне
-            й ні до чого не зобов'язує — учень просто спробує обладнання, а ви
+            й ні до чого не зобов'язує – учень просто спробує обладнання, а ви
             познайомитеся з викладачем.
           </p>
           <div class="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-3">
@@ -1230,15 +760,7 @@ tailwind.config = {
           <div class="py-5">
             <dt class="font-display font-bold text-[14px] mb-1.5">Коли можна зайти</dt>
             <dd class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted nums">
-              Понеділок — п'ятниця, 14:00–18:00
-            </dd>
-          </div>
-          <div class="py-5">
-            <dt class="font-display font-bold text-[14px] mb-1.5">Як дістатися</dt>
-            <dd class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted">
-              Тролейбуси 1 і 5, зупинка «Соборний майдан» — далі п'ять хвилин пішки.
-              Вхід з боку двору, не з проїжджої частини. На вахті скажіть, що
-              до STEM-лабораторії, вас проведуть на третій поверх.
+              Понеділок – п'ятниця, 14:00–18:00
             </dd>
           </div>
         </dl>
@@ -1294,18 +816,8 @@ tailwind.config = {
           <li><a href="tel:+380412471230" class="text-fgd-muted hover:text-white transition-colors nums">+38 (0412) 47-12-30</a></li>
           <li><a href="mailto:stem@liceum12.edu.ua" class="text-fgd-muted hover:text-white transition-colors">stem@liceum12.edu.ua</a></li>
           <li><a href="https://t.me/stemlab12" class="text-fgd-muted hover:text-white transition-colors">Telegram</a></li>
-          <li><a href="#contacts" class="text-fgd-muted hover:text-white transition-colors">Як дістатися</a></li>
         </ul>
         <div class="flex gap-1 mt-6 -ml-2">
-          <a href="https://facebook.com" class="w-10 h-10 grid place-items-center text-fgd-muted hover:text-white transition-colors" aria-label="Facebook">
-            <svg class="w-[18px] h-[18px]" fill="currentColor" viewBox="0 0 24 24"><path d="M17 2h-3a5 5 0 00-5 5v3H6.5v4H9v8h4v-8h3l.8-4H13V7a1 1 0 011-1h3z"/></svg>
-          </a>
-          <a href="https://instagram.com" class="w-10 h-10 grid place-items-center text-fgd-muted hover:text-white transition-colors" aria-label="Instagram">
-            <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><rect x="2.5" y="2.5" width="19" height="19" rx="5.2"/><circle cx="12" cy="12" r="4.4"/><circle cx="17.6" cy="6.4" r=".9" fill="currentColor" stroke="none"/></svg>
-          </a>
-          <a href="https://youtube.com" class="w-10 h-10 grid place-items-center text-fgd-muted hover:text-white transition-colors" aria-label="YouTube">
-            <svg class="w-[18px] h-[18px]" fill="currentColor" viewBox="0 0 24 24"><path d="M22.1 7.6a3 3 0 00-2.1-2.1C18.2 5 12 5 12 5s-6.2 0-8 .5A3 3 0 001.9 7.6C1.5 9.4 1.5 12 1.5 12s0 2.6.4 4.4a3 3 0 002.1 2.1c1.8.5 8 .5 8 .5s6.2 0 8-.5a3 3 0 002.1-2.1c.4-1.8.4-4.4.4-4.4s0-2.6-.4-4.4zM9.9 15.4V8.6l5.9 3.4z"/></svg>
-          </a>
           <a href="https://t.me/stemlab12" class="w-10 h-10 grid place-items-center text-fgd-muted hover:text-white transition-colors" aria-label="Telegram">
             <svg class="w-[18px] h-[18px]" fill="currentColor" viewBox="0 0 24 24"><path d="M21.9 4.3l-3 14.2c-.2 1-.8 1.3-1.7.8l-4.6-3.4-2.2 2.1c-.3.3-.5.5-.9.5l.3-4.6 8.4-7.6c.4-.3-.1-.5-.6-.2L7.2 12.6 2.8 11.2c-1-.3-1-.9.2-1.4l17.5-6.7c.8-.3 1.5.2 1.4 1.2z"/></svg>
           </a>
@@ -1407,295 +919,6 @@ tailwind.config = {
   </div>
 </div>
 
-<script>
-(function () {
-  'use strict';
-
-  var root = document.documentElement;
-  var $  = function (s, c) { return (c || document).querySelector(s); };
-  var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
-
-  /* ---------- Theme ---------- */
-  function applyTheme(mode) {
-    root.classList.toggle('dark', mode === 'dark');
-    try { localStorage.setItem('stemlab_theme', mode); } catch (e) {}
-    $('.i-sun').classList.toggle('hidden', mode === 'dark');
-    $('.i-moon').classList.toggle('hidden', mode !== 'dark');
-    var meta = $('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', mode === 'dark' ? '#070F0E' : '#0A1413');
-  }
-  applyTheme(root.classList.contains('dark') ? 'dark' : 'light');
-  $('#theme-btn').addEventListener('click', function () {
-    applyTheme(root.classList.contains('dark') ? 'light' : 'dark');
-  });
-
-  /* ---------- Header: transparent over hero, solid after ---------- */
-  var hdr = $('#hdr');
-  function onScroll() {
-    hdr.classList.toggle('solid', window.scrollY > 8);
-    syncActiveNav();
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-
-  /* ---------- Nav dropdown ---------- */
-  $$('[data-menu]').forEach(function (wrap) {
-    var btn = wrap.querySelector('button');
-
-    function openMenu()  { wrap.classList.add('open');    btn.setAttribute('aria-expanded', 'true'); }
-    function closeMenu() { wrap.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
-
-    btn.addEventListener('click', function (e) {
-      e.stopPropagation();
-      if (wrap.classList.contains('open')) closeMenu(); else openMenu();
-    });
-    // on document, so Esc works wherever focus happens to sit
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && wrap.classList.contains('open')) { closeMenu(); btn.focus(); }
-    });
-    wrap.addEventListener('focusout', function (e) {
-      if (!wrap.contains(e.relatedTarget)) closeMenu();
-    });
-    $$('a', wrap).forEach(function (a) { a.addEventListener('click', closeMenu); });
-    document.addEventListener('click', function (e) {
-      if (!wrap.contains(e.target)) closeMenu();
-    });
-  });
-
-  /* ---------- Active nav section ---------- */
-  var navLinks = $$('#nav a.h-link');
-  var sections = navLinks
-    .map(function (l) { return document.getElementById(l.getAttribute('href').slice(1)); })
-    .filter(Boolean);
-
-  // Deterministic: the active section is the last one whose top has passed
-  // just below the header. An observer band would miss fast or jumped scrolls.
-  function syncActiveNav() {
-    if (!sections || !sections.length) return;
-    var line = window.scrollY + 170;
-    var current = null;
-    sections.forEach(function (s) {
-      if (s.getBoundingClientRect().top + window.scrollY <= line) current = s;
-    });
-    navLinks.forEach(function (l) {
-      var on = !!current && l.getAttribute('href') === '#' + current.id;
-      l.setAttribute('data-active', on ? 'true' : 'false');
-    });
-  }
-  onScroll();
-
-  /* ---------- Mobile drawer ---------- */
-  var mob = $('#mob');
-  var mobBg = $('.mob-bg', mob);
-  var mobPanel = $('.mob-panel', mob);
-  var mobBtn = $('#mob-btn');
-
-  function openDrawer() {
-    mob.setAttribute('aria-hidden', 'false');
-    mobBtn.setAttribute('aria-expanded', 'true');
-    mob.classList.remove('pointer-events-none');
-    mobBg.classList.add('opacity-100');
-    mobPanel.classList.remove('translate-x-full');
-    lockScroll(true);
-  }
-  function closeDrawer() {
-    mob.setAttribute('aria-hidden', 'true');
-    mobBtn.setAttribute('aria-expanded', 'false');
-    mobBg.classList.remove('opacity-100');
-    mobPanel.classList.add('translate-x-full');
-    if (!$('.modal.open')) lockScroll(false);
-    window.setTimeout(function () { mob.classList.add('pointer-events-none'); }, 260);
-  }
-  mobBtn.addEventListener('click', openDrawer);
-  $('#mob-close').addEventListener('click', closeDrawer);
-  mobBg.addEventListener('click', closeDrawer);
-  $$('.mob-lnk', mob).forEach(function (l) { l.addEventListener('click', closeDrawer); });
-
-  /* ---------- Scroll lock ---------- */
-  function lockScroll(on) {
-    document.body.style.overflow = on ? 'hidden' : '';
-  }
-
-  /* ---------- Modals ---------- */
-  var lastFocus = null;
-
-  function openModal(id) {
-    var m = document.getElementById(id);
-    if (!m) return;
-    lastFocus = document.activeElement;
-    closeDrawer();
-    m.classList.add('open');
-    lockScroll(true);
-    var first = m.querySelector('input, select, button');
-    if (first) window.setTimeout(function () { first.focus(); }, 60);
-  }
-  function closeModal(m) {
-    m.classList.remove('open');
-    if (!$('.modal.open')) lockScroll(false);
-    if (lastFocus && lastFocus.focus) lastFocus.focus();
-  }
-
-  $$('.reg-trig').forEach(function (b) {
-    b.addEventListener('click', function () {
-      var course = b.getAttribute('data-course');
-      if (course) {
-        var sel = $('#f-course');
-        for (var i = 0; i < sel.options.length; i++) {
-          if (sel.options[i].text === course) { sel.selectedIndex = i; break; }
-        }
-      }
-      openModal('reg-modal');
-    });
-  });
-
-  $$('.cab-trig').forEach(function (b) {
-    b.addEventListener('click', function () { renderCabinet(); openModal('cab-modal'); });
-  });
-
-  $$('.modal-x').forEach(function (b) {
-    b.addEventListener('click', function () { closeModal(b.closest('.modal')); });
-  });
-  $$('.modal').forEach(function (m) {
-    m.addEventListener('click', function (e) { if (e.target === m) closeModal(m); });
-  });
-
-  document.addEventListener('keydown', function (e) {
-    if (e.key !== 'Escape') return;
-    var open = $('.modal.open');
-    if (open) { closeModal(open); return; }
-    if (mob.getAttribute('aria-hidden') === 'false') closeDrawer();
-  });
-
-  /* Focus trap inside an open modal */
-  document.addEventListener('keydown', function (e) {
-    if (e.key !== 'Tab') return;
-    var m = $('.modal.open');
-    if (!m) return;
-    var items = $$('a[href], button, input, select, textarea', m).filter(function (el) {
-      return !el.disabled && el.offsetParent !== null;
-    });
-    if (!items.length) return;
-    var first = items[0], last = items[items.length - 1];
-    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-  });
-
-  /* ---------- Storage ---------- */
-  var KEY = 'stemlab_applications';
-  function load() {
-    try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch (e) { return []; }
-  }
-  function save(list) {
-    try { localStorage.setItem(KEY, JSON.stringify(list)); } catch (e) {}
-  }
-
-  /* ---------- Registration form ---------- */
-  var form = $('#reg-form');
-  var errBox = $('#f-error');
-  var okBox = $('#f-ok');
-
-  function fail(msg, field) {
-    errBox.textContent = msg;
-    errBox.classList.remove('hidden');
-    if (field) field.focus();
-  }
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    errBox.classList.add('hidden');
-    okBox.classList.add('hidden');
-
-    var nameEl = $('#f-name'), gradeEl = $('#f-grade'), courseEl = $('#f-course');
-    var phoneEl = $('#f-phone'), emailEl = $('#f-email');
-
-    var name = nameEl.value.trim();
-    var grade = gradeEl.value;
-    var course = courseEl.value;
-    var phone = phoneEl.value.trim();
-    var email = emailEl.value.trim();
-
-    if (name.length < 4 || name.indexOf(' ') === -1) {
-      return fail('Вкажіть прізвище та імʼя учня повністю.', nameEl);
-    }
-    if (!grade)  return fail('Оберіть клас.', gradeEl);
-    if (!course) return fail('Оберіть напрямок.', courseEl);
-    if (phone.replace(/\D/g, '').length < 9) {
-      return fail('Вкажіть телефон у форматі +38 0XX XXX XX XX.', phoneEl);
-    }
-    if (!/^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/.test(email)) {
-      return fail('Перевірте електронну пошту.', emailEl);
-    }
-
-    var list = load();
-    var dup = list.some(function (r) {
-      return r.name.toLowerCase() === name.toLowerCase() && r.course === course;
-    });
-    if (dup) return fail(name + ' уже записаний на «' + course + '».', nameEl);
-
-    list.push({
-      id: Date.now(),
-      name: name, grade: grade, course: course,
-      phone: phone, email: email,
-      created: new Date().toISOString()
-    });
-    save(list);
-
-    form.reset();
-    okBox.textContent = 'Заявку збережено. Ми зателефонуємо впродовж робочого дня.';
-    okBox.classList.remove('hidden');
-    window.setTimeout(function () {
-      var m = $('#reg-modal');
-      if (m.classList.contains('open')) closeModal(m);
-      okBox.classList.add('hidden');
-    }, 2400);
-  });
-
-  /* ---------- Cabinet ---------- */
-  function esc(s) {
-    return String(s).replace(/[&<>"']/g, function (c) {
-      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
-    });
-  }
-
-  function renderCabinet() {
-    var list = load();
-    var box = $('#cab-list');
-    var empty = $('#cab-empty');
-
-    if (!list.length) {
-      box.innerHTML = '';
-      box.classList.add('hidden');
-      empty.classList.remove('hidden');
-      return;
-    }
-    empty.classList.add('hidden');
-    box.classList.remove('hidden');
-
-    box.innerHTML = list.map(function (r) {
-      return '' +
-        '<div class="flex items-start justify-between gap-4 py-4">' +
-          '<div class="min-w-0">' +
-            '<p class="font-display font-bold text-[15.5px] tracking-[-.015em]">' + esc(r.name) + '</p>' +
-            '<p class="text-[14px] text-brand dark:text-brand-300 font-medium mt-0.5">' + esc(r.course) + '</p>' +
-            '<p class="text-[13.5px] text-fg-muted dark:text-fgd-muted mt-1 nums">' +
-              esc(r.grade) + ' · заявка від ' +
-              new Date(r.created).toLocaleDateString('uk-UA', { day: 'numeric', month: 'long', year: 'numeric' }) +
-            '</p>' +
-          '</div>' +
-          '<button type="button" data-del="' + r.id + '" class="w-10 h-10 -mr-2 grid place-items-center rounded-full text-fg-muted dark:text-fgd-muted hover:text-red-600 dark:hover:text-red-400 hover:bg-paper dark:hover:bg-night-800 transition-colors shrink-0" aria-label="Скасувати заявку">' +
-            '<svg class="w-[17px] h-[17px]" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6m4-6v6M5.5 7l1 12.2A2 2 0 008.5 21h7a2 2 0 002-1.8L18.5 7M9 7V4.5A1.5 1.5 0 0110.5 3h3A1.5 1.5 0 0115 4.5V7"/></svg>' +
-          '</button>' +
-        '</div>';
-    }).join('');
-
-    $$('[data-del]', box).forEach(function (b) {
-      b.addEventListener('click', function () {
-        var id = Number(b.getAttribute('data-del'));
-        save(load().filter(function (r) { return r.id !== id; }));
-        renderCabinet();
-      });
-    });
-  }
-})();
-</script>
+<script src="script.js" defer></script>
 </body>
 </html>
