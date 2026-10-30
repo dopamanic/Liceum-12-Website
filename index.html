@@ -7,58 +7,75 @@
 <meta name="description" content="STEM-лабораторія Ліцею №12 м. Київ — робототехніка, 3D-прототипування, програмування, IoT для учнів 7–11 класів.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
 tailwind.config = {
   theme: {
     extend: {
-      colors: {
-        brand: { 50:'#eef3fb', 100:'#d9e4f5', 200:'#b3c9eb', 500:'#1d5ca0', 600:'#174a82', 700:'#113863', 800:'#0c264a', 900:'#081a33' },
-      },
+      fontFamily: { sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'] },
     },
   },
 }
 </script>
 <style>
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; scroll-padding-top: 72px; }
-body { margin: 0; font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #fff; color: #1f2937; line-height: 1.65; font-size: 15px; }
-a { color: inherit; }
+html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; scroll-padding-top: 56px; }
+body { margin: 0; font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #fff; color: #1a1a1a; }
+a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
-:focus-visible { outline: 2px solid #1d5ca0; outline-offset: 2px; }
+:focus-visible { outline: 2px solid #2563eb; outline-offset: 2px; }
 table { border-collapse: collapse; }
 
+/* Header glass */
+.site-hdr { background: rgba(255,255,255,0.82); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+
+/* Hero gradient */
+.hero-bg {
+  background: #09090b;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(59,130,246,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-glow {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 /* Dark theme */
-[data-theme="dark"] body { background: #111827; color: #d1d5db; }
-[data-theme="dark"] .bg-white, [data-theme="dark"] .light-bg { background: #111827 !important; }
-[data-theme="dark"] .alt-bg { background: #1f2937 !important; }
-[data-theme="dark"] .site-header { background: rgba(17,24,39,0.97) !important; border-color: #374151 !important; }
-[data-theme="dark"] .heading-color { color: #f3f4f6 !important; }
-[data-theme="dark"] .text-gray-700 { color: #d1d5db !important; }
-[data-theme="dark"] .text-gray-600 { color: #9ca3af !important; }
-[data-theme="dark"] .text-gray-500 { color: #9ca3af !important; }
-[data-theme="dark"] .text-gray-400 { color: #6b7280 !important; }
-[data-theme="dark"] .border-gray-200 { border-color: #374151 !important; }
-[data-theme="dark"] .border-gray-100 { border-color: #1f2937 !important; }
-[data-theme="dark"] .course-row { border-color: #374151 !important; }
-[data-theme="dark"] .course-row:hover { background: #1f2937 !important; }
-[data-theme="dark"] .schedule-table th { background: #1f2937 !important; color: #d1d5db !important; }
-[data-theme="dark"] .schedule-table td { border-color: #374151 !important; color: #d1d5db !important; }
-[data-theme="dark"] .schedule-table tr:nth-child(even) td { background: rgba(31,41,55,0.5) !important; }
-[data-theme="dark"] .news-item { border-color: #374151 !important; }
-[data-theme="dark"] .site-footer { background: #030712 !important; }
-[data-theme="dark"] .banner-section { background: #1e3a5f !important; }
-[data-theme="dark"] .modal-box-inner { background: #1f2937 !important; }
-[data-theme="dark"] .input-field { background: #111827 !important; border-color: #374151 !important; color: #d1d5db !important; }
-[data-theme="dark"] .mob-drawer { background: #1f2937 !important; }
-[data-theme="dark"] .cta-section { background: #1e3a5f !important; }
+[data-theme="dark"] body { background: #09090b; color: #e5e5e5; }
+[data-theme="dark"] .site-hdr { background: rgba(9,9,11,0.82) !important; border-color: #27272a !important; }
+[data-theme="dark"] .light-section { background: #09090b !important; }
+[data-theme="dark"] .alt-section { background: #111113 !important; }
+[data-theme="dark"] .heading-c { color: #fafafa !important; }
+[data-theme="dark"] .sub-c { color: #a1a1aa !important; }
+[data-theme="dark"] .body-c { color: #a1a1aa !important; }
+[data-theme="dark"] .card-el { background: #18181b !important; border-color: #27272a !important; }
+[data-theme="dark"] .card-el:hover { border-color: #3f3f46 !important; }
+[data-theme="dark"] .tbl-th { background: #18181b !important; color: #e5e5e5 !important; }
+[data-theme="dark"] .tbl-td { border-color: #27272a !important; color: #d4d4d8 !important; }
+[data-theme="dark"] .tbl-tr:nth-child(even) .tbl-td { background: rgba(24,24,27,0.5) !important; }
+[data-theme="dark"] .news-row { border-color: #27272a !important; }
+[data-theme="dark"] .site-footer { background: #000 !important; }
+[data-theme="dark"] .modal-inner { background: #18181b !important; }
+[data-theme="dark"] .input-f { background: #09090b !important; border-color: #27272a !important; color: #e5e5e5 !important; }
+[data-theme="dark"] .mob-drawer { background: #18181b !important; }
+[data-theme="dark"] .cta-dark { background: #18181b !important; }
+[data-theme="dark"] .contact-map { background: #18181b !important; }
 
 /* Modals */
-.modal-wrap { background: rgba(0,0,0,0.4); backdrop-filter: blur(4px); opacity: 0; pointer-events: none; transition: opacity 0.2s; }
-.modal-wrap.open { opacity: 1; pointer-events: auto; }
-.modal-box { transform: translateY(8px); opacity: 0; transition: transform 0.2s ease, opacity 0.15s ease; }
-.modal-wrap.open .modal-box { transform: translateY(0); opacity: 1; }
+.modal-w { background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); opacity: 0; pointer-events: none; transition: opacity 0.15s; }
+.modal-w.open { opacity: 1; pointer-events: auto; }
+.modal-b { transform: translateY(8px); opacity: 0; transition: transform 0.2s ease, opacity 0.15s ease; }
+.modal-w.open .modal-b { transform: translateY(0); opacity: 1; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
@@ -66,166 +83,130 @@ table { border-collapse: collapse; }
 </style>
 </head>
 <body>
-<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-brand-500 focus:text-white focus:px-4 focus:py-2 focus:rounded">Перейти до вмісту</a>
-
-<!-- Announcement bar -->
-<div class="bg-brand-500 text-white text-sm py-2 text-center px-4">
-  Набір на 2024/2025 навчальний рік відкритий — <button class="register-trigger underline hover:no-underline font-medium">записатися</button>
-</div>
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-blue-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">Перейти до вмісту</a>
 
 <!-- Header -->
-<header class="site-header sticky top-0 z-50 bg-white border-b border-gray-200">
-  <div class="max-w-5xl mx-auto px-4 flex items-center justify-between h-14">
-    <a href="#" class="flex items-center gap-2 min-w-0">
-      <span class="font-bold text-brand-500 whitespace-nowrap">STEM Лабораторія</span>
-      <span class="text-gray-400 text-sm hidden sm:inline">·</span>
-      <span class="text-gray-400 text-sm hidden sm:inline truncate">Ліцей №12</span>
+<header class="site-hdr fixed top-0 left-0 right-0 z-50 border-b border-zinc-200/60">
+  <div class="max-w-6xl mx-auto px-5 flex items-center justify-between h-14">
+    <a href="#" class="font-semibold text-[15px] tracking-tight">
+      <span class="hidden sm:inline">STEM Лабораторія · Ліцей №12</span>
+      <span class="sm:hidden">STEM Lab</span>
     </a>
-    <nav class="hidden md:flex items-center gap-6 text-sm" aria-label="Навігація">
-      <a href="#about" class="text-gray-600 hover:text-gray-900">Про нас</a>
-      <a href="#courses" class="text-gray-600 hover:text-gray-900">Напрямки</a>
-      <a href="#schedule" class="text-gray-600 hover:text-gray-900">Розклад</a>
-      <a href="#news" class="text-gray-600 hover:text-gray-900">Новини</a>
-      <a href="#contacts" class="text-gray-600 hover:text-gray-900">Контакти</a>
+    <nav class="hidden md:flex items-center gap-6 text-[13px] text-zinc-500" aria-label="Навігація">
+      <a href="#about" class="hover:text-zinc-900 transition-colors">Про нас</a>
+      <a href="#programs" class="hover:text-zinc-900 transition-colors">Програми</a>
+      <a href="#schedule" class="hover:text-zinc-900 transition-colors">Розклад</a>
+      <a href="#news" class="hover:text-zinc-900 transition-colors">Новини</a>
+      <a href="#contacts" class="hover:text-zinc-900 transition-colors">Контакти</a>
     </nav>
-    <div class="flex items-center gap-1.5">
-      <button id="theme-toggle" class="w-8 h-8 rounded flex items-center justify-center text-gray-400 hover:text-gray-600" aria-label="Тема">
-        <svg class="sun-icon w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-        <svg class="moon-icon w-4 h-4 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    <div class="flex items-center gap-2">
+      <button id="theme-toggle" class="w-8 h-8 rounded-full flex items-center justify-center text-zinc-400 hover:text-zinc-600 transition-colors" aria-label="Тема">
+        <svg class="sun-i w-[15px] h-[15px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <svg class="moon-i w-[15px] h-[15px] hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
       </button>
-      <button id="cabinet-btn" class="hidden sm:block text-sm text-gray-500 hover:text-gray-700 px-2 py-1">Кабінет</button>
-      <button id="register-open" class="bg-brand-500 hover:bg-brand-600 text-white text-sm font-medium px-3.5 py-1.5 rounded transition-colors">Записатися</button>
-      <button id="mobile-menu-btn" class="md:hidden w-8 h-8 rounded flex items-center justify-center text-gray-600" aria-label="Меню">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      <button id="cabinet-btn" class="hidden sm:block text-[13px] text-zinc-500 hover:text-zinc-800 px-2.5 py-1.5 transition-colors">Кабінет</button>
+      <button id="register-open" class="bg-zinc-900 hover:bg-zinc-800 text-white text-[13px] font-medium px-4 py-1.5 rounded-full transition-colors">Записатися</button>
+      <button id="mob-btn" class="md:hidden w-8 h-8 rounded-full flex items-center justify-center text-zinc-500" aria-label="Меню">
+        <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 12h16M4 6h16M4 18h16"/></svg>
       </button>
     </div>
   </div>
 </header>
 
-<!-- Mobile menu drawer -->
-<div id="mobile-menu" class="fixed inset-0 z-[60] pointer-events-none" aria-hidden="true">
-  <div class="mob-backdrop absolute inset-0 bg-black/30 opacity-0 transition-opacity pointer-events-none"></div>
-  <div class="mob-panel mob-drawer absolute right-0 top-0 h-full w-64 bg-white shadow-lg translate-x-full transition-transform duration-200 pointer-events-auto p-4 flex flex-col gap-3">
-    <button id="mobile-close" class="self-end w-8 h-8 rounded flex items-center justify-center text-gray-400" aria-label="Закрити">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+<!-- Mobile menu -->
+<div id="mob-menu" class="fixed inset-0 z-[60] pointer-events-none" aria-hidden="true">
+  <div class="mob-bg absolute inset-0 bg-black/40 opacity-0 transition-opacity pointer-events-none"></div>
+  <div class="mob-p mob-drawer absolute right-0 top-0 h-full w-64 bg-white shadow-xl translate-x-full transition-transform duration-200 pointer-events-auto p-5 flex flex-col">
+    <button id="mob-close" class="self-end w-8 h-8 rounded-full flex items-center justify-center text-zinc-400" aria-label="Закрити">
+      <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
     </button>
-    <nav class="flex flex-col gap-0.5 text-[15px]" aria-label="Мобільна навігація">
-      <a href="#about" class="mob-link px-3 py-2 rounded text-gray-700 hover:bg-gray-50">Про нас</a>
-      <a href="#courses" class="mob-link px-3 py-2 rounded text-gray-700 hover:bg-gray-50">Напрямки</a>
-      <a href="#schedule" class="mob-link px-3 py-2 rounded text-gray-700 hover:bg-gray-50">Розклад</a>
-      <a href="#news" class="mob-link px-3 py-2 rounded text-gray-700 hover:bg-gray-50">Новини</a>
-      <a href="#contacts" class="mob-link px-3 py-2 rounded text-gray-700 hover:bg-gray-50">Контакти</a>
+    <nav class="flex flex-col gap-1 mt-4 text-[15px]" aria-label="Мобільне меню">
+      <a href="#about" class="mob-lnk px-3 py-2 rounded-lg text-zinc-700 hover:bg-zinc-50">Про нас</a>
+      <a href="#programs" class="mob-lnk px-3 py-2 rounded-lg text-zinc-700 hover:bg-zinc-50">Програми</a>
+      <a href="#schedule" class="mob-lnk px-3 py-2 rounded-lg text-zinc-700 hover:bg-zinc-50">Розклад</a>
+      <a href="#news" class="mob-lnk px-3 py-2 rounded-lg text-zinc-700 hover:bg-zinc-50">Новини</a>
+      <a href="#contacts" class="mob-lnk px-3 py-2 rounded-lg text-zinc-700 hover:bg-zinc-50">Контакти</a>
     </nav>
     <div class="mt-auto flex flex-col gap-2">
-      <button class="cabinet-trigger w-full text-sm text-gray-600 border border-gray-200 px-3 py-2 rounded">Кабінет</button>
-      <button class="register-trigger w-full bg-brand-500 text-white text-sm font-medium px-3 py-2 rounded">Записатися</button>
+      <button class="cab-trig w-full text-sm text-zinc-600 border border-zinc-200 px-3 py-2 rounded-lg">Кабінет</button>
+      <button class="reg-trig w-full bg-zinc-900 text-white text-sm font-medium px-3 py-2 rounded-lg">Записатися</button>
     </div>
   </div>
 </div>
 
 <main id="main">
 
-<!-- Banner -->
-<section class="banner-section bg-brand-800 text-white py-12 md:py-16">
-  <div class="max-w-5xl mx-auto px-4">
-    <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight mb-3">STEM-лабораторія Ліцею №12</h1>
-    <p class="text-brand-200 text-base md:text-lg max-w-xl mb-6 leading-relaxed">Навчальна лабораторія при Ліцеї №12 м.&nbsp;Києва. Робототехніка, 3D-прототипування, програмування та інтернет речей для учнів 7–11&nbsp;класів.</p>
-    <div class="flex flex-wrap gap-3">
-      <button class="register-trigger bg-white text-brand-800 font-medium text-sm px-5 py-2 rounded hover:bg-brand-50 transition-colors">Записатися на курс</button>
-      <a href="#schedule" class="text-white/80 hover:text-white text-sm px-5 py-2 rounded border border-white/30 hover:border-white/50 transition-colors">Розклад занять</a>
+<!-- Hero -->
+<section class="hero-bg pt-32 pb-20 md:pt-40 md:pb-28 text-center px-5">
+  <div class="max-w-3xl mx-auto relative z-10">
+    <p class="text-zinc-500 text-sm mb-4 tracking-wide">Ліцей №12 · м. Київ</p>
+    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.1] mb-5">
+      STEM<br class="sm:hidden"> <span class="hero-glow">Лабораторія</span>
+    </h1>
+    <p class="text-zinc-400 text-base md:text-lg max-w-xl mx-auto leading-relaxed mb-8">
+      Робототехніка, 3D-прототипування, програмування та&nbsp;IoT. Практичне навчання для учнів 7–11&nbsp;класів.
+    </p>
+    <div class="flex items-center justify-center gap-3 flex-wrap">
+      <button class="reg-trig bg-white text-zinc-900 font-medium text-sm px-6 py-2.5 rounded-full hover:bg-zinc-100 transition-colors">Записатися</button>
+      <a href="#programs" class="text-zinc-400 hover:text-white text-sm px-6 py-2.5 rounded-full border border-zinc-700 hover:border-zinc-500 transition-colors">Програми навчання</a>
     </div>
   </div>
 </section>
 
 <!-- About -->
-<section id="about" class="light-bg bg-white py-10 md:py-14">
-  <div class="max-w-5xl mx-auto px-4">
-    <h2 class="heading-color text-xl sm:text-2xl font-bold text-gray-900 mb-5">Про лабораторію</h2>
-
-    <div class="md:flex md:gap-8">
-      <div class="md:flex-1 mb-6 md:mb-0">
-        <p class="text-gray-700 mb-3">
-          STEM-лабораторію відкрито у 2020 році на базі Ліцею №12 м.&nbsp;Києва за підтримки управління освіти Голосіївського району. За чотири роки роботи через лабораторію пройшли понад 500&nbsp;учнів, більше 50 з яких стали призерами міських та обласних олімпіад з робототехніки та інформатики.
-        </p>
-        <p class="text-gray-700 mb-3">
-          Заняття побудовані за проєктним принципом: учні працюють над реальними задачами — від ідеї до готового прототипу. 80% навчального часу — практика: збирання роботів, друк на 3D-принтерах, написання та відлагодження коду.
-        </p>
-        <p class="text-gray-700">
-          Лабораторія оснащена 3D-принтерами (FDM та SLA), комплектами Arduino та Raspberry&nbsp;Pi, конструкторами LEGO Mindstorms EV3, паяльними станціями та модулями ESP32 для проєктів з інтернету речей. Викладачі — практикуючі інженери та IT-спеціалісти.
-        </p>
-      </div>
-      <div class="md:w-72 lg:w-80 flex-shrink-0">
-        <div class="rounded overflow-hidden bg-gray-100 aspect-[4/3]">
-          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=640&h=480&fit=crop&auto=format" alt="Учні працюють в лабораторії" class="w-full h-full object-cover" loading="eager" onerror="this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full text-gray-400 text-sm\'>Фото лабораторії</div>'">
-        </div>
-        <p class="text-xs text-gray-400 mt-1.5">Заняття з робототехніки, листопад 2024</p>
-      </div>
+<section id="about" class="light-section bg-white py-16 md:py-24 px-5">
+  <div class="max-w-3xl mx-auto">
+    <h2 class="heading-c text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 mb-6">Про лабораторію</h2>
+    <div class="body-c text-zinc-600 space-y-4 leading-relaxed">
+      <p>
+        STEM-лабораторію створено у 2020 році на базі Ліцею №12 м.&nbsp;Києва за підтримки управління освіти Голосіївського району. За чотири роки через лабораторію пройшли понад 500&nbsp;учнів — більше 50 з них стали призерами міських та обласних олімпіад з робототехніки й інформатики.
+      </p>
+      <p>
+        Навчання побудоване за проєктним принципом: учні працюють над реальними задачами від ідеї до готового прототипу. 80% часу — практика: збирання роботів, 3D-друк, написання коду. Викладачі — практикуючі інженери та IT-спеціалісти.
+      </p>
+      <p>
+        Обладнання: 3D-принтери FDM та SLA, Arduino, Raspberry&nbsp;Pi, LEGO Mindstorms EV3, паяльні станції, модулі ESP32.
+      </p>
     </div>
   </div>
 </section>
 
-<!-- Courses -->
-<section id="courses" class="alt-bg bg-gray-50 py-10 md:py-14">
-  <div class="max-w-5xl mx-auto px-4">
-    <h2 class="heading-color text-xl sm:text-2xl font-bold text-gray-900 mb-1.5">Напрямки навчання</h2>
-    <p class="text-gray-500 text-sm mb-6">Набір на 2024/2025 навчальний рік. Навчання безкоштовне для учнів ліцею.</p>
+<!-- Programs -->
+<section id="programs" class="alt-section bg-zinc-50 py-16 md:py-24 px-5">
+  <div class="max-w-5xl mx-auto">
+    <div class="max-w-3xl mb-10">
+      <h2 class="heading-c text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 mb-2">Програми навчання</h2>
+      <p class="sub-c text-zinc-500 text-[15px]">Набір на 2024/2025 н.р. Навчання безкоштовне для учнів ліцею.</p>
+    </div>
 
-    <div class="space-y-0 border border-gray-200 rounded overflow-hidden bg-white">
+    <div class="grid sm:grid-cols-2 gap-4">
 
-      <div class="course-row border-b border-gray-200 px-4 py-4 sm:px-5 hover:bg-gray-50 transition-colors">
-        <div class="sm:flex sm:items-start sm:justify-between sm:gap-4">
-          <div class="flex-1 min-w-0">
-            <h3 class="heading-color font-semibold text-gray-900">Робототехніка та мехатроніка</h3>
-            <p class="text-gray-600 text-sm mt-1">Збирання та програмування роботів на Arduino і LEGO Mindstorms EV3. Участь у всеукраїнських олімпіадах з робототехніки. Основи електроніки та механіки.</p>
-          </div>
-          <div class="flex items-center gap-4 mt-2 sm:mt-0 text-sm text-gray-500 sm:text-right flex-shrink-0">
-            <span>7–11 кл.</span>
-            <span>9 міс.</span>
-            <button class="register-trigger text-brand-500 hover:text-brand-700 font-medium whitespace-nowrap" data-course-name="Робототехніка та мехатроніка">Записатися</button>
-          </div>
-        </div>
+      <div class="card-el bg-white border border-zinc-200 rounded-2xl p-6 hover:border-zinc-300 transition-colors">
+        <h3 class="heading-c font-semibold text-zinc-900 text-lg mb-1">Робототехніка та мехатроніка</h3>
+        <p class="sub-c text-zinc-400 text-sm mb-3">7–11 клас · 9 місяців</p>
+        <p class="body-c text-zinc-600 text-sm leading-relaxed mb-4">Збирання та програмування роботів на Arduino та LEGO Mindstorms. Електроніка, механіка, підготовка до олімпіад.</p>
+        <button class="reg-trig text-blue-600 hover:text-blue-700 text-sm font-medium" data-course-name="Робототехніка та мехатроніка">Записатися</button>
       </div>
 
-      <div class="course-row border-b border-gray-200 px-4 py-4 sm:px-5 hover:bg-gray-50 transition-colors">
-        <div class="sm:flex sm:items-start sm:justify-between sm:gap-4">
-          <div class="flex-1 min-w-0">
-            <h3 class="heading-color font-semibold text-gray-900">3D-моделювання та прототипування</h3>
-            <p class="text-gray-600 text-sm mt-1">Моделювання в Fusion 360, друк на FDM та SLA принтерах. Від ескізу до фізичного прототипу. Основи інженерного проєктування.</p>
-          </div>
-          <div class="flex items-center gap-4 mt-2 sm:mt-0 text-sm text-gray-500 sm:text-right flex-shrink-0">
-            <span>8–11 кл.</span>
-            <span>6 міс.</span>
-            <button class="register-trigger text-brand-500 hover:text-brand-700 font-medium whitespace-nowrap" data-course-name="3D-моделювання та прототипування">Записатися</button>
-          </div>
-        </div>
+      <div class="card-el bg-white border border-zinc-200 rounded-2xl p-6 hover:border-zinc-300 transition-colors">
+        <h3 class="heading-c font-semibold text-zinc-900 text-lg mb-1">3D-моделювання та друк</h3>
+        <p class="sub-c text-zinc-400 text-sm mb-3">8–11 клас · 6 місяців</p>
+        <p class="body-c text-zinc-600 text-sm leading-relaxed mb-4">Моделювання в Fusion 360, друк на FDM та SLA принтерах. Від ескізу до фізичного прототипу.</p>
+        <button class="reg-trig text-blue-600 hover:text-blue-700 text-sm font-medium" data-course-name="3D-моделювання та прототипування">Записатися</button>
       </div>
 
-      <div class="course-row border-b border-gray-200 px-4 py-4 sm:px-5 hover:bg-gray-50 transition-colors">
-        <div class="sm:flex sm:items-start sm:justify-between sm:gap-4">
-          <div class="flex-1 min-w-0">
-            <h3 class="heading-color font-semibold text-gray-900">Програмування Python</h3>
-            <p class="text-gray-600 text-sm mt-1">Від основ синтаксису до прикладних проєктів: ігри, чат-боти, аналіз даних, основи машинного навчання. Підготовка до олімпіад з інформатики.</p>
-          </div>
-          <div class="flex items-center gap-4 mt-2 sm:mt-0 text-sm text-gray-500 sm:text-right flex-shrink-0">
-            <span>7–11 кл.</span>
-            <span>9 міс.</span>
-            <button class="register-trigger text-brand-500 hover:text-brand-700 font-medium whitespace-nowrap" data-course-name="Програмування Python">Записатися</button>
-          </div>
-        </div>
+      <div class="card-el bg-white border border-zinc-200 rounded-2xl p-6 hover:border-zinc-300 transition-colors">
+        <h3 class="heading-c font-semibold text-zinc-900 text-lg mb-1">Програмування Python</h3>
+        <p class="sub-c text-zinc-400 text-sm mb-3">7–11 клас · 9 місяців</p>
+        <p class="body-c text-zinc-600 text-sm leading-relaxed mb-4">Від основ до прикладних проєктів: ігри, чат-боти, аналіз даних, основи ML. Підготовка до олімпіад з інформатики.</p>
+        <button class="reg-trig text-blue-600 hover:text-blue-700 text-sm font-medium" data-course-name="Програмування Python">Записатися</button>
       </div>
 
-      <div class="course-row px-4 py-4 sm:px-5 hover:bg-gray-50 transition-colors">
-        <div class="sm:flex sm:items-start sm:justify-between sm:gap-4">
-          <div class="flex-1 min-w-0">
-            <h3 class="heading-color font-semibold text-gray-900">Інтернет речей (IoT)</h3>
-            <p class="text-gray-600 text-sm mt-1">Розумний дім, метеостанції, автоматизація на ESP32 та Raspberry Pi. Протоколи MQTT, хмарні платформи, датчики та актуатори.</p>
-          </div>
-          <div class="flex items-center gap-4 mt-2 sm:mt-0 text-sm text-gray-500 sm:text-right flex-shrink-0">
-            <span>9–11 кл.</span>
-            <span>6 міс.</span>
-            <button class="register-trigger text-brand-500 hover:text-brand-700 font-medium whitespace-nowrap" data-course-name="Інтернет речей (IoT)">Записатися</button>
-          </div>
-        </div>
+      <div class="card-el bg-white border border-zinc-200 rounded-2xl p-6 hover:border-zinc-300 transition-colors">
+        <h3 class="heading-c font-semibold text-zinc-900 text-lg mb-1">Інтернет речей (IoT)</h3>
+        <p class="sub-c text-zinc-400 text-sm mb-3">9–11 клас · 6 місяців</p>
+        <p class="body-c text-zinc-600 text-sm leading-relaxed mb-4">Розумний дім, метеостанції, автоматизація на ESP32 та Raspberry Pi. MQTT, хмарні платформи, датчики.</p>
+        <button class="reg-trig text-blue-600 hover:text-blue-700 text-sm font-medium" data-course-name="Інтернет речей (IoT)">Записатися</button>
       </div>
 
     </div>
@@ -233,86 +214,85 @@ table { border-collapse: collapse; }
 </section>
 
 <!-- Schedule -->
-<section id="schedule" class="light-bg bg-white py-10 md:py-14">
-  <div class="max-w-5xl mx-auto px-4">
-    <h2 class="heading-color text-xl sm:text-2xl font-bold text-gray-900 mb-1.5">Розклад занять</h2>
-    <p class="text-gray-500 text-sm mb-5">Друге півріччя, 2024/2025 н.р. Заняття проходять в кабінеті 301 (3-й поверх).</p>
+<section id="schedule" class="light-section bg-white py-16 md:py-24 px-5">
+  <div class="max-w-3xl mx-auto">
+    <h2 class="heading-c text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 mb-2">Розклад занять</h2>
+    <p class="sub-c text-zinc-500 text-[15px] mb-6">II семестр 2024/2025 н.р. · каб. 301, 3-й поверх</p>
 
-    <div class="overflow-x-auto -mx-4 px-4">
-      <table class="schedule-table w-full text-sm min-w-[540px]">
+    <div class="overflow-x-auto -mx-5 px-5">
+      <table class="w-full text-sm min-w-[480px]">
         <thead>
           <tr>
-            <th class="text-left py-2.5 px-3 bg-gray-50 font-medium text-gray-700 border-b border-gray-200">Напрямок</th>
-            <th class="text-left py-2.5 px-3 bg-gray-50 font-medium text-gray-700 border-b border-gray-200">День</th>
-            <th class="text-left py-2.5 px-3 bg-gray-50 font-medium text-gray-700 border-b border-gray-200">Час</th>
-            <th class="text-left py-2.5 px-3 bg-gray-50 font-medium text-gray-700 border-b border-gray-200">Викладач</th>
+            <th class="tbl-th text-left py-3 px-4 bg-zinc-50 text-zinc-700 font-medium border-b border-zinc-200 rounded-tl-lg">Напрямок</th>
+            <th class="tbl-th text-left py-3 px-4 bg-zinc-50 text-zinc-700 font-medium border-b border-zinc-200">День</th>
+            <th class="tbl-th text-left py-3 px-4 bg-zinc-50 text-zinc-700 font-medium border-b border-zinc-200">Час</th>
+            <th class="tbl-th text-left py-3 px-4 bg-zinc-50 text-zinc-700 font-medium border-b border-zinc-200 rounded-tr-lg">Викладач</th>
           </tr>
         </thead>
-        <tbody class="text-gray-700">
-          <tr>
-            <td class="py-2.5 px-3 border-b border-gray-100">Робототехніка</td>
-            <td class="py-2.5 px-3 border-b border-gray-100">Понеділок, середа</td>
-            <td class="py-2.5 px-3 border-b border-gray-100 tabular-nums">15:30–17:00</td>
-            <td class="py-2.5 px-3 border-b border-gray-100">Коваленко О.&thinsp;М.</td>
+        <tbody>
+          <tr class="tbl-tr">
+            <td class="tbl-td py-3 px-4 border-b border-zinc-100 heading-c text-zinc-900 font-medium">Робототехніка</td>
+            <td class="tbl-td py-3 px-4 border-b border-zinc-100 body-c text-zinc-600">Пн, Ср</td>
+            <td class="tbl-td py-3 px-4 border-b border-zinc-100 body-c text-zinc-600 tabular-nums">15:30 – 17:00</td>
+            <td class="tbl-td py-3 px-4 border-b border-zinc-100 body-c text-zinc-600">Коваленко О. М.</td>
           </tr>
-          <tr>
-            <td class="py-2.5 px-3 border-b border-gray-100">3D-моделювання</td>
-            <td class="py-2.5 px-3 border-b border-gray-100">Вівторок, четвер</td>
-            <td class="py-2.5 px-3 border-b border-gray-100 tabular-nums">15:30–17:00</td>
-            <td class="py-2.5 px-3 border-b border-gray-100">Мельник І.&thinsp;В.</td>
+          <tr class="tbl-tr">
+            <td class="tbl-td py-3 px-4 border-b border-zinc-100 heading-c text-zinc-900 font-medium">3D-моделювання</td>
+            <td class="tbl-td py-3 px-4 border-b border-zinc-100 body-c text-zinc-600">Вт, Чт</td>
+            <td class="tbl-td py-3 px-4 border-b border-zinc-100 body-c text-zinc-600 tabular-nums">15:30 – 17:00</td>
+            <td class="tbl-td py-3 px-4 border-b border-zinc-100 body-c text-zinc-600">Мельник І. В.</td>
           </tr>
-          <tr>
-            <td class="py-2.5 px-3 border-b border-gray-100">Python</td>
-            <td class="py-2.5 px-3 border-b border-gray-100">Вівторок, п'ятниця</td>
-            <td class="py-2.5 px-3 border-b border-gray-100 tabular-nums">15:30–17:00</td>
-            <td class="py-2.5 px-3 border-b border-gray-100">Бондаренко Т.&thinsp;С.</td>
+          <tr class="tbl-tr">
+            <td class="tbl-td py-3 px-4 border-b border-zinc-100 heading-c text-zinc-900 font-medium">Python</td>
+            <td class="tbl-td py-3 px-4 border-b border-zinc-100 body-c text-zinc-600">Вт, Пт</td>
+            <td class="tbl-td py-3 px-4 border-b border-zinc-100 body-c text-zinc-600 tabular-nums">15:30 – 17:00</td>
+            <td class="tbl-td py-3 px-4 border-b border-zinc-100 body-c text-zinc-600">Бондаренко Т. С.</td>
           </tr>
-          <tr>
-            <td class="py-2.5 px-3">IoT</td>
-            <td class="py-2.5 px-3">Середа, п'ятниця</td>
-            <td class="py-2.5 px-3 tabular-nums">15:30–17:00</td>
-            <td class="py-2.5 px-3">Шевченко Д.&thinsp;О.</td>
+          <tr class="tbl-tr">
+            <td class="tbl-td py-3 px-4 heading-c text-zinc-900 font-medium">IoT</td>
+            <td class="tbl-td py-3 px-4 body-c text-zinc-600">Ср, Пт</td>
+            <td class="tbl-td py-3 px-4 body-c text-zinc-600 tabular-nums">15:30 – 17:00</td>
+            <td class="tbl-td py-3 px-4 body-c text-zinc-600">Шевченко Д. О.</td>
           </tr>
         </tbody>
       </table>
     </div>
-
-    <p class="text-xs text-gray-400 mt-3">Розклад може змінюватися. Актуальна інформація — за телефоном або у Telegram-каналі.</p>
+    <p class="sub-c text-zinc-400 text-xs mt-3">Розклад може змінюватися. Актуальна інформація за телефоном або в Telegram.</p>
   </div>
 </section>
 
 <!-- News -->
-<section id="news" class="alt-bg bg-gray-50 py-10 md:py-14">
-  <div class="max-w-5xl mx-auto px-4">
-    <h2 class="heading-color text-xl sm:text-2xl font-bold text-gray-900 mb-5">Новини</h2>
+<section id="news" class="alt-section bg-zinc-50 py-16 md:py-24 px-5">
+  <div class="max-w-3xl mx-auto">
+    <h2 class="heading-c text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 mb-8">Новини</h2>
 
     <div class="space-y-0">
-      <article class="news-item border-b border-gray-200 py-3.5 sm:flex sm:gap-4">
-        <time class="text-sm text-gray-400 sm:w-28 flex-shrink-0 tabular-nums block mb-0.5 sm:mb-0">12.09.2024</time>
+      <article class="news-row py-4 border-b border-zinc-200 sm:flex sm:gap-5">
+        <time class="sub-c text-sm text-zinc-400 tabular-nums sm:w-24 flex-shrink-0 block mb-0.5 sm:mb-0">12.09.2024</time>
         <div>
-          <h3 class="heading-color font-medium text-gray-900 text-[15px]">Відкриття набору на 2024/2025 навчальний рік</h3>
-          <p class="text-gray-600 text-sm mt-0.5">Лабораторія починає набір учнів на всі напрямки. Нові курси, оновлене обладнання, розширений склад викладачів. Пробне заняття — безкоштовно.</p>
+          <h3 class="heading-c font-medium text-zinc-900">Відкриття набору на 2024/2025 навчальний рік</h3>
+          <p class="body-c text-zinc-500 text-sm mt-1">Набір учнів на всі напрямки. Оновлене обладнання, розширений склад викладачів. Перше заняття — безкоштовно.</p>
         </div>
       </article>
-      <article class="news-item border-b border-gray-200 py-3.5 sm:flex sm:gap-4">
-        <time class="text-sm text-gray-400 sm:w-28 flex-shrink-0 tabular-nums block mb-0.5 sm:mb-0">28.05.2024</time>
+      <article class="news-row py-4 border-b border-zinc-200 sm:flex sm:gap-5">
+        <time class="sub-c text-sm text-zinc-400 tabular-nums sm:w-24 flex-shrink-0 block mb-0.5 sm:mb-0">28.05.2024</time>
         <div>
-          <h3 class="heading-color font-medium text-gray-900 text-[15px]">Результати обласної олімпіади з робототехніки</h3>
-          <p class="text-gray-600 text-sm mt-0.5">Команда ліцею здобула 2 місце на обласній олімпіаді. Вітаємо учнів Петренка&nbsp;А. та Сидоренка&nbsp;В. і керівника Коваленка&nbsp;О.&thinsp;М.</p>
+          <h3 class="heading-c font-medium text-zinc-900">Обласна олімпіада з робототехніки — 2 місце</h3>
+          <p class="body-c text-zinc-500 text-sm mt-1">Команда ліцею здобула 2 місце. Вітаємо учнів Петренка А. та Сидоренка В. і керівника Коваленка О. М.</p>
         </div>
       </article>
-      <article class="news-item border-b border-gray-200 py-3.5 sm:flex sm:gap-4">
-        <time class="text-sm text-gray-400 sm:w-28 flex-shrink-0 tabular-nums block mb-0.5 sm:mb-0">15.03.2024</time>
+      <article class="news-row py-4 border-b border-zinc-200 sm:flex sm:gap-5">
+        <time class="sub-c text-sm text-zinc-400 tabular-nums sm:w-24 flex-shrink-0 block mb-0.5 sm:mb-0">15.03.2024</time>
         <div>
-          <h3 class="heading-color font-medium text-gray-900 text-[15px]">День відкритих дверей</h3>
-          <p class="text-gray-600 text-sm mt-0.5">Запрошуємо батьків та учнів 6–10&nbsp;класів відвідати лабораторію. Демонстрація обладнання, знайомство з викладачами, відповіді на запитання.</p>
+          <h3 class="heading-c font-medium text-zinc-900">День відкритих дверей</h3>
+          <p class="body-c text-zinc-500 text-sm mt-1">Запрошуємо батьків та учнів 6–10 класів. Демонстрація обладнання, знайомство з викладачами.</p>
         </div>
       </article>
-      <article class="news-item py-3.5 sm:flex sm:gap-4">
-        <time class="text-sm text-gray-400 sm:w-28 flex-shrink-0 tabular-nums block mb-0.5 sm:mb-0">20.12.2023</time>
+      <article class="news-row py-4 sm:flex sm:gap-5">
+        <time class="sub-c text-sm text-zinc-400 tabular-nums sm:w-24 flex-shrink-0 block mb-0.5 sm:mb-0">20.12.2023</time>
         <div>
-          <h3 class="heading-color font-medium text-gray-900 text-[15px]">Хакатон «Розумне місто 2023»</h3>
-          <p class="text-gray-600 text-sm mt-0.5">Учні лабораторії взяли участь у міському хакатоні з розробки IoT-рішень. Команда «SmartCity12» увійшла у фінал.</p>
+          <h3 class="heading-c font-medium text-zinc-900">Хакатон «Розумне місто»</h3>
+          <p class="body-c text-zinc-500 text-sm mt-1">Учні лабораторії взяли участь у міському хакатоні. Команда «SmartCity12» увійшла у фінал.</p>
         </div>
       </article>
     </div>
@@ -320,30 +300,30 @@ table { border-collapse: collapse; }
 </section>
 
 <!-- CTA -->
-<section class="cta-section bg-brand-800 py-8 md:py-10 text-center">
-  <div class="max-w-5xl mx-auto px-4">
-    <p class="text-white text-lg font-semibold mb-1">Запис на безкоштовне пробне заняття</p>
-    <p class="text-brand-200 text-sm mb-4">Для учнів 7–11 класів Ліцею №12 та інших шкіл Голосіївського району</p>
-    <button class="register-trigger bg-white text-brand-800 font-medium text-sm px-5 py-2 rounded hover:bg-brand-50 transition-colors">Записатися</button>
+<section class="cta-dark bg-zinc-900 py-14 md:py-20 px-5 text-center">
+  <div class="max-w-2xl mx-auto">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-3">Приєднуйся до лабораторії</h2>
+    <p class="text-zinc-400 mb-6">Безкоштовне пробне заняття для учнів 7–11 класів</p>
+    <button class="reg-trig bg-white text-zinc-900 font-medium text-sm px-6 py-2.5 rounded-full hover:bg-zinc-100 transition-colors">Записатися на пробне заняття</button>
   </div>
 </section>
 
 <!-- Contacts -->
-<section id="contacts" class="light-bg bg-white py-10 md:py-14">
-  <div class="max-w-5xl mx-auto px-4">
-    <h2 class="heading-color text-xl sm:text-2xl font-bold text-gray-900 mb-5">Контакти</h2>
+<section id="contacts" class="light-section bg-white py-16 md:py-24 px-5">
+  <div class="max-w-3xl mx-auto">
+    <h2 class="heading-c text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 mb-6">Контакти</h2>
 
     <div class="sm:flex sm:gap-10">
-      <div class="flex-1 mb-6 sm:mb-0 text-gray-700 text-[15px] space-y-2.5">
-        <p><strong class="heading-color text-gray-900">Адреса:</strong> вул. Науки, 42, м.&nbsp;Київ, 03028<br>Ліцей №12, кабінет 301 (3-й поверх)</p>
-        <p><strong class="heading-color text-gray-900">Телефон:</strong> <a href="tel:+380441234567" class="text-brand-500 hover:underline">+38 (044) 123-45-67</a></p>
-        <p><strong class="heading-color text-gray-900">Email:</strong> <a href="mailto:stem@liceum12.edu.ua" class="text-brand-500 hover:underline">stem@liceum12.edu.ua</a></p>
-        <p><strong class="heading-color text-gray-900">Графік роботи:</strong> Пн–Пт, 14:00–18:00 (під час навчального року)</p>
-        <p><strong class="heading-color text-gray-900">Telegram:</strong> <a href="#" class="text-brand-500 hover:underline">@stemlab12</a></p>
+      <div class="flex-1 body-c text-zinc-600 space-y-3 mb-6 sm:mb-0">
+        <p><span class="heading-c text-zinc-900 font-medium">Адреса</span><br>вул. Науки, 42, м. Київ, 03028<br>Ліцей №12, каб. 301 (3-й поверх)</p>
+        <p><span class="heading-c text-zinc-900 font-medium">Телефон</span><br><a href="tel:+380441234567" class="text-blue-600 hover:underline">+38 (044) 123-45-67</a></p>
+        <p><span class="heading-c text-zinc-900 font-medium">Email</span><br><a href="mailto:stem@liceum12.edu.ua" class="text-blue-600 hover:underline">stem@liceum12.edu.ua</a></p>
+        <p><span class="heading-c text-zinc-900 font-medium">Графік</span><br>Пн–Пт, 14:00–18:00</p>
+        <p><span class="heading-c text-zinc-900 font-medium">Telegram</span><br><a href="#" class="text-blue-600 hover:underline">@stemlab12</a></p>
       </div>
-      <div class="sm:w-72 lg:w-80 flex-shrink-0">
-        <div class="bg-gray-100 rounded h-48 sm:h-full min-h-[180px] flex items-center justify-center text-gray-400 text-sm">
-          Карта (Google Maps)
+      <div class="sm:w-64 lg:w-72 flex-shrink-0">
+        <div class="contact-map bg-zinc-100 rounded-xl h-48 sm:h-full min-h-[200px] flex items-center justify-center text-zinc-400 text-sm">
+          Google Maps
         </div>
       </div>
     </div>
@@ -351,28 +331,24 @@ table { border-collapse: collapse; }
 </section>
 
 <!-- Footer -->
-<footer class="site-footer bg-gray-900 py-8">
-  <div class="max-w-5xl mx-auto px-4">
-    <div class="sm:flex sm:items-start sm:justify-between gap-8 mb-6">
-      <div class="mb-4 sm:mb-0">
-        <p class="text-white font-bold text-sm">STEM Лабораторія Ліцею №12</p>
-        <p class="text-gray-500 text-xs mt-1">м. Київ, Голосіївський район</p>
-      </div>
-      <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm">
-        <a href="#about" class="text-gray-400 hover:text-gray-200">Про нас</a>
-        <a href="#courses" class="text-gray-400 hover:text-gray-200">Напрямки</a>
-        <a href="#schedule" class="text-gray-400 hover:text-gray-200">Розклад</a>
-        <a href="#news" class="text-gray-400 hover:text-gray-200">Новини</a>
-        <a href="#contacts" class="text-gray-400 hover:text-gray-200">Контакти</a>
+<footer class="site-footer bg-zinc-950 py-8 px-5">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+      <span class="text-white font-semibold text-sm">STEM Лабораторія · Ліцей №12</span>
+      <div class="flex flex-wrap gap-5 text-[13px]">
+        <a href="#about" class="text-zinc-500 hover:text-zinc-300">Про нас</a>
+        <a href="#programs" class="text-zinc-500 hover:text-zinc-300">Програми</a>
+        <a href="#schedule" class="text-zinc-500 hover:text-zinc-300">Розклад</a>
+        <a href="#contacts" class="text-zinc-500 hover:text-zinc-300">Контакти</a>
       </div>
     </div>
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-5 border-t border-gray-800">
-      <p class="text-gray-500 text-xs">&copy; 2024 STEM Лабораторія. Ліцей №12, м. Київ</p>
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-5 border-t border-zinc-800">
+      <p class="text-zinc-600 text-xs">&copy; 2024 STEM Лабораторія. Ліцей №12, м. Київ</p>
       <div class="flex gap-3">
-        <a href="#" class="text-gray-500 hover:text-gray-300" aria-label="Facebook"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
-        <a href="#" class="text-gray-500 hover:text-gray-300" aria-label="Instagram"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg></a>
-        <a href="#" class="text-gray-500 hover:text-gray-300" aria-label="YouTube"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23 9.71a8.5 8.5 0 00-.91-4.13 2.92 2.92 0 00-1.72-1A78 78 0 0012 4.2a78 78 0 00-8.37.38 2.92 2.92 0 00-1.72 1A8.5 8.5 0 001 9.71a53 53 0 000 4.58 8.5 8.5 0 00.91 4.13 2.92 2.92 0 001.72 1A78 78 0 0012 19.8a78 78 0 008.37-.38 2.92 2.92 0 001.72-1 8.5 8.5 0 00.91-4.13 53 53 0 000-4.58zM9.74 14.85V8.55l5.6 3.15-5.6 3.15z"/></svg></a>
-        <a href="#" class="text-gray-500 hover:text-gray-300" aria-label="Telegram"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M21.198 2.433a2.242 2.242 0 00-1.022.215l-8.609 3.33c-2.068.8-4.133 1.598-5.724 2.21a405 405 0 00-2.849 1.106c-.189.078-.381.181-.465.259-.27.249-.34.621-.168.948.162.303.502.498.796.542l4.378 1.322c.2.672 1.342 4.444 1.618 5.352.162.535.304.863.505 1.13a1.45 1.45 0 00.447.397c.151.088.295.14.404.16l-.011-.003.009.001c.186.04.371.021.536-.025a1.5 1.5 0 00.46-.273l2.018-1.866 3.924 3.13c.04.035.069.058.115.089a1.8 1.8 0 001.003.365c.349.043.675-.052.963-.238.292-.188.504-.473.632-.803l3.73-16.11a2.06 2.06 0 00-.057-1.128 1.45 1.45 0 00-.77-.86 1.7 1.7 0 00-.863-.138z"/></svg></a>
+        <a href="#" class="text-zinc-600 hover:text-zinc-400 transition-colors" aria-label="Facebook"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        <a href="#" class="text-zinc-600 hover:text-zinc-400 transition-colors" aria-label="Instagram"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg></a>
+        <a href="#" class="text-zinc-600 hover:text-zinc-400 transition-colors" aria-label="YouTube"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23 9.71a8.5 8.5 0 00-.91-4.13 2.92 2.92 0 00-1.72-1A78 78 0 0012 4.2a78 78 0 00-8.37.38 2.92 2.92 0 00-1.72 1A8.5 8.5 0 001 9.71a53 53 0 000 4.58 8.5 8.5 0 00.91 4.13 2.92 2.92 0 001.72 1A78 78 0 0012 19.8a78 78 0 008.37-.38 2.92 2.92 0 001.72-1 8.5 8.5 0 00.91-4.13 53 53 0 000-4.58zM9.74 14.85V8.55l5.6 3.15-5.6 3.15z"/></svg></a>
+        <a href="#" class="text-zinc-600 hover:text-zinc-400 transition-colors" aria-label="Telegram"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M21.198 2.433a2.242 2.242 0 00-1.022.215l-8.609 3.33c-2.068.8-4.133 1.598-5.724 2.21a405 405 0 00-2.849 1.106c-.189.078-.381.181-.465.259-.27.249-.34.621-.168.948.162.303.502.498.796.542l4.378 1.322c.2.672 1.342 4.444 1.618 5.352.162.535.304.863.505 1.13a1.45 1.45 0 00.447.397c.151.088.295.14.404.16l-.011-.003.009.001c.186.04.371.021.536-.025a1.5 1.5 0 00.46-.273l2.018-1.866 3.924 3.13c.04.035.069.058.115.089a1.8 1.8 0 001.003.365c.349.043.675-.052.963-.238.292-.188.504-.473.632-.803l3.73-16.11a2.06 2.06 0 00-.057-1.128 1.45 1.45 0 00-.77-.86 1.7 1.7 0 00-.863-.138z"/></svg></a>
       </div>
     </div>
   </div>
@@ -381,31 +357,31 @@ table { border-collapse: collapse; }
 </main>
 
 <!-- Registration modal -->
-<div id="register-modal" class="modal-wrap fixed inset-0 z-[70] flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Реєстрація">
-  <div class="modal-box modal-box-inner bg-white rounded-lg shadow-xl w-full max-w-md max-h-[90vh] overflow-y-auto">
-    <div class="p-5">
-      <div class="flex items-center justify-between mb-4">
-        <h3 class="heading-color text-lg font-bold text-gray-900">Записатися на курс</h3>
-        <button class="modal-close w-7 h-7 rounded flex items-center justify-center text-gray-400 hover:text-gray-600" aria-label="Закрити">
+<div id="register-modal" class="modal-w fixed inset-0 z-[70] flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Реєстрація">
+  <div class="modal-b modal-inner bg-white rounded-2xl shadow-2xl w-full max-w-md max-h-[90vh] overflow-y-auto">
+    <div class="p-6">
+      <div class="flex items-center justify-between mb-5">
+        <h3 class="heading-c text-lg font-bold text-zinc-900">Записатися на курс</h3>
+        <button class="modal-x w-8 h-8 rounded-full flex items-center justify-center text-zinc-400 hover:text-zinc-600 hover:bg-zinc-100 transition-colors" aria-label="Закрити">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
         </button>
       </div>
-      <form id="register-form" class="space-y-3" novalidate>
+      <form id="reg-form" class="space-y-3.5" novalidate>
         <div>
-          <label for="reg-name" class="block text-sm text-gray-700 mb-1">Прізвище та ім'я учня</label>
-          <input type="text" id="reg-name" required placeholder="Ковальчук Олександр" class="input-field w-full px-3 py-2 bg-white border border-gray-300 rounded text-sm focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none">
+          <label for="r-name" class="block text-sm text-zinc-700 mb-1">Прізвище та ім'я учня</label>
+          <input type="text" id="r-name" required placeholder="Ковальчук Олександр" class="input-f w-full px-3.5 py-2 bg-white border border-zinc-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-colors">
         </div>
         <div>
-          <label for="reg-email" class="block text-sm text-gray-700 mb-1">Email батьків</label>
-          <input type="email" id="reg-email" required placeholder="email@example.com" class="input-field w-full px-3 py-2 bg-white border border-gray-300 rounded text-sm focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none">
+          <label for="r-email" class="block text-sm text-zinc-700 mb-1">Email батьків</label>
+          <input type="email" id="r-email" required placeholder="email@example.com" class="input-f w-full px-3.5 py-2 bg-white border border-zinc-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-colors">
         </div>
         <div>
-          <label for="reg-phone" class="block text-sm text-gray-700 mb-1">Телефон</label>
-          <input type="tel" id="reg-phone" required placeholder="+380 XX XXX XX XX" class="input-field w-full px-3 py-2 bg-white border border-gray-300 rounded text-sm focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none">
+          <label for="r-phone" class="block text-sm text-zinc-700 mb-1">Телефон</label>
+          <input type="tel" id="r-phone" required placeholder="+380 XX XXX XX XX" class="input-f w-full px-3.5 py-2 bg-white border border-zinc-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-colors">
         </div>
         <div>
-          <label for="reg-course" class="block text-sm text-gray-700 mb-1">Напрямок</label>
-          <select id="reg-course" required class="input-field w-full px-3 py-2 bg-white border border-gray-300 rounded text-sm focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none appearance-none">
+          <label for="r-course" class="block text-sm text-zinc-700 mb-1">Напрямок</label>
+          <select id="r-course" required class="input-f w-full px-3.5 py-2 bg-white border border-zinc-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none appearance-none transition-colors">
             <option value="">Оберіть напрямок</option>
             <option value="Робототехніка та мехатроніка">Робототехніка та мехатроніка</option>
             <option value="3D-моделювання та прототипування">3D-моделювання та прототипування</option>
@@ -413,183 +389,113 @@ table { border-collapse: collapse; }
             <option value="Інтернет речей (IoT)">Інтернет речей (IoT)</option>
           </select>
         </div>
-        <div id="reg-error" class="hidden text-sm text-red-700 bg-red-50 px-3 py-2 rounded"></div>
-        <div id="reg-success" class="hidden text-sm text-green-700 bg-green-50 px-3 py-2 rounded"></div>
-        <button type="submit" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-medium py-2 rounded text-sm transition-colors">Відправити заявку</button>
+        <div id="r-err" class="hidden text-sm text-red-600 bg-red-50 px-3 py-2 rounded-lg"></div>
+        <div id="r-ok" class="hidden text-sm text-green-700 bg-green-50 px-3 py-2 rounded-lg"></div>
+        <button type="submit" class="w-full bg-zinc-900 hover:bg-zinc-800 text-white font-medium py-2.5 rounded-lg text-sm transition-colors">Відправити заявку</button>
       </form>
     </div>
   </div>
 </div>
 
 <!-- Cabinet modal -->
-<div id="cabinet-modal" class="modal-wrap fixed inset-0 z-[70] flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Кабінет">
-  <div class="modal-box modal-box-inner bg-white rounded-lg shadow-xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
-    <div class="p-5">
-      <div class="flex items-center justify-between mb-4">
-        <h3 class="heading-color text-lg font-bold text-gray-900">Мої заявки</h3>
-        <button class="modal-close w-7 h-7 rounded flex items-center justify-center text-gray-400 hover:text-gray-600" aria-label="Закрити">
+<div id="cabinet-modal" class="modal-w fixed inset-0 z-[70] flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Кабінет">
+  <div class="modal-b modal-inner bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
+    <div class="p-6">
+      <div class="flex items-center justify-between mb-5">
+        <h3 class="heading-c text-lg font-bold text-zinc-900">Мої заявки</h3>
+        <button class="modal-x w-8 h-8 rounded-full flex items-center justify-center text-zinc-400 hover:text-zinc-600 hover:bg-zinc-100 transition-colors" aria-label="Закрити">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
         </button>
       </div>
-      <div id="cabinet-list"></div>
-      <div id="cabinet-empty" class="hidden text-center py-8">
-        <p class="text-gray-500 text-sm mb-2">Заявок поки немає</p>
-        <button class="register-trigger text-brand-500 hover:underline text-sm">Записатися на курс</button>
+      <div id="cab-list"></div>
+      <div id="cab-empty" class="hidden text-center py-8">
+        <p class="sub-c text-zinc-500 text-sm mb-2">Заявок поки немає</p>
+        <button class="reg-trig text-blue-600 hover:underline text-sm">Записатися на курс</button>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-(function() {
+(function(){
   'use strict';
+  var html = document.documentElement;
 
   // Theme
-  var html = document.documentElement;
-  function setTheme(t) {
+  function setTheme(t){
     html.dataset.theme = t;
-    try { localStorage.setItem('stemlab_theme', t); } catch(e) {}
-    var sun = document.querySelector('.sun-icon');
-    var moon = document.querySelector('.moon-icon');
-    if (sun && moon) {
-      sun.classList.toggle('hidden', t === 'dark');
-      moon.classList.toggle('hidden', t !== 'dark');
-    }
+    try{localStorage.setItem('stemlab_theme',t)}catch(e){}
+    var s = document.querySelector('.sun-i'), m = document.querySelector('.moon-i');
+    if(s&&m){s.classList.toggle('hidden',t==='dark');m.classList.toggle('hidden',t!=='dark');}
+    // header text color on dark
+    var hdr = document.querySelector('.site-hdr a');
+    if(hdr){hdr.style.color = t==='dark'?'#fafafa':'';}
   }
-  (function() {
-    var saved;
-    try { saved = localStorage.getItem('stemlab_theme'); } catch(e) {}
-    setTheme(saved === 'dark' ? 'dark' : 'light');
-  })();
-  document.getElementById('theme-toggle').addEventListener('click', function() {
-    setTheme(html.dataset.theme === 'dark' ? 'light' : 'dark');
-  });
+  (function(){var s;try{s=localStorage.getItem('stemlab_theme')}catch(e){}setTheme(s==='dark'?'dark':'light')})();
+  document.getElementById('theme-toggle').addEventListener('click',function(){setTheme(html.dataset.theme==='dark'?'light':'dark')});
 
-  // Mobile menu
-  var mob = document.getElementById('mobile-menu');
-  var mobBack = mob.querySelector('.mob-backdrop');
-  var mobPanel = mob.querySelector('.mob-panel');
-  function openMob() {
-    mob.setAttribute('aria-hidden', 'false');
-    mob.classList.remove('pointer-events-none');
-    mobBack.classList.add('opacity-100');
-    mobBack.classList.remove('pointer-events-none');
-    mobPanel.classList.remove('translate-x-full');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeMob() {
-    mob.setAttribute('aria-hidden', 'true');
-    mobBack.classList.remove('opacity-100');
-    mobPanel.classList.add('translate-x-full');
-    document.body.style.overflow = '';
-    setTimeout(function() { mob.classList.add('pointer-events-none'); mobBack.classList.add('pointer-events-none'); }, 200);
-  }
-  document.getElementById('mobile-menu-btn').addEventListener('click', openMob);
-  document.getElementById('mobile-close').addEventListener('click', closeMob);
-  mobBack.addEventListener('click', closeMob);
-  mob.querySelectorAll('.mob-link').forEach(function(l) { l.addEventListener('click', closeMob); });
+  // Mobile
+  var mob=document.getElementById('mob-menu'),mobBg=mob.querySelector('.mob-bg'),mobP=mob.querySelector('.mob-p');
+  function openM(){mob.setAttribute('aria-hidden','false');mob.classList.remove('pointer-events-none');mobBg.classList.add('opacity-100');mobBg.classList.remove('pointer-events-none');mobP.classList.remove('translate-x-full');document.body.style.overflow='hidden'}
+  function closeM(){mob.setAttribute('aria-hidden','true');mobBg.classList.remove('opacity-100');mobP.classList.add('translate-x-full');document.body.style.overflow='';setTimeout(function(){mob.classList.add('pointer-events-none');mobBg.classList.add('pointer-events-none')},200)}
+  document.getElementById('mob-btn').addEventListener('click',openM);
+  document.getElementById('mob-close').addEventListener('click',closeM);
+  mobBg.addEventListener('click',closeM);
+  mob.querySelectorAll('.mob-lnk').forEach(function(l){l.addEventListener('click',closeM)});
 
   // Modals
-  function openModal(id) {
-    var m = document.getElementById(id);
-    if (!m) return;
-    m.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    closeMob();
-  }
-  function closeModal(id) {
-    var m = document.getElementById(id);
-    if (!m) return;
-    m.classList.remove('open');
-    document.body.style.overflow = '';
-  }
+  function openMo(id){var m=document.getElementById(id);if(!m)return;m.classList.add('open');document.body.style.overflow='hidden';closeM()}
+  function closeMo(id){var m=document.getElementById(id);if(!m)return;m.classList.remove('open');document.body.style.overflow=''}
 
-  document.querySelectorAll('.register-trigger').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      var name = btn.dataset.courseName;
-      if (name) {
-        var sel = document.getElementById('reg-course');
-        if (sel) { for (var i = 0; i < sel.options.length; i++) { if (sel.options[i].value === name) { sel.value = name; break; } } }
-      }
-      openModal('register-modal');
+  document.querySelectorAll('.reg-trig').forEach(function(b){
+    b.addEventListener('click',function(){
+      var n=b.dataset.courseName;
+      if(n){var s=document.getElementById('r-course');if(s){for(var i=0;i<s.options.length;i++){if(s.options[i].value===n){s.value=n;break}}}}
+      openMo('register-modal');
     });
   });
-  document.getElementById('register-open').addEventListener('click', function() { openModal('register-modal'); });
+  document.getElementById('register-open').addEventListener('click',function(){openMo('register-modal')});
 
-  var cabBtns = [document.getElementById('cabinet-btn')];
-  document.querySelectorAll('.cabinet-trigger').forEach(function(b) { cabBtns.push(b); });
-  cabBtns.forEach(function(b) {
-    if (b) b.addEventListener('click', function() { renderCabinet(); openModal('cabinet-modal'); });
-  });
+  var cabs=[document.getElementById('cabinet-btn')];
+  document.querySelectorAll('.cab-trig').forEach(function(b){cabs.push(b)});
+  cabs.forEach(function(b){if(b)b.addEventListener('click',function(){renderCab();openMo('cabinet-modal')})});
 
-  document.querySelectorAll('.modal-close').forEach(function(btn) {
-    btn.addEventListener('click', function() { var m = btn.closest('.modal-wrap'); if (m) closeModal(m.id); });
-  });
-  document.querySelectorAll('.modal-wrap').forEach(function(m) {
-    m.addEventListener('click', function(e) { if (e.target === m) closeModal(m.id); });
-  });
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      document.querySelectorAll('.modal-wrap.open').forEach(function(m) { closeModal(m.id); });
-      closeMob();
-    }
-  });
+  document.querySelectorAll('.modal-x').forEach(function(b){b.addEventListener('click',function(){var m=b.closest('.modal-w');if(m)closeMo(m.id)})});
+  document.querySelectorAll('.modal-w').forEach(function(m){m.addEventListener('click',function(e){if(e.target===m)closeMo(m.id)})});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.querySelectorAll('.modal-w.open').forEach(function(m){closeMo(m.id)});closeM()}});
 
-  // Registration
-  function getRegs() { try { return JSON.parse(localStorage.getItem('stemlab_registrations') || '[]'); } catch(e) { return []; } }
-  function saveRegs(d) { try { localStorage.setItem('stemlab_registrations', JSON.stringify(d)); } catch(e) {} }
-
-  var form = document.getElementById('register-form');
-  var errEl = document.getElementById('reg-error');
-  var okEl = document.getElementById('reg-success');
-
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    errEl.classList.add('hidden');
-    okEl.classList.add('hidden');
-
-    var name = document.getElementById('reg-name').value.trim();
-    var email = document.getElementById('reg-email').value.trim();
-    var phone = document.getElementById('reg-phone').value.trim();
-    var course = document.getElementById('reg-course').value;
-
-    if (!name || !email || !phone || !course) { errEl.textContent = 'Заповніть усі поля.'; errEl.classList.remove('hidden'); return; }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { errEl.textContent = 'Невірний формат email.'; errEl.classList.remove('hidden'); return; }
-
-    var regs = getRegs();
-    if (regs.find(function(r) { return r.name.toLowerCase() === name.toLowerCase() && r.course === course; })) {
-      errEl.textContent = name + ' вже записаний на «' + course + '».';
-      errEl.classList.remove('hidden');
-      return;
-    }
-
-    regs.push({ id: Date.now(), name: name, email: email, phone: phone, course: course, date: new Date().toISOString() });
-    saveRegs(regs);
-    form.reset();
-    okEl.textContent = 'Заявку відправлено. Ми зв\'яжемося з вами.';
-    okEl.classList.remove('hidden');
-    setTimeout(function() { closeModal('register-modal'); okEl.classList.add('hidden'); }, 2000);
+  // Reg
+  function getReg(){try{return JSON.parse(localStorage.getItem('stemlab_registrations')||'[]')}catch(e){return[]}}
+  function saveReg(d){try{localStorage.setItem('stemlab_registrations',JSON.stringify(d))}catch(e){}}
+  var form=document.getElementById('reg-form'),errE=document.getElementById('r-err'),okE=document.getElementById('r-ok');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();errE.classList.add('hidden');okE.classList.add('hidden');
+    var nm=document.getElementById('r-name').value.trim(),em=document.getElementById('r-email').value.trim(),ph=document.getElementById('r-phone').value.trim(),co=document.getElementById('r-course').value;
+    if(!nm||!em||!ph||!co){errE.textContent='Заповніть усі поля.';errE.classList.remove('hidden');return}
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){errE.textContent='Невірний формат email.';errE.classList.remove('hidden');return}
+    var rg=getReg();
+    if(rg.find(function(r){return r.name.toLowerCase()===nm.toLowerCase()&&r.course===co})){errE.textContent=nm+' вже записаний на «'+co+'».';errE.classList.remove('hidden');return}
+    rg.push({id:Date.now(),name:nm,email:em,phone:ph,course:co,date:new Date().toISOString()});
+    saveReg(rg);form.reset();okE.textContent='Заявку відправлено. Ми зв\'яжемося з вами.';okE.classList.remove('hidden');
+    setTimeout(function(){closeMo('register-modal');okE.classList.add('hidden')},2000);
   });
 
   // Cabinet
-  function renderCabinet() {
-    var regs = getRegs();
-    var list = document.getElementById('cabinet-list');
-    var empty = document.getElementById('cabinet-empty');
-    if (!regs.length) { list.innerHTML = ''; empty.classList.remove('hidden'); return; }
-    empty.classList.add('hidden');
-    list.innerHTML = regs.map(function(r) {
-      return '<div class="flex items-start justify-between gap-3 py-3 border-b border-gray-100 last:border-0">' +
-        '<div><p class="heading-color font-medium text-gray-900 text-sm">' + r.name + '</p>' +
-        '<p class="text-xs text-gray-500 mt-0.5">' + r.course + '</p>' +
-        '<p class="text-xs text-gray-400 mt-0.5">' + new Date(r.date).toLocaleDateString('uk-UA') + '</p></div>' +
-        '<button onclick="deleteReg(' + r.id + ')" class="text-gray-400 hover:text-red-500 p-1" aria-label="Видалити">' +
-        '<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>' +
+  function renderCab(){
+    var rg=getReg(),list=document.getElementById('cab-list'),emp=document.getElementById('cab-empty');
+    if(!rg.length){list.innerHTML='';emp.classList.remove('hidden');return}
+    emp.classList.add('hidden');
+    list.innerHTML=rg.map(function(r){
+      return '<div class="flex items-start justify-between gap-3 py-3 border-b border-zinc-100 last:border-0">'+
+        '<div><p class="heading-c font-medium text-zinc-900 text-sm">'+r.name+'</p>'+
+        '<p class="text-xs text-zinc-500 mt-0.5">'+r.course+'</p>'+
+        '<p class="text-xs text-zinc-400 mt-0.5">'+new Date(r.date).toLocaleDateString('uk-UA')+'</p></div>'+
+        '<button onclick="delReg('+r.id+')" class="text-zinc-400 hover:text-red-500 p-1" aria-label="Видалити">'+
+        '<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>'+
         '</button></div>';
     }).join('');
   }
-  window.deleteReg = function(id) { saveRegs(getRegs().filter(function(r) { return r.id !== id; })); renderCabinet(); };
-
+  window.delReg=function(id){saveReg(getReg().filter(function(r){return r.id!==id}));renderCab()};
 })();
 </script>
 </body>
