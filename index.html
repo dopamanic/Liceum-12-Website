@@ -7,7 +7,7 @@
 <meta name="description" content="Сучасна STEM-лабораторія Ліцею №12: робототехніка, 3D-прототипування, програмування Python, IoT. Записуйтесь на безкоштовне пробне заняття!">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
 tailwind.config = {
@@ -16,23 +16,23 @@ tailwind.config = {
     extend: {
       colors: {
         brand: {
-          DEFAULT: '#7B2D42',
-          50: '#FDF2F5',
-          100: '#F9DDE4',
-          200: '#F0B4C4',
-          300: '#D97D96',
-          400: '#B84D6A',
-          500: '#7B2D42',
-          600: '#6B2639',
-          700: '#581E2F',
-          800: '#461826',
-          900: '#33111C',
+          DEFAULT: '#2563EB',
+          50: '#EFF6FF',
+          100: '#DBEAFE',
+          200: '#BFDBFE',
+          300: '#93C5FD',
+          400: '#60A5FA',
+          500: '#2563EB',
+          600: '#1D4ED8',
+          700: '#1E40AF',
+          800: '#1E3A8A',
+          900: '#172554',
         },
-        gold: { DEFAULT: '#C5954B', light: '#D4AF6E' },
-        navy: { DEFAULT: '#14142B', light: '#1E1E38', lighter: '#2A2A44' },
+        gold: { DEFAULT: '#F59E0B', light: '#FBBF24' },
+        navy: { DEFAULT: '#0F172A', light: '#1E293B', lighter: '#334155' },
       },
       fontFamily: {
-        serif: ['Rubik', 'system-ui', 'sans-serif'],
+        serif: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
     },
@@ -44,7 +44,7 @@ tailwind.config = {
 html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; scroll-padding-top: 100px; }
 body { margin: 0; font-family: 'Inter', system-ui, sans-serif; background: #fff; color: #2D2D3A; }
 
-h1, h2, h3 { font-family: 'Rubik', system-ui, sans-serif; text-wrap: balance; }
+h1, h2, h3 { font-family: 'Space Grotesk', system-ui, sans-serif; font-weight: 700; text-wrap: balance; }
 p, li { text-wrap: pretty; }
 
 .highlight { position: relative; display: inline; }
@@ -55,12 +55,12 @@ p, li { text-wrap: pretty; }
   left: 0;
   width: 100%;
   height: 3px;
-  background: #7B2D42;
+  background: #2563EB;
   border-radius: 2px;
 }
-[data-theme="dark"] .highlight::after { background: #D97D96; }
+[data-theme="dark"] .highlight::after { background: #60A5FA; }
 
-.img-frame { background: linear-gradient(135deg, rgba(123,45,66,0.15), rgba(20,20,43,0.1)); }
+.img-frame { background: linear-gradient(135deg, rgba(37,99,235,0.1), rgba(15,23,42,0.08)); }
 
 [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity 0.6s cubic-bezier(0.2,0,0,1), transform 0.6s cubic-bezier(0.2,0,0,1); }
 [data-reveal].revealed { opacity: 1; transform: translateY(0); }
@@ -82,37 +82,37 @@ p, li { text-wrap: pretty; }
 .modal-panel { transform: translateY(16px) scale(0.98); opacity: 0; transition: transform 0.3s cubic-bezier(0.2,0,0,1), opacity 0.2s ease; }
 .modal-overlay.active .modal-panel { transform: translateY(0) scale(1); opacity: 1; }
 
-:focus-visible { outline: 2px solid #7B2D42; outline-offset: 2px; border-radius: 4px; }
+:focus-visible { outline: 2px solid #2563EB; outline-offset: 2px; border-radius: 4px; }
 
 /* Dark mode */
-[data-theme="dark"] body { background: #0C0D18; color: #E0E0EE; }
-[data-theme="dark"] .bg-white { background: #0C0D18 !important; }
-[data-theme="dark"] .topbar-dark { background: #0A0B14; }
-[data-theme="dark"] .header-glass { background: rgba(12,13,24,0.92) !important; border-color: rgba(255,255,255,0.06) !important; }
-[data-theme="dark"] .section-warm { background: #111225 !important; }
-[data-theme="dark"] .section-navy { background: #080912 !important; }
+[data-theme="dark"] body { background: #0B1120; color: #E2E8F0; }
+[data-theme="dark"] .bg-white { background: #0B1120 !important; }
+[data-theme="dark"] .topbar-dark { background: #080E1A; }
+[data-theme="dark"] .header-glass { background: rgba(11,17,32,0.92) !important; border-color: rgba(255,255,255,0.06) !important; }
+[data-theme="dark"] .section-warm { background: #0F1629 !important; }
+[data-theme="dark"] .section-navy { background: #060A14 !important; }
 [data-theme="dark"] .card-surface {
-  background: #16172A !important;
+  background: #131C30 !important;
   border-color: rgba(255,255,255,0.06) !important;
 }
 [data-theme="dark"] .card-surface:hover { border-color: rgba(255,255,255,0.12) !important; }
-[data-theme="dark"] .card-highlight { background: #16172A !important; border-color: rgba(255,255,255,0.06) !important; border-top-color: #7B2D42 !important; }
-[data-theme="dark"] .text-neutral-800 { color: #E0E0EE !important; }
-[data-theme="dark"] .text-neutral-700 { color: #C8C8DA !important; }
-[data-theme="dark"] .text-neutral-600 { color: #A0A0B8 !important; }
-[data-theme="dark"] .text-neutral-500 { color: #8080A0 !important; }
-[data-theme="dark"] .text-neutral-400 { color: #6060A0 !important; }
+[data-theme="dark"] .card-highlight { background: #131C30 !important; border-color: rgba(255,255,255,0.06) !important; border-top-color: #2563EB !important; }
+[data-theme="dark"] .text-neutral-800 { color: #E2E8F0 !important; }
+[data-theme="dark"] .text-neutral-700 { color: #CBD5E1 !important; }
+[data-theme="dark"] .text-neutral-600 { color: #94A3B8 !important; }
+[data-theme="dark"] .text-neutral-500 { color: #64748B !important; }
+[data-theme="dark"] .text-neutral-400 { color: #475569 !important; }
 [data-theme="dark"] .border-neutral-100 { border-color: rgba(255,255,255,0.06) !important; }
 [data-theme="dark"] .border-neutral-200 { border-color: rgba(255,255,255,0.08) !important; }
-[data-theme="dark"] .bg-neutral-50 { background: #111225 !important; }
-[data-theme="dark"] .bg-brand-50 { background: rgba(123,45,66,0.12) !important; }
-[data-theme="dark"] .text-brand { color: #D97D96 !important; }
-[data-theme="dark"] .text-brand-500 { color: #D97D96 !important; }
-[data-theme="dark"] .bg-brand { background: #9E4A63 !important; }
+[data-theme="dark"] .bg-neutral-50 { background: #0F1629 !important; }
+[data-theme="dark"] .bg-brand-50 { background: rgba(37,99,235,0.1) !important; }
+[data-theme="dark"] .text-brand { color: #60A5FA !important; }
+[data-theme="dark"] .text-brand-500 { color: #60A5FA !important; }
+[data-theme="dark"] .bg-brand { background: #1D4ED8 !important; }
 [data-theme="dark"] .modal-overlay { background: rgba(0,0,0,0.7); }
-[data-theme="dark"] .modal-bg { background: #16172A !important; }
-[data-theme="dark"] .input-field { background: #111225 !important; border-color: rgba(255,255,255,0.1) !important; color: #E0E0EE !important; }
-[data-theme="dark"] .footer-dark { background: #080912 !important; }
+[data-theme="dark"] .modal-bg { background: #131C30 !important; }
+[data-theme="dark"] .input-field { background: #0F1629 !important; border-color: rgba(255,255,255,0.1) !important; color: #E2E8F0 !important; }
+[data-theme="dark"] .footer-dark { background: #060A14 !important; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
@@ -690,9 +690,7 @@ p, li { text-wrap: pretty; }
   function initTheme() {
     let saved;
     try { saved = localStorage.getItem('stemlab_theme'); } catch(e) {}
-    if (saved) return setTheme(saved);
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) return setTheme('dark');
-    setTheme('light');
+    setTheme(saved === 'dark' ? 'dark' : 'light');
   }
   initTheme();
 
