@@ -1,291 +1,370 @@
-// Поведінка сторінки: тема, шапка, навігація, меню, модалки, форма, кабінет.
-// Жодних залежностей, усе всередині однієї області видимості.
+/* ============================================================================
+   Поведінка сторінки: тема, шапка, навігація, бічне меню, модалки,
+   форма запису та кабінет заявок.
+
+   Жодних залежностей. Усе в одній області видимості, щоб нічого
+   не потрапляло в глобальний простір.
+   ========================================================================= */
 
 (function () {
   'use strict';
 
-  var root = document.documentElement;
-  var $  = function (s, c) { return (c || document).querySelector(s); };
-  var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+  const root = document.documentElement;
+  const $  = (selector, scope = document) => scope.querySelector(selector);
+  const $$ = (selector, scope = document) => [...scope.querySelectorAll(selector)];
 
-  /* ---------- Theme ---------- */
-  function applyTheme(mode) {
-    root.classList.toggle('dark', mode === 'dark');
-    try { localStorage.setItem('stemlab_theme', mode); } catch (e) {}
-    $('.i-sun').classList.toggle('hidden', mode === 'dark');
-    $('.i-moon').classList.toggle('hidden', mode !== 'dark');
-    var meta = $('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', mode === 'dark' ? '#070F0E' : '#0A1413');
-  }
-  applyTheme(root.classList.contains('dark') ? 'dark' : 'light');
-  $('#theme-btn').addEventListener('click', function () {
-    applyTheme(root.classList.contains('dark') ? 'light' : 'dark');
+  /* ========================================================================
+     Тема
+     Клас `dark` ставить config.js ще до першого рендеру, щоб не блимнуло
+     світлою. Тут лишається тільки перемикання.
+     ===================================================================== */
+
+  const THEME_KEY = 'stemlab_theme';
+  const themeColor = $('meta[name="theme-color"]');
+
+  const applyTheme = (dark) => {
+    root.classList.toggle('dark', dark);
+    $('.i-sun').classList.toggle('hidden', dark);
+    $('.i-moon').classList.toggle('hidden', !dark);
+    themeColor.content = dark ? '#070F0E' : '#0A1413';
+    try {
+      localStorage.setItem(THEME_KEY, dark ? 'dark' : 'light');
+    } catch {
+      /* приватний режим — тема просто не переживе перезавантаження */
+    }
+  };
+
+  applyTheme(root.classList.contains('dark'));
+  $('#theme-btn').addEventListener('click', () => {
+    applyTheme(!root.classList.contains('dark'));
   });
 
-  /* ---------- Header: transparent over hero, solid after ---------- */
-  var hdr = $('#hdr');
-  function onScroll() {
-    hdr.classList.toggle('solid', window.scrollY > 8);
-    syncActiveNav();
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
+  /* ========================================================================
+     Шапка і підсвітка активного розділу
 
-  /* ---------- Nav dropdown ---------- */
-  $$('[data-menu]').forEach(function (wrap) {
-    var btn = wrap.querySelector('button');
+     Зсуви секцій міряємо один раз і кешуємо. Читати getBoundingClientRect
+     на кожну подію скролу означало б змушувати браузер перераховувати
+     розкладку десятки разів на секунду — а зсуви змінюються лише тоді,
+     коли змінюється сама розкладка.
+     ===================================================================== */
 
-    function openMenu()  { wrap.classList.add('open');    btn.setAttribute('aria-expanded', 'true'); }
-    function closeMenu() { wrap.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
+  const header = $('#hdr');
+  const navLinks = $$('#nav a.h-link');
+  let anchors = [];
 
-    btn.addEventListener('click', function (e) {
-      e.stopPropagation();
-      if (wrap.classList.contains('open')) closeMenu(); else openMenu();
+  const measureAnchors = () => {
+    anchors = navLinks
+      .map((link) => {
+        const section = $(link.getAttribute('href'));
+        return section && { link, top: section.getBoundingClientRect().top + scrollY };
+      })
+      .filter(Boolean);
+  };
+
+  const updateOnScroll = () => {
+    header.classList.toggle('solid', scrollY > 8);
+
+    // Активний — останній розділ, верх якого вже пройшов під шапкою.
+    const line = scrollY + 170;
+    const current = anchors.filter((anchor) => anchor.top <= line).pop();
+    anchors.forEach(({ link }) => {
+      link.dataset.active = String(link === current?.link);
     });
-    // on document, so Esc works wherever focus happens to sit
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && wrap.classList.contains('open')) { closeMenu(); btn.focus(); }
+  };
+
+  // Події скролу приходять частіше за кадри — зводимо роботу до одного разу на кадр.
+  let pendingFrame = 0;
+  const onScroll = () => {
+    if (pendingFrame) return;
+    pendingFrame = requestAnimationFrame(() => {
+      pendingFrame = 0;
+      updateOnScroll();
     });
-    wrap.addEventListener('focusout', function (e) {
-      if (!wrap.contains(e.relatedTarget)) closeMenu();
+  };
+
+  measureAnchors();
+  updateOnScroll();
+  addEventListener('scroll', onScroll, { passive: true });
+  addEventListener('resize', () => { measureAnchors(); updateOnScroll(); });
+  // Фотографії довантажуються після першого рендеру й зсувають секції нижче.
+  addEventListener('load', () => { measureAnchors(); updateOnScroll(); });
+
+  /* ========================================================================
+     Випадайка «Напрямки»
+     Відкриття по наведенню зроблене в CSS. Якби воно жило тут, наведення
+     й клік перемикали б стан один одного: навів — відкрилось, клікнув —
+     закрилось.
+     ===================================================================== */
+
+  const closeMenu = (menu) => {
+    menu.classList.remove('open');
+    $('button', menu).setAttribute('aria-expanded', 'false');
+  };
+
+  $$('[data-menu]').forEach((menu) => {
+    const button = $('button', menu);
+
+    button.addEventListener('click', (event) => {
+      event.stopPropagation();   // інакше слухач нижче одразу ж закриє меню
+      button.setAttribute('aria-expanded', String(menu.classList.toggle('open')));
     });
-    $$('a', wrap).forEach(function (a) { a.addEventListener('click', closeMenu); });
-    document.addEventListener('click', function (e) {
-      if (!wrap.contains(e.target)) closeMenu();
+
+    menu.addEventListener('focusout', (event) => {
+      if (!menu.contains(event.relatedTarget)) closeMenu(menu);
+    });
+
+    $$('a', menu).forEach((link) => {
+      link.addEventListener('click', () => closeMenu(menu));
     });
   });
 
-  /* ---------- Active nav section ---------- */
-  var navLinks = $$('#nav a.h-link');
-  var sections = navLinks
-    .map(function (l) { return document.getElementById(l.getAttribute('href').slice(1)); })
-    .filter(Boolean);
-
-  // Deterministic: the active section is the last one whose top has passed
-  // just below the header. An observer band would miss fast or jumped scrolls.
-  function syncActiveNav() {
-    if (!sections || !sections.length) return;
-    var line = window.scrollY + 170;
-    var current = null;
-    sections.forEach(function (s) {
-      if (s.getBoundingClientRect().top + window.scrollY <= line) current = s;
+  // Один слухач на документ, а не по одному на кожне меню.
+  addEventListener('click', (event) => {
+    $$('.menu-wrap.open').forEach((menu) => {
+      if (!menu.contains(event.target)) closeMenu(menu);
     });
-    navLinks.forEach(function (l) {
-      var on = !!current && l.getAttribute('href') === '#' + current.id;
-      l.setAttribute('data-active', on ? 'true' : 'false');
-    });
-  }
-  onScroll();
+  });
 
-  /* ---------- Mobile drawer ---------- */
-  var mob = $('#mob');
-  var mobBg = $('.mob-bg', mob);
-  var mobPanel = $('.mob-panel', mob);
-  var mobBtn = $('#mob-btn');
+  /* ========================================================================
+     Бічне меню та модалки
 
-  function openDrawer() {
-    mob.setAttribute('aria-hidden', 'false');
-    mobBtn.setAttribute('aria-expanded', 'true');
-    mob.classList.remove('pointer-events-none');
-    mobBg.classList.add('opacity-100');
-    mobPanel.classList.remove('translate-x-full');
-    lockScroll(true);
-  }
-  function closeDrawer() {
-    mob.setAttribute('aria-hidden', 'true');
-    mobBtn.setAttribute('aria-expanded', 'false');
-    mobBg.classList.remove('opacity-100');
-    mobPanel.classList.add('translate-x-full');
-    if (!$('.modal.open')) lockScroll(false);
-    window.setTimeout(function () { mob.classList.add('pointer-events-none'); }, 260);
-  }
-  mobBtn.addEventListener('click', openDrawer);
-  $('#mob-close').addEventListener('click', closeDrawer);
-  mobBg.addEventListener('click', closeDrawer);
-  $$('.mob-lnk', mob).forEach(function (l) { l.addEventListener('click', closeDrawer); });
+     Прокрутку сторінки блокує одне правило: заблокована, поки відкрите
+     хоч щось. Інакше закриття одного шару знімало б блок, потрібний іншому.
+     ===================================================================== */
 
-  /* ---------- Scroll lock ---------- */
-  function lockScroll(on) {
-    document.body.style.overflow = on ? 'hidden' : '';
-  }
+  const drawer = $('#mob');
+  const drawerButton = $('#mob-btn');
+  let lastFocused = null;
 
-  /* ---------- Modals ---------- */
-  var lastFocus = null;
+  const syncScrollLock = () => {
+    const locked = drawer.dataset.open === 'true' || Boolean($('.modal.open'));
+    document.body.style.overflow = locked ? 'hidden' : '';
+  };
 
-  function openModal(id) {
-    var m = document.getElementById(id);
-    if (!m) return;
-    lastFocus = document.activeElement;
-    closeDrawer();
-    m.classList.add('open');
-    lockScroll(true);
-    var first = m.querySelector('input, select, button');
-    if (first) window.setTimeout(function () { first.focus(); }, 60);
-  }
-  function closeModal(m) {
-    m.classList.remove('open');
-    if (!$('.modal.open')) lockScroll(false);
-    if (lastFocus && lastFocus.focus) lastFocus.focus();
-  }
+  const setDrawer = (open) => {
+    drawer.dataset.open = String(open);
+    drawerButton.setAttribute('aria-expanded', String(open));
+    drawer.inert = !open;   // прибирає вміст із Tab і з читача екрана
+    syncScrollLock();
+  };
 
-  $$('.reg-trig').forEach(function (b) {
-    b.addEventListener('click', function () {
-      var course = b.getAttribute('data-course');
-      if (course) {
-        var sel = $('#f-course');
-        for (var i = 0; i < sel.options.length; i++) {
-          if (sel.options[i].text === course) { sel.selectedIndex = i; break; }
-        }
-      }
+  const openModal = (id) => {
+    const modal = $(`#${id}`);
+    lastFocused = document.activeElement;
+    setDrawer(false);
+    modal.classList.add('open');
+    syncScrollLock();
+    // Фокус на перше поле; у кабінеті полів немає, тому на першу кнопку.
+    setTimeout(() => ($('.field', modal) ?? $('button', modal)).focus(), 60);
+  };
+
+  const closeModal = (modal) => {
+    modal.classList.remove('open');
+    syncScrollLock();
+    lastFocused?.focus();
+  };
+
+  drawerButton.addEventListener('click', () => setDrawer(true));
+  $('#mob-close').addEventListener('click', () => setDrawer(false));
+  $('.drawer-bg', drawer).addEventListener('click', () => setDrawer(false));
+  $$('.mob-lnk', drawer).forEach((link) => {
+    link.addEventListener('click', () => setDrawer(false));
+  });
+  setDrawer(false);   // початковий стан: закрите й inert
+
+  $$('.reg-trig').forEach((button) => {
+    button.addEventListener('click', () => {
+      // У <option> немає атрибута value, тому значення дорівнює тексту.
+      if (button.dataset.course) $('#f-course').value = button.dataset.course;
       openModal('reg-modal');
     });
   });
 
-  $$('.cab-trig').forEach(function (b) {
-    b.addEventListener('click', function () { renderCabinet(); openModal('cab-modal'); });
-  });
-
-  $$('.modal-x').forEach(function (b) {
-    b.addEventListener('click', function () { closeModal(b.closest('.modal')); });
-  });
-  $$('.modal').forEach(function (m) {
-    m.addEventListener('click', function (e) { if (e.target === m) closeModal(m); });
-  });
-
-  document.addEventListener('keydown', function (e) {
-    if (e.key !== 'Escape') return;
-    var open = $('.modal.open');
-    if (open) { closeModal(open); return; }
-    if (mob.getAttribute('aria-hidden') === 'false') closeDrawer();
-  });
-
-  /* Focus trap inside an open modal */
-  document.addEventListener('keydown', function (e) {
-    if (e.key !== 'Tab') return;
-    var m = $('.modal.open');
-    if (!m) return;
-    var items = $$('a[href], button, input, select, textarea', m).filter(function (el) {
-      return !el.disabled && el.offsetParent !== null;
+  $$('.cab-trig').forEach((button) => {
+    button.addEventListener('click', () => {
+      renderCabinet();
+      openModal('cab-modal');
     });
-    if (!items.length) return;
-    var first = items[0], last = items[items.length - 1];
-    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   });
 
-  /* ---------- Storage ---------- */
-  var KEY = 'stemlab_applications';
-  function load() {
-    try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch (e) { return []; }
-  }
-  function save(list) {
-    try { localStorage.setItem(KEY, JSON.stringify(list)); } catch (e) {}
-  }
+  $$('.modal-x').forEach((button) => {
+    button.addEventListener('click', () => closeModal(button.closest('.modal')));
+  });
 
-  /* ---------- Registration form ---------- */
-  var form = $('#reg-form');
-  var errBox = $('#f-error');
-  var okBox = $('#f-ok');
+  $$('.modal').forEach((modal) => {
+    // Клік саме по підкладці, а не по вмісту картки.
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) closeModal(modal);
+    });
+  });
 
-  function fail(msg, field) {
-    errBox.textContent = msg;
-    errBox.classList.remove('hidden');
-    if (field) field.focus();
-  }
+  /* ========================================================================
+     Клавіатура
+     Esc закриває верхній шар; Tab не випускає фокус із відкритої модалки.
+     ===================================================================== */
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    errBox.classList.add('hidden');
-    okBox.classList.add('hidden');
+  addEventListener('keydown', (event) => {
+    const modal = $('.modal.open');
 
-    var nameEl = $('#f-name'), gradeEl = $('#f-grade'), courseEl = $('#f-course');
-    var phoneEl = $('#f-phone'), emailEl = $('#f-email');
-
-    var name = nameEl.value.trim();
-    var grade = gradeEl.value;
-    var course = courseEl.value;
-    var phone = phoneEl.value.trim();
-    var email = emailEl.value.trim();
-
-    if (name.length < 4 || name.indexOf(' ') === -1) {
-      return fail('Вкажіть прізвище та імʼя учня повністю.', nameEl);
+    if (event.key === 'Escape') {
+      const menu = $('.menu-wrap.open');
+      if (menu) closeMenu(menu);
+      else if (modal) closeModal(modal);
+      else if (drawer.dataset.open === 'true') setDrawer(false);
+      return;
     }
-    if (!grade)  return fail('Оберіть клас.', gradeEl);
-    if (!course) return fail('Оберіть напрямок.', courseEl);
+
+    if (event.key !== 'Tab' || !modal) return;
+
+    const focusable = $$('a[href], button, input, select, textarea', modal)
+      .filter((element) => !element.disabled && element.offsetParent !== null);
+    if (!focusable.length) return;
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    const edge = event.shiftKey ? first : last;
+    if (document.activeElement !== edge) return;
+
+    event.preventDefault();
+    (event.shiftKey ? last : first).focus();
+  });
+
+  /* ========================================================================
+     Заявки
+     Зберігаються лише в браузері відвідувача. Коли зʼявиться сервер,
+     переписати доведеться тільки ці дві функції.
+     ===================================================================== */
+
+  const STORE_KEY = 'stemlab_applications';
+
+  const readApplications = () => {
+    try {
+      return JSON.parse(localStorage.getItem(STORE_KEY)) ?? [];
+    } catch {
+      return [];   // сховище заблоковане або в ньому сміття
+    }
+  };
+
+  const writeApplications = (applications) => {
+    try {
+      localStorage.setItem(STORE_KEY, JSON.stringify(applications));
+    } catch {
+      /* сховище переповнене або заблоковане — мовчки пропускаємо */
+    }
+  };
+
+  /* ========================================================================
+     Форма запису
+     ===================================================================== */
+
+  const form = $('#reg-form');
+  const errorBox = $('#f-error');
+  const successBox = $('#f-ok');
+
+  const showError = (message, field) => {
+    errorBox.textContent = message;
+    errorBox.classList.remove('hidden');
+    field.focus();
+  };
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    errorBox.classList.add('hidden');
+    successBox.classList.add('hidden');
+
+    const fields = {
+      name:   $('#f-name'),
+      grade:  $('#f-grade'),
+      course: $('#f-course'),
+      phone:  $('#f-phone'),
+      email:  $('#f-email'),
+    };
+
+    const name = fields.name.value.trim();
+    const phone = fields.phone.value.trim();
+    const email = fields.email.value.trim();
+    const { value: grade } = fields.grade;
+    const { value: course } = fields.course;
+
+    // Перевірки по черзі: перша невдала зупиняє відправку й веде фокус до поля.
+    if (name.length < 4 || !name.includes(' ')) {
+      return showError('Вкажіть прізвище та імʼя учня повністю.', fields.name);
+    }
+    if (!grade)  return showError('Оберіть клас.', fields.grade);
+    if (!course) return showError('Оберіть напрямок.', fields.course);
     if (phone.replace(/\D/g, '').length < 9) {
-      return fail('Вкажіть телефон у форматі +38 0XX XXX XX XX.', phoneEl);
+      return showError('Вкажіть телефон у форматі +38 0XX XXX XX XX.', fields.phone);
     }
     if (!/^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/.test(email)) {
-      return fail('Перевірте електронну пошту.', emailEl);
+      return showError('Перевірте електронну пошту.', fields.email);
     }
 
-    var list = load();
-    var dup = list.some(function (r) {
-      return r.name.toLowerCase() === name.toLowerCase() && r.course === course;
-    });
-    if (dup) return fail(name + ' уже записаний на «' + course + '».', nameEl);
+    const applications = readApplications();
+    const alreadyEnrolled = applications.some(
+      (application) =>
+        application.name.toLowerCase() === name.toLowerCase() && application.course === course
+    );
+    if (alreadyEnrolled) {
+      return showError(`${name} уже записаний на «${course}».`, fields.name);
+    }
 
-    list.push({
+    applications.push({
       id: Date.now(),
-      name: name, grade: grade, course: course,
-      phone: phone, email: email,
-      created: new Date().toISOString()
+      name, grade, course, phone, email,
+      created: new Date().toISOString(),
     });
-    save(list);
+    writeApplications(applications);
 
     form.reset();
-    okBox.textContent = 'Заявку збережено. Ми зателефонуємо впродовж робочого дня.';
-    okBox.classList.remove('hidden');
-    window.setTimeout(function () {
-      var m = $('#reg-modal');
-      if (m.classList.contains('open')) closeModal(m);
-      okBox.classList.add('hidden');
+    successBox.textContent = 'Заявку збережено. Ми зателефонуємо впродовж робочого дня.';
+    successBox.classList.remove('hidden');
+
+    setTimeout(() => {
+      closeModal($('#reg-modal'));
+      successBox.classList.add('hidden');
     }, 2400);
   });
 
-  /* ---------- Cabinet ---------- */
-  function esc(s) {
-    return String(s).replace(/[&<>"']/g, function (c) {
-      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
-    });
-  }
+  /* ========================================================================
+     Кабінет заявок
+
+     Розмітку рядка тримає <template> в index.html, а не рядок усередині JS.
+     Так вона лишається видимою в HTML, а текст підставляється через
+     textContent — тобто екранування не потрібне взагалі.
+     ===================================================================== */
+
+  const cabinetList = $('#cab-list');
+  const cabinetEmpty = $('#cab-empty');
+  const rowTemplate = $('#cab-row');
+  const formatDate = new Intl.DateTimeFormat('uk-UA', {
+    day: 'numeric', month: 'long', year: 'numeric',
+  });
 
   function renderCabinet() {
-    var list = load();
-    var box = $('#cab-list');
-    var empty = $('#cab-empty');
+    const applications = readApplications();
 
-    if (!list.length) {
-      box.innerHTML = '';
-      box.classList.add('hidden');
-      empty.classList.remove('hidden');
-      return;
-    }
-    empty.classList.add('hidden');
-    box.classList.remove('hidden');
+    cabinetList.replaceChildren();
+    cabinetList.classList.toggle('hidden', applications.length === 0);
+    cabinetEmpty.classList.toggle('hidden', applications.length > 0);
 
-    box.innerHTML = list.map(function (r) {
-      return '' +
-        '<div class="flex items-start justify-between gap-4 py-4">' +
-          '<div class="min-w-0">' +
-            '<p class="font-display font-bold text-[15.5px] tracking-[-.015em]">' + esc(r.name) + '</p>' +
-            '<p class="text-[14px] text-brand dark:text-brand-300 font-medium mt-0.5">' + esc(r.course) + '</p>' +
-            '<p class="text-[13.5px] text-fg-muted dark:text-fgd-muted mt-1 nums">' +
-              esc(r.grade) + ' · заявка від ' +
-              new Date(r.created).toLocaleDateString('uk-UA', { day: 'numeric', month: 'long', year: 'numeric' }) +
-            '</p>' +
-          '</div>' +
-          '<button type="button" data-del="' + r.id + '" class="w-10 h-10 -mr-2 grid place-items-center rounded-full text-fg-muted dark:text-fgd-muted hover:text-red-600 dark:hover:text-red-400 hover:bg-paper dark:hover:bg-night-800 transition-colors shrink-0" aria-label="Скасувати заявку">' +
-            '<svg class="w-[17px] h-[17px]" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6m4-6v6M5.5 7l1 12.2A2 2 0 008.5 21h7a2 2 0 002-1.8L18.5 7M9 7V4.5A1.5 1.5 0 0110.5 3h3A1.5 1.5 0 0115 4.5V7"/></svg>' +
-          '</button>' +
-        '</div>';
-    }).join('');
-
-    $$('[data-del]', box).forEach(function (b) {
-      b.addEventListener('click', function () {
-        var id = Number(b.getAttribute('data-del'));
-        save(load().filter(function (r) { return r.id !== id; }));
-        renderCabinet();
-      });
+    applications.forEach((application) => {
+      const row = rowTemplate.content.firstElementChild.cloneNode(true);
+      $('[data-name]', row).textContent = application.name;
+      $('[data-course]', row).textContent = application.course;
+      $('[data-meta]', row).textContent =
+        `${application.grade} · заявка від ${formatDate.format(new Date(application.created))}`;
+      $('[data-remove]', row).dataset.remove = application.id;
+      cabinetList.append(row);
     });
   }
+
+  // Делегування: один слухач переживає всі перемальовування списку.
+  cabinetList.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-remove]');
+    if (!button) return;
+
+    const id = Number(button.dataset.remove);
+    writeApplications(readApplications().filter((application) => application.id !== id));
+    renderCabinet();
+  });
 })();
