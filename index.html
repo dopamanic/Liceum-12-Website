@@ -331,6 +331,35 @@ tailwind.config = {
   .dark .lnk { color: #5FB8A8; text-decoration-color: rgba(95,184,168,.35); }
   .dark .lnk:hover { text-decoration-color: #5FB8A8; }
 
+  /* ---------- FAQ accordion (native <details>) ---------- */
+  .faq > summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1.25rem 0;
+  }
+  .faq > summary::-webkit-details-marker { display: none; }
+  .faq > summary:focus-visible { outline-offset: -2px; }
+
+  .faq-sign { position: relative; width: 18px; height: 18px; flex-shrink: 0; margin-top: 6px; }
+  .faq-sign::before,
+  .faq-sign::after {
+    content: '';
+    position: absolute;
+    background: currentColor;
+    border-radius: 2px;
+    transition: rotate .22s cubic-bezier(.2,0,0,1), opacity .18s ease;
+  }
+  .faq-sign::before { left: 0; top: 8px; width: 18px; height: 2px; }
+  .faq-sign::after  { top: 0; left: 8px; width: 2px; height: 18px; }
+  .faq[open] .faq-sign::after { rotate: 90deg; opacity: 0; }
+
+  .faq[open] .faq-body { animation: faqIn .24s cubic-bezier(.2,0,0,1); }
+  @keyframes faqIn { from { opacity: 0; transform: translateY(-5px); } }
+
   /* ---------- Card ---------- */
   .card {
     border-radius: 24px;
@@ -475,9 +504,10 @@ tailwind.config = {
         </div>
       </div>
 
+      <a href="#projects" class="h-link transition-colors">Проєкти</a>
       <a href="#teachers" class="h-link transition-colors">Викладачі</a>
       <a href="#schedule" class="h-link transition-colors">Розклад</a>
-      <a href="#news" class="h-link transition-colors">Новини</a>
+      <a href="#faq" class="h-link transition-colors">Питання</a>
       <a href="#contacts" class="h-link transition-colors">Контакти</a>
     </nav>
 
@@ -527,8 +557,10 @@ tailwind.config = {
       <a href="#about"    class="mob-lnk px-3 py-2.5 rounded-lg hover:bg-paper dark:hover:bg-night-800">Про лабораторію</a>
       <a href="#programs" class="mob-lnk px-3 py-2.5 rounded-lg hover:bg-paper dark:hover:bg-night-800">Напрямки</a>
       <a href="#process"  class="mob-lnk px-3 py-2.5 rounded-lg hover:bg-paper dark:hover:bg-night-800">Як проходить навчання</a>
+      <a href="#projects" class="mob-lnk px-3 py-2.5 rounded-lg hover:bg-paper dark:hover:bg-night-800">Проєкти учнів</a>
       <a href="#teachers" class="mob-lnk px-3 py-2.5 rounded-lg hover:bg-paper dark:hover:bg-night-800">Викладачі</a>
       <a href="#schedule" class="mob-lnk px-3 py-2.5 rounded-lg hover:bg-paper dark:hover:bg-night-800">Розклад</a>
+      <a href="#faq"      class="mob-lnk px-3 py-2.5 rounded-lg hover:bg-paper dark:hover:bg-night-800">Питання та відповіді</a>
       <a href="#news"     class="mob-lnk px-3 py-2.5 rounded-lg hover:bg-paper dark:hover:bg-night-800">Новини</a>
       <a href="#contacts" class="mob-lnk px-3 py-2.5 rounded-lg hover:bg-paper dark:hover:bg-night-800">Контакти</a>
     </nav>
@@ -797,15 +829,77 @@ tailwind.config = {
           <h3 class="t-h3 mb-3">Проєкт і захист</h3>
           <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6]">
             Учень веде власну розробку під наглядом викладача та захищає її перед
-            комісією. Найсильніші проєкти йдемо з ними на міські конкурси й олімпіади.
+            комісією. З найсильнішими проєктами їдемо на міські конкурси й олімпіади.
           </p>
         </li>
       </ol>
     </div>
   </section>
 
+  <!-- ══ Student projects: what actually comes out of the process ══ -->
+  <section id="projects" class="bg-paper dark:bg-night-900 py-20 lg:py-28">
+    <div class="mx-auto max-w-shell px-5 sm:px-8">
+      <h2 class="t-h2 mb-3">Що учні зробили цього року</h2>
+      <p class="t-body text-fg-muted dark:text-fgd-muted max-w-[56ch] mb-12">
+        Це захищені випускні проєкти. Два з них досі працюють у будівлі ліцею.
+      </p>
+
+      <div class="grid lg:grid-cols-12 gap-5">
+
+        <article class="card bg-white dark:bg-night-800 rounded-[24px] overflow-hidden lg:col-span-7 flex flex-col">
+          <figure class="ph ph-tone h-[220px] sm:h-[300px]" data-label="Автоматичний полив у кабінеті біології">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&h=700&q=80"
+                 alt="Плата з мікроконтролером і датчиками системи поливу"
+                 width="1200" height="700" loading="lazy"
+                 onerror="this.parentNode.classList.add('ph-fail');this.remove();">
+          </figure>
+          <div class="p-7 lg:p-8">
+            <h3 class="t-h3 mb-2">Автополив для кабінету біології</h3>
+            <p class="text-[14px] text-fg-muted dark:text-fgd-muted mb-4 nums">
+              Андрій Петренко, 10 клас · напрямок «Інтернет речей» · 2026
+            </p>
+            <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6]">
+              ESP32, датчики вологості ґрунту в шести вазонах і помпа. Поливає, коли
+              ґрунт пересихає, і пише в Telegram, якщо в баку закінчилась вода.
+              Працює в кабінеті 214 з березня — за цей час не загинула жодна рослина,
+              включно з тими, що раніше не переживали канікул.
+            </p>
+          </div>
+        </article>
+
+        <div class="lg:col-span-5 grid sm:grid-cols-2 lg:grid-cols-1 gap-5">
+
+          <article class="card bg-white dark:bg-night-800 rounded-[24px] p-7 flex flex-col">
+            <h3 class="t-h3 mb-2">Облік води по корпусах</h3>
+            <p class="text-[14px] text-fg-muted dark:text-fgd-muted mb-4 nums">
+              Команда «SmartCity12» · 2025
+            </p>
+            <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6]">
+              Імпульсні лічильники на два корпуси, дані йдуть у просту таблицю.
+              Завгосп бачить добову витрату й знайшов протікання в підвалі на
+              третьому тижні роботи.
+            </p>
+          </article>
+
+          <article class="card bg-white dark:bg-night-800 rounded-[24px] p-7 flex flex-col">
+            <h3 class="t-h3 mb-2">Навчальна модель кисті</h3>
+            <p class="text-[14px] text-fg-muted dark:text-fgd-muted mb-4 nums">
+              Марія Ковальчук, 11 клас · 3D-моделювання · 2026
+            </p>
+            <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6]">
+              Сорок дві надруковані деталі й п'ять сервоприводів. Пальці згинаються
+              окремо, рухи повторюють жест із рукавички-контролера. Друга версія —
+              перша не витримала ваги приводів.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ══ Teachers ══ -->
-  <section id="teachers" class="bg-paper dark:bg-night-900 py-20 lg:py-28">
+  <section id="teachers" class="bg-white dark:bg-night py-20 lg:py-28">
     <div class="mx-auto max-w-shell px-5 sm:px-8">
       <h2 class="t-h2 mb-3">Викладачі</h2>
       <p class="t-body text-fg-muted dark:text-fgd-muted max-w-[52ch] mb-12">
@@ -875,7 +969,7 @@ tailwind.config = {
   </section>
 
   <!-- ══ Schedule ══ -->
-  <section id="schedule" class="bg-white dark:bg-night py-20 lg:py-28">
+  <section id="schedule" class="bg-paper dark:bg-night-900 py-20 lg:py-28">
     <div class="mx-auto max-w-shell px-5 sm:px-8">
       <div class="max-w-[62ch] mb-10">
         <h2 class="t-h2 mb-3">Розклад занять</h2>
@@ -934,6 +1028,96 @@ tailwind.config = {
         Розклад може змінюватися під час сесій та олімпіад. Актуальні дані —
         за телефоном <a href="tel:+380412471230" class="lnk nums">+38 (0412) 47-12-30</a>.
       </p>
+    </div>
+  </section>
+
+  <!-- ══ FAQ ══ -->
+  <section id="faq" class="bg-white dark:bg-night py-20 lg:py-28">
+    <div class="mx-auto max-w-shell px-5 sm:px-8">
+      <div class="grid lg:grid-cols-12 gap-x-14 gap-y-8">
+
+        <div class="lg:col-span-4">
+          <h2 class="t-h2 mb-4">Що зазвичай питають батьки</h2>
+          <p class="t-body text-fg-muted dark:text-fgd-muted max-w-[38ch]">
+            Не знайшли свого питання — напишіть у
+            <a href="https://t.me/stemlab12" class="lnk">Telegram</a> або зателефонуйте.
+            Відповідаємо того ж дня.
+          </p>
+        </div>
+
+        <div class="lg:col-span-8">
+          <div class="border-t border-line dark:border-line-dark">
+
+            <details name="faq" class="faq border-b border-line dark:border-line-dark">
+              <summary><span class="t-h3 pr-4">Скільки коштує навчання?</span><span class="faq-sign text-brand dark:text-brand-300" aria-hidden="true"></span></summary>
+              <div class="faq-body t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] pb-6 max-w-[62ch]">
+                Нічого. Лабораторія працює за бюджетом ліцею, навчання безкоштовне —
+                і для учнів ліцею, і для тих, хто прийшов з іншої школи. Ми не беремо
+                грошей ні за матеріали, ні за «вступний внесок», ні на ремонт.
+                Якщо хтось просить — скажіть нам.
+              </div>
+            </details>
+
+            <details name="faq" class="faq border-b border-line dark:border-line-dark">
+              <summary><span class="t-h3 pr-4">Дитина вчиться в іншій школі. Візьмете?</span><span class="faq-sign text-brand dark:text-brand-300" aria-hidden="true"></span></summary>
+              <div class="faq-body t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] pb-6 max-w-[62ch]">
+                Візьмемо, якщо лишились місця. Спершу записуємо ліцеїстів — до
+                15 вересня, далі відкриваємо решту місць для всіх. Торік із 48 учнів
+                одинадцятеро були з інших шкіл Житомира.
+              </div>
+            </details>
+
+            <details name="faq" class="faq border-b border-line dark:border-line-dark">
+              <summary><span class="t-h3 pr-4">Що треба купити до першого заняття?</span><span class="faq-sign text-brand dark:text-brand-300" aria-hidden="true"></span></summary>
+              <div class="faq-body t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] pb-6 max-w-[62ch]">
+                Зошит і ручку. Все інше — плати, інструмент, пластик для друку,
+                компоненти — лабораторії. Деталі, які учень надрукував або спаяв
+                для свого проєкту, після захисту забирає собі.
+              </div>
+            </details>
+
+            <details name="faq" class="faq border-b border-line dark:border-line-dark">
+              <summary><span class="t-h3 pr-4">Паяльник, інструменти — це безпечно?</span><span class="faq-sign text-brand dark:text-brand-300" aria-hidden="true"></span></summary>
+              <div class="faq-body t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] pb-6 max-w-[62ch]">
+                До пайки допускаємо з 9 класу, перші три заняття — тільки разом
+                з викладачем. Станції з регулюванням температури й димовідсосом,
+                припій безсвинцевий. Молодші класи працюють на роз'ємних платах,
+                де паяти не треба взагалі. За шість років — жодної травми,
+                окрім двох опечених пальців, обидва в перший рік.
+              </div>
+            </details>
+
+            <details name="faq" class="faq border-b border-line dark:border-line-dark">
+              <summary><span class="t-h3 pr-4">А якщо дитина обрала не той напрямок?</span><span class="faq-sign text-brand dark:text-brand-300" aria-hidden="true"></span></summary>
+              <div class="faq-body t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] pb-6 max-w-[62ch]">
+                Перейти можна протягом першого місяця, без пояснень — просто скажіть
+                викладачу. Далі вже складніше: група йде за програмою, і наздоганяти
+                посеред модуля важко. Тому й радимо почати з пробного заняття.
+              </div>
+            </details>
+
+            <details name="faq" class="faq border-b border-line dark:border-line-dark">
+              <summary><span class="t-h3 pr-4">Пропустив заняття — що робити?</span><span class="faq-sign text-brand dark:text-brand-300" aria-hidden="true"></span></summary>
+              <div class="faq-body t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] pb-6 max-w-[62ch]">
+                Конспект і завдання викладач кидає в групу напрямку в Telegram.
+                У п'ятницю з 15:00 лабораторія відкрита на відпрацювання — можна
+                прийти й доробити пропущене. Попереджати не обов'язково.
+              </div>
+            </details>
+
+            <details name="faq" class="faq border-b border-line dark:border-line-dark">
+              <summary><span class="t-h3 pr-4">Скільки дітей у групі?</span><span class="faq-sign text-brand dark:text-brand-300" aria-hidden="true"></span></summary>
+              <div class="faq-body t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] pb-6 max-w-[62ch]">
+                До дванадцяти. Це не методика, а арифметика: у лабораторії
+                дванадцять робочих місць з обладнанням. Якщо набереться більше
+                охочих, відкриваємо другу групу — але тільки коли є вільний
+                викладач, а не «підсаджуємо» тринадцятого.
+              </div>
+            </details>
+
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1049,6 +1233,14 @@ tailwind.config = {
               Понеділок — п'ятниця, 14:00–18:00
             </dd>
           </div>
+          <div class="py-5">
+            <dt class="font-display font-bold text-[14px] mb-1.5">Як дістатися</dt>
+            <dd class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted">
+              Тролейбуси 1 і 5, зупинка «Соборний майдан» — далі п'ять хвилин пішки.
+              Вхід з боку двору, не з проїжджої частини. На вахті скажіть, що
+              до STEM-лабораторії, вас проведуть на третій поверх.
+            </dd>
+          </div>
         </dl>
 
         <div class="lg:col-span-7">
@@ -1088,8 +1280,11 @@ tailwind.config = {
           <li><a href="#about" class="text-fgd-muted hover:text-white transition-colors">Про лабораторію</a></li>
           <li><a href="#programs" class="text-fgd-muted hover:text-white transition-colors">Напрямки</a></li>
           <li><a href="#process" class="text-fgd-muted hover:text-white transition-colors">Як проходить навчання</a></li>
+          <li><a href="#projects" class="text-fgd-muted hover:text-white transition-colors">Проєкти учнів</a></li>
           <li><a href="#teachers" class="text-fgd-muted hover:text-white transition-colors">Викладачі</a></li>
           <li><a href="#schedule" class="text-fgd-muted hover:text-white transition-colors">Розклад</a></li>
+          <li><a href="#faq" class="text-fgd-muted hover:text-white transition-colors">Питання та відповіді</a></li>
+          <li><a href="#news" class="text-fgd-muted hover:text-white transition-colors">Новини</a></li>
         </ul>
       </nav>
 
