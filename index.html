@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STEM-лабораторія — Ліцей №12, Київ</title>
-<meta name="description" content="STEM-лабораторія Ліцею №12 м. Київ: робототехніка, 3D-прототипування, програмування Python та IoT для учнів 7–11 класів. Безкоштовне навчання, власне обладнання.">
+<title>STEM-лабораторія — Ліцей №12, Житомир</title>
+<meta name="description" content="STEM-лабораторія Ліцею №12 м. Житомир: робототехніка, 3D-прототипування, програмування Python та IoT для учнів 7–11 класів. Безкоштовне навчання, власне обладнання.">
 <meta name="theme-color" content="#0A1413">
-<meta property="og:title" content="STEM-лабораторія — Ліцей №12, Київ">
+<meta property="og:title" content="STEM-лабораторія — Ліцей №12, Житомир">
 <meta property="og:description" content="Робототехніка, 3D-друк, програмування та IoT для учнів 7–11 класів.">
 <meta property="og:type" content="website">
 
@@ -55,7 +55,7 @@ tailwind.config = {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
-    scroll-padding-top: 80px;
+    scroll-padding-top: 104px;
   }
 
   /* `html body` outranks Tailwind preflight, which sets body { line-height: inherit } */
@@ -124,46 +124,74 @@ tailwind.config = {
   .nums { font-variant-numeric: tabular-nums; }
 
   /* ---------- Header ---------- */
+  /* Solid at every scroll position; only the bottom rule appears once you move. */
   .hdr {
-    background: transparent;
+    background: #fff;
     border-bottom: 1px solid transparent;
-    transition: background-color .3s ease, border-color .3s ease, backdrop-filter .3s ease;
+    transition: border-color .25s ease, box-shadow .25s ease;
   }
-  .hdr .h-mark  { color: #fff; }
-  .hdr .h-sub   { color: rgba(255,255,255,.52); }
-  .hdr .h-link  { color: rgba(255,255,255,.7); }
-  .hdr .h-link:hover { color: #fff; }
-  .hdr .h-icon  { color: rgba(255,255,255,.66); }
-  .hdr .h-icon:hover { color: #fff; }
-
   .hdr.solid {
-    background: rgba(255,255,255,.82);
-    backdrop-filter: blur(16px) saturate(1.5);
-    -webkit-backdrop-filter: blur(16px) saturate(1.5);
     border-bottom-color: #E4E2DC;
+    box-shadow: 0 1px 3px -1px rgba(16,24,23,.05);
   }
-  .hdr.solid .h-mark { color: #101817; }
-  .hdr.solid .h-sub  { color: #4F605D; }
-  .hdr.solid .h-link { color: #4F605D; }
-  .hdr.solid .h-link:hover { color: #101817; }
-  .hdr.solid .h-icon { color: #4F605D; }
-  .hdr.solid .h-icon:hover { color: #101817; }
+  .dark .hdr { background: #070F0E; }
+  .dark .hdr.solid { border-bottom-color: #1C2B28; box-shadow: none; }
 
-  .dark .hdr.solid {
-    background: rgba(7,15,14,.8);
-    border-bottom-color: #1C2B28;
+  .h-mark { color: #101817; }
+  .h-sub  { color: #4F605D; }
+  .h-link { color: #27332F; }
+  .h-link:hover { color: #0F5F55; }
+  .h-icon { color: #4F605D; }
+  .h-icon:hover { color: #101817; }
+
+  .dark .h-mark { color: #F2F5F4; }
+  .dark .h-sub  { color: #9DADAA; }
+  .dark .h-link { color: #D3DEDB; }
+  .dark .h-link:hover { color: #5FB8A8; }
+  .dark .h-icon { color: #9DADAA; }
+  .dark .h-icon:hover { color: #F2F5F4; }
+
+  /* current section */
+  .h-link[data-active="true"] { color: #0F5F55; }
+  .dark .h-link[data-active="true"] { color: #5FB8A8; }
+
+  /* ---------- Nav dropdown ---------- */
+  .menu-wrap { position: relative; }
+  .menu-pop {
+    position: absolute;
+    top: 100%;
+    left: -14px;
+    padding-top: 12px;              /* bridges the gap so the pointer can travel */
+    opacity: 0;
+    transform: translateY(-6px);
+    pointer-events: none;
+    transition: opacity .15s ease, transform .2s cubic-bezier(.2,0,0,1);
   }
-  .dark .hdr.solid .h-mark { color: #F2F5F4; }
-  .dark .hdr.solid .h-sub,
-  .dark .hdr.solid .h-link,
-  .dark .hdr.solid .h-icon { color: #9DADAA; }
-  .dark .hdr.solid .h-link:hover,
-  .dark .hdr.solid .h-icon:hover { color: #F2F5F4; }
-
-  /* current nav item */
-  .h-link[data-active="true"] { color: #fff; }
-  .hdr.solid .h-link[data-active="true"] { color: #0F5F55; }
-  .dark .hdr.solid .h-link[data-active="true"] { color: #5FB8A8; }
+  .menu-wrap.open .menu-pop { opacity: 1; transform: none; pointer-events: auto; }
+  /* hover-open lives in CSS so it can't fight the JS click toggle */
+  @media (hover: hover) and (pointer: fine) {
+    .menu-wrap:hover .menu-pop { opacity: 1; transform: none; pointer-events: auto; }
+    .menu-wrap:hover .chev { rotate: 180deg; }
+  }
+  .menu-card {
+    min-width: 272px;
+    padding: 7px;
+    background: #fff;
+    border: 1px solid #E4E2DC;
+    border-radius: 16px;
+    box-shadow: 0 16px 36px -14px rgba(16,24,23,.22), 0 2px 6px -2px rgba(16,24,23,.06);
+  }
+  .dark .menu-card { background: #0C1716; border-color: #1C2B28; box-shadow: 0 16px 36px -14px rgba(0,0,0,.6); }
+  .menu-item {
+    display: block;
+    padding: .5rem .7rem;
+    border-radius: 10px;
+    transition: background-color .15s ease;
+  }
+  .menu-item:hover { background: #F8F7F4; }
+  .dark .menu-item:hover { background: #11201E; }
+  .chev { transition: rotate .2s cubic-bezier(.2,0,0,1); }
+  .menu-wrap.open .chev { rotate: 180deg; }
 
   /* ---------- Hero backdrop ---------- */
   .hero-wash {
@@ -407,47 +435,94 @@ tailwind.config = {
 
 <!-- ══ Header ══ -->
 <header id="hdr" class="hdr fixed top-0 left-0 right-0 z-50">
-  <div class="mx-auto max-w-shell px-5 sm:px-8 h-[68px] flex items-center justify-between gap-6">
+  <div class="mx-auto max-w-[1380px] px-5 sm:px-8 h-[74px] xl:h-[92px] flex items-center gap-5">
 
-    <a href="#" class="shrink-0 leading-none py-2" aria-label="STEM-лабораторія, Ліцей №12">
-      <span class="h-mark block font-display font-extrabold text-[15px] tracking-[-.02em]">STEM-лабораторія</span>
-      <span class="h-sub block text-[11.5px] mt-[3px] tracking-wide">Ліцей №12, Київ</span>
+    <!-- logo lockup -->
+    <a href="#" class="flex items-center gap-3 shrink-0" aria-label="STEM-лабораторія, Ліцей №12, Житомир">
+      <span class="w-10 h-10 sm:w-11 sm:h-11 xl:w-[50px] xl:h-[50px] rounded-[13px] sm:rounded-[14px] bg-brand grid place-items-center shrink-0">
+        <span class="font-display font-extrabold text-white text-[17px] sm:text-[18px] xl:text-[20px] leading-none nums tracking-[-.02em]">12</span>
+      </span>
+      <span class="leading-none">
+        <span class="h-mark block font-display font-extrabold text-[16px] sm:text-[17px] xl:text-[18.5px] tracking-[-.025em]">STEM-лабораторія</span>
+        <span class="h-sub block text-[12px] sm:text-[12.5px] xl:text-[13px] mt-[5px]">Ліцей №12, Житомир</span>
+      </span>
     </a>
 
-    <nav id="nav" class="hidden lg:flex items-center gap-6 text-[14px] whitespace-nowrap" aria-label="Основна навігація">
+    <!-- primary navigation -->
+    <nav id="nav" class="hidden xl:flex items-center gap-[22px] 2xl:gap-6 text-[15.5px] whitespace-nowrap ml-5" aria-label="Основна навігація">
       <a href="#about" class="h-link transition-colors">Про нас</a>
-      <a href="#programs" class="h-link transition-colors">Напрямки</a>
+
+      <div class="menu-wrap" data-menu>
+        <button type="button" class="h-link inline-flex items-center gap-1.5 transition-colors" aria-expanded="false" aria-haspopup="true" aria-controls="menu-programs">
+          Напрямки
+          <svg class="chev w-3.5 h-3.5 opacity-60" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg>
+        </button>
+        <div class="menu-pop" id="menu-programs">
+          <div class="menu-card">
+            <a href="#programs" class="menu-item">
+              <span class="h-mark block font-medium text-[15px]">Робототехніка та мехатроніка</span>
+              <span class="h-sub block text-[13px] mt-0.5 nums">7–11 клас · 9 місяців</span>
+            </a>
+            <a href="#programs" class="menu-item">
+              <span class="h-mark block font-medium text-[15px]">3D-моделювання та друк</span>
+              <span class="h-sub block text-[13px] mt-0.5 nums">8–11 клас · 6 місяців</span>
+            </a>
+            <a href="#programs" class="menu-item">
+              <span class="h-mark block font-medium text-[15px]">Програмування Python</span>
+              <span class="h-sub block text-[13px] mt-0.5 nums">7–11 клас · 9 місяців</span>
+            </a>
+            <a href="#programs" class="menu-item">
+              <span class="h-mark block font-medium text-[15px]">Інтернет речей</span>
+              <span class="h-sub block text-[13px] mt-0.5 nums">9–11 клас · 6 місяців</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
       <a href="#teachers" class="h-link transition-colors">Викладачі</a>
       <a href="#schedule" class="h-link transition-colors">Розклад</a>
       <a href="#news" class="h-link transition-colors">Новини</a>
       <a href="#contacts" class="h-link transition-colors">Контакти</a>
     </nav>
 
-    <div class="flex items-center gap-1.5 shrink-0">
-      <a href="tel:+380441234567" class="h-link hidden xl:block text-[14px] nums font-medium px-2 transition-colors">+38 044 123-45-67</a>
+    <!-- contact + actions -->
+    <div class="flex items-center gap-1 xl:gap-2 ml-auto shrink-0">
+      <span class="hidden min-[1400px]:block w-px h-6 bg-line dark:bg-line-dark mx-3" aria-hidden="true"></span>
 
-      <button id="theme-btn" class="h-icon relative w-10 h-10 grid place-items-center transition-colors" aria-label="Перемкнути тему">
-        <svg class="i-sun w-[17px] h-[17px]" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.2m0 15.6V22M3.5 12H5.7m12.6 0h2.2M5.9 5.9l1.6 1.6m9 9l1.6 1.6m0-12.2l-1.6 1.6m-9 9l-1.6 1.6"/></svg>
-        <svg class="i-moon w-[17px] h-[17px] hidden" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" viewBox="0 0 24 24"><path d="M20.5 14.3A8.6 8.6 0 019.7 3.5 8.8 8.8 0 1020.5 14.3z"/></svg>
+      <a href="tel:+380412471230" class="h-link hidden min-[1400px]:block text-[15.5px] nums font-semibold px-2 transition-colors">+38 (0412) 47-12-30</a>
+
+      <a href="#contacts" class="h-link hidden xl:inline-flex items-center gap-1.5 text-[15px] px-2 transition-colors">
+        <svg class="w-4 h-4 opacity-70" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10.5c0 5.4-8 12-8 12s-8-6.6-8-12a8 8 0 1116 0z"/><circle cx="12" cy="10.3" r="2.8"/></svg>
+        Житомир
+      </a>
+
+      <button id="theme-btn" class="h-icon relative w-10 h-10 grid place-items-center rounded-full transition-colors" aria-label="Перемкнути тему">
+        <svg class="i-sun w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.2m0 15.6V22M3.5 12H5.7m12.6 0h2.2M5.9 5.9l1.6 1.6m9 9l1.6 1.6m0-12.2l-1.6 1.6m-9 9l-1.6 1.6"/></svg>
+        <svg class="i-moon w-[18px] h-[18px] hidden" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" viewBox="0 0 24 24"><path d="M20.5 14.3A8.6 8.6 0 019.7 3.5 8.8 8.8 0 1020.5 14.3z"/></svg>
       </button>
 
-      <button class="cab-trig h-link hidden sm:block text-[14px] px-3 py-2 transition-colors">Кабінет</button>
+      <button class="cab-trig h-icon hidden sm:grid w-10 h-10 place-items-center rounded-full transition-colors" aria-label="Мої заявки">
+        <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6"/><path d="M4.8 20.2a7.2 7.2 0 0114.4 0"/></svg>
+      </button>
 
-      <button class="reg-trig btn btn-primary btn-sm ml-1">Записатися</button>
+      <!-- wrapper controls visibility: .btn sets display, so `hidden` on the button itself would lose -->
+      <span class="hidden sm:block ml-1.5">
+        <button class="reg-trig btn btn-primary px-5 py-2.5 text-[14.5px] xl:py-[11px] xl:text-[15px]">Записатися</button>
+      </span>
 
-      <button id="mob-btn" class="h-icon lg:hidden w-10 h-10 grid place-items-center transition-colors" aria-label="Відкрити меню" aria-expanded="false">
-        <svg class="w-[19px] h-[19px]" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <button id="mob-btn" class="h-icon xl:hidden w-10 h-10 grid place-items-center rounded-full transition-colors" aria-label="Відкрити меню" aria-expanded="false">
+        <svg class="w-[20px] h-[20px]" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
     </div>
   </div>
 </header>
 
 <!-- ══ Mobile drawer ══ -->
-<div id="mob" class="fixed inset-0 z-[60] pointer-events-none lg:hidden" aria-hidden="true">
+<div id="mob" class="fixed inset-0 z-[60] pointer-events-none xl:hidden" aria-hidden="true">
   <div class="mob-bg absolute inset-0 bg-ink/50 opacity-0 transition-opacity duration-200"></div>
   <div class="mob-panel absolute right-0 top-0 h-full w-[85%] max-w-[320px] bg-white dark:bg-night-900 translate-x-full transition-transform duration-[260ms] [transition-timing-function:cubic-bezier(.2,0,0,1)] pointer-events-auto flex flex-col">
-    <div class="flex items-center justify-between px-5 h-[68px] border-b border-line dark:border-line-dark">
-      <span class="font-display font-extrabold text-[15px] tracking-[-.02em]">STEM-лабораторія</span>
+    <div class="flex items-center justify-between px-5 h-[74px] border-b border-line dark:border-line-dark">
+      <span class="font-display font-extrabold text-[16px] tracking-[-.025em]">STEM-лабораторія</span>
       <button id="mob-close" class="w-10 h-10 grid place-items-center text-fg-muted dark:text-fgd-muted -mr-2" aria-label="Закрити меню">
         <svg class="w-[19px] h-[19px]" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
       </button>
@@ -462,7 +537,8 @@ tailwind.config = {
       <a href="#contacts" class="mob-lnk px-3 py-2.5 rounded-lg hover:bg-paper dark:hover:bg-night-800">Контакти</a>
     </nav>
     <div class="mt-auto p-5 border-t border-line dark:border-line-dark flex flex-col gap-2.5">
-      <a href="tel:+380441234567" class="text-[15px] nums font-medium text-fg-muted dark:text-fgd-muted">+38 044 123-45-67</a>
+      <a href="tel:+380412471230" class="text-[16px] nums font-semibold">+38 (0412) 47-12-30</a>
+      <p class="text-[14px] text-fg-muted dark:text-fgd-muted -mt-1 mb-1">вул. Велика Бердичівська, 55, Житомир</p>
       <button class="cab-trig btn btn-outline w-full">Кабінет</button>
       <button class="reg-trig btn btn-primary w-full">Записатися</button>
     </div>
@@ -543,8 +619,8 @@ tailwind.config = {
           <h2 class="t-h2 mb-6">Інженерна практика замість переказу підручника</h2>
           <div class="t-body text-fg-muted dark:text-fgd-muted space-y-5 max-w-prose">
             <p>
-              Лабораторію створено у 2020&nbsp;році за підтримки управління освіти Голосіївського
-              району. Ми працюємо за проєктним принципом: кожен учень веде власну розробку від
+              Лабораторію створено у 2020&nbsp;році за підтримки управління освіти Житомирської
+              міської ради. Ми працюємо за проєктним принципом: кожен учень веде власну розробку від
               ідеї до робочого прототипу й захищає її перед комісією в кінці курсу.
             </p>
             <p>
@@ -864,7 +940,7 @@ tailwind.config = {
 
       <p class="text-[14px] text-fg-muted dark:text-fgd-muted mt-5">
         Розклад може змінюватися під час сесій та олімпіад. Актуальні дані —
-        за телефоном <a href="tel:+380441234567" class="lnk nums">+38 044 123-45-67</a>.
+        за телефоном <a href="tel:+380412471230" class="lnk nums">+38 (0412) 47-12-30</a>.
       </p>
     </div>
   </section>
@@ -940,7 +1016,7 @@ tailwind.config = {
         </p>
         <div class="flex flex-wrap items-center gap-3">
           <button class="reg-trig btn btn-signal">Записатися на пробне</button>
-          <a href="tel:+380441234567" class="btn btn-ghost-dark nums">+38 044 123-45-67</a>
+          <a href="tel:+380412471230" class="btn btn-ghost-dark nums">+38 (0412) 47-12-30</a>
         </div>
       </div>
     </div>
@@ -957,13 +1033,13 @@ tailwind.config = {
           <div class="py-5">
             <dt class="font-display font-bold text-[14px] mb-1.5">Адреса</dt>
             <dd class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted">
-              проспект Науки, 42, Київ, 03028<br>
+              вулиця Велика Бердичівська, 55, Житомир, 10002<br>
               Ліцей №12, кабінет 301, третій поверх
             </dd>
           </div>
           <div class="py-5">
             <dt class="font-display font-bold text-[14px] mb-1.5">Телефон</dt>
-            <dd class="text-[15.5px]"><a href="tel:+380441234567" class="lnk nums">+38 044 123-45-67</a></dd>
+            <dd class="text-[15.5px]"><a href="tel:+380412471230" class="lnk nums">+38 (0412) 47-12-30</a></dd>
           </div>
           <div class="py-5">
             <dt class="font-display font-bold text-[14px] mb-1.5">Електронна пошта</dt>
@@ -984,11 +1060,11 @@ tailwind.config = {
         <div class="lg:col-span-7">
           <div class="rounded-[18px] overflow-hidden h-[320px] sm:h-[400px] lg:h-full lg:min-h-[420px] bg-paper dark:bg-night-800 ring-1 ring-line dark:ring-line-dark">
             <iframe
-              src="https://www.google.com/maps?q=Kyiv%2C%20Nauky%20Avenue%2042&z=16&hl=uk&output=embed"
+              src="https://www.google.com/maps?q=%D0%96%D0%B8%D1%82%D0%BE%D0%BC%D0%B8%D1%80%2C%20%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F%20%D0%92%D0%B5%D0%BB%D0%B8%D0%BA%D0%B0%20%D0%91%D0%B5%D1%80%D0%B4%D0%B8%D1%87%D1%96%D0%B2%D1%81%D1%8C%D0%BA%D0%B0%2C%2055&z=16&hl=uk&output=embed"
               class="w-full h-full border-0"
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
-              title="Розташування Ліцею №12 на карті"></iframe>
+              title="Розташування Ліцею №12 у Житомирі на карті"></iframe>
           </div>
         </div>
 
@@ -1005,7 +1081,7 @@ tailwind.config = {
 
       <div class="lg:col-span-2">
         <p class="font-display font-extrabold text-[17px] tracking-[-.02em] text-white">STEM-лабораторія</p>
-        <p class="text-[14px] text-fgd-muted mt-1.5">Ліцей №12, місто Київ</p>
+        <p class="text-[14px] text-fgd-muted mt-1.5">Ліцей №12, місто Житомир</p>
         <p class="t-body text-[14.5px] text-fgd-muted mt-5 max-w-[38ch]">
           Робототехніка, 3D-прототипування, програмування та інтернет речей
           для учнів 7–11 класів.
@@ -1026,7 +1102,7 @@ tailwind.config = {
       <div>
         <p class="font-display font-bold text-[13px] text-white mb-4">Звʼязок</p>
         <ul class="space-y-2.5 text-[14.5px]">
-          <li><a href="tel:+380441234567" class="text-fgd-muted hover:text-white transition-colors nums">+38 044 123-45-67</a></li>
+          <li><a href="tel:+380412471230" class="text-fgd-muted hover:text-white transition-colors nums">+38 (0412) 47-12-30</a></li>
           <li><a href="mailto:stem@liceum12.edu.ua" class="text-fgd-muted hover:text-white transition-colors">stem@liceum12.edu.ua</a></li>
           <li><a href="https://t.me/stemlab12" class="text-fgd-muted hover:text-white transition-colors">Telegram</a></li>
           <li><a href="#contacts" class="text-fgd-muted hover:text-white transition-colors">Як дістатися</a></li>
@@ -1050,7 +1126,7 @@ tailwind.config = {
     </div>
 
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-7 text-[13px] text-fgd-muted">
-      <p>© 2026 STEM-лабораторія Ліцею №12, Київ</p>
+      <p>© 2026 STEM-лабораторія Ліцею №12, Житомир</p>
       <p>Навчання безкоштовне для учнів ліцею</p>
     </div>
   </div>
@@ -1166,27 +1242,57 @@ tailwind.config = {
 
   /* ---------- Header: transparent over hero, solid after ---------- */
   var hdr = $('#hdr');
-  function onScroll() { hdr.classList.toggle('solid', window.scrollY > 24); }
-  onScroll();
+  function onScroll() {
+    hdr.classList.toggle('solid', window.scrollY > 8);
+    syncActiveNav();
+  }
   window.addEventListener('scroll', onScroll, { passive: true });
 
+  /* ---------- Nav dropdown ---------- */
+  $$('[data-menu]').forEach(function (wrap) {
+    var btn = wrap.querySelector('button');
+
+    function openMenu()  { wrap.classList.add('open');    btn.setAttribute('aria-expanded', 'true'); }
+    function closeMenu() { wrap.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
+
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (wrap.classList.contains('open')) closeMenu(); else openMenu();
+    });
+    // on document, so Esc works wherever focus happens to sit
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && wrap.classList.contains('open')) { closeMenu(); btn.focus(); }
+    });
+    wrap.addEventListener('focusout', function (e) {
+      if (!wrap.contains(e.relatedTarget)) closeMenu();
+    });
+    $$('a', wrap).forEach(function (a) { a.addEventListener('click', closeMenu); });
+    document.addEventListener('click', function (e) {
+      if (!wrap.contains(e.target)) closeMenu();
+    });
+  });
+
   /* ---------- Active nav section ---------- */
-  var navLinks = $$('#nav .h-link');
+  var navLinks = $$('#nav a.h-link');
   var sections = navLinks
     .map(function (l) { return document.getElementById(l.getAttribute('href').slice(1)); })
     .filter(Boolean);
 
-  if ('IntersectionObserver' in window && sections.length) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (!en.isIntersecting) return;
-        navLinks.forEach(function (l) {
-          l.setAttribute('data-active', l.getAttribute('href') === '#' + en.target.id ? 'true' : 'false');
-        });
-      });
-    }, { rootMargin: '-45% 0px -50% 0px' });
-    sections.forEach(function (s) { io.observe(s); });
+  // Deterministic: the active section is the last one whose top has passed
+  // just below the header. An observer band would miss fast or jumped scrolls.
+  function syncActiveNav() {
+    if (!sections || !sections.length) return;
+    var line = window.scrollY + 170;
+    var current = null;
+    sections.forEach(function (s) {
+      if (s.getBoundingClientRect().top + window.scrollY <= line) current = s;
+    });
+    navLinks.forEach(function (l) {
+      var on = !!current && l.getAttribute('href') === '#' + current.id;
+      l.setAttribute('data-active', on ? 'true' : 'false');
+    });
   }
+  onScroll();
 
   /* ---------- Mobile drawer ---------- */
   var mob = $('#mob');
