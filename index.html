@@ -28,7 +28,7 @@
 <header id="hdr" class="hdr fixed top-0 left-0 right-0 z-50">
   <!-- three tracks: logo | nav | actions. The nav centres itself in the middle
        track instead of hugging the logo, which keeps the bar balanced. -->
-  <div class="mx-auto max-w-[1380px] px-5 sm:px-8 h-[74px] xl:h-[92px] grid grid-cols-[auto_1fr_auto] items-center gap-4">
+  <div class="mx-auto max-w-shell px-5 sm:px-8 h-[74px] xl:h-[92px] grid grid-cols-[auto_1fr_auto] items-center gap-4">
 
     <!-- logo lockup -->
     <a href="#" class="flex items-center gap-3 shrink-0" aria-label="STEM-лабораторія, Ліцей №12, Житомир">
@@ -149,7 +149,10 @@
 
       <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/80 to-ink/25" aria-hidden="true"></div>
 
-      <div class="relative z-10 w-full p-6 sm:p-10 lg:p-14 xl:p-16">
+      <!-- Той самий внутрішній контейнер, що й у секціях (max-w-shell + px-8),
+           тому текст героя стоїть на одній вертикалі із заголовками нижче. -->
+      <div class="relative z-10 w-full py-9 sm:py-12 lg:py-16">
+       <div class="mx-auto max-w-shell px-5 sm:px-8">
         <div class="max-w-[48rem]">
           <h1 class="rise rise-1 mb-6">
             <span class="t-hero block text-white">STEM-лабораторія</span>
@@ -171,18 +174,19 @@
             на 2026/2027 навчальний рік відкрито
           </p>
         </div>
+       </div>
       </div>
     </div>
   </section>
 
   <!-- ══ About ══ -->
-  <section id="about" class="bg-white dark:bg-night py-20 lg:py-28">
+  <section id="about" class="bg-white dark:bg-night py-16 lg:py-24">
     <div class="mx-auto max-w-shell px-5 sm:px-8">
 
       <!-- prose + equipment -->
       <div class="grid lg:grid-cols-12 gap-x-14 gap-y-12">
         <div class="lg:col-span-7">
-          <h2 class="t-h2 mb-6">Інженерна практика замість переказу підручника</h2>
+          <h2 class="t-h2 mb-10">Інженерна практика замість переказу підручника</h2>
           <div class="t-body text-fg-muted dark:text-fgd-muted space-y-5 max-w-prose">
             <p>
               Лабораторію створено у 2020&nbsp;році за підтримки управління освіти Житомирської
@@ -241,7 +245,7 @@
   </section>
 
   <!-- ══ Photo band, inset and rounded like the other panels ══ -->
-  <div class="bg-white dark:bg-night px-3 sm:px-5 lg:px-6 pb-4 sm:pb-6">
+  <div class="bg-white dark:bg-night px-3 sm:px-5 lg:px-6 pb-3 sm:pb-5">
     <figure class="ph ph-tone rounded-[24px] sm:rounded-[34px] lg:rounded-[42px] h-[220px] sm:h-[300px] lg:h-[420px]"
             data-label="Монтаж електроніки: друкована плата під збільшенням">
       <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1800&h=900&q=80"
@@ -252,7 +256,7 @@
   </div>
 
   <!-- ══ Programs ══ -->
-  <section id="programs" class="bg-paper dark:bg-night-900 py-20 lg:py-28">
+  <section id="programs" class="bg-paper dark:bg-night-900 py-16 lg:py-24">
     <div class="mx-auto max-w-shell px-5 sm:px-8">
 
       <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-12">
@@ -264,7 +268,7 @@
            з тінню. Опис у кожного своєї довжини – так і має бути. -->
       <div class="grid md:grid-cols-2 gap-x-14 gap-y-12">
 
-        <article class="border-t border-line dark:border-line-dark pt-6">
+        <article class="border-t border-line dark:border-line-dark pt-6 flex flex-col">
           <h3 class="t-h3 mb-1.5">Робототехніка та мехатроніка</h3>
           <p class="text-[14.5px] text-fg-muted dark:text-fgd-muted mb-4">Для 7–11 класів, дев'ять місяців</p>
           <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] mb-5 max-w-prose">
@@ -273,10 +277,10 @@
             конструкції. Торік на захисті показували робота, який розкладає
             деталі за кольором.
           </p>
-          <button class="reg-trig lnk text-[15px]" data-course="Робототехніка та мехатроніка">Записатися</button>
+          <button class="reg-trig lnk text-[15px] self-start mt-auto" data-course="Робототехніка та мехатроніка">Записатися</button>
         </article>
 
-        <article class="border-t border-line dark:border-line-dark pt-6">
+        <article class="border-t border-line dark:border-line-dark pt-6 flex flex-col">
           <h3 class="t-h3 mb-1.5">3D-моделювання та друк</h3>
           <p class="text-[14.5px] text-fg-muted dark:text-fgd-muted mb-4">Для 8–11 класів, шість місяців</p>
           <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] mb-5 max-w-prose">
@@ -285,10 +289,10 @@
             постобробка. Перша деталь зазвичай не стає на місце – і це
             найкорисніше заняття курсу.
           </p>
-          <button class="reg-trig lnk text-[15px]" data-course="3D-моделювання та друк">Записатися</button>
+          <button class="reg-trig lnk text-[15px] self-start mt-auto" data-course="3D-моделювання та друк">Записатися</button>
         </article>
 
-        <article class="border-t border-line dark:border-line-dark pt-6">
+        <article class="border-t border-line dark:border-line-dark pt-6 flex flex-col">
           <h3 class="t-h3 mb-1.5">Програмування Python</h3>
           <p class="text-[14.5px] text-fg-muted dark:text-fgd-muted mb-4">Для 7–11 класів, дев'ять місяців</p>
           <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] mb-5 max-w-prose">
@@ -297,10 +301,10 @@
             застосунок із базою даних. Хто хоче глибше – окремий трек підготовки
             до олімпіад з інформатики.
           </p>
-          <button class="reg-trig lnk text-[15px]" data-course="Програмування Python">Записатися</button>
+          <button class="reg-trig lnk text-[15px] self-start mt-auto" data-course="Програмування Python">Записатися</button>
         </article>
 
-        <article class="border-t border-line dark:border-line-dark pt-6">
+        <article class="border-t border-line dark:border-line-dark pt-6 flex flex-col">
           <h3 class="t-h3 mb-1.5">Інтернет речей</h3>
           <p class="text-[14.5px] text-fg-muted dark:text-fgd-muted mb-4">Для 9–11 класів, шість місяців</p>
           <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] mb-5 max-w-prose">
@@ -309,7 +313,7 @@
             можна керувати з телефону. Курс закінчується станцією, що працює
             і доступна віддалено.
           </p>
-          <button class="reg-trig lnk text-[15px]" data-course="Інтернет речей">Записатися</button>
+          <button class="reg-trig lnk text-[15px] self-start mt-auto" data-course="Інтернет речей">Записатися</button>
         </article>
 
       </div>
@@ -317,7 +321,7 @@
   </section>
 
   <!-- ══ Process (a genuine sequence, so it is numbered) ══ -->
-  <section id="process" class="bg-white dark:bg-night py-20 lg:py-28">
+  <section id="process" class="bg-white dark:bg-night py-16 lg:py-24">
     <div class="mx-auto max-w-shell px-5 sm:px-8">
       <!-- Суцільний текст, а не три однакові колонки: так читається як
            пояснення людини, а не як перелік пунктів. -->
@@ -349,9 +353,9 @@
   </section>
 
   <!-- ══ Student projects: what actually comes out of the process ══ -->
-  <section id="projects" class="bg-paper dark:bg-night-900 py-20 lg:py-28">
+  <section id="projects" class="bg-paper dark:bg-night-900 py-16 lg:py-24">
     <div class="mx-auto max-w-shell px-5 sm:px-8">
-      <h2 class="t-h2 mb-12">Що учні зробили цього року</h2>
+      <h2 class="t-h2 mb-10">Що учні зробили цього року</h2>
 
       <div class="grid lg:grid-cols-12 gap-5">
 
@@ -408,9 +412,9 @@
   </section>
 
   <!-- ══ Teachers ══ -->
-  <section id="teachers" class="bg-white dark:bg-night py-20 lg:py-28">
+  <section id="teachers" class="bg-white dark:bg-night py-16 lg:py-24">
     <div class="mx-auto max-w-shell px-5 sm:px-8">
-      <h2 class="t-h2 mb-12">Хто веде заняття</h2>
+      <h2 class="t-h2 mb-10">Хто веде заняття</h2>
 
       <div class="grid md:grid-cols-12 gap-x-12 gap-y-8 items-start">
 
@@ -446,12 +450,12 @@
 
 
   <!-- ══ FAQ ══ -->
-  <section id="faq" class="bg-white dark:bg-night py-20 lg:py-28">
+  <section id="faq" class="bg-white dark:bg-night py-16 lg:py-24">
     <div class="mx-auto max-w-shell px-5 sm:px-8">
       <div class="grid lg:grid-cols-12 gap-x-14 gap-y-8">
 
         <div class="lg:col-span-4">
-          <h2 class="t-h2 mb-4">Що зазвичай питають батьки</h2>
+          <h2 class="t-h2 mb-10">Що зазвичай питають батьки</h2>
           <p class="t-body text-fg-muted dark:text-fgd-muted max-w-[38ch]">
             Не знайшли свого питання – напишіть у
             <a href="https://t.me/stemlab12" class="lnk">Telegram</a> або зателефонуйте.
@@ -536,9 +540,9 @@
   </section>
 
   <!-- ══ News ══ -->
-  <section id="news" class="bg-paper dark:bg-night-900 py-20 lg:py-28">
+  <section id="news" class="bg-paper dark:bg-night-900 py-16 lg:py-24">
     <div class="mx-auto max-w-shell px-5 sm:px-8">
-      <h2 class="t-h2 mb-12">Новини лабораторії</h2>
+      <h2 class="t-h2 mb-10">Новини лабораторії</h2>
 
       <div class="divide-y divide-line dark:divide-line-dark border-t border-line dark:border-line-dark">
 
@@ -595,20 +599,24 @@
   </section>
 
   <!-- ══ CTA, an inset panel rather than a full-bleed band ══ -->
-  <section class="bg-white dark:bg-night px-3 sm:px-5 lg:px-6 py-4 sm:py-6">
+  <section class="bg-white dark:bg-night px-3 sm:px-5 lg:px-6 py-3 sm:py-5">
     <div class="relative bg-ink rounded-[24px] sm:rounded-[34px] lg:rounded-[42px] overflow-hidden">
       <div class="hero-wash" aria-hidden="true"></div>
-      <div class="relative p-8 sm:p-12 lg:p-16 xl:p-20">
-        <div class="max-w-[46ch]">
-          <h2 class="t-h2 text-white mb-5">Почніть з одного пробного заняття</h2>
-          <p class="t-body text-white/75 mb-9 text-[17px] sm:text-[18.5px] leading-[1.6]">
-            Приходьте подивитися, як працює лабораторія. Пробне заняття безкоштовне
-            й ні до чого не зобов'язує – учень просто спробує обладнання, а ви
-            познайомитеся з викладачем.
-          </p>
-          <div class="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-3">
-            <button class="reg-trig btn btn-primary w-full sm:w-auto sm:px-7 sm:py-3.5 sm:text-[16px]">Записатися на пробне</button>
-            <a href="tel:+380412471230" class="btn btn-ghost-dark nums w-full sm:w-auto sm:px-7 sm:py-3.5 sm:text-[16px]">+38 (0412) 47-12-30</a>
+      <!-- Контейнер той самий, що й у секціях, щоб заголовок стояв на одній
+           вертикалі з рештою сторінки. -->
+      <div class="relative py-14 sm:py-16 lg:py-20">
+        <div class="mx-auto max-w-shell px-5 sm:px-8">
+          <div class="max-w-[46ch]">
+            <h2 class="t-h2 text-white mb-5">Почніть з одного пробного заняття</h2>
+            <p class="t-body text-white/75 mb-9 text-[17px] sm:text-[18.5px] leading-[1.6]">
+              Приходьте подивитися, як працює лабораторія. Пробне заняття безкоштовне
+              й ні до чого не зобов'язує – учень просто спробує обладнання, а ви
+              познайомитеся з викладачем.
+            </p>
+            <div class="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-3">
+              <button class="reg-trig btn btn-primary w-full sm:w-auto sm:px-7 sm:py-3.5 sm:text-[16px]">Записатися на пробне</button>
+              <a href="tel:+380412471230" class="btn btn-ghost-dark nums w-full sm:w-auto sm:px-7 sm:py-3.5 sm:text-[16px]">+38 (0412) 47-12-30</a>
+            </div>
           </div>
         </div>
       </div>
@@ -616,9 +624,9 @@
   </section>
 
   <!-- ══ Contacts ══ -->
-  <section id="contacts" class="bg-white dark:bg-night py-20 lg:py-28">
+  <section id="contacts" class="bg-white dark:bg-night py-16 lg:py-24">
     <div class="mx-auto max-w-shell px-5 sm:px-8">
-      <h2 class="t-h2 mb-12">Контакти</h2>
+      <h2 class="t-h2 mb-10">Контакти</h2>
 
       <div class="grid lg:grid-cols-12 gap-x-14 gap-y-10">
 

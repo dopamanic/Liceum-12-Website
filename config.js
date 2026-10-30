@@ -36,7 +36,7 @@ if (typeof tailwind !== 'undefined') {
           fgd:    { DEFAULT: '#F2F5F4', muted: '#9DADAA' },
           line:   { DEFAULT: '#E4E2DC', dark: '#1C2B28' },
         },
-        maxWidth: { shell: '1180px', prose: '64ch' },
+        maxWidth: { shell: '1280px', prose: '64ch' },
       },
     },
   };
