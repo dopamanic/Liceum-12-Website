@@ -27,7 +27,7 @@ tailwind.config = {
       colors: {
         ink:    { DEFAULT: '#0A1413', 800: '#10201E', 700: '#16302C' },
         night:  { DEFAULT: '#070F0E', 900: '#0C1716', 800: '#11201E' },
-        paper:  '#F8F7F4',
+        paper:  '#F3F6F0',
         brand:  { DEFAULT: '#0F5F55', 700: '#0B4A42', 400: '#2F9183', 300: '#5FB8A8', 200: '#9ED9CE' },
         signal: '#C6F24E',
         fg:     { DEFAULT: '#101817', muted: '#4F605D' },
@@ -85,7 +85,7 @@ tailwind.config = {
   .t-hero {
     font-family: 'Manrope', sans-serif;
     font-weight: 800;
-    font-size: clamp(2.5rem, 5.2vw, 4.15rem);
+    font-size: clamp(2.15rem, 5.2vw, 4.15rem);
     line-height: 1;
     letter-spacing: -0.038em;
     text-wrap: balance;
@@ -305,16 +305,17 @@ tailwind.config = {
     border: 1px solid transparent;
   }
   .btn:active { scale: .97; }
-  .btn-primary { background: #0F5F55; color: #fff; }
-  .btn-primary:hover { background: #0B4A42; }
+  /* lime is the call-to-action colour everywhere; deep green stays structural */
+  .btn-primary { background: #C6F24E; color: #0A1413; }
+  .btn-primary:hover { background: #D4F76F; }
+  .btn-dark { background: #0F5F55; color: #fff; }
+  .btn-dark:hover { background: #0B4A42; }
   .btn-ghost-dark { color: #F2F5F4; border-color: rgba(255,255,255,.22); }
   .btn-ghost-dark:hover { border-color: rgba(255,255,255,.5); background: rgba(255,255,255,.05); }
   .btn-outline { color: #101817; border-color: #DCD9D2; }
   .btn-outline:hover { border-color: #0F5F55; color: #0F5F55; }
   .dark .btn-outline { color: #F2F5F4; border-color: #263935; }
   .dark .btn-outline:hover { border-color: #5FB8A8; color: #5FB8A8; }
-  .btn-signal { background: #C6F24E; color: #0A1413; }
-  .btn-signal:hover { background: #D5F872; }
   .btn-sm { padding: .5rem 1.1rem; font-size: .875rem; }
 
   /* Inline text link with a real underline */
@@ -332,7 +333,7 @@ tailwind.config = {
 
   /* ---------- Card ---------- */
   .card {
-    border-radius: 18px;
+    border-radius: 24px;
     transition-property: border-color, box-shadow, transform;
     transition-duration: 200ms;
     transition-timing-function: cubic-bezier(.2,0,0,1);
@@ -438,14 +439,9 @@ tailwind.config = {
   <div class="mx-auto max-w-[1380px] px-5 sm:px-8 h-[74px] xl:h-[92px] flex items-center gap-5">
 
     <!-- logo lockup -->
-    <a href="#" class="flex items-center gap-3 shrink-0" aria-label="STEM-лабораторія, Ліцей №12, Житомир">
-      <span class="w-10 h-10 sm:w-11 sm:h-11 xl:w-[50px] xl:h-[50px] rounded-[13px] sm:rounded-[14px] bg-brand grid place-items-center shrink-0">
-        <span class="font-display font-extrabold text-white text-[17px] sm:text-[18px] xl:text-[20px] leading-none nums tracking-[-.02em]">12</span>
-      </span>
-      <span class="leading-none">
-        <span class="h-mark block font-display font-extrabold text-[16px] sm:text-[17px] xl:text-[18.5px] tracking-[-.025em]">STEM-лабораторія</span>
-        <span class="h-sub block text-[12px] sm:text-[12.5px] xl:text-[13px] mt-[5px]">Ліцей №12, Житомир</span>
-      </span>
+    <a href="#" class="shrink-0 leading-none" aria-label="STEM-лабораторія, Ліцей №12, Житомир">
+      <span class="h-mark block font-display font-extrabold text-[17px] sm:text-[18px] xl:text-[20px] tracking-[-.03em]">STEM-лабораторія</span>
+      <span class="h-sub block text-[12px] sm:text-[12.5px] xl:text-[13.5px] mt-[6px]">Ліцей №12, Житомир</span>
     </a>
 
     <!-- primary navigation -->
@@ -547,54 +543,48 @@ tailwind.config = {
 
 <main id="main">
 
-  <!-- ══ Hero ══ -->
-  <section class="relative bg-ink">
-    <div class="hero-wash" aria-hidden="true"></div>
+  <!-- ══ Hero: one inset rounded panel, photo behind, copy at the foot ══ -->
+  <section class="px-3 sm:px-5 lg:px-6 pt-[80px] sm:pt-[86px] xl:pt-[104px] pb-3 sm:pb-5">
+    <div class="ph relative rounded-[24px] sm:rounded-[34px] lg:rounded-[42px] overflow-hidden flex items-end
+                min-h-[560px] sm:min-h-[600px] lg:min-h-[680px] xl:min-h-[740px]">
 
-    <div class="relative mx-auto max-w-shell px-5 sm:px-8 pt-[108px] sm:pt-[132px] lg:pt-[160px]">
-      <div class="grid lg:grid-cols-12 gap-x-12 items-end">
+      <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=2000&h=1300&q=80"
+           alt="Учні STEM-лабораторії складають і налаштовують робота на лабораторному столі"
+           width="2000" height="1300" fetchpriority="high"
+           class="absolute inset-0 w-full h-full object-cover"
+           onerror="this.parentNode.classList.add('ph-fail');this.remove();">
 
-        <!-- copy -->
-        <div class="lg:col-span-7 pb-14 lg:pb-[88px]">
-          <h1 class="rise rise-1 text-white mb-5">
-            <span class="t-hero block">STEM-лабораторія</span>
-            <span class="t-hero-sub block text-brand-200 mt-1.5">Ліцею №12</span>
+      <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/80 to-ink/25" aria-hidden="true"></div>
+
+      <div class="relative z-10 w-full p-6 sm:p-10 lg:p-14 xl:p-16">
+        <div class="max-w-[48rem]">
+          <h1 class="rise rise-1 mb-6">
+            <span class="t-hero block text-white">STEM-лабораторія</span>
+            <span class="t-hero-sub block text-signal mt-2">Ліцею №12</span>
           </h1>
 
-          <p class="rise rise-2 t-body text-fgd-muted text-[17px] sm:text-[18.5px] leading-[1.6] max-w-[46ch] mb-8">
+          <p class="rise rise-2 t-body text-white/80 text-[17px] sm:text-[19px] lg:text-[20px] leading-[1.55] max-w-[44ch] mb-9">
             Робототехніка, 3D-прототипування, програмування та інтернет речей для учнів
             7–11&nbsp;класів. Чотири напрямки, власне обладнання, навчання безкоштовне для ліцеїстів.
           </p>
 
           <div class="rise rise-3 flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-3 mb-8">
-            <button class="reg-trig btn btn-primary w-full sm:w-auto">Записатися на пробне заняття</button>
-            <a href="#programs" class="btn btn-ghost-dark w-full sm:w-auto">Переглянути напрямки</a>
+            <button class="reg-trig btn btn-primary w-full sm:w-auto sm:px-7 sm:py-3.5 sm:text-[16px]">Записатися на пробне заняття</button>
+            <a href="#programs" class="btn btn-ghost-dark w-full sm:w-auto sm:px-7 sm:py-3.5 sm:text-[16px]">Переглянути напрямки</a>
           </div>
 
-          <p class="rise rise-4 text-[14px] text-brand-300">
+          <p class="rise rise-4 text-[14.5px] text-white/65">
             <span class="inline-block w-1.5 h-1.5 rounded-full bg-signal align-middle mr-2.5"></span>Набір
             на 2026/2027 відкрито — залишилось
             <span class="nums font-semibold text-signal whitespace-nowrap">14 місць</span>
           </p>
         </div>
-
-        <!-- photo, overhanging the section below -->
-        <div class="rise rise-2 lg:col-span-5 relative z-10 mb-14 lg:mb-[-96px]">
-          <figure class="ph ph-tone rounded-[22px] aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/5]"
-                  data-label="Учні лабораторії за роботою над прототипом">
-            <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=900&h=1125&q=80"
-                 alt="Учні STEM-лабораторії складають і налаштовують робота на лабораторному столі"
-                 width="900" height="1125" fetchpriority="high"
-                 onerror="this.parentNode.classList.add('ph-fail');this.remove();">
-          </figure>
-        </div>
-
       </div>
     </div>
   </section>
 
   <!-- ══ Facts + About ══ -->
-  <section id="about" class="bg-white dark:bg-night pt-16 lg:pt-[152px] pb-20 lg:pb-28">
+  <section id="about" class="bg-white dark:bg-night pt-16 lg:pt-24 pb-20 lg:pb-28">
     <div class="mx-auto max-w-shell px-5 sm:px-8">
 
       <!-- quiet fact row -->
@@ -674,14 +664,16 @@ tailwind.config = {
     </div>
   </section>
 
-  <!-- ══ Full-bleed photo band ══ -->
-  <figure class="ph ph-tone h-[240px] sm:h-[320px] lg:h-[440px]"
-          data-label="Монтаж електроніки: друкована плата під збільшенням">
-    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1800&h=900&q=80"
-         alt="Друкована плата з мікроконтролером крупним планом"
-         width="1800" height="900" loading="lazy"
-         onerror="this.parentNode.classList.add('ph-fail');this.remove();">
-</figure>
+  <!-- ══ Photo band, inset and rounded like the other panels ══ -->
+  <div class="bg-white dark:bg-night px-3 sm:px-5 lg:px-6 pb-4 sm:pb-6">
+    <figure class="ph ph-tone rounded-[24px] sm:rounded-[34px] lg:rounded-[42px] h-[220px] sm:h-[300px] lg:h-[420px]"
+            data-label="Монтаж електроніки: друкована плата під збільшенням">
+      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1800&h=900&q=80"
+           alt="Друкована плата з мікроконтролером крупним планом"
+           width="1800" height="900" loading="lazy"
+           onerror="this.parentNode.classList.add('ph-fail');this.remove();">
+    </figure>
+  </div>
 
   <!-- ══ Programs ══ -->
   <section id="programs" class="bg-paper dark:bg-night-900 py-20 lg:py-28">
@@ -700,7 +692,7 @@ tailwind.config = {
 
       <div class="grid md:grid-cols-2 gap-5">
 
-        <article class="card bg-white dark:bg-night-800 rounded-[18px] p-7">
+        <article class="card bg-white dark:bg-night-800 rounded-[24px] p-7">
           <div class="flex items-start justify-between gap-4 mb-4">
             <h3 class="t-h3">Робототехніка та мехатроніка</h3>
             <span class="shrink-0 text-[12.5px] font-semibold text-brand dark:text-brand-300 bg-brand/10 dark:bg-brand-300/20 rounded-full px-2.5 py-1 nums">7–11 клас</span>
@@ -717,7 +709,7 @@ tailwind.config = {
           <button class="reg-trig lnk text-[15px]" data-course="Робототехніка та мехатроніка">Записатися на напрямок</button>
         </article>
 
-        <article class="card bg-white dark:bg-night-800 rounded-[18px] p-7">
+        <article class="card bg-white dark:bg-night-800 rounded-[24px] p-7">
           <div class="flex items-start justify-between gap-4 mb-4">
             <h3 class="t-h3">3D-моделювання та друк</h3>
             <span class="shrink-0 text-[12.5px] font-semibold text-brand dark:text-brand-300 bg-brand/10 dark:bg-brand-300/20 rounded-full px-2.5 py-1 nums">8–11 клас</span>
@@ -734,7 +726,7 @@ tailwind.config = {
           <button class="reg-trig lnk text-[15px]" data-course="3D-моделювання та друк">Записатися на напрямок</button>
         </article>
 
-        <article class="card bg-white dark:bg-night-800 rounded-[18px] p-7">
+        <article class="card bg-white dark:bg-night-800 rounded-[24px] p-7">
           <div class="flex items-start justify-between gap-4 mb-4">
             <h3 class="t-h3">Програмування Python</h3>
             <span class="shrink-0 text-[12.5px] font-semibold text-brand dark:text-brand-300 bg-brand/10 dark:bg-brand-300/20 rounded-full px-2.5 py-1 nums">7–11 клас</span>
@@ -751,7 +743,7 @@ tailwind.config = {
           <button class="reg-trig lnk text-[15px]" data-course="Програмування Python">Записатися на напрямок</button>
         </article>
 
-        <article class="card bg-white dark:bg-night-800 rounded-[18px] p-7">
+        <article class="card bg-white dark:bg-night-800 rounded-[24px] p-7">
           <div class="flex items-start justify-between gap-4 mb-4">
             <h3 class="t-h3">Інтернет речей</h3>
             <span class="shrink-0 text-[12.5px] font-semibold text-brand dark:text-brand-300 bg-brand/10 dark:bg-brand-300/20 rounded-full px-2.5 py-1 nums">9–11 клас</span>
@@ -823,7 +815,7 @@ tailwind.config = {
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
 
         <article>
-          <figure class="ph ph-av ph-tone rounded-2xl aspect-square w-full mb-5" data-label="КО">
+          <figure class="ph ph-av ph-tone rounded-[20px] aspect-square w-full mb-5" data-label="КО">
             <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&h=400&q=80"
                  alt="Коваленко Олександр Миколайович" width="400" height="400" loading="lazy"
                  onerror="this.parentNode.classList.add('ph-fail');this.remove();">
@@ -837,7 +829,7 @@ tailwind.config = {
         </article>
 
         <article>
-          <figure class="ph ph-av ph-tone rounded-2xl aspect-square w-full mb-5" data-label="МІ">
+          <figure class="ph ph-av ph-tone rounded-[20px] aspect-square w-full mb-5" data-label="МІ">
             <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&h=400&q=80"
                  alt="Мельник Ірина Василівна" width="400" height="400" loading="lazy"
                  onerror="this.parentNode.classList.add('ph-fail');this.remove();">
@@ -851,7 +843,7 @@ tailwind.config = {
         </article>
 
         <article>
-          <figure class="ph ph-av ph-tone rounded-2xl aspect-square w-full mb-5" data-label="БТ">
+          <figure class="ph ph-av ph-tone rounded-[20px] aspect-square w-full mb-5" data-label="БТ">
             <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&h=400&q=80"
                  alt="Бондаренко Тетяна Сергіївна" width="400" height="400" loading="lazy"
                  onerror="this.parentNode.classList.add('ph-fail');this.remove();">
@@ -865,7 +857,7 @@ tailwind.config = {
         </article>
 
         <article>
-          <figure class="ph ph-av ph-tone rounded-2xl aspect-square w-full mb-5" data-label="ШД">
+          <figure class="ph ph-av ph-tone rounded-[20px] aspect-square w-full mb-5" data-label="ШД">
             <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&h=400&q=80"
                  alt="Шевченко Дмитро Олегович" width="400" height="400" loading="lazy"
                  onerror="this.parentNode.classList.add('ph-fail');this.remove();">
@@ -1003,20 +995,22 @@ tailwind.config = {
     </div>
   </section>
 
-  <!-- ══ CTA ══ -->
-  <section class="relative bg-ink overflow-hidden">
-    <div class="hero-wash" aria-hidden="true"></div>
-    <div class="relative mx-auto max-w-shell px-5 sm:px-8 py-20 lg:py-28">
-      <div class="max-w-[46ch]">
-        <h2 class="t-h2 text-white mb-4">Почніть з одного пробного заняття</h2>
-        <p class="t-body text-fgd-muted mb-8 text-[17px]">
-          Приходьте подивитися, як працює лабораторія. Пробне заняття безкоштовне
-          й ні до чого не зобов'язує — учень просто спробує обладнання, а ви
-          познайомитеся з викладачем.
-        </p>
-        <div class="flex flex-wrap items-center gap-3">
-          <button class="reg-trig btn btn-signal">Записатися на пробне</button>
-          <a href="tel:+380412471230" class="btn btn-ghost-dark nums">+38 (0412) 47-12-30</a>
+  <!-- ══ CTA, an inset panel rather than a full-bleed band ══ -->
+  <section class="bg-white dark:bg-night px-3 sm:px-5 lg:px-6 py-4 sm:py-6">
+    <div class="relative bg-ink rounded-[24px] sm:rounded-[34px] lg:rounded-[42px] overflow-hidden">
+      <div class="hero-wash" aria-hidden="true"></div>
+      <div class="relative p-8 sm:p-12 lg:p-16 xl:p-20">
+        <div class="max-w-[46ch]">
+          <h2 class="t-h2 text-white mb-5">Почніть з одного пробного заняття</h2>
+          <p class="t-body text-white/75 mb-9 text-[17px] sm:text-[18.5px] leading-[1.6]">
+            Приходьте подивитися, як працює лабораторія. Пробне заняття безкоштовне
+            й ні до чого не зобов'язує — учень просто спробує обладнання, а ви
+            познайомитеся з викладачем.
+          </p>
+          <div class="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-3">
+            <button class="reg-trig btn btn-primary w-full sm:w-auto sm:px-7 sm:py-3.5 sm:text-[16px]">Записатися на пробне</button>
+            <a href="tel:+380412471230" class="btn btn-ghost-dark nums w-full sm:w-auto sm:px-7 sm:py-3.5 sm:text-[16px]">+38 (0412) 47-12-30</a>
+          </div>
         </div>
       </div>
     </div>
@@ -1058,7 +1052,7 @@ tailwind.config = {
         </dl>
 
         <div class="lg:col-span-7">
-          <div class="rounded-[18px] overflow-hidden h-[320px] sm:h-[400px] lg:h-full lg:min-h-[420px] bg-paper dark:bg-night-800 ring-1 ring-line dark:ring-line-dark">
+          <div class="rounded-[24px] overflow-hidden h-[320px] sm:h-[400px] lg:h-full lg:min-h-[420px] bg-paper dark:bg-night-800 ring-1 ring-line dark:ring-line-dark">
             <iframe
               src="https://www.google.com/maps?q=%D0%96%D0%B8%D1%82%D0%BE%D0%BC%D0%B8%D1%80%2C%20%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F%20%D0%92%D0%B5%D0%BB%D0%B8%D0%BA%D0%B0%20%D0%91%D0%B5%D1%80%D0%B4%D0%B8%D1%87%D1%96%D0%B2%D1%81%D1%8C%D0%BA%D0%B0%2C%2055&z=16&hl=uk&output=embed"
               class="w-full h-full border-0"
@@ -1134,7 +1128,7 @@ tailwind.config = {
 
 <!-- ══ Registration modal ══ -->
 <div id="reg-modal" class="modal fixed inset-0 z-[70] flex items-end sm:items-center justify-center p-0 sm:p-5" role="dialog" aria-modal="true" aria-labelledby="reg-title">
-  <div class="modal-card bg-white dark:bg-night-900 w-full sm:max-w-[460px] max-h-[92vh] overflow-y-auto rounded-t-[22px] sm:rounded-[22px] shadow-2xl">
+  <div class="modal-card bg-white dark:bg-night-900 w-full sm:max-w-[460px] max-h-[92vh] overflow-y-auto rounded-t-[22px] sm:rounded-[26px] shadow-2xl">
     <div class="p-6 sm:p-7">
       <div class="flex items-start justify-between gap-4 mb-1.5">
         <h2 id="reg-title" class="t-h3">Записатися на пробне заняття</h2>
@@ -1196,7 +1190,7 @@ tailwind.config = {
 
 <!-- ══ Cabinet modal ══ -->
 <div id="cab-modal" class="modal fixed inset-0 z-[70] flex items-end sm:items-center justify-center p-0 sm:p-5" role="dialog" aria-modal="true" aria-labelledby="cab-title">
-  <div class="modal-card bg-white dark:bg-night-900 w-full sm:max-w-[520px] max-h-[92vh] overflow-y-auto rounded-t-[22px] sm:rounded-[22px] shadow-2xl">
+  <div class="modal-card bg-white dark:bg-night-900 w-full sm:max-w-[520px] max-h-[92vh] overflow-y-auto rounded-t-[22px] sm:rounded-[26px] shadow-2xl">
     <div class="p-6 sm:p-7">
       <div class="flex items-start justify-between gap-4 mb-6">
         <div>
