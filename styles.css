@@ -342,48 +342,6 @@ table { border-collapse: collapse; }
 }
 .lnk:hover { text-decoration-color: var(--brand); }
 
-/* ---------- Етапи навчання: часова лінія ----------
-   Лінія кожного кроку перекриває просвіт сітки, тому три колонки
-   читаються як одна неперервна лінія зліва направо. */
-
-.proc-step {
-  position: relative;
-  padding-top: 2.5rem;
-}
-.proc-step::before {          /* лінія */
-  content: '';
-  position: absolute;
-  top: 7px;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: var(--line);
-}
-.proc-step::after {           /* вузол */
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 16px;
-  height: 16px;
-  border-radius: 999px;
-  background: var(--brand);
-}
-
-@media (min-width: 768px) {
-  .proc-step::before { right: -2.5rem; }           /* перекриває gap-x-10 */
-  .proc-step:last-child::before { right: 0; }      /* останній не тягнемо далі */
-}
-
-.proc-when {
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: .8125rem;
-  letter-spacing: .01em;
-  color: var(--brand);
-  margin-bottom: .5rem;
-}
-
 /* ---------- Акордеон питань ----------
    Нативний <details name="faq">: працює з клавіатури, без JS,
    і сам тримає відкритим лише одне питання. */

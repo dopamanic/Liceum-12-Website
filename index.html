@@ -72,7 +72,6 @@
 
       <a href="#projects" class="h-link transition-colors">Проєкти</a>
       <a href="#teachers" class="h-link transition-colors">Викладачі</a>
-      <a href="#schedule" class="h-link transition-colors">Розклад</a>
       <a href="#faq" class="h-link transition-colors">Питання</a>
       <a href="#contacts" class="h-link transition-colors">Контакти</a>
     </nav>
@@ -123,7 +122,6 @@
       <a href="#process"  class="mob-lnk px-3 py-2.5 rounded-lg hover:bg-paper dark:hover:bg-night-800">Як проходить навчання</a>
       <a href="#projects" class="mob-lnk px-3 py-2.5 rounded-lg hover:bg-paper dark:hover:bg-night-800">Проєкти учнів</a>
       <a href="#teachers" class="mob-lnk px-3 py-2.5 rounded-lg hover:bg-paper dark:hover:bg-night-800">Викладачі</a>
-      <a href="#schedule" class="mob-lnk px-3 py-2.5 rounded-lg hover:bg-paper dark:hover:bg-night-800">Розклад</a>
       <a href="#faq"      class="mob-lnk px-3 py-2.5 rounded-lg hover:bg-paper dark:hover:bg-night-800">Питання та відповіді</a>
       <a href="#news"     class="mob-lnk px-3 py-2.5 rounded-lg hover:bg-paper dark:hover:bg-night-800">Новини</a>
       <a href="#contacts" class="mob-lnk px-3 py-2.5 rounded-lg hover:bg-paper dark:hover:bg-night-800">Контакти</a>
@@ -262,71 +260,56 @@
         <button class="reg-trig btn btn-primary shrink-0 self-start md:self-auto">Обрати напрямок</button>
       </div>
 
-      <!-- Усі чотири картки мають однакову будову; відрізняється лише текст. -->
-      <div class="grid md:grid-cols-2 gap-5">
+      <!-- Записи каталогу, а не картки: тонка лінія зверху замість рамки
+           з тінню. Опис у кожного своєї довжини — так і має бути. -->
+      <div class="grid md:grid-cols-2 gap-x-14 gap-y-12">
 
-        <article class="card bg-white dark:bg-night-800 rounded-[24px] p-7 flex flex-col">
-          <div class="flex items-start justify-between gap-4 mb-4">
-            <h3 class="t-h3">Робототехніка та мехатроніка</h3>
-            <span class="shrink-0 text-[12.5px] font-semibold text-brand dark:text-brand-300 bg-brand/10 dark:bg-brand-300/20 rounded-full px-2.5 py-1 nums">7–11 клас</span>
-          </div>
-          <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6] mb-6">
-            Керовані механізми: датчики, приводи та зворотний зв'язок. Програмування
-            Arduino, збирання рухомих конструкцій, підготовка до олімпіад.
+        <article class="border-t border-line dark:border-line-dark pt-6">
+          <h3 class="t-h3 mb-1.5">Робототехніка та мехатроніка</h3>
+          <p class="text-[14.5px] text-fg-muted dark:text-fgd-muted mb-4">Для 7–11 класів, дев'ять місяців</p>
+          <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] mb-5 max-w-prose">
+            Датчики, приводи і зворотний зв'язок: як зробити так, щоб механізм сам
+            реагував на те, що навколо. Пишемо для Arduino, збираємо рухомі
+            конструкції. Торік на захисті показували робота, який розкладає
+            деталі за кольором.
           </p>
-          <dl class="text-[14.5px] grid grid-cols-[104px_1fr] gap-x-4 gap-y-2.5 mt-auto border-t border-line dark:border-line-dark pt-5">
-            <dt class="text-fg-muted dark:text-fgd-muted">Тривалість</dt><dd class="nums">9 місяців</dd>
-            <dt class="text-fg-muted dark:text-fgd-muted">Фінал курсу</dt><dd>автономний робот-сортувальник</dd>
-          </dl>
-          <button class="reg-trig lnk text-[15px] self-start mt-6" data-course="Робототехніка та мехатроніка">Записатися на напрямок</button>
+          <button class="reg-trig lnk text-[15px]" data-course="Робототехніка та мехатроніка">Записатися</button>
         </article>
 
-        <article class="card bg-white dark:bg-night-800 rounded-[24px] p-7 flex flex-col">
-          <div class="flex items-start justify-between gap-4 mb-4">
-            <h3 class="t-h3">3D-моделювання та друк</h3>
-            <span class="shrink-0 text-[12.5px] font-semibold text-brand dark:text-brand-300 bg-brand/10 dark:bg-brand-300/20 rounded-full px-2.5 py-1 nums">8–11 клас</span>
-          </div>
-          <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6] mb-6">
-            Параметричне моделювання у Fusion&nbsp;360 і підготовка моделі до друку.
-            Робота з FDM та фотополімерними принтерами, допуски й постобробка.
+        <article class="border-t border-line dark:border-line-dark pt-6">
+          <h3 class="t-h3 mb-1.5">3D-моделювання та друк</h3>
+          <p class="text-[14.5px] text-fg-muted dark:text-fgd-muted mb-4">Для 8–11 класів, шість місяців</p>
+          <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] mb-5 max-w-prose">
+            Моделюємо у Fusion&nbsp;360 і одразу друкуємо, щоб побачити, де модель
+            розходиться з реальністю. FDM і фотополімер, допуски, посадки,
+            постобробка. Перша деталь зазвичай не стає на місце — і це
+            найкорисніше заняття курсу.
           </p>
-          <dl class="text-[14.5px] grid grid-cols-[104px_1fr] gap-x-4 gap-y-2.5 mt-auto border-t border-line dark:border-line-dark pt-5">
-            <dt class="text-fg-muted dark:text-fgd-muted">Тривалість</dt><dd class="nums">6 місяців</dd>
-            <dt class="text-fg-muted dark:text-fgd-muted">Фінал курсу</dt><dd>механізм власної конструкції</dd>
-          </dl>
-          <button class="reg-trig lnk text-[15px] self-start mt-6" data-course="3D-моделювання та друк">Записатися на напрямок</button>
+          <button class="reg-trig lnk text-[15px]" data-course="3D-моделювання та друк">Записатися</button>
         </article>
 
-        <article class="card bg-white dark:bg-night-800 rounded-[24px] p-7 flex flex-col">
-          <div class="flex items-start justify-between gap-4 mb-4">
-            <h3 class="t-h3">Програмування Python</h3>
-            <span class="shrink-0 text-[12.5px] font-semibold text-brand dark:text-brand-300 bg-brand/10 dark:bg-brand-300/20 rounded-full px-2.5 py-1 nums">7–11 клас</span>
-          </div>
-          <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6] mb-6">
-            Від основ синтаксису до прикладних задач: обробка даних, телеграм-боти,
-            невеликі вебзастосунки. Окремий трек підготовки до олімпіад.
+        <article class="border-t border-line dark:border-line-dark pt-6">
+          <h3 class="t-h3 mb-1.5">Програмування Python</h3>
+          <p class="text-[14.5px] text-fg-muted dark:text-fgd-muted mb-4">Для 7–11 класів, дев'ять місяців</p>
+          <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] mb-5 max-w-prose">
+            Від перших рядків до програм, якими справді користуються: обробка даних,
+            телеграм-боти, невеликі вебзастосунки. Наприкінці кожен робить власний
+            застосунок із базою даних. Хто хоче глибше — окремий трек підготовки
+            до олімпіад з інформатики.
           </p>
-          <dl class="text-[14.5px] grid grid-cols-[104px_1fr] gap-x-4 gap-y-2.5 mt-auto border-t border-line dark:border-line-dark pt-5">
-            <dt class="text-fg-muted dark:text-fgd-muted">Тривалість</dt><dd class="nums">9 місяців</dd>
-            <dt class="text-fg-muted dark:text-fgd-muted">Фінал курсу</dt><dd>застосунок із базою даних</dd>
-          </dl>
-          <button class="reg-trig lnk text-[15px] self-start mt-6" data-course="Програмування Python">Записатися на напрямок</button>
+          <button class="reg-trig lnk text-[15px]" data-course="Програмування Python">Записатися</button>
         </article>
 
-        <article class="card bg-white dark:bg-night-800 rounded-[24px] p-7 flex flex-col">
-          <div class="flex items-start justify-between gap-4 mb-4">
-            <h3 class="t-h3">Інтернет речей</h3>
-            <span class="shrink-0 text-[12.5px] font-semibold text-brand dark:text-brand-300 bg-brand/10 dark:bg-brand-300/20 rounded-full px-2.5 py-1 nums">9–11 клас</span>
-          </div>
-          <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6] mb-6">
-            Пристрої, що збирають і передають дані: ESP32, Raspberry&nbsp;Pi, протокол
-            MQTT. Метеостанція, облік ресурсів, автоматика з віддаленим керуванням.
+        <article class="border-t border-line dark:border-line-dark pt-6">
+          <h3 class="t-h3 mb-1.5">Інтернет речей</h3>
+          <p class="text-[14.5px] text-fg-muted dark:text-fgd-muted mb-4">Для 9–11 класів, шість місяців</p>
+          <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] mb-5 max-w-prose">
+            Пристрої, які збирають дані й віддають їх далі: ESP32, Raspberry&nbsp;Pi,
+            протокол MQTT. Метеостанція, облік води чи світла, автоматика, якою
+            можна керувати з телефону. Курс закінчується станцією, що працює
+            і доступна віддалено.
           </p>
-          <dl class="text-[14.5px] grid grid-cols-[104px_1fr] gap-x-4 gap-y-2.5 mt-auto border-t border-line dark:border-line-dark pt-5">
-            <dt class="text-fg-muted dark:text-fgd-muted">Тривалість</dt><dd class="nums">6 місяців</dd>
-            <dt class="text-fg-muted dark:text-fgd-muted">Фінал курсу</dt><dd>станція з віддаленим доступом</dd>
-          </dl>
-          <button class="reg-trig lnk text-[15px] self-start mt-6" data-course="Інтернет речей">Записатися на напрямок</button>
+          <button class="reg-trig lnk text-[15px]" data-course="Інтернет речей">Записатися</button>
         </article>
 
       </div>
@@ -336,40 +319,32 @@
   <!-- ══ Process (a genuine sequence, so it is numbered) ══ -->
   <section id="process" class="bg-white dark:bg-night py-20 lg:py-28">
     <div class="mx-auto max-w-shell px-5 sm:px-8">
-      <h2 class="t-h2 mb-3">Як проходить навчання</h2>
-      <p class="t-body text-fg-muted dark:text-fgd-muted max-w-[52ch] mb-12">
-        Три етапи, однакові для всіх напрямків. Перейти на наступний можна лише
-        закривши попередній.
-      </p>
+      <!-- Суцільний текст, а не три однакові колонки: так читається як
+           пояснення людини, а не як перелік пунктів. -->
+      <div class="grid lg:grid-cols-12 gap-x-14 gap-y-6">
+        <h2 class="t-h2 lg:col-span-4">Як проходить навчання</h2>
 
-      <ol class="grid md:grid-cols-3 gap-x-10 gap-y-12">
-        <li class="proc-step">
-          <p class="proc-when nums">1 заняття</p>
-          <h3 class="t-h3 mb-3">Знайомство</h3>
-          <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6]">
-            Безкоштовне пробне заняття: учень працює на реальному обладнанні й обирає
-            напрямок. Батьки бачать лабораторію та знайомляться з викладачем.
-            Без жодних зобов'язань.
+        <div class="lg:col-span-8 t-body text-[16.5px] text-fg-muted dark:text-fgd-muted leading-[1.7] space-y-5 max-w-prose">
+          <p>
+            Спершу пробне заняття. Учень приходить, працює на справжньому обладнанні
+            й дивиться, чи це взагалі його. Батьки за цей час встигають подивитися
+            лабораторію та поговорити з викладачем. Підписувати нічого не треба,
+            і платити теж.
           </p>
-        </li>
-        <li class="proc-step">
-          <p class="proc-when nums">10 тижнів</p>
-          <h3 class="t-h3 mb-3">Базовий модуль</h3>
-          <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6]">
-            Двічі на тиждень. Кожне заняття закінчується робочим результатом –
-            схемою, деталлю або працюючим скриптом. У кінці модуля невелика
-            контрольна збірка.
+          <p>
+            Далі десять тижнів базового модуля, двічі на тиждень. Кожне заняття має
+            закінчитися чимось робочим: схемою, надрукованою деталлю, скриптом, який
+            запускається. Теорію даємо тоді, коли без неї не зробити наступний крок,
+            а не окремим блоком наперед.
           </p>
-        </li>
-        <li class="proc-step">
-          <p class="proc-when nums">до кінця курсу</p>
-          <h3 class="t-h3 mb-3">Проєкт і захист</h3>
-          <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6]">
-            Учень веде власну розробку під наглядом викладача та захищає її перед
-            комісією. З найсильнішими проєктами їдемо на міські конкурси й олімпіади.
+          <p>
+            Решту курсу учень веде власний проєкт. Тему обирає сам, викладач підказує
+            й страхує від глухих кутів. У кінці — захист перед комісією: показати, що
+            працює, і пояснити, чому зроблено саме так. З найсильнішими роботами
+            їдемо на міські та обласні олімпіади.
           </p>
-        </li>
-      </ol>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -464,82 +439,11 @@
             </p>
           </div>
 
-          <dl class="grid sm:grid-cols-3 gap-x-8 gap-y-5 border-t border-line dark:border-line-dark pt-6">
-            <div>
-              <dt class="font-display font-bold text-[13px] text-fg-muted dark:text-fgd-muted mb-1">У лабораторії</dt>
-              <dd class="text-[15.5px] nums">з 2020 року</dd>
-            </div>
-            <div>
-              <dt class="font-display font-bold text-[13px] text-fg-muted dark:text-fgd-muted mb-1">Напрямків веде</dt>
-              <dd class="text-[15.5px] nums">4</dd>
-            </div>
-            <div>
-              <dt class="font-display font-bold text-[13px] text-fg-muted dark:text-fgd-muted mb-1">Учнів у групі</dt>
-              <dd class="text-[15.5px] nums">до 12</dd>
-            </div>
-          </dl>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══ Schedule ══ -->
-  <section id="schedule" class="bg-paper dark:bg-night-900 py-20 lg:py-28">
-    <div class="mx-auto max-w-shell px-5 sm:px-8">
-      <div class="max-w-[62ch] mb-10">
-        <h2 class="t-h2 mb-3">Розклад занять</h2>
-        <p class="t-body text-fg-muted dark:text-fgd-muted">
-          I семестр 2026/2027&nbsp;н.&nbsp;р. Усі заняття проходять у кабінеті 301
-          на третьому поверсі.
-        </p>
-      </div>
-
-      <div class="overflow-x-auto -mx-5 px-5 sm:mx-0 sm:px-0">
-        <table class="w-full min-w-[480px] text-[15.5px]">
-          <caption class="sr-only">Розклад занять STEM-лабораторії за напрямками</caption>
-          <thead>
-            <tr class="border-b-2 border-fg dark:border-fgd">
-              <th scope="col" class="text-left font-display font-bold text-[14px] tracking-[-.01em] py-3 pr-5">Напрямок</th>
-              <th scope="col" class="text-left font-display font-bold text-[14px] tracking-[-.01em] py-3 pr-5">Дні</th>
-              <th scope="col" class="text-left font-display font-bold text-[14px] tracking-[-.01em] py-3 pr-5">Час</th>
-              <th scope="col" class="text-left font-display font-bold text-[14px] tracking-[-.01em] py-3">Місць</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-line dark:divide-line-dark">
-            <tr>
-              <td class="py-4 pr-5 font-medium">Робототехніка</td>
-              <td class="py-4 pr-5 text-fg-muted dark:text-fgd-muted">понеділок, середа</td>
-              <td class="py-4 pr-5 text-fg-muted dark:text-fgd-muted nums whitespace-nowrap">15:30&ndash;17:00</td>
-              <td class="py-4 nums text-brand dark:text-brand-300 font-semibold">4</td>
-            </tr>
-            <tr>
-              <td class="py-4 pr-5 font-medium">3D-моделювання</td>
-              <td class="py-4 pr-5 text-fg-muted dark:text-fgd-muted">вівторок, четвер</td>
-              <td class="py-4 pr-5 text-fg-muted dark:text-fgd-muted nums whitespace-nowrap">15:30&ndash;17:00</td>
-              <td class="py-4 nums text-brand dark:text-brand-300 font-semibold">3</td>
-            </tr>
-            <tr>
-              <td class="py-4 pr-5 font-medium">Python</td>
-              <td class="py-4 pr-5 text-fg-muted dark:text-fgd-muted">вівторок, п'ятниця</td>
-              <td class="py-4 pr-5 text-fg-muted dark:text-fgd-muted nums whitespace-nowrap">16:00&ndash;17:30</td>
-              <td class="py-4 nums text-brand dark:text-brand-300 font-semibold">5</td>
-            </tr>
-            <tr>
-              <td class="py-4 pr-5 font-medium">Інтернет речей</td>
-              <td class="py-4 pr-5 text-fg-muted dark:text-fgd-muted">середа, п'ятниця</td>
-              <td class="py-4 pr-5 text-fg-muted dark:text-fgd-muted nums whitespace-nowrap">16:00&ndash;17:30</td>
-              <td class="py-4 nums text-brand dark:text-brand-300 font-semibold">2</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <p class="text-[14px] text-fg-muted dark:text-fgd-muted mt-5">
-        Розклад може змінюватися під час сесій та олімпіад. Актуальні дані –
-        за телефоном <a href="tel:+380412471230" class="lnk nums">+38 (0412) 47-12-30</a>.
-      </p>
-    </div>
-  </section>
 
   <!-- ══ FAQ ══ -->
   <section id="faq" class="bg-white dark:bg-night py-20 lg:py-28">
@@ -785,7 +689,6 @@
           <li><a href="#process" class="text-fgd-muted hover:text-white transition-colors">Як проходить навчання</a></li>
           <li><a href="#projects" class="text-fgd-muted hover:text-white transition-colors">Проєкти учнів</a></li>
           <li><a href="#teachers" class="text-fgd-muted hover:text-white transition-colors">Викладачі</a></li>
-          <li><a href="#schedule" class="text-fgd-muted hover:text-white transition-colors">Розклад</a></li>
           <li><a href="#faq" class="text-fgd-muted hover:text-white transition-colors">Питання та відповіді</a></li>
           <li><a href="#news" class="text-fgd-muted hover:text-white transition-colors">Новини</a></li>
         </ul>
