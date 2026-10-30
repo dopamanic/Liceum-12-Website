@@ -170,38 +170,16 @@
 
           <p class="rise rise-4 text-[14.5px] text-white/65">
             <span class="inline-block w-1.5 h-1.5 rounded-full bg-signal align-middle mr-2.5"></span>Набір
-            на 2026/2027 відкрито – залишилось
-            <span class="nums font-semibold text-signal whitespace-nowrap">14 місць</span>
+            на 2026/2027 навчальний рік відкрито
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══ Facts + About ══ -->
-  <section id="about" class="bg-white dark:bg-night pt-16 lg:pt-24 pb-20 lg:pb-28">
+  <!-- ══ About ══ -->
+  <section id="about" class="bg-white dark:bg-night py-20 lg:py-28">
     <div class="mx-auto max-w-shell px-5 sm:px-8">
-
-      <!-- lab in figures: one panel, so the numbers read as a set -->
-      <dl class="bg-paper dark:bg-night-900 rounded-[24px] sm:rounded-[32px] p-7 sm:p-10 lg:p-12
-                 grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-9 mb-16 lg:mb-24">
-        <div>
-          <dt class="t-num text-brand dark:text-brand-300 nums">2020</dt>
-          <dd class="text-[14.5px] text-fg-muted dark:text-fgd-muted mt-2 leading-[1.5]">рік, коли лабораторія почала працювати</dd>
-        </div>
-        <div>
-          <dt class="t-num text-brand dark:text-brand-300 nums">500+</dt>
-          <dd class="text-[14.5px] text-fg-muted dark:text-fgd-muted mt-2 leading-[1.5]">учнів пройшли повний курс</dd>
-        </div>
-        <div>
-          <dt class="t-num text-brand dark:text-brand-300 nums">52</dt>
-          <dd class="text-[14.5px] text-fg-muted dark:text-fgd-muted mt-2 leading-[1.5]">призери міських та обласних олімпіад</dd>
-        </div>
-        <div>
-          <dt class="t-num text-brand dark:text-brand-300 nums">12</dt>
-          <dd class="text-[14.5px] text-fg-muted dark:text-fgd-muted mt-2 leading-[1.5]">учнів у групі, не більше</dd>
-        </div>
-      </dl>
 
       <!-- prose + equipment -->
       <div class="grid lg:grid-cols-12 gap-x-14 gap-y-12">
@@ -284,70 +262,71 @@
         <button class="reg-trig btn btn-primary shrink-0 self-start md:self-auto">Обрати напрямок</button>
       </div>
 
+      <!-- Усі чотири картки мають однакову будову; відрізняється лише текст. -->
       <div class="grid md:grid-cols-2 gap-5">
 
-        <article class="card bg-white dark:bg-night-800 rounded-[24px] p-7">
+        <article class="card bg-white dark:bg-night-800 rounded-[24px] p-7 flex flex-col">
           <div class="flex items-start justify-between gap-4 mb-4">
             <h3 class="t-h3">Робототехніка та мехатроніка</h3>
             <span class="shrink-0 text-[12.5px] font-semibold text-brand dark:text-brand-300 bg-brand/10 dark:bg-brand-300/20 rounded-full px-2.5 py-1 nums">7–11 клас</span>
           </div>
-          <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6] mb-5">
-            Електроніка, механіка та керування: від зчитування датчика до автономного руху.
-            Програмування Arduino, збирання приводів, підготовка до олімпіад з робототехніки.
+          <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6] mb-6">
+            Керовані механізми: датчики, приводи та зворотний зв'язок. Програмування
+            Arduino, збирання рухомих конструкцій, підготовка до олімпіад.
           </p>
-          <dl class="text-[14.5px] grid grid-cols-[104px_1fr] gap-x-4 gap-y-2.5 mb-6 border-t border-line dark:border-line-dark pt-5">
+          <dl class="text-[14.5px] grid grid-cols-[104px_1fr] gap-x-4 gap-y-2.5 mt-auto border-t border-line dark:border-line-dark pt-5">
             <dt class="text-fg-muted dark:text-fgd-muted">Тривалість</dt><dd class="nums">9 місяців</dd>
-            <dt class="text-fg-muted dark:text-fgd-muted">Фінал курсу</dt><dd>робот-сортувальник</dd>
+            <dt class="text-fg-muted dark:text-fgd-muted">Фінал курсу</dt><dd>автономний робот-сортувальник</dd>
           </dl>
-          <button class="reg-trig lnk text-[15px]" data-course="Робототехніка та мехатроніка">Записатися на напрямок</button>
+          <button class="reg-trig lnk text-[15px] self-start mt-6" data-course="Робототехніка та мехатроніка">Записатися на напрямок</button>
         </article>
 
-        <article class="card bg-white dark:bg-night-800 rounded-[24px] p-7">
+        <article class="card bg-white dark:bg-night-800 rounded-[24px] p-7 flex flex-col">
           <div class="flex items-start justify-between gap-4 mb-4">
             <h3 class="t-h3">3D-моделювання та друк</h3>
             <span class="shrink-0 text-[12.5px] font-semibold text-brand dark:text-brand-300 bg-brand/10 dark:bg-brand-300/20 rounded-full px-2.5 py-1 nums">8–11 клас</span>
           </div>
-          <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6] mb-5">
-            Параметричне моделювання у Fusion&nbsp;360, підготовка моделі до друку, робота
-            з FDM та фотополімерними принтерами. Допуски, посадки, постобробка деталей.
+          <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6] mb-6">
+            Параметричне моделювання у Fusion&nbsp;360 і підготовка моделі до друку.
+            Робота з FDM та фотополімерними принтерами, допуски й постобробка.
           </p>
-          <dl class="text-[14.5px] grid grid-cols-[104px_1fr] gap-x-4 gap-y-2.5 mb-6 border-t border-line dark:border-line-dark pt-5">
+          <dl class="text-[14.5px] grid grid-cols-[104px_1fr] gap-x-4 gap-y-2.5 mt-auto border-t border-line dark:border-line-dark pt-5">
             <dt class="text-fg-muted dark:text-fgd-muted">Тривалість</dt><dd class="nums">6 місяців</dd>
-            <dt class="text-fg-muted dark:text-fgd-muted">Фінал курсу</dt><dd>власний механізм у зборі</dd>
+            <dt class="text-fg-muted dark:text-fgd-muted">Фінал курсу</dt><dd>механізм власної конструкції</dd>
           </dl>
-          <button class="reg-trig lnk text-[15px]" data-course="3D-моделювання та друк">Записатися на напрямок</button>
+          <button class="reg-trig lnk text-[15px] self-start mt-6" data-course="3D-моделювання та друк">Записатися на напрямок</button>
         </article>
 
-        <article class="card bg-white dark:bg-night-800 rounded-[24px] p-7">
+        <article class="card bg-white dark:bg-night-800 rounded-[24px] p-7 flex flex-col">
           <div class="flex items-start justify-between gap-4 mb-4">
             <h3 class="t-h3">Програмування Python</h3>
             <span class="shrink-0 text-[12.5px] font-semibold text-brand dark:text-brand-300 bg-brand/10 dark:bg-brand-300/20 rounded-full px-2.5 py-1 nums">7–11 клас</span>
           </div>
-          <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6] mb-5">
-            Від синтаксису до прикладних задач: ігри, телеграм-боти, обробка даних, перші
-            моделі машинного навчання. Окремий трек підготовки до олімпіад з інформатики.
+          <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6] mb-6">
+            Від основ синтаксису до прикладних задач: обробка даних, телеграм-боти,
+            невеликі вебзастосунки. Окремий трек підготовки до олімпіад.
           </p>
-          <dl class="text-[14.5px] grid grid-cols-[104px_1fr] gap-x-4 gap-y-2.5 mb-6 border-t border-line dark:border-line-dark pt-5">
+          <dl class="text-[14.5px] grid grid-cols-[104px_1fr] gap-x-4 gap-y-2.5 mt-auto border-t border-line dark:border-line-dark pt-5">
             <dt class="text-fg-muted dark:text-fgd-muted">Тривалість</dt><dd class="nums">9 місяців</dd>
             <dt class="text-fg-muted dark:text-fgd-muted">Фінал курсу</dt><dd>застосунок із базою даних</dd>
           </dl>
-          <button class="reg-trig lnk text-[15px]" data-course="Програмування Python">Записатися на напрямок</button>
+          <button class="reg-trig lnk text-[15px] self-start mt-6" data-course="Програмування Python">Записатися на напрямок</button>
         </article>
 
-        <article class="card bg-white dark:bg-night-800 rounded-[24px] p-7">
+        <article class="card bg-white dark:bg-night-800 rounded-[24px] p-7 flex flex-col">
           <div class="flex items-start justify-between gap-4 mb-4">
             <h3 class="t-h3">Інтернет речей</h3>
             <span class="shrink-0 text-[12.5px] font-semibold text-brand dark:text-brand-300 bg-brand/10 dark:bg-brand-300/20 rounded-full px-2.5 py-1 nums">9–11 клас</span>
           </div>
-          <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6] mb-5">
-            Пристрої, що передають дані: метеостанція, облік енергії, автоматика теплиці.
-            ESP32 та Raspberry&nbsp;Pi, протокол MQTT, збір показників у хмарі та дашборди.
+          <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6] mb-6">
+            Пристрої, що збирають і передають дані: ESP32, Raspberry&nbsp;Pi, протокол
+            MQTT. Метеостанція, облік ресурсів, автоматика з віддаленим керуванням.
           </p>
-          <dl class="text-[14.5px] grid grid-cols-[104px_1fr] gap-x-4 gap-y-2.5 mb-6 border-t border-line dark:border-line-dark pt-5">
+          <dl class="text-[14.5px] grid grid-cols-[104px_1fr] gap-x-4 gap-y-2.5 mt-auto border-t border-line dark:border-line-dark pt-5">
             <dt class="text-fg-muted dark:text-fgd-muted">Тривалість</dt><dd class="nums">6 місяців</dd>
             <dt class="text-fg-muted dark:text-fgd-muted">Фінал курсу</dt><dd>станція з віддаленим доступом</dd>
           </dl>
-          <button class="reg-trig lnk text-[15px]" data-course="Інтернет речей">Записатися на напрямок</button>
+          <button class="reg-trig lnk text-[15px] self-start mt-6" data-course="Інтернет речей">Записатися на напрямок</button>
         </article>
 
       </div>
