@@ -1,7 +1,7 @@
 /* STEM-лабораторія Ліцею №12 — усі стилі сторінки.
    Порядок: змінні → база → типографіка → спільні елементи → секції зверху вниз. */
 
-/* ─────────────────────────── Палітра ───────────────────────────
+/* Палітра
    Кольори задані змінними, тому темна тема — це один блок нижче,
    а не окреме правило біля кожного селектора. */
 
@@ -48,7 +48,7 @@
   --line-field: #263935;
 }
 
-/* ─────────────────────────── База ─────────────────────────── */
+/* База */
 
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -100,7 +100,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-size: .875rem;
 }
 
-/* ─────────────────────────── Типографіка ─────────────────────────── */
+/* Типографіка */
 
 .h-hero, .h-hero-sub, .h2, .h3, .logo__name, .teacher__name, .footer__brand, .label {
   font-family: var(--display);
@@ -147,7 +147,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .meta { font-size: .9375rem; color: var(--muted); }
 .nums { font-variant-numeric: tabular-nums; }
 
-/* ─────────────────────────── Каркас ─────────────────────────── */
+/* Каркас */
 
 .wrap {
   max-width: var(--wrap);
@@ -163,7 +163,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .bleed { padding: .75rem .75rem 0; }
 .bleed--last { padding-block: .75rem; }
 
-/* ─────────────────────────── Кнопки й посилання ─────────────────────────── */
+/* Кнопки й посилання */
 
 .btn {
   display: inline-flex;
@@ -219,7 +219,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .icon-btn:hover { color: var(--fg); }
 .icon-btn svg { width: 18px; height: 18px; }
 
-/* ─────────────────────────── Фото ───────────────────────────
+/* Фото
    Кожен <img> має onerror, який вішає .photo--failed на контейнер.
    Тоді замість битої картинки лишається спроєктована заставка з підписом. */
 
@@ -284,7 +284,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   color: rgba(255,255,255,.9);
 }
 
-/* ─────────────────────────── Шапка ───────────────────────────
+/* Шапка
    Непрозора на будь-якій позиції; при скролі зʼявляється лише нижня лінія. */
 
 .header {
@@ -346,7 +346,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 #cabinet-btn { display: none; }
 
-/* ─────────────────────────── Випадайка «Напрямки» ─────────────────────────── */
+/* Випадайка «Напрямки» */
 
 .menu { position: relative; }
 .menu__button {
@@ -398,7 +398,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .menu__item b { display: block; font-weight: 500; font-size: .9375rem; }
 .menu__item span { display: block; margin-top: .125rem; font-size: .8125rem; color: var(--muted); }
 
-/* ─────────────────────────── Бічне меню ───────────────────────────
+/* Бічне меню
    Стан тримає один атрибут data-open, тому в JS лише присвоєння. */
 
 .drawer { position: fixed; inset: 0; z-index: 60; visibility: hidden; }
@@ -450,7 +450,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 .drawer__phone { font-size: 1rem; font-weight: 600; }
 
-/* ─────────────────────────── Герой ─────────────────────────── */
+/* Герой */
 
 .hero {
   position: relative;
@@ -512,7 +512,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   -webkit-mask-image: radial-gradient(ellipse 85% 70% at 60% 35%, #000 20%, transparent 80%);
 }
 
-/* ─────────────────────────── Про лабораторію ─────────────────────────── */
+/* Про лабораторію */
 
 .about { display: grid; gap: 3rem; }
 .about__text { margin-top: 2.5rem; color: var(--muted); }
@@ -532,7 +532,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* Фотосмуга між секціями */
 .band { height: 13.75rem; }
 
-/* ─────────────────────────── Напрямки ───────────────────────────
+/* Напрямки
    Записи каталогу, а не картки: тонка лінія зверху замість рамки з тінню.
    Опис у кожного своєї довжини, але посилання вирівняні через margin-top: auto. */
 
@@ -554,16 +554,16 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .entry__text { margin-bottom: 1.25rem; color: var(--muted); font-size: .9688rem; }
 .entry .link { align-self: flex-start; margin-top: auto; font-size: .9375rem; }
 
-/* ─────────────────────────── Як проходить навчання ─────────────────────────── */
+/* Як проходить навчання */
 
 .process { display: grid; gap: 1.5rem; }
 .process__text { color: var(--muted); font-size: 1.0312rem; line-height: 1.7; }
 
-/* ─────────────────────────── Проєкти ─────────────────────────── */
+/* Проєкти */
 
 .projects__note { margin-top: 2.5rem; color: var(--muted); font-size: .9375rem; }
 
-/* ─────────────────────────── Викладач ─────────────────────────── */
+/* Викладач */
 
 .teacher { display: grid; gap: 2rem; align-items: start; }
 .teacher .photo { aspect-ratio: 1; }
@@ -571,7 +571,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .teacher__role { margin: .375rem 0 1.5rem; font-weight: 500; font-size: .9375rem; color: var(--brand); }
 .teacher__bio { color: var(--muted); }
 
-/* ─────────────────────────── Питання ───────────────────────────
+/* Питання
    Нативний <details name="faq">: працює з клавіатури, без JS,
    і сам тримає відкритим лише одне питання. */
 
@@ -623,7 +623,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 @keyframes fade-in { from { opacity: 0; transform: translateY(-5px); } }
 
-/* ─────────────────────────── Новини ─────────────────────────── */
+/* Новини */
 
 .news { border-top: 1px solid var(--line); }
 .news__item {
@@ -636,7 +636,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .news__text { margin-top: .5rem; color: var(--muted); font-size: .9688rem; }
 .news__more { margin-top: 2.5rem; color: var(--muted); font-size: .9375rem; }
 
-/* ─────────────────────────── Заклик до дії ─────────────────────────── */
+/* Заклик до дії */
 
 .cta {
   position: relative;
@@ -654,7 +654,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 .cta__buttons { display: flex; flex-direction: column; gap: .75rem; }
 
-/* ─────────────────────────── Контакти ─────────────────────────── */
+/* Контакти */
 
 .contacts { display: grid; gap: 2.5rem; }
 .contacts__list { border-top: 1px solid var(--line); }
@@ -669,7 +669,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 .contacts__map iframe { width: 100%; height: 100%; border: 0; }
 
-/* ─────────────────────────── Підвал ─────────────────────────── */
+/* Підвал */
 
 .footer { background: var(--ink); color: #9DADAA; }
 .footer__inner { padding-block: 3.5rem; }
@@ -697,7 +697,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .footer__social .icon-btn:hover { color: #fff; }
 .footer__bottom { padding-top: 1.75rem; font-size: .8125rem; }
 
-/* ─────────────────────────── Модалки ───────────────────────────
+/* Модалки
    visibility, а не лише opacity: інакше поля закритої форми лишаються
    в порядку обходу Tab і фокус заходить у невидиму модалку. */
 
@@ -738,7 +738,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .modal__head .icon-btn { margin: -.5rem -.5rem 0 0; }
 .modal__note { margin: .375rem 0 1.5rem; font-size: .9062rem; color: var(--muted); }
 
-/* ─────────────────────────── Форма ─────────────────────────── */
+/* Форма */
 
 .form { display: grid; gap: 1rem; }
 .form label { display: block; margin-bottom: .375rem; font-size: .875rem; font-weight: 500; }
@@ -783,7 +783,7 @@ select.field {
 
 .form__fineprint { text-align: center; font-size: .8125rem; color: var(--muted); }
 
-/* ─────────────────────────── Кабінет ─────────────────────────── */
+/* Кабінет */
 
 .cabinet { border-top: 1px solid var(--line); }
 .cabinet[hidden], .cabinet__empty[hidden] { display: none; }
@@ -802,7 +802,7 @@ select.field {
 .cabinet__empty { padding: 2.5rem 0; text-align: center; }
 .cabinet__empty p { margin-bottom: 1rem; color: var(--muted); }
 
-/* ─────────────────────────── Поява героя ───────────────────────────
+/* Поява героя
    Єдиний оркестрований момент на сторінці. */
 
 .rise {
@@ -817,7 +817,7 @@ select.field {
 
 @keyframes rise { to { opacity: 1; transform: none; filter: blur(0); } }
 
-/* ─────────────────────────── Ширші екрани ─────────────────────────── */
+/* Ширші екрани */
 
 @media (min-width: 640px) {
   :root { --gutter: 2rem; --radius: 34px; }
@@ -881,7 +881,7 @@ select.field {
   .actions__divider, .actions__phone { display: block; }
 }
 
-/* ─────────────────────────── Менше руху ───────────────────────────
+/* Менше руху
    Прибираємо анімації, але показуємо кінцевий стан, а не порожнечу. */
 
 @media (prefers-reduced-motion: reduce) {
