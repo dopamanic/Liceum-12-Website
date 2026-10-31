@@ -561,8 +561,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 /* ─────────────────────────── Проєкти ─────────────────────────── */
 
-.project--lead { display: grid; gap: 1.5rem; margin-bottom: 3.5rem; }
-.project--lead .photo { aspect-ratio: 16 / 10; }
 .projects__note { margin-top: 2.5rem; color: var(--muted); font-size: .9375rem; }
 
 /* ─────────────────────────── Викладач ─────────────────────────── */
@@ -847,10 +845,10 @@ select.field {
 @media (min-width: 900px) {
   .about { grid-template-columns: 7fr 5fr; gap: 3.5rem; }
   .entries { grid-template-columns: 1fr 1fr; column-gap: 3.5rem; }
+  .entries--three { grid-template-columns: repeat(3, 1fr); column-gap: 2.5rem; }
   .programmes__head { flex-direction: row; align-items: flex-end; justify-content: space-between; }
   .teacher { grid-template-columns: 4fr 8fr; gap: 3rem; }
   .teacher .photo { max-width: 15rem; }
-  .project--lead { grid-template-columns: 5fr 7fr; gap: 3rem; align-items: center; }
   .footer__top { grid-template-columns: 2fr 1fr 1fr; }
 }
 
