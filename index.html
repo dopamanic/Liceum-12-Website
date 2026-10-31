@@ -3,377 +3,313 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STEM-лабораторія – Ліцей №12, Житомир</title>
-<meta name="description" content="STEM-лабораторія Ліцею №12 м. Житомир: робототехніка, 3D-прототипування, програмування Python та IoT для учнів 7–11 класів. Безкоштовне навчання, власне обладнання.">
+<title>STEM-лабораторія</title>
+<meta name="description" content="STEM-лабораторія Ліцею №12 у Житомирі: робототехніка, 3D-друк, програмування Python та розумні пристрої для учнів 7–11 класів. Навчання безкоштовне.">
 <meta name="theme-color" content="#0A1413">
-<meta property="og:title" content="STEM-лабораторія – Ліцей №12, Житомир">
-<meta property="og:description" content="Робототехніка, 3D-друк, програмування та IoT для учнів 7–11 класів.">
+<meta property="og:title" content="STEM-лабораторія — Ліцей №12, Житомир">
+<meta property="og:description" content="Робототехніка, 3D-друк, програмування та розумні пристрої для учнів 7–11 класів.">
 <meta property="og:type" content="website">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="config.js"></script>
-
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+
+<!-- Тему ставимо до першого рендеру, інакше блимне світлою. -->
+<script>
+  try {
+    if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
+  } catch (e) {}
+</script>
 </head>
+<body>
 
-<body class="bg-white text-fg dark:bg-night dark:text-fgd">
+<a class="skip" href="#main">Перейти до вмісту</a>
 
-<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-brand focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:text-sm">Перейти до вмісту</a>
+<!-- ───────────────────────── Шапка ───────────────────────── -->
+<header class="header" id="header">
+  <div class="wrap header__bar">
 
-<!-- ══ Header ══ -->
-<header id="hdr" class="hdr fixed top-0 left-0 right-0 z-50">
-  <!-- three tracks: logo | nav | actions. The nav centres itself in the middle
-       track instead of hugging the logo, which keeps the bar balanced. -->
-  <div class="mx-auto max-w-shell px-5 sm:px-8 h-[74px] xl:h-[92px] grid grid-cols-[auto_1fr_auto] items-center gap-4">
-
-    <!-- logo lockup -->
-    <a href="#" class="flex items-center gap-3 shrink-0" aria-label="STEM-лабораторія, Ліцей №12, Житомир">
-      <img src="logo.png" alt="" width="191" height="190" class="w-9 h-9 xl:w-10 xl:h-10 shrink-0" aria-hidden="true">
-      <span class="leading-none whitespace-nowrap">
-        <span class="h-mark block font-display font-extrabold text-[17px] sm:text-[18px] tracking-[-.03em]">STEM-лабораторія</span>
-        <span class="h-sub block text-[12px] sm:text-[12.5px] mt-[6px]">Ліцей №12, Житомир</span>
+    <a class="logo" href="#" aria-label="STEM-лабораторія, Ліцей №12, Житомир">
+      <img src="logo.png" alt="" width="191" height="190" aria-hidden="true">
+      <span class="logo__text">
+        <span class="logo__name">STEM-лабораторія</span>
+        <span class="logo__place">Ліцей №12, Житомир</span>
       </span>
     </a>
 
-    <!-- primary navigation -->
-    <nav id="nav" class="hidden xl:flex items-center justify-center gap-5 2xl:gap-[22px] text-[15px] whitespace-nowrap" aria-label="Основна навігація">
-      <a href="#about" class="h-link transition-colors">Про нас</a>
+    <nav class="nav" id="nav" aria-label="Основна навігація">
+      <a class="nav__link" href="#about">Про нас</a>
 
-      <div class="menu-wrap" data-menu>
-        <button type="button" class="h-link inline-flex items-center gap-1.5 transition-colors" aria-expanded="false" aria-haspopup="true" aria-controls="menu-programs">
+      <div class="menu" data-menu>
+        <button class="nav__link menu__button" type="button" aria-expanded="false" aria-controls="menu-programmes">
           Напрямки
-          <svg class="chev w-3.5 h-3.5 opacity-60" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg>
+          <svg class="menu__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg>
         </button>
-        <div class="menu-pop" id="menu-programs">
-          <div class="menu-card">
-            <a href="#programs" class="menu-item">
-              <span class="h-mark block font-medium text-[15px]">Робототехніка та мехатроніка</span>
-              <span class="h-sub block text-[13px] mt-0.5 nums">7–11 клас · 9 місяців</span>
-            </a>
-            <a href="#programs" class="menu-item">
-              <span class="h-mark block font-medium text-[15px]">3D-моделювання та друк</span>
-              <span class="h-sub block text-[13px] mt-0.5 nums">8–11 клас · 6 місяців</span>
-            </a>
-            <a href="#programs" class="menu-item">
-              <span class="h-mark block font-medium text-[15px]">Програмування Python</span>
-              <span class="h-sub block text-[13px] mt-0.5 nums">7–11 клас · 9 місяців</span>
-            </a>
-            <a href="#programs" class="menu-item">
-              <span class="h-mark block font-medium text-[15px]">Інтернет речей</span>
-              <span class="h-sub block text-[13px] mt-0.5 nums">9–11 клас · 6 місяців</span>
-            </a>
+        <div class="menu__pop" id="menu-programmes">
+          <div class="menu__card">
+            <a class="menu__item" href="#programmes"><b>Робототехніка та мехатроніка</b><span class="nums">7–11 клас · 9 місяців</span></a>
+            <a class="menu__item" href="#programmes"><b>3D-моделювання та друк</b><span class="nums">8–11 клас · 6 місяців</span></a>
+            <a class="menu__item" href="#programmes"><b>Програмування Python</b><span class="nums">7–11 клас · 9 місяців</span></a>
+            <a class="menu__item" href="#programmes"><b>Розумні пристрої</b><span class="nums">9–11 клас · 6 місяців</span></a>
           </div>
         </div>
       </div>
 
-      <a href="#projects" class="h-link transition-colors">Проєкти</a>
-      <a href="#teachers" class="h-link transition-colors">Викладачі</a>
-      <a href="#faq" class="h-link transition-colors">Питання</a>
-      <a href="#contacts" class="h-link transition-colors">Контакти</a>
+      <a class="nav__link" href="#projects">Проєкти</a>
+      <a class="nav__link" href="#teacher">Викладачі</a>
+      <a class="nav__link" href="#faq">Питання</a>
+      <a class="nav__link" href="#contacts">Контакти</a>
     </nav>
 
-    <!-- contact + actions -->
-    <div class="flex items-center justify-end gap-1 xl:gap-2 shrink-0">
-      <span class="hidden min-[1400px]:block w-px h-6 bg-line dark:bg-line-dark mx-3" aria-hidden="true"></span>
+    <div class="actions">
+      <span class="actions__divider" aria-hidden="true"></span>
+      <a class="actions__phone nums" href="tel:+380412471230">+38 (0412) 47-12-30</a>
 
-      <a href="tel:+380412471230" class="h-link hidden min-[1400px]:block text-[15px] nums font-semibold px-2 whitespace-nowrap transition-colors">+38 (0412) 47-12-30</a>
-
-
-      <button id="theme-btn" class="h-icon relative w-10 h-10 grid place-items-center rounded-full transition-colors" aria-label="Перемкнути тему">
-        <svg class="i-sun w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.2m0 15.6V22M3.5 12H5.7m12.6 0h2.2M5.9 5.9l1.6 1.6m9 9l1.6 1.6m0-12.2l-1.6 1.6m-9 9l-1.6 1.6"/></svg>
-        <svg class="i-moon w-[18px] h-[18px] hidden" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" viewBox="0 0 24 24"><path d="M20.5 14.3A8.6 8.6 0 019.7 3.5 8.8 8.8 0 1020.5 14.3z"/></svg>
+      <button class="icon-btn" id="theme-btn" aria-label="Перемкнути тему">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.2m0 15.6V22M3.5 12H5.7m12.6 0h2.2M5.9 5.9l1.6 1.6m9 9l1.6 1.6m0-12.2l-1.6 1.6m-9 9l-1.6 1.6"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" hidden><path d="M20.5 14.3A8.6 8.6 0 019.7 3.5 8.8 8.8 0 1020.5 14.3z"/></svg>
       </button>
 
-      <button class="cab-trig h-icon hidden sm:grid w-10 h-10 place-items-center rounded-full transition-colors" aria-label="Мої заявки">
-        <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6"/><path d="M4.8 20.2a7.2 7.2 0 0114.4 0"/></svg>
+      <button class="icon-btn" id="cabinet-btn" data-open-cabinet aria-label="Мої заявки">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="3.6"/><path d="M4.8 20.2a7.2 7.2 0 0114.4 0"/></svg>
       </button>
 
-      <!-- wrapper controls visibility: .btn sets display, so `hidden` on the button itself would lose -->
-      <span class="hidden sm:block ml-1.5">
-        <button class="reg-trig btn btn-primary px-5 py-2.5 text-[14.5px] xl:py-[11px] xl:text-[15px]">Записатися</button>
-      </span>
+      <button class="btn btn--primary" data-open-form>Записатися</button>
 
-      <button id="mob-btn" class="h-icon xl:hidden w-10 h-10 grid place-items-center rounded-full transition-colors" aria-label="Відкрити меню" aria-expanded="false">
-        <svg class="w-[20px] h-[20px]" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <button class="icon-btn" id="menu-btn" aria-label="Відкрити меню" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
     </div>
   </div>
 </header>
 
-<!-- ══ Mobile drawer ══
-     Відкритість тримає один атрибут data-open; решта – у .drawer* у styles.css.
-     Коли закрите, JS ставить inert, тож вміст випадає з Tab і з читача екрана. -->
-<div id="mob" class="drawer fixed inset-0 z-[60] xl:hidden">
-  <div class="drawer-bg absolute inset-0 bg-ink/50"></div>
-  <div class="drawer-panel absolute right-0 top-0 h-full w-[85%] max-w-[320px] bg-white dark:bg-night-900 flex flex-col">
-    <div class="flex items-center justify-between px-5 h-[74px] border-b border-line dark:border-line-dark">
-      <span class="font-display font-extrabold text-[16px] tracking-[-.025em]">STEM-лабораторія</span>
-      <button id="mob-close" class="w-10 h-10 grid place-items-center text-fg-muted dark:text-fgd-muted -mr-2" aria-label="Закрити меню">
-        <svg class="w-[19px] h-[19px]" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+<!-- Бічне меню. Відкритість тримає data-open; коли закрите, JS ставить inert,
+     тож вміст випадає з Tab і з читача екрана. -->
+<div class="drawer" id="drawer">
+  <div class="drawer__backdrop" data-close-drawer></div>
+  <div class="drawer__panel">
+    <div class="drawer__head">
+      STEM-лабораторія
+      <button class="icon-btn" data-close-drawer aria-label="Закрити меню">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
       </button>
     </div>
-    <nav class="flex flex-col p-3 gap-0.5 text-[16px]" aria-label="Мобільна навігація">
-      <a href="#about"    class="mob-lnk px-3 py-2.5 rounded-lg hover:bg-paper dark:hover:bg-night-800">Про лабораторію</a>
-      <a href="#programs" class="mob-lnk px-3 py-2.5 rounded-lg hover:bg-paper dark:hover:bg-night-800">Напрямки</a>
-      <a href="#process"  class="mob-lnk px-3 py-2.5 rounded-lg hover:bg-paper dark:hover:bg-night-800">Як проходить навчання</a>
-      <a href="#projects" class="mob-lnk px-3 py-2.5 rounded-lg hover:bg-paper dark:hover:bg-night-800">Проєкти учнів</a>
-      <a href="#teachers" class="mob-lnk px-3 py-2.5 rounded-lg hover:bg-paper dark:hover:bg-night-800">Викладачі</a>
-      <a href="#faq"      class="mob-lnk px-3 py-2.5 rounded-lg hover:bg-paper dark:hover:bg-night-800">Питання та відповіді</a>
-      <a href="#news"     class="mob-lnk px-3 py-2.5 rounded-lg hover:bg-paper dark:hover:bg-night-800">Новини</a>
-      <a href="#contacts" class="mob-lnk px-3 py-2.5 rounded-lg hover:bg-paper dark:hover:bg-night-800">Контакти</a>
+    <nav class="drawer__nav" aria-label="Мобільна навігація">
+      <a class="drawer__link" href="#about">Про лабораторію</a>
+      <a class="drawer__link" href="#programmes">Напрямки</a>
+      <a class="drawer__link" href="#process">Як проходить навчання</a>
+      <a class="drawer__link" href="#projects">Проєкти учнів</a>
+      <a class="drawer__link" href="#teacher">Викладачі</a>
+      <a class="drawer__link" href="#faq">Питання та відповіді</a>
+      <a class="drawer__link" href="#news">Новини</a>
+      <a class="drawer__link" href="#contacts">Контакти</a>
     </nav>
-    <div class="mt-auto p-5 border-t border-line dark:border-line-dark flex flex-col gap-2.5">
-      <a href="tel:+380412471230" class="text-[16px] nums font-semibold">+38 (0412) 47-12-30</a>
-      <button class="cab-trig btn btn-outline w-full">Кабінет</button>
-      <button class="reg-trig btn btn-primary w-full">Записатися</button>
+    <div class="drawer__foot">
+      <a class="drawer__phone nums" href="tel:+380412471230">+38 (0412) 47-12-30</a>
+      <button class="btn btn--outline btn--block" data-open-cabinet>Кабінет</button>
+      <button class="btn btn--primary btn--block" data-open-form>Записатися</button>
     </div>
   </div>
 </div>
 
 <main id="main">
 
-  <!-- ══ Hero: one inset rounded panel, photo behind, copy at the foot ══ -->
-  <section class="px-3 sm:px-5 lg:px-6 pt-[80px] sm:pt-[86px] xl:pt-[104px] pb-3 sm:pb-5">
-    <div class="ph relative rounded-[24px] sm:rounded-[34px] lg:rounded-[42px] overflow-hidden flex items-end
-                min-h-[560px] sm:min-h-[600px] lg:min-h-[680px] xl:min-h-[740px]">
-
-      <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=2000&h=1300&q=80"
+  <!-- ───────────────────────── Герой ───────────────────────── -->
+  <div class="bleed">
+    <section class="hero photo">
+      <img class="hero__photo"
+           src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=2000&h=1300&q=80"
            alt="Учні STEM-лабораторії складають і налаштовують робота на лабораторному столі"
            width="2000" height="1300" fetchpriority="high"
-           class="absolute inset-0 w-full h-full object-cover"
-           onerror="this.parentNode.classList.add('ph-fail');this.remove();">
+           onerror="this.parentNode.classList.add('photo--failed'); this.remove();">
+      <div class="hero__shade" aria-hidden="true"></div>
 
-      <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/80 to-ink/25" aria-hidden="true"></div>
+      <!-- Той самий .wrap, що й у секціях, тому текст героя стоїть
+           на одній вертикалі із заголовками нижче. -->
+      <div class="hero__body">
+        <div class="wrap">
+          <div class="hero__text">
+            <h1 class="rise">
+              <span class="h-hero">STEM-лабораторія</span>
+              <span class="h-hero-sub">Ліцею №12</span>
+            </h1>
 
-      <!-- Той самий внутрішній контейнер, що й у секціях (max-w-shell + px-8),
-           тому текст героя стоїть на одній вертикалі із заголовками нижче. -->
-      <div class="relative z-10 w-full py-9 sm:py-12 lg:py-16">
-       <div class="mx-auto max-w-shell px-5 sm:px-8">
-        <div class="max-w-[48rem]">
-          <h1 class="rise rise-1 mb-6">
-            <span class="t-hero block text-white">STEM-лабораторія</span>
-            <span class="t-hero-sub block text-signal mt-2">Ліцею №12</span>
-          </h1>
+            <p class="hero__lead rise">
+              Робототехніка, 3D-прототипування, програмування та розумні пристрої
+              для учнів 7–11&nbsp;класів. Чотири напрямки, власне обладнання,
+              навчання безкоштовне для ліцеїстів.
+            </p>
 
-          <p class="rise rise-2 t-body text-white/80 text-[17px] sm:text-[19px] lg:text-[20px] leading-[1.55] max-w-[44ch] mb-9">
-            Робототехніка, 3D-прототипування, програмування та інтернет речей для учнів
-            7–11&nbsp;класів. Чотири напрямки, власне обладнання, навчання безкоштовне для ліцеїстів.
-          </p>
+            <div class="hero__buttons rise">
+              <button class="btn btn--primary btn--big" data-open-form>Записатися на пробне заняття</button>
+              <a class="btn btn--ghost btn--big" href="#programmes">Переглянути напрямки</a>
+            </div>
 
-          <div class="rise rise-3 flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-3 mb-8">
-            <button class="reg-trig btn btn-primary w-full sm:w-auto sm:px-7 sm:py-3.5 sm:text-[16px]">Записатися на пробне заняття</button>
-            <a href="#programs" class="btn btn-ghost-dark w-full sm:w-auto sm:px-7 sm:py-3.5 sm:text-[16px]">Переглянути напрямки</a>
+            <p class="hero__note rise">
+              <span class="hero__dot" aria-hidden="true"></span>Набір на 2026/2027 навчальний рік відкрито
+            </p>
           </div>
+        </div>
+      </div>
+    </section>
+  </div>
 
-          <p class="rise rise-4 text-[14.5px] text-white/65">
-            <span class="inline-block w-1.5 h-1.5 rounded-full bg-signal align-middle mr-2.5"></span>Набір
-            на 2026/2027 навчальний рік відкрито
+  <!-- ───────────────────────── Про лабораторію ───────────────────────── -->
+  <section class="section" id="about">
+    <div class="wrap about">
+      <div>
+        <h2 class="h2">Інженерна практика замість переказу підручника</h2>
+        <div class="about__text">
+          <p class="prose">
+            Лабораторію створено у 2020&nbsp;році за підтримки управління освіти
+            Житомирської міської ради. Ми працюємо за проєктним принципом: кожен
+            учень веде власну розробку від ідеї до робочого прототипу й захищає
+            її перед комісією в кінці курсу.
+          </p>
+          <p class="prose">
+            Вісімдесят відсотків часу занять – це робота руками: збирання схем,
+            друк деталей, написання та відлагодження коду. Теорію даємо тоді, коли
+            вона потрібна для наступного кроку в проєкті, а не окремим блоком наперед.
+          </p>
+          <p class="prose">
+            Заняття веде інженер, який поєднує роботу в галузі з викладанням.
+            У групі – до 12&nbsp;учнів, щоб кожен мав доступ до обладнання
+            на кожному занятті.
           </p>
         </div>
-       </div>
+      </div>
+
+      <div>
+        <h3 class="h3">Обладнання лабораторії</h3>
+        <ul class="equipment">
+          <li>3D-принтери FDM <span class="nums">4 шт.</span></li>
+          <li>3D-принтер SLA (фотополімер) <span class="nums">1 шт.</span></li>
+          <li>Набори Arduino та ESP32 <span class="nums">24 шт.</span></li>
+          <li>LEGO Mindstorms EV3 <span class="nums">8 шт.</span></li>
+          <li>Raspberry Pi 4 та 5 <span class="nums">12 шт.</span></li>
+          <li>Паяльні станції з димовідсосом <span class="nums">6 шт.</span></li>
+          <li>Осцилографи та лабораторні БЖ <span class="nums">6 шт.</span></li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- ══ About ══ -->
-  <section id="about" class="bg-white dark:bg-night py-16 lg:py-24">
-    <div class="mx-auto max-w-shell px-5 sm:px-8">
-
-      <!-- prose + equipment -->
-      <div class="grid lg:grid-cols-12 gap-x-14 gap-y-12">
-        <div class="lg:col-span-7">
-          <h2 class="t-h2 mb-10">Інженерна практика замість переказу підручника</h2>
-          <div class="t-body text-fg-muted dark:text-fgd-muted space-y-5 max-w-prose">
-            <p>
-              Лабораторію створено у 2020&nbsp;році за підтримки управління освіти Житомирської
-              міської ради. Ми працюємо за проєктним принципом: кожен учень веде власну розробку від
-              ідеї до робочого прототипу й захищає її перед комісією в кінці курсу.
-            </p>
-            <p>
-              Вісімдесят відсотків часу занять – це робота руками: збирання схем, друк деталей,
-              написання та відлагодження коду. Теорію даємо тоді, коли вона потрібна для
-              наступного кроку в проєкті, а не окремим блоком наперед.
-            </p>
-            <p>
-              Заняття веде інженер, який поєднує роботу в галузі з викладанням.
-              У групі – до 12&nbsp;учнів, щоб кожен мав доступ до обладнання
-              на кожному занятті.
-            </p>
-          </div>
-        </div>
-
-        <div class="lg:col-span-5">
-          <h3 class="t-h3 mb-5">Обладнання лабораторії</h3>
-          <ul class="divide-y divide-line dark:divide-line-dark text-[15.5px]">
-            <li class="flex items-baseline justify-between gap-5 py-3">
-              <span>3D-принтери FDM</span>
-              <span class="nums text-fg-muted dark:text-fgd-muted shrink-0">4 шт.</span>
-            </li>
-            <li class="flex items-baseline justify-between gap-5 py-3">
-              <span>3D-принтер SLA (фотополімер)</span>
-              <span class="nums text-fg-muted dark:text-fgd-muted shrink-0">1 шт.</span>
-            </li>
-            <li class="flex items-baseline justify-between gap-5 py-3">
-              <span>Набори Arduino та ESP32</span>
-              <span class="nums text-fg-muted dark:text-fgd-muted shrink-0">24 шт.</span>
-            </li>
-            <li class="flex items-baseline justify-between gap-5 py-3">
-              <span>LEGO Mindstorms EV3</span>
-              <span class="nums text-fg-muted dark:text-fgd-muted shrink-0">8 шт.</span>
-            </li>
-            <li class="flex items-baseline justify-between gap-5 py-3">
-              <span>Raspberry Pi 4 та 5</span>
-              <span class="nums text-fg-muted dark:text-fgd-muted shrink-0">12 шт.</span>
-            </li>
-            <li class="flex items-baseline justify-between gap-5 py-3">
-              <span>Паяльні станції з димовідсосом</span>
-              <span class="nums text-fg-muted dark:text-fgd-muted shrink-0">6 шт.</span>
-            </li>
-            <li class="flex items-baseline justify-between gap-5 py-3">
-              <span>Осцилографи та лабораторні БЖ</span>
-              <span class="nums text-fg-muted dark:text-fgd-muted shrink-0">6 шт.</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ══ Photo band, inset and rounded like the other panels ══ -->
-  <div class="bg-white dark:bg-night px-3 sm:px-5 lg:px-6 pb-3 sm:pb-5">
-    <figure class="ph ph-tone rounded-[24px] sm:rounded-[34px] lg:rounded-[42px] h-[220px] sm:h-[300px] lg:h-[420px]"
-            data-label="Монтаж електроніки: друкована плата під збільшенням">
+  <!-- Фотосмуга як пауза між секціями -->
+  <div class="bleed--last">
+    <figure class="photo photo--tone band" data-label="Монтаж електроніки: друкована плата під збільшенням">
       <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1800&h=900&q=80"
            alt="Друкована плата з мікроконтролером крупним планом"
            width="1800" height="900" loading="lazy"
-           onerror="this.parentNode.classList.add('ph-fail');this.remove();">
+           onerror="this.parentNode.classList.add('photo--failed'); this.remove();">
     </figure>
   </div>
 
-  <!-- ══ Programs ══ -->
-  <section id="programs" class="bg-paper dark:bg-night-900 py-16 lg:py-24">
-    <div class="mx-auto max-w-shell px-5 sm:px-8">
-
-      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-12">
-        <h2 class="t-h2">Чотири напрямки навчання</h2>
-        <button class="reg-trig btn btn-primary shrink-0 self-start md:self-auto">Обрати напрямок</button>
+  <!-- ───────────────────────── Напрямки ───────────────────────── -->
+  <section class="section section--tint" id="programmes">
+    <div class="wrap">
+      <div class="programmes__head">
+        <h2 class="h2">Чотири напрямки навчання</h2>
+        <button class="btn btn--primary" data-open-form>Обрати напрямок</button>
       </div>
 
-      <!-- Записи каталогу, а не картки: тонка лінія зверху замість рамки
-           з тінню. Опис у кожного своєї довжини – так і має бути. -->
-      <div class="grid md:grid-cols-2 gap-x-14 gap-y-12">
-
-        <article class="border-t border-line dark:border-line-dark pt-6 flex flex-col">
-          <h3 class="t-h3 mb-1.5">Робототехніка та мехатроніка</h3>
-          <p class="text-[14.5px] text-fg-muted dark:text-fgd-muted mb-4">Для 7–11 класів, дев'ять місяців</p>
-          <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] mb-5 max-w-prose">
+      <div class="entries">
+        <article class="entry">
+          <h3 class="h3">Робототехніка та мехатроніка</h3>
+          <p class="entry__meta">Для 7–11 класів, дев'ять місяців</p>
+          <p class="entry__text prose">
             Датчики, приводи і зворотний зв'язок: як зробити так, щоб механізм сам
             реагував на те, що навколо. Пишемо для Arduino, збираємо рухомі
             конструкції. Торік на захисті показували робота, який розкладає
             деталі за кольором.
           </p>
-          <button class="reg-trig lnk text-[15px] self-start mt-auto" data-course="Робототехніка та мехатроніка">Записатися</button>
+          <button class="link" data-open-form data-course="Робототехніка та мехатроніка">Записатися</button>
         </article>
 
-        <article class="border-t border-line dark:border-line-dark pt-6 flex flex-col">
-          <h3 class="t-h3 mb-1.5">3D-моделювання та друк</h3>
-          <p class="text-[14.5px] text-fg-muted dark:text-fgd-muted mb-4">Для 8–11 класів, шість місяців</p>
-          <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] mb-5 max-w-prose">
+        <article class="entry">
+          <h3 class="h3">3D-моделювання та друк</h3>
+          <p class="entry__meta">Для 8–11 класів, шість місяців</p>
+          <p class="entry__text prose">
             Моделюємо у Fusion&nbsp;360 і одразу друкуємо, щоб побачити, де модель
             розходиться з реальністю. FDM і фотополімер, допуски, посадки,
             постобробка. Перша деталь зазвичай не стає на місце – і це
             найкорисніше заняття курсу.
           </p>
-          <button class="reg-trig lnk text-[15px] self-start mt-auto" data-course="3D-моделювання та друк">Записатися</button>
+          <button class="link" data-open-form data-course="3D-моделювання та друк">Записатися</button>
         </article>
 
-        <article class="border-t border-line dark:border-line-dark pt-6 flex flex-col">
-          <h3 class="t-h3 mb-1.5">Програмування Python</h3>
-          <p class="text-[14.5px] text-fg-muted dark:text-fgd-muted mb-4">Для 7–11 класів, дев'ять місяців</p>
-          <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] mb-5 max-w-prose">
+        <article class="entry">
+          <h3 class="h3">Програмування Python</h3>
+          <p class="entry__meta">Для 7–11 класів, дев'ять місяців</p>
+          <p class="entry__text prose">
             Від перших рядків до програм, якими справді користуються: обробка даних,
             телеграм-боти, невеликі вебзастосунки. Наприкінці кожен робить власний
             застосунок із базою даних. Хто хоче глибше – окремий трек підготовки
             до олімпіад з інформатики.
           </p>
-          <button class="reg-trig lnk text-[15px] self-start mt-auto" data-course="Програмування Python">Записатися</button>
+          <button class="link" data-open-form data-course="Програмування Python">Записатися</button>
         </article>
 
-        <article class="border-t border-line dark:border-line-dark pt-6 flex flex-col">
-          <h3 class="t-h3 mb-1.5">Інтернет речей</h3>
-          <p class="text-[14.5px] text-fg-muted dark:text-fgd-muted mb-4">Для 9–11 класів, шість місяців</p>
-          <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] mb-5 max-w-prose">
+        <article class="entry">
+          <h3 class="h3">Розумні пристрої</h3>
+          <p class="entry__meta">Для 9–11 класів, шість місяців</p>
+          <p class="entry__text prose">
             Пристрої, які збирають дані й віддають їх далі: ESP32, Raspberry&nbsp;Pi,
             протокол MQTT. Метеостанція, облік води чи світла, автоматика, якою
             можна керувати з телефону. Курс закінчується станцією, що працює
             і доступна віддалено.
           </p>
-          <button class="reg-trig lnk text-[15px] self-start mt-auto" data-course="Інтернет речей">Записатися</button>
+          <button class="link" data-open-form data-course="Розумні пристрої">Записатися</button>
         </article>
-
       </div>
     </div>
   </section>
 
-  <!-- ══ Process (a genuine sequence, so it is numbered) ══ -->
-  <section id="process" class="bg-white dark:bg-night py-16 lg:py-24">
-    <div class="mx-auto max-w-shell px-5 sm:px-8">
-      <!-- Суцільний текст, а не три однакові колонки: так читається як
-           пояснення людини, а не як перелік пунктів. -->
-      <div class="grid lg:grid-cols-12 gap-x-14 gap-y-6">
-        <h2 class="t-h2 lg:col-span-4">Як проходить навчання</h2>
-
-        <div class="lg:col-span-8 t-body text-[16.5px] text-fg-muted dark:text-fgd-muted leading-[1.7] space-y-5 max-w-prose">
-          <p>
-            Спершу пробне заняття. Учень приходить, працює на справжньому обладнанні
-            й дивиться, чи це взагалі його. Батьки за цей час встигають подивитися
-            лабораторію та поговорити з викладачем. Підписувати нічого не треба,
-            і платити теж.
-          </p>
-          <p>
-            Далі десять тижнів базового модуля, двічі на тиждень. Кожне заняття має
-            закінчитися чимось робочим: схемою, надрукованою деталлю, скриптом, який
-            запускається. Теорію даємо тоді, коли без неї не зробити наступний крок,
-            а не окремим блоком наперед.
-          </p>
-          <p>
-            Решту курсу учень веде власний проєкт. Тему обирає сам, викладач підказує
-            й страхує від глухих кутів. У кінці – захист перед комісією: показати, що
-            працює, і пояснити, чому зроблено саме так. З найсильнішими роботами
-            їдемо на міські та обласні олімпіади.
-          </p>
-        </div>
+  <!-- ───────────────────────── Як проходить навчання ─────────────────────────
+       Суцільний текст, а не три однакові колонки: послідовність зрозуміла
+       зі слів «спершу», «далі», «решту курсу». -->
+  <section class="section" id="process">
+    <div class="wrap process">
+      <h2 class="h2">Як проходить навчання</h2>
+      <div class="process__text">
+        <p class="prose">
+          Спершу пробне заняття. Учень приходить, працює на справжньому обладнанні
+          й дивиться, чи це взагалі його. Батьки за цей час встигають подивитися
+          лабораторію та поговорити з викладачем. Підписувати нічого не треба,
+          і платити теж.
+        </p>
+        <p class="prose">
+          Далі десять тижнів базового модуля, двічі на тиждень. Кожне заняття має
+          закінчитися чимось робочим: схемою, надрукованою деталлю, скриптом, який
+          запускається. Теорію даємо тоді, коли без неї не зробити наступний крок,
+          а не окремим блоком наперед.
+        </p>
+        <p class="prose">
+          Решту курсу учень веде власний проєкт. Тему обирає сам, викладач підказує
+          й страхує від глухих кутів. У кінці – захист перед комісією: показати, що
+          працює, і пояснити, чому зроблено саме так. З найсильнішими роботами
+          їдемо на міські та обласні олімпіади.
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- ══ Student projects: what actually comes out of the process ══ -->
-  <section id="projects" class="bg-paper dark:bg-night-900 py-16 lg:py-24">
-    <div class="mx-auto max-w-shell px-5 sm:px-8">
-      <h2 class="t-h2 mb-10">Що учні зробили цього року</h2>
+  <!-- ───────────────────────── Проєкти учнів ───────────────────────── -->
+  <section class="section section--tint" id="projects">
+    <div class="wrap">
+      <h2 class="h2 section__head">Що учні зробили цього року</h2>
 
-      <!-- Головний проєкт горизонтально, решта — записами під лінією,
-           тим самим прийомом, що й напрямки. -->
-      <article class="grid lg:grid-cols-12 gap-x-12 gap-y-6 items-start lg:items-center mb-14 lg:mb-16">
-        <figure class="lg:col-span-5 ph ph-tone rounded-[24px] aspect-[16/10] w-full"
-                data-label="Автоматичний полив у кабінеті біології">
+      <article class="project--lead">
+        <figure class="photo photo--tone" data-label="Автоматичний полив у кабінеті біології">
           <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&h=750&q=80"
                alt="Плата з мікроконтролером і датчиками системи поливу"
                width="1000" height="750" loading="lazy"
-               onerror="this.parentNode.classList.add('ph-fail');this.remove();">
+               onerror="this.parentNode.classList.add('photo--failed'); this.remove();">
         </figure>
-
-        <div class="lg:col-span-7">
-          <h3 class="t-h3 mb-1.5">Автополив для кабінету біології</h3>
-          <p class="text-[14.5px] text-fg-muted dark:text-fgd-muted mb-4">
-            Андрій Петренко, 10 клас. Інтернет речей, 2026 рік
-          </p>
-          <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] max-w-prose">
+        <div>
+          <h3 class="h3">Автополив для кабінету біології</h3>
+          <p class="entry__meta">Андрій Петренко, 10 клас. Розумні пристрої, 2026 рік</p>
+          <p class="entry__text prose">
             Шість вазонів, датчики вологості ґрунту, помпа й ESP32. Поливає, коли
             земля пересихає, і пише в Telegram, якщо в баку закінчилась вода.
             Стоїть у кабінеті 214 з березня. Відтоді не загинула жодна рослина –
@@ -383,181 +319,163 @@
         </div>
       </article>
 
-      <div class="grid md:grid-cols-2 gap-x-14 gap-y-10">
-
-        <article class="border-t border-line dark:border-line-dark pt-6">
-          <h3 class="t-h3 mb-1.5">Облік води по корпусах</h3>
-          <p class="text-[14.5px] text-fg-muted dark:text-fgd-muted mb-4">
-            Назар Гриценко, 11 клас. Інтернет речей, 2026 рік
-          </p>
-          <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] max-w-prose">
+      <div class="entries">
+        <article class="entry">
+          <h3 class="h3">Облік води по корпусах</h3>
+          <p class="entry__meta">Назар Гриценко, 11 клас. Розумні пристрої, 2026 рік</p>
+          <p class="entry__text prose">
             Лічильники на два корпуси, дані збираються у звичайну таблицю.
             Завгосп тепер бачить добову витрату – і на третьому тижні роботи
             знайшов за нею протікання в підвалі, про яке ніхто не здогадувався.
           </p>
         </article>
 
-        <article class="border-t border-line dark:border-line-dark pt-6">
-          <h3 class="t-h3 mb-1.5">Навчальна модель кисті</h3>
-          <p class="text-[14.5px] text-fg-muted dark:text-fgd-muted mb-4">
-            Марія Ковальчук, 11 клас. 3D-моделювання, 2026 рік
-          </p>
-          <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] max-w-prose">
+        <article class="entry">
+          <h3 class="h3">Навчальна модель кисті</h3>
+          <p class="entry__meta">Марія Ковальчук, 11 клас. 3D-моделювання, 2026 рік</p>
+          <p class="entry__text prose">
             Сорок дві надруковані деталі, п'ять сервоприводів. Пальці згинаються
             окремо й повторюють жест із рукавички-контролера. Це вже друга версія:
             перша розвалилася під вагою власних приводів.
           </p>
         </article>
-
       </div>
 
-      <p class="t-body text-[15px] text-fg-muted dark:text-fgd-muted mt-10 max-w-prose">
+      <p class="projects__note prose">
         Захист проєктів відкритий – прийти подивитися може будь-хто,
         домовлятися заздалегідь не треба.
       </p>
     </div>
   </section>
 
-  <!-- ══ Teachers ══ -->
-  <section id="teachers" class="bg-white dark:bg-night py-16 lg:py-24">
-    <div class="mx-auto max-w-shell px-5 sm:px-8">
-      <h2 class="t-h2 mb-10">Хто веде заняття</h2>
+  <!-- ───────────────────────── Викладач ───────────────────────── -->
+  <section class="section" id="teacher">
+    <div class="wrap">
+      <h2 class="h2 section__head">Хто веде заняття</h2>
 
-      <div class="grid md:grid-cols-12 gap-x-12 gap-y-8 items-start">
-
-        <figure class="md:col-span-4 lg:col-span-3">
-          <div class="ph ph-av ph-tone rounded-[24px] aspect-square w-full" data-label="АЛ">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&h=500&q=80"
-                 alt="Андрій Луженький, керівник STEM-лабораторії"
-                 width="500" height="500" loading="lazy"
-                 onerror="this.parentNode.classList.add('ph-fail');this.remove();">
-          </div>
+      <div class="teacher">
+        <figure class="photo photo--tone photo--portrait" data-label="АЛ">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&h=500&q=80"
+               alt="Андрій Луженький, керівник STEM-лабораторії"
+               width="500" height="500" loading="lazy"
+               onerror="this.parentNode.classList.add('photo--failed'); this.remove();">
         </figure>
 
-        <div class="md:col-span-8 lg:col-span-7">
-          <h3 class="font-display font-extrabold text-[24px] lg:text-[28px] tracking-[-.025em] mb-1.5">Андрій Луженький</h3>
-          <p class="text-[15px] text-brand dark:text-brand-300 font-medium mb-6">Керівник лабораторії</p>
-
-          <div class="t-body text-fg-muted dark:text-fgd-muted space-y-4 max-w-prose mb-8">
-            <p>
+        <div>
+          <h3 class="teacher__name">Андрій Луженький</h3>
+          <p class="teacher__role">Керівник лабораторії</p>
+          <div class="teacher__bio">
+            <p class="prose">
               Інженер за освітою, працює з мікроконтролерами та тривимірним друком.
               Веде всі чотири напрямки й відповідає за обладнання лабораторії.
             </p>
-            <p>
+            <p class="prose">
               Побудував лабораторію з нуля у 2020 році – від закупівлі першого
               принтера до програми курсу. Готує учнів до міських та обласних
               олімпіад з робототехніки й інформатики.
             </p>
           </div>
-
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ───────────────────────── Питання ─────────────────────────
+       Нативний <details name="faq">: працює з клавіатури, без JS,
+       і сам тримає відкритим лише одне питання. -->
+  <section class="section section--tint" id="faq">
+    <div class="wrap faq">
+      <div>
+        <h2 class="h2">Що зазвичай питають батьки</h2>
+        <p class="faq__intro">
+          Не знайшли свого питання – напишіть у
+          <a class="link" href="https://t.me/stemlab12">Telegram</a> або зателефонуйте.
+          Відповідаємо того ж дня.
+        </p>
+      </div>
 
-  <!-- ══ FAQ ══ -->
-  <section id="faq" class="bg-white dark:bg-night py-16 lg:py-24">
-    <div class="mx-auto max-w-shell px-5 sm:px-8">
-      <div class="grid lg:grid-cols-12 gap-x-14 gap-y-8">
-
-        <div class="lg:col-span-4">
-          <h2 class="t-h2 mb-10">Що зазвичай питають батьки</h2>
-          <p class="t-body text-fg-muted dark:text-fgd-muted max-w-[38ch]">
-            Не знайшли свого питання – напишіть у
-            <a href="https://t.me/stemlab12" class="lnk">Telegram</a> або зателефонуйте.
-            Відповідаємо того ж дня.
+      <div class="faq__list">
+        <details class="faq__item" name="faq">
+          <summary><span class="h3">Скільки коштує навчання?</span><span class="faq__sign" aria-hidden="true"></span></summary>
+          <p class="faq__answer">
+            Навчання безкоштовне. Лабораторія утримується за кошти ліцею, тому
+            ми не збираємо внесків ні за заняття, ні за витратні матеріали,
+            ні на обладнання. Це стосується і ліцеїстів, і учнів інших шкіл.
           </p>
-        </div>
+        </details>
 
-        <div class="lg:col-span-8">
-          <div class="border-t border-line dark:border-line-dark">
+        <details class="faq__item" name="faq">
+          <summary><span class="h3">Дитина вчиться в іншій школі. Візьмете?</span><span class="faq__sign" aria-hidden="true"></span></summary>
+          <p class="faq__answer">
+            Так, беремо. До 15 вересня записуємо ліцеїстів, після цієї дати
+            група відкрита для всіх охочих. Торік з 48 учнів лабораторії
+            одинадцять навчалися в інших школах Житомира.
+          </p>
+        </details>
 
-            <details name="faq" class="faq border-b border-line dark:border-line-dark">
-              <summary><span class="t-h3 pr-4">Скільки коштує навчання?</span><span class="faq-sign text-brand dark:text-brand-300" aria-hidden="true"></span></summary>
-              <div class="faq-body t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] pb-6 max-w-[62ch]">
-                Навчання безкоштовне. Лабораторія утримується за кошти ліцею, тому
-                ми не збираємо внесків ні за заняття, ні за витратні матеріали,
-                ні на обладнання. Це стосується і ліцеїстів, і учнів інших шкіл.
-              </div>
-            </details>
+        <details class="faq__item" name="faq">
+          <summary><span class="h3">Що треба купити до першого заняття?</span><span class="faq__sign" aria-hidden="true"></span></summary>
+          <p class="faq__answer">
+            Лише зошит і ручку. Плати, інструмент, пластик для друку та
+            електронні компоненти надає лабораторія. Деталі, виготовлені
+            для власного проєкту, після захисту залишаються в учня.
+          </p>
+        </details>
 
-            <details name="faq" class="faq border-b border-line dark:border-line-dark">
-              <summary><span class="t-h3 pr-4">Дитина вчиться в іншій школі. Візьмете?</span><span class="faq-sign text-brand dark:text-brand-300" aria-hidden="true"></span></summary>
-              <div class="faq-body t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] pb-6 max-w-[62ch]">
-                Так, беремо. До 15 вересня записуємо ліцеїстів, після цієї дати
-                група відкрита для всіх охочих. Торік з 48 учнів лабораторії
-                одинадцять навчалися в інших школах Житомира.
-              </div>
-            </details>
+        <details class="faq__item" name="faq">
+          <summary><span class="h3">Паяльник, інструменти – це безпечно?</span><span class="faq__sign" aria-hidden="true"></span></summary>
+          <p class="faq__answer">
+            До паяльних робіт учні допускаються з 9 класу та перші три заняття
+            працюють лише під наглядом викладача. Станції обладнані регулюванням
+            температури й димовідсосом, припій безсвинцевий. Учні молодших класів
+            збирають схеми на роз'ємних платах, де пайка не потрібна. За шість
+            років роботи лабораторії травм не було.
+          </p>
+        </details>
 
-            <details name="faq" class="faq border-b border-line dark:border-line-dark">
-              <summary><span class="t-h3 pr-4">Що треба купити до першого заняття?</span><span class="faq-sign text-brand dark:text-brand-300" aria-hidden="true"></span></summary>
-              <div class="faq-body t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] pb-6 max-w-[62ch]">
-                Лише зошит і ручку. Плати, інструмент, пластик для друку та
-                електронні компоненти надає лабораторія. Деталі, виготовлені
-                для власного проєкту, після захисту залишаються в учня.
-              </div>
-            </details>
+        <details class="faq__item" name="faq">
+          <summary><span class="h3">А якщо дитина обрала не той напрямок?</span><span class="faq__sign" aria-hidden="true"></span></summary>
+          <p class="faq__answer">
+            Перейти на інший напрямок можна протягом першого місяця – достатньо
+            повідомити викладача. Пізніше це складніше: група працює за програмою,
+            і наздогнати матеріал посеред модуля важко. Саме тому радимо почати
+            з пробного заняття.
+          </p>
+        </details>
 
-            <details name="faq" class="faq border-b border-line dark:border-line-dark">
-              <summary><span class="t-h3 pr-4">Паяльник, інструменти – це безпечно?</span><span class="faq-sign text-brand dark:text-brand-300" aria-hidden="true"></span></summary>
-              <div class="faq-body t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] pb-6 max-w-[62ch]">
-                До паяльних робіт учні допускаються з 9 класу та перші три заняття
-                працюють лише під наглядом викладача. Станції обладнані
-                регулюванням температури й димовідсосом, припій безсвинцевий.
-                Учні молодших класів збирають схеми на роз'ємних платах, де пайка
-                не потрібна. За шість років роботи лабораторії травм не було.
-              </div>
-            </details>
+        <details class="faq__item" name="faq">
+          <summary><span class="h3">Пропустив заняття – що робити?</span><span class="faq__sign" aria-hidden="true"></span></summary>
+          <p class="faq__answer">
+            Конспект і завдання викладач публікує в Telegram-групі напрямку.
+            Щоп'ятниці з 15:00 лабораторія відкрита для відпрацювань: можна
+            прийти й завершити пропущене. Попереджати заздалегідь не потрібно.
+          </p>
+        </details>
 
-            <details name="faq" class="faq border-b border-line dark:border-line-dark">
-              <summary><span class="t-h3 pr-4">А якщо дитина обрала не той напрямок?</span><span class="faq-sign text-brand dark:text-brand-300" aria-hidden="true"></span></summary>
-              <div class="faq-body t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] pb-6 max-w-[62ch]">
-                Перейти на інший напрямок можна протягом першого місяця – достатньо
-                повідомити викладача. Пізніше це складніше: група працює за
-                програмою, і наздогнати матеріал посеред модуля важко. Саме тому
-                радимо почати з пробного заняття.
-              </div>
-            </details>
-
-            <details name="faq" class="faq border-b border-line dark:border-line-dark">
-              <summary><span class="t-h3 pr-4">Пропустив заняття – що робити?</span><span class="faq-sign text-brand dark:text-brand-300" aria-hidden="true"></span></summary>
-              <div class="faq-body t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] pb-6 max-w-[62ch]">
-                Конспект і завдання викладач публікує в Telegram-групі напрямку.
-                Щоп'ятниці з 15:00 лабораторія відкрита для відпрацювань: можна
-                прийти й завершити пропущене. Попереджати заздалегідь не потрібно.
-              </div>
-            </details>
-
-            <details name="faq" class="faq border-b border-line dark:border-line-dark">
-              <summary><span class="t-h3 pr-4">Скільки дітей у групі?</span><span class="faq-sign text-brand dark:text-brand-300" aria-hidden="true"></span></summary>
-              <div class="faq-body t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] pb-6 max-w-[62ch]">
-                Не більше дванадцяти. Це не методика, а проста арифметика:
-                стільки в лабораторії обладнаних столів. Тринадцятий учень
-                означав би, що хтось цілий урок дивиться, як працює сусід.
-                Коли охочих більше, відкриваємо другу групу.
-              </div>
-            </details>
-
-          </div>
-        </div>
+        <details class="faq__item" name="faq">
+          <summary><span class="h3">Скільки дітей у групі?</span><span class="faq__sign" aria-hidden="true"></span></summary>
+          <p class="faq__answer">
+            Не більше дванадцяти. Це не методика, а проста арифметика: стільки
+            в лабораторії обладнаних столів. Тринадцятий учень означав би, що
+            хтось цілий урок дивиться, як працює сусід. Коли охочих більше,
+            відкриваємо другу групу.
+          </p>
+        </details>
       </div>
     </div>
   </section>
 
-  <!-- ══ News ══ -->
-  <section id="news" class="bg-paper dark:bg-night-900 py-16 lg:py-24">
-    <div class="mx-auto max-w-shell px-5 sm:px-8">
-      <h2 class="t-h2 mb-10">Новини лабораторії</h2>
+  <!-- ───────────────────────── Новини ───────────────────────── -->
+  <section class="section" id="news">
+    <div class="wrap">
+      <h2 class="h2 section__head">Новини лабораторії</h2>
 
-      <div class="divide-y divide-line dark:divide-line-dark border-t border-line dark:border-line-dark">
-
-        <article class="grid sm:grid-cols-[132px_1fr] gap-x-8 gap-y-2 py-7">
-          <time datetime="2026-10-21" class="nums text-[14.5px] text-fg-muted dark:text-fgd-muted sm:pt-1">21 жовтня 2026</time>
+      <div class="news">
+        <article class="news__item">
+          <time class="news__date nums" datetime="2026-10-21">21 жовтня 2026</time>
           <div>
-            <h3 class="t-h3 mb-2">Великий принтер знову в роботі</h3>
-            <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6] max-w-prose">
+            <h3 class="h3">Великий принтер знову в роботі</h3>
+            <p class="news__text prose">
               Екструдер забився ще на початку місяця, і три тижні група друкувала
               на трьох принтерах замість чотирьох. Запчастину чекали з Польщі.
               Полагодили у вівторок, черга на друк уже розсмокталася.
@@ -565,11 +483,11 @@
           </div>
         </article>
 
-        <article class="grid sm:grid-cols-[132px_1fr] gap-x-8 gap-y-2 py-7">
-          <time datetime="2026-09-10" class="nums text-[14.5px] text-fg-muted dark:text-fgd-muted sm:pt-1">10 вересня 2026</time>
+        <article class="news__item">
+          <time class="news__date nums" datetime="2026-09-10">10 вересня 2026</time>
           <div>
-            <h3 class="t-h3 mb-2">Набір на новий навчальний рік відкрито</h3>
-            <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6] max-w-prose">
+            <h3 class="h3">Набір на новий навчальний рік відкрито</h3>
+            <p class="news__text prose">
               Беремо на всі чотири напрямки. За літо з'явилися два нові FDM-принтери
               й комплект осцилографів, тож черги до приладу більше немає. Перше
               заняття безкоштовне – просто приходьте подивитися.
@@ -577,11 +495,11 @@
           </div>
         </article>
 
-        <article class="grid sm:grid-cols-[132px_1fr] gap-x-8 gap-y-2 py-7">
-          <time datetime="2026-05-29" class="nums text-[14.5px] text-fg-muted dark:text-fgd-muted sm:pt-1">29 травня 2026</time>
+        <article class="news__item">
+          <time class="news__date nums" datetime="2026-05-29">29 травня 2026</time>
           <div>
-            <h3 class="t-h3 mb-2">Друге місце на обласній олімпіаді з робототехніки</h3>
-            <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6] max-w-prose">
+            <h3 class="h3">Друге місце на обласній олімпіаді з робототехніки</h3>
+            <p class="news__text prose">
               Андрій Петренко та Віктор Сидоренко привезли друге місце в категорії
               автономних роботів. Готувалися півроку, а останній тиждень перед
               виїздом сиділи в лабораторії до сьомої вечора.
@@ -589,11 +507,11 @@
           </div>
         </article>
 
-        <article class="grid sm:grid-cols-[132px_1fr] gap-x-8 gap-y-2 py-7">
-          <time datetime="2026-03-14" class="nums text-[14.5px] text-fg-muted dark:text-fgd-muted sm:pt-1">14 березня 2026</time>
+        <article class="news__item">
+          <time class="news__date nums" datetime="2026-03-14">14 березня 2026</time>
           <div>
-            <h3 class="t-h3 mb-2">День відкритих дверей</h3>
-            <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6] max-w-prose">
+            <h3 class="h3">День відкритих дверей</h3>
+            <p class="news__text prose">
               Прийшло близько сімдесяти людей: батьки, учні, кілька вчителів
               із сусідніх шкіл. Показували обладнання й торішні проєкти,
               а на питання відповідали мало не до вечора.
@@ -601,253 +519,223 @@
           </div>
         </article>
 
-        <article class="grid sm:grid-cols-[132px_1fr] gap-x-8 gap-y-2 py-7">
-          <time datetime="2026-01-23" class="nums text-[14.5px] text-fg-muted dark:text-fgd-muted sm:pt-1">23 січня 2026</time>
+        <article class="news__item">
+          <time class="news__date nums" datetime="2026-01-23">23 січня 2026</time>
           <div>
-            <h3 class="t-h3 mb-2">Фінал хакатону «Розумне місто»</h3>
-            <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6] max-w-prose">
+            <h3 class="h3">Фінал хакатону «Розумне місто»</h3>
+            <p class="news__text prose">
               Система обліку води вийшла у фінал міського хакатону. Журі найбільше
               зачепило те, що пристрій уже рік працює в будівлі ліцею, а не існує
               лише в презентації.
             </p>
           </div>
         </article>
-
       </div>
 
-      <p class="t-body text-[15px] text-fg-muted dark:text-fgd-muted mt-10 max-w-prose">
+      <p class="news__more prose">
         Коротші новини й фото із занять викладаємо в
-        <a href="https://t.me/stemlab12" class="lnk">Telegram-каналі</a>.
+        <a class="link" href="https://t.me/stemlab12">Telegram-каналі</a>.
       </p>
     </div>
   </section>
 
-  <!-- ══ CTA, an inset panel rather than a full-bleed band ══ -->
-  <section class="bg-white dark:bg-night px-3 sm:px-5 lg:px-6 py-3 sm:py-5">
-    <div class="relative bg-ink rounded-[24px] sm:rounded-[34px] lg:rounded-[42px] overflow-hidden">
-      <div class="hero-wash" aria-hidden="true"></div>
-      <!-- Контейнер той самий, що й у секціях, щоб заголовок стояв на одній
-           вертикалі з рештою сторінки. -->
-      <div class="relative py-14 sm:py-16 lg:py-20">
-        <div class="mx-auto max-w-shell px-5 sm:px-8">
-          <div class="max-w-[46ch]">
-            <h2 class="t-h2 text-white mb-5">Почніть з одного пробного заняття</h2>
-            <p class="t-body text-white/75 mb-9 text-[17px] sm:text-[18.5px] leading-[1.6]">
+  <!-- ───────────────────────── Заклик до дії ───────────────────────── -->
+  <div class="bleed--last">
+    <section class="cta">
+      <div class="wash" aria-hidden="true"></div>
+      <div class="cta__body">
+        <div class="wrap">
+          <div class="cta__text">
+            <h2 class="h2" style="color:#fff">Почніть з одного пробного заняття</h2>
+            <p class="cta__lead">
               Приходьте подивитися, як працює лабораторія. Пробне заняття безкоштовне
               й ні до чого не зобов'язує – учень просто спробує обладнання, а ви
               познайомитеся з викладачем.
             </p>
-            <div class="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-3">
-              <button class="reg-trig btn btn-primary w-full sm:w-auto sm:px-7 sm:py-3.5 sm:text-[16px]">Записатися на пробне</button>
-              <a href="tel:+380412471230" class="btn btn-ghost-dark nums w-full sm:w-auto sm:px-7 sm:py-3.5 sm:text-[16px]">+38 (0412) 47-12-30</a>
+            <div class="cta__buttons">
+              <button class="btn btn--primary btn--big" data-open-form>Записатися на пробне</button>
+              <a class="btn btn--ghost btn--big nums" href="tel:+380412471230">+38 (0412) 47-12-30</a>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 
-  <!-- ══ Contacts ══ -->
-  <section id="contacts" class="bg-white dark:bg-night py-16 lg:py-24">
-    <div class="mx-auto max-w-shell px-5 sm:px-8">
-      <h2 class="t-h2 mb-10">Контакти</h2>
+  <!-- ───────────────────────── Контакти ───────────────────────── -->
+  <section class="section" id="contacts">
+    <div class="wrap">
+      <h2 class="h2 section__head">Контакти</h2>
 
-      <div class="grid lg:grid-cols-12 gap-x-14 gap-y-10">
-
-        <dl class="lg:col-span-5 divide-y divide-line dark:divide-line-dark border-t border-line dark:border-line-dark">
-          <div class="py-5">
-            <dt class="font-display font-bold text-[14px] mb-1.5">Адреса</dt>
-            <dd class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted">
-              вулиця Велика Бердичівська, 55, Житомир, 10002<br>
-              Ліцей №12, кабінет 301, третій поверх
-            </dd>
+      <div class="contacts">
+        <dl class="contacts__list">
+          <div>
+            <dt class="label">Адреса</dt>
+            <dd>вулиця Велика Бердичівська, 55, Житомир, 10002<br>Ліцей №12, кабінет 301, третій поверх</dd>
           </div>
-          <div class="py-5">
-            <dt class="font-display font-bold text-[14px] mb-1.5">Телефон</dt>
-            <dd class="text-[15.5px]"><a href="tel:+380412471230" class="lnk nums">+38 (0412) 47-12-30</a></dd>
+          <div>
+            <dt class="label">Телефон</dt>
+            <dd><a class="link nums" href="tel:+380412471230">+38 (0412) 47-12-30</a></dd>
           </div>
-          <div class="py-5">
-            <dt class="font-display font-bold text-[14px] mb-1.5">Електронна пошта</dt>
-            <dd class="text-[15.5px]"><a href="mailto:stem@liceum12.edu.ua" class="lnk">stem@liceum12.edu.ua</a></dd>
+          <div>
+            <dt class="label">Електронна пошта</dt>
+            <dd><a class="link" href="mailto:stem@liceum12.edu.ua">stem@liceum12.edu.ua</a></dd>
           </div>
-          <div class="py-5">
-            <dt class="font-display font-bold text-[14px] mb-1.5">Telegram</dt>
-            <dd class="text-[15.5px]"><a href="https://t.me/stemlab12" class="lnk">@stemlab12</a></dd>
+          <div>
+            <dt class="label">Telegram</dt>
+            <dd><a class="link" href="https://t.me/stemlab12">@stemlab12</a></dd>
           </div>
-          <div class="py-5">
-            <dt class="font-display font-bold text-[14px] mb-1.5">Коли можна зайти</dt>
-            <dd class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted nums">
-              Понеділок – п'ятниця, 14:00–18:00
-            </dd>
+          <div>
+            <dt class="label">Коли можна зайти</dt>
+            <dd class="nums">Понеділок – п'ятниця, 14:00–18:00</dd>
           </div>
         </dl>
 
-        <div class="lg:col-span-7">
-          <div class="rounded-[24px] overflow-hidden h-[320px] sm:h-[400px] lg:h-full lg:min-h-[420px] bg-paper dark:bg-night-800 ring-1 ring-line dark:ring-line-dark">
-            <iframe
-              src="https://www.google.com/maps?q=%D0%96%D0%B8%D1%82%D0%BE%D0%BC%D0%B8%D1%80%2C%20%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F%20%D0%92%D0%B5%D0%BB%D0%B8%D0%BA%D0%B0%20%D0%91%D0%B5%D1%80%D0%B4%D0%B8%D1%87%D1%96%D0%B2%D1%81%D1%8C%D0%BA%D0%B0%2C%2055&z=16&hl=uk&output=embed"
-              class="w-full h-full border-0"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              title="Розташування Ліцею №12 у Житомирі на карті"></iframe>
-          </div>
+        <div class="contacts__map">
+          <iframe
+            src="https://www.google.com/maps?q=%D0%96%D0%B8%D1%82%D0%BE%D0%BC%D0%B8%D1%80%2C%20%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F%20%D0%92%D0%B5%D0%BB%D0%B8%D0%BA%D0%B0%20%D0%91%D0%B5%D1%80%D0%B4%D0%B8%D1%87%D1%96%D0%B2%D1%81%D1%8C%D0%BA%D0%B0%2C%2055&z=16&hl=uk&output=embed"
+            title="Розташування Ліцею №12 у Житомирі на карті"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
-
       </div>
     </div>
   </section>
 
 </main>
 
-<!-- ══ Footer ══ -->
-<footer class="bg-ink text-fgd">
-  <div class="mx-auto max-w-shell px-5 sm:px-8 py-14">
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-10 pb-12 border-b border-white/10">
-
-      <div class="lg:col-span-2">
-        <p class="font-display font-extrabold text-[17px] tracking-[-.02em] text-white">STEM-лабораторія</p>
-        <p class="text-[14px] text-fgd-muted mt-1.5">Ліцей №12, місто Житомир</p>
-        <p class="t-body text-[14.5px] text-fgd-muted mt-5 max-w-[38ch]">
-          Робототехніка, 3D-прототипування, програмування та інтернет речей
+<!-- ───────────────────────── Підвал ───────────────────────── -->
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div class="footer__top">
+      <div>
+        <p class="footer__brand">STEM-лабораторія</p>
+        <p class="footer__place">Ліцей №12, місто Житомир</p>
+        <p class="footer__about">
+          Робототехніка, 3D-прототипування, програмування та розумні пристрої
           для учнів 7–11 класів.
         </p>
       </div>
 
-      <nav aria-label="Навігація у підвалі">
-        <p class="font-display font-bold text-[13px] text-white mb-4">Розділи</p>
-        <ul class="space-y-2.5 text-[14.5px]">
-          <li><a href="#about" class="text-fgd-muted hover:text-white transition-colors">Про лабораторію</a></li>
-          <li><a href="#programs" class="text-fgd-muted hover:text-white transition-colors">Напрямки</a></li>
-          <li><a href="#process" class="text-fgd-muted hover:text-white transition-colors">Як проходить навчання</a></li>
-          <li><a href="#projects" class="text-fgd-muted hover:text-white transition-colors">Проєкти учнів</a></li>
-          <li><a href="#teachers" class="text-fgd-muted hover:text-white transition-colors">Викладачі</a></li>
-          <li><a href="#faq" class="text-fgd-muted hover:text-white transition-colors">Питання та відповіді</a></li>
-          <li><a href="#news" class="text-fgd-muted hover:text-white transition-colors">Новини</a></li>
+      <nav aria-labelledby="footer-sections">
+        <h2 id="footer-sections">Розділи</h2>
+        <ul>
+          <li><a href="#about">Про лабораторію</a></li>
+          <li><a href="#programmes">Напрямки</a></li>
+          <li><a href="#process">Як проходить навчання</a></li>
+          <li><a href="#projects">Проєкти учнів</a></li>
+          <li><a href="#teacher">Викладачі</a></li>
+          <li><a href="#faq">Питання та відповіді</a></li>
+          <li><a href="#news">Новини</a></li>
         </ul>
       </nav>
 
       <div>
-        <p class="font-display font-bold text-[13px] text-white mb-4">Звʼязок</p>
-        <ul class="space-y-2.5 text-[14.5px]">
-          <li><a href="tel:+380412471230" class="text-fgd-muted hover:text-white transition-colors nums">+38 (0412) 47-12-30</a></li>
-          <li><a href="mailto:stem@liceum12.edu.ua" class="text-fgd-muted hover:text-white transition-colors">stem@liceum12.edu.ua</a></li>
-          <li><a href="https://t.me/stemlab12" class="text-fgd-muted hover:text-white transition-colors">Telegram</a></li>
+        <h2 id="footer-contact">Звʼязок</h2>
+        <ul>
+          <li><a class="nums" href="tel:+380412471230">+38 (0412) 47-12-30</a></li>
+          <li><a href="mailto:stem@liceum12.edu.ua">stem@liceum12.edu.ua</a></li>
+          <li><a href="https://t.me/stemlab12">Telegram</a></li>
         </ul>
-        <div class="flex gap-1 mt-6 -ml-2">
-          <a href="https://t.me/stemlab12" class="w-10 h-10 grid place-items-center text-fgd-muted hover:text-white transition-colors" aria-label="Telegram">
-            <svg class="w-[18px] h-[18px]" fill="currentColor" viewBox="0 0 24 24"><path d="M21.9 4.3l-3 14.2c-.2 1-.8 1.3-1.7.8l-4.6-3.4-2.2 2.1c-.3.3-.5.5-.9.5l.3-4.6 8.4-7.6c.4-.3-.1-.5-.6-.2L7.2 12.6 2.8 11.2c-1-.3-1-.9.2-1.4l17.5-6.7c.8-.3 1.5.2 1.4 1.2z"/></svg>
+        <div class="footer__social">
+          <a class="icon-btn" href="https://t.me/stemlab12" aria-label="Telegram">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3l-3 14.2c-.2 1-.8 1.3-1.7.8l-4.6-3.4-2.2 2.1c-.3.3-.5.5-.9.5l.3-4.6 8.4-7.6c.4-.3-.1-.5-.6-.2L7.2 12.6 2.8 11.2c-1-.3-1-.9.2-1.4l17.5-6.7c.8-.3 1.5.2 1.4 1.2z"/></svg>
           </a>
         </div>
       </div>
-
     </div>
 
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-7 text-[13px] text-fgd-muted">
-      <p>© 2026 STEM-лабораторія Ліцею №12, Житомир</p>
-    </div>
+    <p class="footer__bottom">© 2026 STEM-лабораторія Ліцею №12, Житомир</p>
   </div>
 </footer>
 
-<!-- ══ Registration modal ══ -->
-<div id="reg-modal" class="modal fixed inset-0 z-[70] flex items-end sm:items-center justify-center p-0 sm:p-5" role="dialog" aria-modal="true" aria-labelledby="reg-title">
-  <div class="modal-card bg-white dark:bg-night-900 w-full sm:max-w-[460px] max-h-[92vh] overflow-y-auto rounded-t-[22px] sm:rounded-[26px] shadow-2xl">
-    <div class="p-6 sm:p-7">
-      <div class="flex items-start justify-between gap-4 mb-1.5">
-        <h2 id="reg-title" class="t-h3">Записатися на пробне заняття</h2>
-        <button class="modal-x w-10 h-10 -mt-2 -mr-2 grid place-items-center rounded-full text-fg-muted dark:text-fgd-muted hover:bg-paper dark:hover:bg-night-800 transition-colors shrink-0" aria-label="Закрити">
-          <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
-        </button>
+<!-- ───────────────────────── Запис на заняття ───────────────────────── -->
+<div class="modal" id="enrol-modal" role="dialog" aria-modal="true" aria-labelledby="enrol-title">
+  <div class="modal__card">
+    <div class="modal__head">
+      <h2 class="h3" id="enrol-title">Записатися на пробне заняття</h2>
+      <button class="icon-btn" data-close-modal aria-label="Закрити">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <p class="modal__note">Ми зателефонуємо впродовж одного робочого дня й узгодимо час.</p>
+
+    <form class="form" id="enrol-form" novalidate>
+      <div>
+        <label for="f-name">Прізвище та ім'я учня</label>
+        <input class="field" id="f-name" type="text" placeholder="Ковальчук Олександр" autocomplete="name" required>
       </div>
-      <p class="t-body text-[14.5px] text-fg-muted dark:text-fgd-muted mb-6">
-        Ми зателефонуємо впродовж одного робочого дня й узгодимо час.
-      </p>
+      <div>
+        <label for="f-grade">Клас</label>
+        <select class="field" id="f-grade" required>
+          <option value="">Оберіть клас</option>
+          <option>7 клас</option>
+          <option>8 клас</option>
+          <option>9 клас</option>
+          <option>10 клас</option>
+          <option>11 клас</option>
+        </select>
+      </div>
+      <div>
+        <label for="f-course">Напрямок</label>
+        <select class="field" id="f-course" required>
+          <option value="">Оберіть напрямок</option>
+          <option>Робототехніка та мехатроніка</option>
+          <option>3D-моделювання та друк</option>
+          <option>Програмування Python</option>
+          <option>Розумні пристрої</option>
+          <option>Ще не визначився</option>
+        </select>
+      </div>
+      <div>
+        <label for="f-phone">Телефон батьків</label>
+        <input class="field nums" id="f-phone" type="tel" placeholder="+38 0XX XXX XX XX" autocomplete="tel" required>
+      </div>
+      <div>
+        <label for="f-email">Електронна пошта</label>
+        <input class="field" id="f-email" type="email" placeholder="pochta@example.com" autocomplete="email" required>
+      </div>
 
-      <form id="reg-form" class="space-y-4" novalidate>
-        <div>
-          <label for="f-name" class="block text-[14px] font-medium mb-1.5">Прізвище та ім'я учня</label>
-          <input id="f-name" type="text" class="field" placeholder="Ковальчук Олександр" autocomplete="name" required>
-        </div>
-        <div>
-          <label for="f-grade" class="block text-[14px] font-medium mb-1.5">Клас</label>
-          <select id="f-grade" class="field" required>
-            <option value="">Оберіть клас</option>
-            <option>7 клас</option>
-            <option>8 клас</option>
-            <option>9 клас</option>
-            <option>10 клас</option>
-            <option>11 клас</option>
-          </select>
-        </div>
-        <div>
-          <label for="f-course" class="block text-[14px] font-medium mb-1.5">Напрямок</label>
-          <select id="f-course" class="field" required>
-            <option value="">Оберіть напрямок</option>
-            <option>Робототехніка та мехатроніка</option>
-            <option>3D-моделювання та друк</option>
-            <option>Програмування Python</option>
-            <option>Інтернет речей</option>
-            <option>Ще не визначився</option>
-          </select>
-        </div>
-        <div>
-          <label for="f-phone" class="block text-[14px] font-medium mb-1.5">Телефон батьків</label>
-          <input id="f-phone" type="tel" class="field nums" placeholder="+38 0XX XXX XX XX" autocomplete="tel" required>
-        </div>
-        <div>
-          <label for="f-email" class="block text-[14px] font-medium mb-1.5">Електронна пошта</label>
-          <input id="f-email" type="email" class="field" placeholder="pochta@example.com" autocomplete="email" required>
-        </div>
+      <p class="form__message form__message--error" id="form-error" role="alert" hidden></p>
+      <p class="form__message form__message--ok" id="form-ok" role="status" hidden></p>
 
-        <p id="f-error" class="hidden text-[14px] text-red-700 dark:text-red-300 bg-red-50 dark:bg-red-950/50 px-3.5 py-2.5 rounded-lg" role="alert"></p>
-        <p id="f-ok" class="hidden text-[14px] text-brand dark:text-brand-300 bg-brand/10 dark:bg-brand-300/20 px-3.5 py-2.5 rounded-lg" role="status"></p>
+      <button class="btn btn--primary btn--block" type="submit">Надіслати заявку</button>
+      <p class="form__fineprint">Дані зберігаються лише у вашому браузері й нікуди не надсилаються.</p>
+    </form>
+  </div>
+</div>
 
-        <button type="submit" class="btn btn-primary w-full">Надіслати заявку</button>
-        <p class="t-body text-[13px] text-fg-muted dark:text-fgd-muted text-center">
-          Дані зберігаються лише у вашому браузері й нікуди не надсилаються.
-        </p>
-      </form>
+<!-- ───────────────────────── Кабінет заявок ───────────────────────── -->
+<div class="modal" id="cabinet-modal" role="dialog" aria-modal="true" aria-labelledby="cabinet-title">
+  <div class="modal__card">
+    <div class="modal__head">
+      <div>
+        <h2 class="h3" id="cabinet-title">Мої заявки</h2>
+        <p class="modal__note">Збережені на цьому пристрої</p>
+      </div>
+      <button class="icon-btn" data-close-modal aria-label="Закрити">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <div class="cabinet" id="cabinet-list"></div>
+    <div class="cabinet__empty" id="cabinet-empty" hidden>
+      <p>Поки що немає жодної заявки.</p>
+      <button class="btn btn--primary btn--small" data-open-form>Записатися на пробне</button>
     </div>
   </div>
 </div>
 
-<!-- ══ Cabinet modal ══ -->
-<div id="cab-modal" class="modal fixed inset-0 z-[70] flex items-end sm:items-center justify-center p-0 sm:p-5" role="dialog" aria-modal="true" aria-labelledby="cab-title">
-  <div class="modal-card bg-white dark:bg-night-900 w-full sm:max-w-[520px] max-h-[92vh] overflow-y-auto rounded-t-[22px] sm:rounded-[26px] shadow-2xl">
-    <div class="p-6 sm:p-7">
-      <div class="flex items-start justify-between gap-4 mb-6">
-        <div>
-          <h2 id="cab-title" class="t-h3">Мої заявки</h2>
-          <p class="text-[14px] text-fg-muted dark:text-fgd-muted mt-1">Збережені на цьому пристрої</p>
-        </div>
-        <button class="modal-x w-10 h-10 -mt-2 -mr-2 grid place-items-center rounded-full text-fg-muted dark:text-fgd-muted hover:bg-paper dark:hover:bg-night-800 transition-colors shrink-0" aria-label="Закрити">
-          <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
-        </button>
-      </div>
-      <div id="cab-list" class="divide-y divide-line dark:divide-line-dark border-t border-line dark:border-line-dark"></div>
-      <div id="cab-empty" class="hidden text-center py-10">
-        <p class="t-body text-[15px] text-fg-muted dark:text-fgd-muted mb-4">
-          Поки що немає жодної заявки.
-        </p>
-        <button class="reg-trig btn btn-primary btn-sm">Записатися на пробне</button>
-      </div>
+<!-- Рядок кабінету. Живе в розмітці, а не рядком усередині JS: текст
+     підставляється через textContent, тож екранування не потрібне. -->
+<template id="cabinet-row">
+  <div class="cabinet__row">
+    <div>
+      <p class="cabinet__name" data-name></p>
+      <p class="cabinet__course" data-course></p>
+      <p class="cabinet__when" data-when></p>
     </div>
-  </div>
-</div>
-
-<!-- Рядок кабінету. Живе тут, а не рядком усередині JS: розмітку видно
-     в HTML, а текст підставляється через textContent, тож екранування
-     не потрібне. Атрибути data-* – точки підстановки. -->
-<template id="cab-row">
-  <div class="flex items-start justify-between gap-4 py-4">
-    <div class="min-w-0">
-      <p data-name class="font-display font-bold text-[15.5px] tracking-[-.015em]"></p>
-      <p data-course class="text-[14px] text-brand dark:text-brand-300 font-medium mt-0.5"></p>
-      <p data-meta class="text-[13.5px] text-fg-muted dark:text-fgd-muted mt-1 nums"></p>
-    </div>
-    <button type="button" data-remove
-            class="w-10 h-10 -mr-2 grid place-items-center rounded-full shrink-0 text-fg-muted dark:text-fgd-muted hover:text-red-600 dark:hover:text-red-400 hover:bg-paper dark:hover:bg-night-800 transition-colors"
-            aria-label="Скасувати заявку">
-      <svg class="w-[17px] h-[17px]" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6m4-6v6M5.5 7l1 12.2A2 2 0 008.5 21h7a2 2 0 002-1.8L18.5 7M9 7V4.5A1.5 1.5 0 0110.5 3h3A1.5 1.5 0 0115 4.5V7"/></svg>
+    <button class="icon-btn cabinet__remove" data-remove aria-label="Скасувати заявку">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M10 11v6m4-6v6M5.5 7l1 12.2A2 2 0 008.5 21h7a2 2 0 002-1.8L18.5 7M9 7V4.5A1.5 1.5 0 0110.5 3h3A1.5 1.5 0 0115 4.5V7"/></svg>
     </button>
   </div>
 </template>
