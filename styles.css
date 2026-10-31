@@ -126,7 +126,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .h-hero {
   color: #fff;
   font-weight: 800;
-  font-size: clamp(2.15rem, 5.2vw, 4.15rem);
+  font-size: clamp(2.15rem, 6vw, 5.5rem);
   line-height: 1;
   letter-spacing: -.038em;
   text-wrap: balance;
@@ -471,16 +471,25 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   position: relative;
   display: flex;
   align-items: flex-end;
-  min-height: 35rem;
   margin-top: 4.625rem;        /* під фіксованою шапкою */
   border-radius: 0;            /* на всю ширину, тож кути не заокруглюємо */
   overflow: hidden;
+
+  /* Рівно одна висота екрана разом із шапкою. svh, а не vh, щоб на телефоні
+     не стрибало, коли зʼявляється й зникає панель браузера. */
+  min-height: calc(100vh - 4.625rem);
+  min-height: calc(100svh - 4.625rem);
 }
 .hero__photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .hero__shade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, var(--ink), rgba(10,20,19,.8) 45%, rgba(10,20,19,.25));
+  /* Два шари: один затемнює низ під текст, другий — лівий бік.
+     Разом дають темний кут під заголовком і світлий правий верх,
+     де лишається видно саме фото. */
+  background:
+    linear-gradient(to top, var(--ink) 0%, rgba(10,20,19,.55) 42%, rgba(10,20,19,0) 85%),
+    linear-gradient(to right, var(--ink) 0%, rgba(10,20,19,.5) 40%, rgba(10,20,19,0) 80%);
 }
 .hero__body { position: relative; z-index: 1; width: 100%; padding-block: 2.25rem; }
 .hero__text { max-width: 48rem; }
@@ -492,8 +501,22 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   color: rgba(255,255,255,.8);
   text-wrap: pretty;
 }
-.hero__buttons { display: flex; flex-direction: column; gap: .75rem; margin-bottom: 2rem; }
-.hero__note { font-size: .9062rem; color: rgba(255,255,255,.65); }
+.hero__buttons { display: flex; flex-direction: column; gap: .75rem; }
+
+/* Смужка по низу героя: заповнює праву половину, яка інакше порожня,
+   і відповідає на перші три питання ще до прокрутки. */
+.hero__strip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: .75rem 2rem;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,.16);
+}
+.hero__facts { display: flex; flex-wrap: wrap; gap: .5rem 2rem; }
+.hero__note,
+.hero__facts li { font-size: .9062rem; color: rgba(255,255,255,.7); }
 .hero__dot {
   display: inline-block;
   width: .375rem;
@@ -828,6 +851,8 @@ select.field {
 .rise:nth-child(2) { animation-delay: .09s; }
 .rise:nth-child(3) { animation-delay: .18s; }
 .rise:nth-child(4) { animation-delay: .27s; }
+/* Смужка лежить поза .hero__text, тож порядок дітей її не враховує */
+.hero__strip.rise { animation-delay: .27s; }
 
 @keyframes rise { to { opacity: 1; transform: none; filter: blur(0); } }
 
@@ -838,7 +863,6 @@ select.field {
 
   .section { padding-block: 5rem; }
 
-  .hero { min-height: 37.5rem; }
   .hero__body { padding-block: 3rem; }
   .hero__buttons, .cta__buttons { flex-direction: row; flex-wrap: wrap; align-items: center; }
   .hero__lead { font-size: 1.1875rem; }
@@ -876,7 +900,11 @@ select.field {
   .nav { display: flex; align-items: center; justify-content: center; gap: 1.25rem; }
   #menu-btn { display: none; }
 
-  .hero { min-height: 42.5rem; margin-top: 5.75rem; }
+  .hero {
+    margin-top: 5.75rem;
+    min-height: calc(100vh - 5.75rem);
+    min-height: calc(100svh - 5.75rem);
+  }
   .hero__body { padding-block: 4rem; }
   .hero__lead { font-size: 1.25rem; }
 
