@@ -357,57 +357,64 @@
     <div class="mx-auto max-w-shell px-5 sm:px-8">
       <h2 class="t-h2 mb-10">Що учні зробили цього року</h2>
 
-      <div class="grid lg:grid-cols-12 gap-5">
+      <!-- Головний проєкт горизонтально, решта — записами під лінією,
+           тим самим прийомом, що й напрямки. -->
+      <article class="grid lg:grid-cols-12 gap-x-12 gap-y-6 items-start lg:items-center mb-14 lg:mb-16">
+        <figure class="lg:col-span-5 ph ph-tone rounded-[24px] aspect-[16/10] w-full"
+                data-label="Автоматичний полив у кабінеті біології">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&h=750&q=80"
+               alt="Плата з мікроконтролером і датчиками системи поливу"
+               width="1000" height="750" loading="lazy"
+               onerror="this.parentNode.classList.add('ph-fail');this.remove();">
+        </figure>
 
-        <article class="card bg-white dark:bg-night-800 rounded-[24px] overflow-hidden lg:col-span-7 flex flex-col">
-          <figure class="ph ph-tone h-[220px] sm:h-[300px]" data-label="Автоматичний полив у кабінеті біології">
-            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&h=700&q=80"
-                 alt="Плата з мікроконтролером і датчиками системи поливу"
-                 width="1200" height="700" loading="lazy"
-                 onerror="this.parentNode.classList.add('ph-fail');this.remove();">
-          </figure>
-          <div class="p-7 lg:p-8">
-            <h3 class="t-h3 mb-2">Автополив для кабінету біології</h3>
-            <p class="text-[14px] text-fg-muted dark:text-fgd-muted mb-4 nums">
-              Андрій Петренко, 10 клас. Інтернет речей, 2026 рік
-            </p>
-            <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6]">
-              Шість вазонів, датчики вологості ґрунту, помпа й ESP32. Поливає,
-              коли земля пересихає, і пише в Telegram, якщо в баку закінчилась
-              вода. Стоїть у кабінеті 214 з березня. Відтоді не загинула жодна
-              рослина – включно з тими, що раніше не переживали канікул.
-            </p>
-          </div>
+        <div class="lg:col-span-7">
+          <h3 class="t-h3 mb-1.5">Автополив для кабінету біології</h3>
+          <p class="text-[14.5px] text-fg-muted dark:text-fgd-muted mb-4">
+            Андрій Петренко, 10 клас. Інтернет речей, 2026 рік
+          </p>
+          <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] max-w-prose">
+            Шість вазонів, датчики вологості ґрунту, помпа й ESP32. Поливає, коли
+            земля пересихає, і пише в Telegram, якщо в баку закінчилась вода.
+            Стоїть у кабінеті 214 з березня. Відтоді не загинула жодна рослина –
+            включно з тими, що раніше не переживали канікул. Вчителька біології
+            просить тепер таке саме для теплиці.
+          </p>
+        </div>
+      </article>
+
+      <div class="grid md:grid-cols-2 gap-x-14 gap-y-10">
+
+        <article class="border-t border-line dark:border-line-dark pt-6">
+          <h3 class="t-h3 mb-1.5">Облік води по корпусах</h3>
+          <p class="text-[14.5px] text-fg-muted dark:text-fgd-muted mb-4">
+            Назар Гриценко, 11 клас. Інтернет речей, 2026 рік
+          </p>
+          <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] max-w-prose">
+            Лічильники на два корпуси, дані збираються у звичайну таблицю.
+            Завгосп тепер бачить добову витрату – і на третьому тижні роботи
+            знайшов за нею протікання в підвалі, про яке ніхто не здогадувався.
+          </p>
         </article>
 
-        <div class="lg:col-span-5 grid sm:grid-cols-2 lg:grid-cols-1 gap-5">
+        <article class="border-t border-line dark:border-line-dark pt-6">
+          <h3 class="t-h3 mb-1.5">Навчальна модель кисті</h3>
+          <p class="text-[14.5px] text-fg-muted dark:text-fgd-muted mb-4">
+            Марія Ковальчук, 11 клас. 3D-моделювання, 2026 рік
+          </p>
+          <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.65] max-w-prose">
+            Сорок дві надруковані деталі, п'ять сервоприводів. Пальці згинаються
+            окремо й повторюють жест із рукавички-контролера. Це вже друга версія:
+            перша розвалилася під вагою власних приводів.
+          </p>
+        </article>
 
-          <article class="card bg-white dark:bg-night-800 rounded-[24px] p-7 flex flex-col">
-            <h3 class="t-h3 mb-2">Облік води по корпусах</h3>
-            <p class="text-[14px] text-fg-muted dark:text-fgd-muted mb-4 nums">
-              Назар Гриценко, 11 клас. Інтернет речей, 2026 рік
-            </p>
-            <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6]">
-              Лічильники на два корпуси, дані збираються у звичайну таблицю.
-              Завгосп тепер бачить добову витрату – і на третьому тижні роботи
-              знайшов за нею протікання в підвалі, про яке ніхто не здогадувався.
-            </p>
-          </article>
-
-          <article class="card bg-white dark:bg-night-800 rounded-[24px] p-7 flex flex-col">
-            <h3 class="t-h3 mb-2">Навчальна модель кисті</h3>
-            <p class="text-[14px] text-fg-muted dark:text-fgd-muted mb-4 nums">
-              Марія Ковальчук, 11 клас. 3D-моделювання, 2026 рік
-            </p>
-            <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6]">
-              Сорок дві надруковані деталі, п'ять сервоприводів. Пальці згинаються
-              окремо й повторюють жест із рукавички-контролера. Це вже друга
-              версія: перша розвалилася під вагою власних приводів.
-            </p>
-          </article>
-
-        </div>
       </div>
+
+      <p class="t-body text-[15px] text-fg-muted dark:text-fgd-muted mt-10 max-w-prose">
+        Захист проєктів відкритий – прийти подивитися може будь-хто,
+        домовлятися заздалегідь не треба.
+      </p>
     </div>
   </section>
 
@@ -547,6 +554,18 @@
       <div class="divide-y divide-line dark:divide-line-dark border-t border-line dark:border-line-dark">
 
         <article class="grid sm:grid-cols-[132px_1fr] gap-x-8 gap-y-2 py-7">
+          <time datetime="2026-10-21" class="nums text-[14.5px] text-fg-muted dark:text-fgd-muted sm:pt-1">21 жовтня 2026</time>
+          <div>
+            <h3 class="t-h3 mb-2">Великий принтер знову в роботі</h3>
+            <p class="t-body text-[15.5px] text-fg-muted dark:text-fgd-muted leading-[1.6] max-w-prose">
+              Екструдер забився ще на початку місяця, і три тижні група друкувала
+              на трьох принтерах замість чотирьох. Запчастину чекали з Польщі.
+              Полагодили у вівторок, черга на друк уже розсмокталася.
+            </p>
+          </div>
+        </article>
+
+        <article class="grid sm:grid-cols-[132px_1fr] gap-x-8 gap-y-2 py-7">
           <time datetime="2026-09-10" class="nums text-[14.5px] text-fg-muted dark:text-fgd-muted sm:pt-1">10 вересня 2026</time>
           <div>
             <h3 class="t-h3 mb-2">Набір на новий навчальний рік відкрито</h3>
@@ -595,6 +614,11 @@
         </article>
 
       </div>
+
+      <p class="t-body text-[15px] text-fg-muted dark:text-fgd-muted mt-10 max-w-prose">
+        Коротші новини й фото із занять викладаємо в
+        <a href="https://t.me/stemlab12" class="lnk">Telegram-каналі</a>.
+      </p>
     </div>
   </section>
 
@@ -720,7 +744,6 @@
 
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-7 text-[13px] text-fgd-muted">
       <p>© 2026 STEM-лабораторія Ліцею №12, Житомир</p>
-      <p>Навчання безкоштовне для учнів ліцею</p>
     </div>
   </div>
 </footer>
