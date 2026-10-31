@@ -27,7 +27,8 @@
   --ease: cubic-bezier(.2, 0, 0, 1);
 
   --wrap: 1280px;          /* спільна ширина контенту */
-  --gutter: 1.25rem;
+  --gutter: 1.25rem;       /* поле колонки */
+  --panel-inset: .75rem;   /* відступ панелі від краю екрана */
   --radius: 24px;          /* заокруглення панелей */
 }
 
@@ -160,8 +161,18 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .section__head { margin-bottom: 2.5rem; }
 
 /* Панелі (герой, фотосмуга, заклик) трохи відступають від країв екрана */
-.bleed { padding: .75rem .75rem 0; }
-.bleed--last { padding-block: .75rem; }
+/* Панелі: герой, фотосмуги, заклик. Ширші за колонку тексту,
+   але ніколи не ширші за неї разом із полями. */
+.bleed {
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding: .75rem var(--panel-inset);
+}
+
+/* Колонка всередині панелі вже зсунута на відступ самої панелі,
+   тож віднімаємо його. Інакше текст у панелі стоїть правіше
+   за заголовки секцій. */
+.bleed .wrap { padding-inline: calc(var(--gutter) - var(--panel-inset)); }
 
 /* Кнопки й посилання */
 
@@ -820,11 +831,10 @@ select.field {
 /* Ширші екрани */
 
 @media (min-width: 640px) {
-  :root { --gutter: 2rem; --radius: 34px; }
+  :root { --gutter: 2rem; --radius: 34px; --panel-inset: 1.25rem; }
 
   .section { padding-block: 5rem; }
-  .bleed { padding: 1.25rem 1.25rem 0; }
-  .bleed--last { padding-block: 1.25rem; }
+  .bleed { padding-block: 1.25rem; }
 
   .hero { min-height: 37.5rem; }
   .hero__body { padding-block: 3rem; }
@@ -854,7 +864,8 @@ select.field {
 
 @media (min-width: 1200px) {
   .section { padding-block: 6rem; }
-  :root { --radius: 42px; }
+  /* край панелі лягає на край колонки */
+  :root { --radius: 42px; --panel-inset: 0rem; }
 
   .header__bar { height: 5.75rem; }
   .logo img { width: 2.5rem; height: 2.5rem; }
