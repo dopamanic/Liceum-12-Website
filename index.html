@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STEM-лабораторія</title>
+<meta name="description" content="STEM-лабораторія Ліцею №12 у Житомирі: робототехніка, 3D-друк, програмування Python та розумні пристрої для учнів 7–11 класів. Навчання безкоштовне.">
+<meta name="theme-color" content="#0A1413">
+<meta property="og:title" content="STEM-лабораторія — Ліцей №12, Житомир">
+<meta property="og:description" content="Робототехніка, 3D-друк, програмування та розумні пристрої для учнів 7–11 класів.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dopamanic.github.io/Liceum-12-Website/">
+<meta property="og:image" content="https://dopamanic.github.io/Liceum-12-Website/photo/logo.png">
+<meta name="twitter:card" content="summary">
+
+<link rel="icon" href="photo/logo.png" type="image/png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=3">
+
+<script>
+  try {
+    if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
+  } catch (e) {}
+
+  addEventListener('error', function (event) {
+    var img = event.target;
+    if (img.tagName === 'IMG' && img.parentNode.classList.contains('photo')) {
+      img.parentNode.classList.add('photo--failed');
+      img.remove();
+    }
+  }, true);
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Перейти до вмісту</a>
+
+<header class="header" id="header">
+  <div class="wrap header__bar">
+
+    <a class="logo" href="#" aria-label="STEM-лабораторія, Ліцей №12, Житомир">
+      <img src="photo/logo.png" alt="" width="191" height="190" aria-hidden="true">
+      <span class="logo__text">
+        <span class="logo__name">STEM-лабораторія</span>
+        <span class="logo__place">Ліцей №12, Житомир</span>
+      </span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Основна навігація">
+      <a class="nav__link" href="#about">Про нас</a>
+
+      <div class="menu" data-menu>
+        <button class="nav__link menu__button" type="button" data-section="#programmes"
+                aria-expanded="false" aria-controls="menu-programmes">
+          Напрямки
+          <svg class="menu__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg>
+        </button>
+        <div class="menu__pop" id="menu-programmes">
+          <div class="menu__card">
+            <a class="menu__item" href="#programmes"><b>Робототехніка та мехатроніка</b><span>7–11 клас, дев’ять місяців</span></a>
+            <a class="menu__item" href="#programmes"><b>3D-моделювання та друк</b><span>8–11 клас, шість місяців</span></a>
+            <a class="menu__item" href="#programmes"><b>Програмування Python</b><span>7–11 клас, дев’ять місяців</span></a>
+            <a class="menu__item" href="#programmes"><b>Розумні пристрої</b><span>9–11 клас, шість місяців</span></a>
+          </div>
+        </div>
+      </div>
+
+      <a class="nav__link" href="#projects">Проєкти</a>
+      <a class="nav__link" href="#teacher">Викладачі</a>
+      <a class="nav__link" href="#faq">Питання</a>
+      <a class="nav__link" href="#contacts">Контакти</a>
+    </nav>
+
+    <div class="actions">
+      <span class="actions__divider" aria-hidden="true"></span>
+      <a class="actions__phone nums" href="tel:+380412473960">+38 (0412) 47-39-60</a>
+
+      <button class="icon-btn" id="theme-btn" aria-label="Перемкнути тему">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.2m0 15.6V22M3.5 12H5.7m12.6 0h2.2M5.9 5.9l1.6 1.6m9 9l1.6 1.6m0-12.2l-1.6 1.6m-9 9l-1.6 1.6"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" hidden><path d="M20.5 14.3A8.6 8.6 0 019.7 3.5 8.8 8.8 0 1020.5 14.3z"/></svg>
+      </button>
+
+      <button class="icon-btn actions__cabinet" id="cabinet-btn" data-open-cabinet aria-label="Кабінет">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="8" r="3.6"/><path d="M4.8 20.2a7.2 7.2 0 0114.4 0"/></svg>
+      </button>
+
+      <button class="btn btn--primary" data-open-form>Записатися</button>
+
+      <button class="icon-btn actions__burger" id="menu-btn" aria-label="Відкрити меню" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="drawer" id="drawer">
+  <div class="drawer__backdrop" data-close-drawer></div>
+  <div class="drawer__panel">
+    <div class="drawer__head">
+      STEM-лабораторія
+      <button class="icon-btn" data-close-drawer aria-label="Закрити меню">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <nav class="drawer__nav" aria-label="Мобільна навігація">
+      <a class="drawer__link" href="#about">Про лабораторію</a>
+      <a class="drawer__link" href="#programmes">Напрямки</a>
+      <a class="drawer__link" href="#process">Як проходить навчання</a>
+      <a class="drawer__link" href="#projects">Проєкти учнів</a>
+      <a class="drawer__link" href="#teacher">Викладачі</a>
+      <a class="drawer__link" href="#faq">Питання та відповіді</a>
+      <a class="drawer__link" href="#news">Новини</a>
+      <a class="drawer__link" href="#contacts">Контакти</a>
+    </nav>
+    <div class="drawer__foot">
+      <a class="drawer__phone nums" href="tel:+380412473960">+38 (0412) 47-39-60</a>
+      <button class="btn btn--outline btn--block" data-open-cabinet>Кабінет</button>
+      <button class="btn btn--primary btn--block" data-open-form>Записатися</button>
+    </div>
+  </div>
+</div>
+
+<main id="main">
+
+  <section class="hero">
+    <figure class="hero__media photo" data-label="Кабінет STEM-лабораторії">
+      <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=2400&h=1400&q=80"
+           alt="Учень налаштовує робота на лабораторному столі"
+           width="2400" height="1400" fetchpriority="high">
+    </figure>
+
+    <div class="wrap hero__inner">
+      <div class="hero__text">
+        <h1>
+          <span class="h-hero rise">STEM-лабораторія</span>
+          <span class="h-hero-sub rise">Ліцею №12, Житомир</span>
+        </h1>
+
+        <p class="hero__lead rise">
+          Робототехніка, 3D-прототипування, програмування та розумні пристрої
+          для учнів 7–11&nbsp;класів. Чотири напрямки, власне обладнання,
+          навчання безкоштовне для ліцеїстів.
+        </p>
+
+        <div class="hero__buttons rise">
+          <button class="btn btn--primary btn--big" data-open-form>Записатися на пробне заняття</button>
+          <a class="btn btn--ghost btn--big" href="#programmes">Дивитися напрямки</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="wrap about">
+      <div>
+        <h2 class="h2">Інженерна практика замість переказу підручника</h2>
+        <div class="about__text">
+          <p class="prose">
+            Лабораторію створено у 2020&nbsp;році за підтримки управління освіти
+            Житомирської міської ради. Ми працюємо за проєктним принципом: кожен
+            учень веде власну розробку від ідеї до робочого прототипу й захищає
+            її перед комісією в кінці курсу.
+          </p>
+          <p class="prose">
+            Вісімдесят відсотків часу занять – це робота руками: збирання схем,
+            друк деталей, написання та відлагодження коду. Теорію даємо тоді, коли
+            вона потрібна для наступного кроку в проєкті, а не окремим блоком наперед.
+          </p>
+          <p class="prose">
+            Заняття веде інженер, який поєднує роботу в галузі з викладанням.
+            У групі – до 12&nbsp;учнів, щоб кожен мав доступ до обладнання
+            на кожному занятті.
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="h3">Обладнання лабораторії</h3>
+        <div class="kit">
+          <h4 class="kit__name">Робототехніка та електроніка</h4>
+          <ul>
+            <li>Комплект з робототехніки DIYGO AI №2</li>
+            <li>Навчальний набір Arduino Starter Kit</li>
+            <li>Маніпулятор 4DOF для Arduino</li>
+            <li>Робот-автомобіль 4WD BT Robot Car V2.0</li>
+          </ul>
+        </div>
+
+        <div class="kit">
+          <h4 class="kit__name">Мехатроніка</h4>
+          <ul>
+            <li>fischertechnik «Сортувальна лінія»</li>
+            <li>fischertechnik «Пневматика»</li>
+            <li>fischertechnik, модель 6-осьового робота</li>
+            <li>Автоматизовані конвеєрні системи</li>
+          </ul>
+        </div>
+
+        <div class="kit">
+          <h4 class="kit__name">3D-друк і сканування</h4>
+          <ul>
+            <li>3D-принтери FDM</li>
+            <li>3D-сканер, тип 1</li>
+          </ul>
+        </div>
+
+        <div class="kit">
+          <h4 class="kit__name">Віртуальна реальність</h4>
+          <ul>
+            <li>Шоломи Meta Quest 3</li>
+          </ul>
+        </div>
+      </div>
+
+      <ul class="shots">
+        <li class="photo" data-label="Маніпулятор">
+          <img src="photo/manipulyator.jpg" alt="Пневматичний маніпулятор fischertechnik на пульті керування"
+               width="900" height="1100" loading="lazy">
+        </li>
+        <li class="photo" data-label="Крокуючий робот">
+          <img src="photo/roboty-2.jpg" alt="Крокуючий робот на сервоприводах зі світлодіодною матрицею"
+               width="900" height="1100" loading="lazy">
+        </li>
+        <li class="photo" data-label="Meta Quest 3">
+          <img src="photo/vr.jpg" alt="Шолом віртуальної реальності Meta Quest 3 із контролерами на підставці"
+               width="900" height="1100" loading="lazy">
+        </li>
+      </ul>
+    </div>
+  </section>
+
+
+  <section class="section" id="programmes">
+    <div class="wrap">
+      <div class="programmes__head">
+        <h2 class="h2">Чотири напрямки навчання</h2>
+        <button class="btn btn--primary" data-open-form>Обрати напрямок</button>
+      </div>
+
+      <div class="entries">
+        <article class="entry">
+          <div class="entry__shot photo">
+            <img src="photo/napryam-roboty.jpg" alt="Крокуючі роботи на сервоприводах зі світлодіодними матрицями"
+                 width="1000" height="750" loading="lazy">
+          </div>
+          <h3 class="h3">Робототехніка та мехатроніка</h3>
+          <p class="entry__meta">Для 7–11 класів, дев’ять місяців</p>
+          <p class="entry__text prose">
+            Датчики, приводи і зворотний зв’язок: як зробити так, щоб механізм сам
+            реагував на те, що навколо. Пишемо для Arduino, збираємо рухомі
+            конструкції. Торік на захисті показували робота, який розкладає
+            деталі за кольором.
+          </p>
+          <button class="link" data-open-form data-course="Робототехніка та мехатроніка">Записатися</button>
+        </article>
+
+        <article class="entry">
+          <div class="entry__shot photo">
+            <img src="photo/napryam-druk.jpg" alt="Котушки філаменту та обладнання для 3D-друку на полиці лабораторії"
+                 width="1000" height="750" loading="lazy">
+          </div>
+          <h3 class="h3">3D-моделювання та друк</h3>
+          <p class="entry__meta">Для 8–11 класів, шість місяців</p>
+          <p class="entry__text prose">
+            Моделюємо у Fusion&nbsp;360 і одразу друкуємо, щоб побачити, де модель
+            розходиться з реальністю. FDM і фотополімер, допуски, посадки,
+            постобробка. Перша деталь зазвичай не стає на місце – і це
+            найкорисніше заняття курсу.
+          </p>
+          <button class="link" data-open-form data-course="3D-моделювання та друк">Записатися</button>
+        </article>
+
+        <article class="entry">
+          <div class="entry__shot photo">
+            <img src="photo/napryam-kod.jpg" alt="Плати й навчальні роботи, які учні програмують на заняттях"
+                 width="1000" height="750" loading="lazy">
+          </div>
+          <h3 class="h3">Програмування Python</h3>
+          <p class="entry__meta">Для 7–11 класів, дев’ять місяців</p>
+          <p class="entry__text prose">
+            Від перших рядків до програм, якими справді користуються: обробка даних,
+            телеграм-боти, невеликі вебзастосунки. Наприкінці кожен робить власний
+            застосунок із базою даних. Хто хоче глибше – окремий трек підготовки
+            до олімпіад з інформатики.
+          </p>
+          <button class="link" data-open-form data-course="Програмування Python">Записатися</button>
+        </article>
+
+        <article class="entry">
+          <div class="entry__shot photo">
+            <img src="photo/napryam-prystroi.jpg" alt="Конвеєрна лінія з контролером, зібрана в лабораторії"
+                 width="1000" height="750" loading="lazy">
+          </div>
+          <h3 class="h3">Розумні пристрої</h3>
+          <p class="entry__meta">Для 9–11 класів, шість місяців</p>
+          <p class="entry__text prose">
+            Пристрої, які збирають дані й віддають їх далі: ESP32, Raspberry&nbsp;Pi,
+            протокол MQTT. Метеостанція, облік води чи світла, автоматика, якою
+            можна керувати з телефону. Курс закінчується станцією, що працює
+            і доступна віддалено.
+          </p>
+          <button class="link" data-open-form data-course="Розумні пристрої">Записатися</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="process">
+    <div class="wrap process">
+      <div>
+        <h2 class="h2">Як проходить навчання</h2>
+      </div>
+      <div class="process__text">
+        <p class="prose">
+          Спершу пробне заняття. Учень приходить, працює на справжньому обладнанні
+          й дивиться, чи це взагалі його. Батьки за цей час встигають подивитися
+          лабораторію та поговорити з викладачем. Підписувати нічого не треба,
+          і платити теж.
+        </p>
+        <p class="prose">
+          Далі десять тижнів базового модуля, двічі на тиждень. Кожне заняття має
+          закінчитися чимось робочим: схемою, надрукованою деталлю, скриптом, який
+          запускається. Теорію даємо тоді, коли без неї не зробити наступний крок,
+          а не окремим блоком наперед.
+        </p>
+        <p class="prose">
+          Решту курсу учень веде власний проєкт. Тему обирає сам, викладач підказує
+          й страхує від глухих кутів. У кінці – захист перед комісією: показати, що
+          працює, і пояснити, чому зроблено саме так. З найсильнішими роботами
+          їдемо на міські та обласні олімпіади.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section gallery" aria-labelledby="gallery-title">
+    <div class="wrap gallery__head">
+      <h2 class="h2" id="gallery-title">Лабораторія зсередини</h2>
+      <p class="gallery__note">Те, з чим учні працюють на кожному занятті: від крокуючих роботів до шолома віртуальної реальності.</p>
+    </div>
+
+    <div class="marquee">
+      <ul class="marquee__track">
+        <li class="photo">
+          <img src="photo/lab-room.jpg" alt="Кабінет лабораторії: шафи з наборами робототехніки та мехатронними моделями" width="960" height="720" loading="lazy">
+        </li>
+        <li class="photo">
+          <img src="photo/robot-arm.jpg" alt="Модель 6-осьового робота fischertechnik" width="540" height="720" loading="lazy">
+        </li>
+        <li class="photo">
+          <img src="photo/robots-walking.jpg" alt="Два крокуючі роботи на сервоприводах зі світлодіодними матрицями" width="960" height="720" loading="lazy">
+        </li>
+        <li class="photo">
+          <img src="photo/sorting-line.jpg" alt="Сортувальна лінія fischertechnik з контролером" width="960" height="720" loading="lazy">
+        </li>
+        <li class="photo">
+          <img src="photo/vr-quest.jpg" alt="Шолом віртуальної реальності Meta Quest 3 із контролерами на підставці" width="540" height="720" loading="lazy">
+        </li>
+        <li class="photo">
+          <img src="photo/pneumatics.jpg" alt="Пневматична модель fischertechnik" width="960" height="720" loading="lazy">
+        </li>
+        <li class="photo">
+          <img src="photo/car-4wd.jpg" alt="Робот-автомобіль 4WD на Arduino" width="960" height="720" loading="lazy">
+        </li>
+        <li class="photo">
+          <img src="photo/robots-pair.jpg" alt="Крокуючі роботи різного розміру на полиці" width="960" height="720" loading="lazy">
+        </li>
+        <li class="photo" aria-hidden="true">
+          <img src="photo/lab-room.jpg" alt="" width="960" height="720" loading="lazy">
+        </li>
+        <li class="photo" aria-hidden="true">
+          <img src="photo/robot-arm.jpg" alt="" width="540" height="720" loading="lazy">
+        </li>
+        <li class="photo" aria-hidden="true">
+          <img src="photo/robots-walking.jpg" alt="" width="960" height="720" loading="lazy">
+        </li>
+        <li class="photo" aria-hidden="true">
+          <img src="photo/sorting-line.jpg" alt="" width="960" height="720" loading="lazy">
+        </li>
+        <li class="photo" aria-hidden="true">
+          <img src="photo/vr-quest.jpg" alt="" width="540" height="720" loading="lazy">
+        </li>
+        <li class="photo" aria-hidden="true">
+          <img src="photo/pneumatics.jpg" alt="" width="960" height="720" loading="lazy">
+        </li>
+        <li class="photo" aria-hidden="true">
+          <img src="photo/car-4wd.jpg" alt="" width="960" height="720" loading="lazy">
+        </li>
+        <li class="photo" aria-hidden="true">
+          <img src="photo/robots-pair.jpg" alt="" width="960" height="720" loading="lazy">
+        </li>
+      </ul>
+    </div>
+  </section>
+
+
+  <section class="section" id="projects">
+    <div class="wrap">
+      <h2 class="h2 section__head">Що учні зробили цього року</h2>
+
+      <div class="works">
+        <article class="work">
+          <h3 class="work__name">Автополив для кабінету біології</h3>
+          <p class="work__by">Андрій Петренко, 10 клас. Розумні пристрої, 2026 рік</p>
+          <p class="work__text prose">
+            Шість вазонів, датчики вологості ґрунту, помпа й ESP32. Поливає, коли
+            земля пересихає, і пише в Telegram, якщо в баку закінчилась вода.
+            Стоїть у кабінеті 214 з березня. Відтоді не загинула жодна рослина –
+            включно з тими, що раніше не переживали канікул. Вчителька біології
+            просить тепер таке саме для теплиці.
+          </p>
+        </article>
+
+        <article class="work">
+          <h3 class="work__name">Облік води по корпусах</h3>
+          <p class="work__by">Назар Гриценко, 11 клас. Розумні пристрої, 2026 рік</p>
+          <p class="work__text prose">
+            Лічильники на два корпуси, дані збираються у звичайну таблицю.
+            Завгосп тепер бачить добову витрату – і на третьому тижні роботи
+            знайшов за нею протікання в підвалі, про яке ніхто не здогадувався.
+          </p>
+        </article>
+
+        <article class="work">
+          <h3 class="work__name">Навчальна модель кисті</h3>
+          <p class="work__by">Марія Ковальчук, 11 клас. 3D-моделювання, 2026 рік</p>
+          <p class="work__text prose">
+            Сорок дві надруковані деталі, п’ять сервоприводів. Пальці згинаються
+            окремо й повторюють жест із рукавички-контролера. Це вже друга версія:
+            перша розвалилася під вагою власних приводів.
+          </p>
+        </article>
+      </div>
+
+      <p class="projects__note prose">
+        Захист проєктів відкритий – прийти подивитися може будь-хто,
+        домовлятися заздалегідь не треба.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="teacher">
+    <div class="wrap">
+      <h2 class="h2 section__head">Хто веде заняття</h2>
+
+      <div class="teacher">
+        <figure class="photo photo--portrait" data-label="АЛ">
+          <img src="photo/vykladach.jpg"
+               alt="Андрій Луженький, керівник STEM-лабораторії"
+               width="800" height="800" loading="lazy">
+        </figure>
+
+        <div>
+          <h3 class="teacher__name">Андрій Луженький</h3>
+          <p class="teacher__role">Керівник лабораторії</p>
+          <div class="teacher__bio">
+            <p class="prose">
+              Інженер за освітою, працює з мікроконтролерами та тривимірним друком.
+              Веде всі чотири напрямки й відповідає за обладнання лабораторії.
+            </p>
+            <p class="prose">
+              Побудував лабораторію з нуля у 2020 році – від закупівлі першого
+              принтера до програми курсу. Готує учнів до міських та обласних
+              олімпіад з робототехніки й інформатики.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="wrap faq">
+      <div>
+        <h2 class="h2">Що зазвичай питають батьки</h2>
+        <p class="faq__intro">
+          Не знайшли свого питання – <a class="link nums" href="tel:+380412473960">зателефонуйте</a>
+          або напишіть на <a class="link" href="mailto:school_zt_12@ukr.net">пошту</a>.
+          Відповідаємо того ж дня.
+        </p>
+      </div>
+
+      <div class="faq__list">
+        <details class="faq__item" name="faq">
+          <summary><span class="h3">Скільки коштує навчання?</span><span class="faq__sign" aria-hidden="true"></span></summary>
+          <p class="faq__answer">
+            Навчання безкоштовне. Лабораторія утримується за кошти ліцею, тому
+            ми не збираємо внесків ні за заняття, ні за витратні матеріали,
+            ні на обладнання. Це стосується і ліцеїстів, і учнів інших шкіл.
+          </p>
+        </details>
+
+        <details class="faq__item" name="faq">
+          <summary><span class="h3">Дитина вчиться в іншій школі. Візьмете?</span><span class="faq__sign" aria-hidden="true"></span></summary>
+          <p class="faq__answer">
+            Так, беремо. До 15 вересня записуємо ліцеїстів, після цієї дати
+            група відкрита для всіх охочих. Торік з 48 учнів лабораторії
+            одинадцять навчалися в інших школах Житомира.
+          </p>
+        </details>
+
+        <details class="faq__item" name="faq">
+          <summary><span class="h3">Що треба купити до першого заняття?</span><span class="faq__sign" aria-hidden="true"></span></summary>
+          <p class="faq__answer">
+            Лише зошит і ручку. Плати, інструмент, пластик для друку та
+            електронні компоненти надає лабораторія. Деталі, виготовлені
+            для власного проєкту, після захисту залишаються в учня.
+          </p>
+        </details>
+
+        <details class="faq__item" name="faq">
+          <summary><span class="h3">Паяльник, інструменти – це безпечно?</span><span class="faq__sign" aria-hidden="true"></span></summary>
+          <p class="faq__answer">
+            До паяльних робіт учні допускаються з 9 класу та перші три заняття
+            працюють лише під наглядом викладача. Станції обладнані регулюванням
+            температури й димовідсосом, припій безсвинцевий. Учні молодших класів
+            збирають схеми на роз’ємних платах, де пайка не потрібна. За шість
+            років роботи лабораторії травм не було.
+          </p>
+        </details>
+
+        <details class="faq__item" name="faq">
+          <summary><span class="h3">А якщо дитина обрала не той напрямок?</span><span class="faq__sign" aria-hidden="true"></span></summary>
+          <p class="faq__answer">
+            Перейти на інший напрямок можна протягом першого місяця – достатньо
+            повідомити викладача. Пізніше це складніше: група працює за програмою,
+            і наздогнати матеріал посеред модуля важко. Саме тому радимо почати
+            з пробного заняття.
+          </p>
+        </details>
+
+        <details class="faq__item" name="faq">
+          <summary><span class="h3">Пропустив заняття – що робити?</span><span class="faq__sign" aria-hidden="true"></span></summary>
+          <p class="faq__answer">
+            Конспект і завдання викладач публікує в Telegram-групі напрямку.
+            Щоп’ятниці з 15:00 лабораторія відкрита для відпрацювань: можна
+            прийти й завершити пропущене. Попереджати заздалегідь не потрібно.
+          </p>
+        </details>
+
+        <details class="faq__item" name="faq">
+          <summary><span class="h3">Скільки дітей у групі?</span><span class="faq__sign" aria-hidden="true"></span></summary>
+          <p class="faq__answer">
+            Не більше дванадцяти. Це не методика, а проста арифметика: стільки
+            в лабораторії обладнаних столів. Тринадцятий учень означав би, що
+            хтось цілий урок дивиться, як працює сусід. Коли охочих більше,
+            відкриваємо другу групу.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="news">
+    <div class="wrap newsroom">
+      <h2 class="h2">Новини лабораторії</h2>
+
+      <div class="news">
+        <article class="news__item">
+          <time class="news__date nums" datetime="2026-10-21">21 жовтня 2026</time>
+          <div>
+            <h3 class="h3">Великий принтер знову в роботі</h3>
+            <p class="news__text prose">
+              Екструдер забився ще на початку місяця, і три тижні група друкувала
+              на трьох принтерах замість чотирьох. Запчастину чекали з Польщі.
+              Полагодили у вівторок, черга на друк уже розсмокталася.
+            </p>
+          </div>
+        </article>
+
+        <article class="news__item">
+          <time class="news__date nums" datetime="2026-09-10">10 вересня 2026</time>
+          <div>
+            <h3 class="h3">Набір на новий навчальний рік відкрито</h3>
+            <p class="news__text prose">
+              Беремо на всі чотири напрямки. За літо з’явилися два нові FDM-принтери
+              й комплект осцилографів, тож черги до приладу більше немає. Перше
+              заняття безкоштовне – просто приходьте подивитися.
+            </p>
+          </div>
+        </article>
+
+        <article class="news__item">
+          <time class="news__date nums" datetime="2026-05-29">29 травня 2026</time>
+          <div>
+            <h3 class="h3">Друге місце на обласній олімпіаді з робототехніки</h3>
+            <p class="news__text prose">
+              Андрій Петренко та Віктор Сидоренко привезли друге місце в категорії
+              автономних роботів. Готувалися півроку, а останній тиждень перед
+              виїздом сиділи в лабораторії до сьомої вечора.
+            </p>
+          </div>
+        </article>
+
+        <article class="news__item">
+          <time class="news__date nums" datetime="2026-03-14">14 березня 2026</time>
+          <div>
+            <h3 class="h3">День відкритих дверей</h3>
+            <p class="news__text prose">
+              Прийшло близько сімдесяти людей: батьки, учні, кілька вчителів
+              із сусідніх шкіл. Показували обладнання й торішні проєкти,
+              а на питання відповідали мало не до вечора.
+            </p>
+          </div>
+        </article>
+
+        <article class="news__item">
+          <time class="news__date nums" datetime="2026-01-23">23 січня 2026</time>
+          <div>
+            <h3 class="h3">Фінал хакатону «Розумне місто»</h3>
+            <p class="news__text prose">
+              Система обліку води вийшла у фінал міського хакатону. Журі найбільше
+              зачепило те, що пристрій уже рік працює в будівлі ліцею, а не існує
+              лише в презентації.
+            </p>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" id="contacts">
+    <div class="wrap">
+      <h2 class="h2 section__head">Контакти</h2>
+
+      <div class="contacts">
+        <dl class="contacts__list">
+          <div>
+            <dt class="label">Адреса</dt>
+            <dd>вулиця Старий Бульвар, 4, Житомир, 10008<br>Ліцей №12, кабінет 301, третій поверх</dd>
+          </div>
+          <div>
+            <dt class="label">Телефон</dt>
+            <dd><a class="link nums" href="tel:+380412473960">+38 (0412) 47-39-60</a></dd>
+          </div>
+          <div>
+            <dt class="label">Електронна пошта</dt>
+            <dd><a class="link" href="mailto:school_zt_12@ukr.net">school_zt_12@ukr.net</a></dd>
+          </div>
+          <div>
+            <dt class="label">Коли можна зайти</dt>
+            <dd class="nums">Понеділок – п’ятниця, 14:00–18:00</dd>
+          </div>
+        </dl>
+
+        <figure class="contacts__map">
+          <iframe
+            src="https://www.google.com/maps?q=%D0%96%D0%B8%D1%82%D0%BE%D0%BC%D0%B8%D1%80%2C%20%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F%20%D0%A1%D1%82%D0%B0%D1%80%D0%B8%D0%B9%20%D0%91%D1%83%D0%BB%D1%8C%D0%B2%D0%B0%D1%80%2C%204&z=17&hl=uk&output=embed"
+            title="Розташування Ліцею №12 у Житомирі на карті"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <figcaption>
+            <a class="link" href="https://www.google.com/maps?q=%D0%96%D0%B8%D1%82%D0%BE%D0%BC%D0%B8%D1%80%2C%20%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F%20%D0%A1%D1%82%D0%B0%D1%80%D0%B8%D0%B9%20%D0%91%D1%83%D0%BB%D1%8C%D0%B2%D0%B0%D1%80%2C%204" target="_blank" rel="noopener">Відкрити в Google Картах</a>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div class="footer__top">
+      <div>
+        <p class="footer__brand">STEM-лабораторія</p>
+        <p class="footer__place">Ліцей №12, місто Житомир</p>
+        <p class="footer__about">
+          Робототехніка, 3D-прототипування, програмування та розумні пристрої
+          для учнів 7–11 класів.
+        </p>
+      </div>
+
+      <nav aria-labelledby="footer-sections">
+        <h2 id="footer-sections">Розділи</h2>
+        <ul>
+          <li><a href="#about">Про лабораторію</a></li>
+          <li><a href="#programmes">Напрямки</a></li>
+          <li><a href="#process">Як проходить навчання</a></li>
+          <li><a href="#projects">Проєкти учнів</a></li>
+          <li><a href="#teacher">Викладачі</a></li>
+          <li><a href="#faq">Питання та відповіді</a></li>
+          <li><a href="#news">Новини</a></li>
+        </ul>
+      </nav>
+
+      <div>
+        <h2>Зв’язок</h2>
+        <ul>
+          <li><a class="nums" href="tel:+380412473960">+38 (0412) 47-39-60</a></li>
+          <li><a href="mailto:school_zt_12@ukr.net">school_zt_12@ukr.net</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="footer__bottom">
+      © 2026 STEM-лабораторія Ліцею №12, Житомир.
+      Сторінку оновлено <time datetime="2026-11-01">1 листопада 2026</time>.
+    </p>
+  </div>
+</footer>
+
+<div class="modal" id="enrol-modal" role="dialog" aria-modal="true" aria-labelledby="enrol-title">
+  <div class="modal__card">
+    <div class="modal__head">
+      <h2 class="h3" id="enrol-title">Записатися на пробне заняття</h2>
+      <button class="icon-btn" data-close-modal aria-label="Закрити">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <p class="modal__note">Ми зателефонуємо впродовж одного робочого дня й узгодимо час.</p>
+
+    <form class="form" id="enrol-form" novalidate>
+      <div>
+        <label for="f-name">Прізвище та ім’я учня</label>
+        <input class="field" id="f-name" type="text" placeholder="Ковальчук Олександр" autocomplete="off" required>
+      </div>
+      <div>
+        <label for="f-grade">Клас</label>
+        <select class="field" id="f-grade" required>
+          <option value="">Оберіть клас</option>
+          <option>7 клас</option>
+          <option>8 клас</option>
+          <option>9 клас</option>
+          <option>10 клас</option>
+          <option>11 клас</option>
+        </select>
+      </div>
+      <div>
+        <label for="f-course">Напрямок</label>
+        <select class="field" id="f-course" required>
+          <option value="">Оберіть напрямок</option>
+          <option>Робототехніка та мехатроніка</option>
+          <option>3D-моделювання та друк</option>
+          <option>Програмування Python</option>
+          <option>Розумні пристрої</option>
+          <option>Ще не визначився</option>
+        </select>
+      </div>
+      <div>
+        <label for="f-phone">Телефон батьків</label>
+        <input class="field nums" id="f-phone" type="tel" placeholder="+38 0XX XXX XX XX" autocomplete="tel" required>
+      </div>
+      <div>
+        <label for="f-email">Електронна пошта</label>
+        <input class="field" id="f-email" type="email" placeholder="pochta@example.com" autocomplete="email" required>
+      </div>
+
+      <p class="form__message form__message--error" id="form-error" role="alert" hidden></p>
+      <p class="form__message form__message--ok" id="form-ok" role="status" hidden></p>
+
+      <button class="btn btn--primary btn--block" type="submit">Надіслати заявку</button>
+      <p class="form__fineprint">Дані залишаються у вашому браузері</p>
+    </form>
+  </div>
+</div>
+
+<div class="modal" id="cabinet-modal" role="dialog" aria-modal="true" aria-labelledby="cabinet-title">
+  <div class="modal__card">
+    <div class="modal__head">
+      <div>
+        <h2 class="h3" id="cabinet-title">Вхід до кабінету</h2>
+        <p class="modal__note" id="cabinet-note">Увійдіть, щоб побачити свої заявки</p>
+      </div>
+      <button class="icon-btn" data-close-modal aria-label="Закрити">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <form class="form" id="login-form" novalidate>
+      <div>
+        <label for="l-login">Логін</label>
+        <input class="field" id="l-login" type="text" autocomplete="username" autocapitalize="off" spellcheck="false" required>
+      </div>
+      <div>
+        <label for="l-pass">Пароль</label>
+        <input class="field" id="l-pass" type="password" autocomplete="current-password" required>
+      </div>
+
+      <p class="form__message form__message--error" id="login-error" role="alert" hidden></p>
+
+      <button class="btn btn--primary btn--block" type="submit">Увійти</button>
+
+      <div class="demo">
+        <p class="demo__title">Тестові акаунти</p>
+        <ul class="demo__list" id="demo-list"></ul>
+        <p class="form__fineprint">Демонстраційний вхід: дані перевіряються лише в браузері</p>
+      </div>
+    </form>
+
+    <div id="cabinet-account" hidden>
+      <div class="account">
+        <div>
+          <p class="account__name" id="account-name"></p>
+          <p class="account__role" id="account-role"></p>
+        </div>
+        <button class="btn btn--outline btn--small" type="button" id="logout-btn">Вийти</button>
+      </div>
+
+      <div class="cabinet" id="cabinet-list"></div>
+      <div class="cabinet__empty" id="cabinet-empty" hidden>
+        <p>Поки що немає жодної заявки.</p>
+        <button class="btn btn--primary btn--small" data-open-form>Записатися на пробне</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<template id="cabinet-row">
+  <div class="cabinet__row">
+    <div>
+      <p class="cabinet__name" data-name></p>
+      <p class="cabinet__course" data-course></p>
+      <p class="cabinet__when" data-when></p>
+      <p class="cabinet__when" data-contact hidden></p>
+    </div>
+    <button class="icon-btn cabinet__remove" data-remove aria-label="Скасувати заявку">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 7h16M10 11v6m4-6v6M5.5 7l1 12.2A2 2 0 008.5 21h7a2 2 0 002-1.8L18.5 7M9 7V4.5A1.5 1.5 0 0110.5 3h3A1.5 1.5 0 0115 4.5V7"/></svg>
+    </button>
+  </div>
+</template>
+
+<script src="script.js?v=3" defer></script>
+</body>
+</html>
